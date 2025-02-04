@@ -1,0 +1,7 @@
+#item
+item.briquette.name=蜂窝煤
+item.halfBriquette.name=半块蜂窝煤
+item.methaneClathrate.name=可燃冰
+
+#fluid
+fluid.AlkaneWaterMixture.name=烷烃-水混合物

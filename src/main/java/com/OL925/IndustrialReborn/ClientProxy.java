@@ -1,4 +1,4 @@
-package com.myname.mymodid;
+package com.OL925.IndustrialReborn;
 
 public class ClientProxy extends CommonProxy {
 

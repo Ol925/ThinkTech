@@ -3,10 +3,10 @@
 	"modList": [{
 		"modid": "${modId}",
 		"name": "${modName}",
-		"description": "一个旨在拓展原版GTNH流程的mod",
+		"description": "",
 		"version": "${modVersion}",
 		"mcversion": "${minecraftVersion}",
-		"url": "https://github.com/SinTh0r4s/MyMod",
+		"url": "https://github.com/Ol925/IndustrialReborn",
 		"updateUrl": "",
 		"authorList": ["OL925"],
 		"credits": "",

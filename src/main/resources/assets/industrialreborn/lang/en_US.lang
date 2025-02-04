@@ -1,0 +1,7 @@
+#item
+item.briquette.name=Briquette
+item.halfBriquette.name=Half Briquette
+item.methaneClathrate.name=Methane Clathrate
+
+#fluid
+fluid.AlkaneWaterMixture.name=Alkane Water Mixture
