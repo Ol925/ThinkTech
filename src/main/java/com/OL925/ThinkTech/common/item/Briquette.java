@@ -9,7 +9,7 @@ public class Briquette extends Item {
     public Briquette() {
         super();
         this.setUnlocalizedName("briquette");
-        this.setTextureName("industrialreborn:briquette");
+        this.setTextureName("thinktech:briquette");
         GameRegistry.registerItem(this, "briquette");
     }
 }

@@ -9,7 +9,7 @@ public class HalfBriquette extends Item {
     public HalfBriquette() {
         super();
         this.setUnlocalizedName("halfBriquette");
-        this.setTextureName("industrialreborn:half_briquette");
+        this.setTextureName("thinktech:half_briquette");
         GameRegistry.registerItem(this, "halfBriquette");
     }
 

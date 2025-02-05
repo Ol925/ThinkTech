@@ -45,8 +45,18 @@ public class ItemRecipePool {
             .itemOutputs(METHANE_CLATHRATE.get(16))
             .noOptimize()
             .eut(RECIPE_MV)
-            .duration(60)
+            .duration(20 * 25)
             .addTo(RecipeMaps.autoclaveRecipes);
+
+        // SuperOreo
+        GTValues.RA.stdBuilder()
+            .itemInputs(HALF_BRIQUETTE.get(2))
+            .fluidInputs(Materials.Milk.getFluid(1000))
+            .itemOutputs(SUPEROREO.get(4))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20)
+            .addTo(RecipeMaps.assemblerRecipes);
 
     }
 }

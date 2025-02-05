@@ -2,6 +2,7 @@
 item.briquette.name=Briquette
 item.halfBriquette.name=Half Briquette
 item.methaneClathrate.name=Methane Clathrate
+item.superOreo.name=Super Oreo
 
 #fluid
 fluid.AlkaneWaterMixture.name=Alkane Water Mixture
