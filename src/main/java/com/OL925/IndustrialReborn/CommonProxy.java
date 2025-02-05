@@ -29,12 +29,13 @@ public class CommonProxy {
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
-        new RecipeLoader();
+
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
     public void postInit(FMLPostInitializationEvent event) {
         new MaterialsRecipePool().loadRecipes();
+        new RecipeLoader();
     }
 
     // register server commands in this event handler (Remove if not needed)
