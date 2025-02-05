@@ -24,6 +24,7 @@ public class RecipeLoader {
 
     private void registerRecipe() {
         // Add your recipes here
+
     }
 
     private void registerSmelting() {
@@ -37,14 +38,6 @@ public class RecipeLoader {
             @Override
             public int getBurnTime(ItemStack fuel) {
                 return IRItemList.BRIQUETTE.getItem() == fuel.getItem() ? 12800 : 0;
-            }
-        });
-
-        GameRegistry.registerFuelHandler(new IFuelHandler() {
-
-            @Override
-            public int getBurnTime(ItemStack fuel) {
-                return IRItemList.METHANE_CLATHRATE.getItem() == fuel.getItem() ? 30000 : 0;
             }
         });
     }
