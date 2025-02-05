@@ -1,4 +1,4 @@
-package com.OL925.IndustrialReborn;
+package com.OL925.ThinkTech;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -17,14 +17,12 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
     acceptedMinecraftVersions = "[1.7.10]",
     dependencies = "required-after:bartworks;")
 
-public class IndustrialReborn {
+public class ThinkTech {
 
     public static final String MODID = Tags.MODID;
     public static final Logger LOG = LogManager.getLogger(Tags.MODNAME);
 
-    @SidedProxy(
-        clientSide = "com.OL925.IndustrialReborn.ClientProxy",
-        serverSide = "com.OL925.IndustrialReborn.CommonProxy")
+    @SidedProxy(clientSide = "com.OL925.ThinkTech.ClientProxy", serverSide = "com.OL925.ThinkTech.CommonProxy")
     public static CommonProxy proxy;
 
     @Mod.EventHandler

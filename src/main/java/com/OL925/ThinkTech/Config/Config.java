@@ -1,4 +1,4 @@
-package com.OL925.IndustrialReborn.Config;
+package com.OL925.ThinkTech.Config;
 
 import java.io.File;
 

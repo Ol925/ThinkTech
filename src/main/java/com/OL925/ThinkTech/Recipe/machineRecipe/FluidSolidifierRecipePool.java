@@ -1,4 +1,4 @@
-package com.OL925.IndustrialReborn.Recipe.machineRecipe;
+package com.OL925.ThinkTech.Recipe.machineRecipe;
 
 import static gregtech.api.enums.TierEU.RECIPE_MV;
 

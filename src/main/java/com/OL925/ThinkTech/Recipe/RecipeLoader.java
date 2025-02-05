@@ -1,10 +1,10 @@
-package com.OL925.IndustrialReborn.Recipe;
+package com.OL925.ThinkTech.Recipe;
 
 import net.minecraft.item.ItemStack;
 
-import com.OL925.IndustrialReborn.Recipe.machineRecipe.FluidSolidifierRecipePool;
-import com.OL925.IndustrialReborn.Recipe.machineRecipe.ItemRecipePool;
-import com.OL925.IndustrialReborn.common.init.IRItemList;
+import com.OL925.ThinkTech.Recipe.machineRecipe.FluidSolidifierRecipePool;
+import com.OL925.ThinkTech.Recipe.machineRecipe.ItemRecipePool;
+import com.OL925.ThinkTech.common.init.IRItemList;
 
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;

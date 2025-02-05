@@ -1,8 +1,8 @@
-package com.OL925.IndustrialReborn.common.init;
+package com.OL925.ThinkTech.common.init;
 
-import com.OL925.IndustrialReborn.common.item.Briquette;
-import com.OL925.IndustrialReborn.common.item.HalfBriquette;
-import com.OL925.IndustrialReborn.common.item.MethaneClathrate;
+import com.OL925.ThinkTech.common.item.Briquette;
+import com.OL925.ThinkTech.common.item.HalfBriquette;
+import com.OL925.ThinkTech.common.item.MethaneClathrate;
 
 public class IRItemLoader {
 

@@ -1,4 +1,4 @@
-package com.OL925.IndustrialReborn.common.item;
+package com.OL925.ThinkTech.common.item;
 
 import net.minecraft.item.Item;
 

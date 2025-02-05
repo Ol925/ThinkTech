@@ -1,4 +1,4 @@
-package com.OL925.IndustrialReborn.common.Material;
+package com.OL925.ThinkTech.common.Material;
 
 import static bartworks.util.BWUtil.subscriptNumbers;
 

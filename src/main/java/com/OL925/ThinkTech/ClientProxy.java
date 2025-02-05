@@ -1,4 +1,4 @@
-package com.OL925.IndustrialReborn;
+package com.OL925.ThinkTech;
 
 public class ClientProxy extends CommonProxy {
 

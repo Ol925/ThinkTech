@@ -1,10 +1,10 @@
-package com.OL925.IndustrialReborn;
+package com.OL925.ThinkTech;
 
-import com.OL925.IndustrialReborn.Config.Config;
-import com.OL925.IndustrialReborn.Recipe.RecipeLoader;
-import com.OL925.IndustrialReborn.Recipe.machineRecipe.MaterialsRecipePool;
-import com.OL925.IndustrialReborn.common.Material.MaterialPool;
-import com.OL925.IndustrialReborn.common.init.IRItemLoader;
+import com.OL925.ThinkTech.Config.Config;
+import com.OL925.ThinkTech.Recipe.RecipeLoader;
+import com.OL925.ThinkTech.Recipe.machineRecipe.MaterialsRecipePool;
+import com.OL925.ThinkTech.common.Material.MaterialPool;
+import com.OL925.ThinkTech.common.init.IRItemLoader;
 
 import bartworks.API.WerkstoffAdderRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -19,8 +19,8 @@ public class CommonProxy {
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
-        // IndustrialReborn.LOG.info(Config.greeting);
-        IndustrialReborn.LOG.info("Industrial Reborn at version " + "0.1.0");
+        // ThinkTech.LOG.info(Config.greeting);
+        ThinkTech.LOG.info("Industrial Reborn at version " + "0.1.0");
 
         new IRItemLoader().init();
         WerkstoffAdderRegistry.addWerkstoffAdder(new MaterialPool());

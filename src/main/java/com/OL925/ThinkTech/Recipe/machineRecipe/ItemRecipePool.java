@@ -1,13 +1,13 @@
-package com.OL925.IndustrialReborn.Recipe.machineRecipe;
+package com.OL925.ThinkTech.Recipe.machineRecipe;
 
-import static com.OL925.IndustrialReborn.common.init.IRItemList.*;
+import static com.OL925.ThinkTech.common.init.IRItemList.*;
 import static gregtech.api.enums.TierEU.RECIPE_LV;
 import static gregtech.api.enums.TierEU.RECIPE_MV;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import com.OL925.IndustrialReborn.common.Material.MaterialPool;
+import com.OL925.ThinkTech.common.Material.MaterialPool;
 
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
