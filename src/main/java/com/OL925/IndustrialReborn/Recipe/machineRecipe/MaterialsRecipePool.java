@@ -1,7 +1,6 @@
 package com.OL925.IndustrialReborn.Recipe.machineRecipe;
 
 import static gregtech.api.enums.Mods.GregTech;
-import static gregtech.api.enums.TierEU.RECIPE_HV;
 import static gregtech.api.enums.TierEU.RECIPE_MV;
 
 import com.OL925.IndustrialReborn.common.Material.MaterialPool;
@@ -25,8 +24,8 @@ public class MaterialsRecipePool {
             .fluidInputs(Materials.NatruralGas.getGas(4000), GTModHandler.getSteam(20000))
             .fluidOutputs(MaterialPool.alkaneWaterMixture.getFluidOrGas(12000))
             .noOptimize()
-            .eut(RECIPE_HV)
-            .duration(20 * 4)
+            .eut(RECIPE_MV)
+            .duration(20 * 10)
             .addTo(GTPPRecipeMaps.mixerNonCellRecipes);
 
         // GT mixer
@@ -49,15 +48,5 @@ public class MaterialsRecipePool {
             .eut(RECIPE_MV)
             .duration(20 * 4)
             .addTo(RecipeMaps.mixerRecipes);
-
-        /*-----------------------------------------*/
-
-        GTValues.RA.stdBuilder()
-            .fluidInputs(Materials.Gas.getGas(600))
-            .fluidOutputs(Materials.LPG.getFluid(1500))
-            .noOptimize()
-            .eut(80)
-            .duration(20)
-            .addTo(RecipeMaps.centrifugeRecipes);
     }
 }

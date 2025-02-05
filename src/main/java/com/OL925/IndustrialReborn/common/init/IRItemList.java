@@ -10,7 +10,6 @@ public enum IRItemList {
     BRIQUETTE,
     HALF_BRIQUETTE,
     METHANE_CLATHRATE,
-    SUPEROREO,
 
     TestItem;
 
