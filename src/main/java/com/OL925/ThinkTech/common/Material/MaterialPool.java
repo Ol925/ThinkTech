@@ -20,6 +20,18 @@ public class MaterialPool implements Runnable {
         OffsetID,
         TextureSet.SET_FLUID);
 
+    public static final Werkstoff trinitrotoluene = new Werkstoff(
+        new short[] { 191, 104, 50 },
+        "2,4,6-trinitrotoluene",
+        subscriptNumbers("C7H5N3O6"),
+        new Werkstoff.Stats().setMeltingPoint(354),
+        Werkstoff.Types.MATERIAL,
+        new Werkstoff.GenerationFeatures().disable()
+            .onlyDust()
+            .addMolten(),
+        OffsetID + 1,
+        TextureSet.SET_RUBY);
+
     @Override
     public void run() {}
 }
