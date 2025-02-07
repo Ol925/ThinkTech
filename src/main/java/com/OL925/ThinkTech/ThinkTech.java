@@ -15,7 +15,7 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
     version = Tags.VERSION,
     name = Tags.MODNAME,
     acceptedMinecraftVersions = "[1.7.10]",
-    dependencies = "required-after:bartworks;")
+    dependencies = "required-before:gregtech; " + "before:dreamcraft;")
 
 public class ThinkTech {
 

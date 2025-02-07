@@ -1,10 +1,8 @@
 package com.OL925.ThinkTech.common.MTE;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
-import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlockAnyMeta;
 import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.HatchElement.Muffler;
-import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
@@ -21,16 +19,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
+import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 
+import com.google.common.collect.ImmutableList;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
-import bartworks.common.loaders.ItemRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
 import gregtech.api.GregTechAPI;
+import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ISecondaryDescribable;
@@ -54,43 +53,77 @@ import gtnhlanth.util.DescTextLocalization;
 public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGenerator>
     implements ISurvivalConstructable, ISecondaryDescribable {
 
+    private int GeneratorTier = 0;
+    private static IStructureDefinition<ThT_ImplosionGenerator> STRUCTURE_DEFINITION = null;
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
 
-    private final IStructureDefinition<ThT_ImplosionGenerator> multiDefinition = StructureDefinition
-        .<ThT_ImplosionGenerator>builder()
-        .addShape(
-            mName,
+    // Structure
+    @Override
+    public IStructureDefinition<ThT_ImplosionGenerator> getStructureDefinition() {
+        if (STRUCTURE_DEFINITION == null) {
+            STRUCTURE_DEFINITION = StructureDefinition.<ThT_ImplosionGenerator>builder()
+                .addShape(
+                    mName,
 
-            new String[][] { { "   B   ", "  BBB  ", "  BBB  ", "BGBBBGB", "BBB~BBB" },
-                { "  FFF  ", " FBBBF ", " FBCBF ", "GFBBBFG", "BDDDDDB" },
-                { "   F   ", "  EEE  ", "  ECE  ", "GFEEEFG", "BDDDDDB" },
-                { "   F   ", "   A   ", "  A A  ", "GF A FG", "BDDDDDB" },
-                { "   F   ", "   A   ", "  A A  ", "GF A FG", "BDDDDDB" },
-                { "   F   ", "  EEE  ", "  ECE  ", "GFEEEFG", "BDDDDDB" },
-                { "  FFF  ", " FBBBF ", " FBCBF ", "GFBBBFG", "BDDDDDB" },
-                { "  BBB  ", " BBCBB ", " BCCCB ", "BBCCCBB", "BBBBBBB" } })
-        .addElement('A', ofBlockAnyMeta(GameRegistry.findBlock(IndustrialCraft2.ID, "blockAlloy")))
-        .addElement(
-            'B',
-            buildHatchAdder(ThT_ImplosionGenerator.class).atLeast(Dynamo, InputHatch, Muffler)
-                .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
-                .dot(1)
-                .buildAndChain(GregTechAPI.sBlockCasings2, 0))
-        .addElement('C', ofBlock(GregTechAPI.sBlockCasings2, 13))
-        .addElement('D', ofBlock(GregTechAPI.sBlockCasings4, 1))
-        .addElement('E', ofBlock(GregTechAPI.sBlockCasings5, 0))
-        .addElement('F', ofFrame(Materials.StainlessSteel))
-        .addElement('G', ofBlockAnyMeta(iron_bars))
-        .build();;
+                    new String[][] { { "   B   ", "  BBB  ", "  BBB  ", "BHBBBHB", "BBB~BBB" },
+                        { "  FFF  ", " FBBBF ", " FBCBF ", "HFBBBFH", "BDDDDDB" },
+                        { "  AFA  ", " AEEEA ", " AECEA ", "HFEEEFH", "BDDDDDB" },
+                        { "  AFA  ", " A G A ", " AG GA ", "HF G FH", "BDDDDDB" },
+                        { "  AFA  ", " A G A ", " AG GA ", "HF G FH", "BDDDDDB" },
+                        { "  AFA  ", " AEEEA ", " AECEA ", "HFEEEFH", "BDDDDDB" },
+                        { "  FFF  ", " FBBBF ", " FBCBF ", "HFBBBFH", "BDDDDDB" },
+                        { "  BBB  ", " BBCBB ", " BCCCB ", "BBCCCBB", "BBBBBBB" } })
+                .addElement('A', ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
+                //
+                .addElement(
+                    'B',
+                    buildHatchAdder(ThT_ImplosionGenerator.class).atLeast(Dynamo, InputHatch, Muffler)
+                        .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
+                        .dot(1)
+                        .buildAndChain(GregTechAPI.sBlockCasings2, 0))
+                .addElement('C', ofBlock(GregTechAPI.sBlockCasings2, 13))
+                .addElement('D', ofBlock(GregTechAPI.sBlockCasings4, 1))
+                .addElement('E', ofBlock(GregTechAPI.sBlockCasings5, 0))
+                .addElement('F', ofFrame(Materials.StainlessSteel))
+                .addElement(
+                    'G',
+                    ofBlocksTiered(
+                        ThT_ImplosionGenerator::getGeneratorTier,
+                        ImmutableList.of(
+                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 0), // 硝化淀粉
+                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 8), // 硝化甘油
+                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 9), // 三硝基甲苯
+                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 3), // 黑索金
+                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 1)// CL-20
+                        ),
+                        0,
+                        (m, t) -> m.GeneratorTier = t,
+                        m -> m.GeneratorTier))
+                .addElement('H', ofBlockAnyMeta(iron_bars))
+                .build();
+        }
+        return STRUCTURE_DEFINITION;
+    }
 
     public ThT_ImplosionGenerator(String name) {
         super(name);
     }
 
+    //
     @Override
     public String getMachineType() {
         return "";
+    }
+
+    // 控制机器的等级
+    public static int getGeneratorTier(Block block, int meta) {
+        if (block == ItemList.Block_BronzePlate.getBlock()) {
+            return 1;
+        } else if (block == ItemList.Block_SteelPlate.getBlock()) {
+            return 2;
+        }
+        return 0;
     }
 
     @Override
@@ -103,17 +136,8 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     }
 
     @Override
-    public IStructureDefinition<ThT_ImplosionGenerator> getStructureDefinition() {
-        return multiDefinition;
-    }
-
-    @Override
     public boolean isCorrectMachinePart(ItemStack aStack) {
         return true;
-    }
-
-    private boolean addGlass(Block block, int meta) {
-        return block == ItemRegistry.bw_glasses[0];
     }
 
     @Override
@@ -212,7 +236,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if(checkPiece(mName, 3, 4, 0)){
+        if (checkPiece(mName, 3, 4, 0) && mMufflerHatches.size() == 1) {
             fixAllIssues();
             return true;
         }
@@ -284,4 +308,5 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     public int getDamageToComponent(ItemStack arg0) {
         return 0;
     }
+
 }
