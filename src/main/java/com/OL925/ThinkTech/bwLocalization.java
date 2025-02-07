@@ -3,7 +3,7 @@ package com.OL925.ThinkTech;
 import static gregtech.api.util.GTLanguageManager.addStringLocalization;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
-public class localize {
+public class bwLocalization {
 
     public void loader() {
         // fluid

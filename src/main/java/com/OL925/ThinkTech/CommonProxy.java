@@ -4,7 +4,8 @@ import com.OL925.ThinkTech.Config.Config;
 import com.OL925.ThinkTech.Recipe.RecipeLoader;
 import com.OL925.ThinkTech.Recipe.machineRecipe.MaterialsRecipePool;
 import com.OL925.ThinkTech.common.Material.MaterialPool;
-import com.OL925.ThinkTech.common.init.IRItemLoader;
+import com.OL925.ThinkTech.common.init.ThTItemLoader;
+import com.OL925.ThinkTech.common.init.ThTMachineLoader;
 
 import bartworks.API.WerkstoffAdderRegistry;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -20,16 +21,16 @@ public class CommonProxy {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
 
         // ThinkTech.LOG.info(Config.greeting);
-        ThinkTech.LOG.info("Industrial Reborn at version " + "0.1.0");
+        // ThinkTech.LOG.info("Industrial Reborn at version " + "0.1.0");
 
-        new IRItemLoader().init();
+        new ThTItemLoader().init();
         WerkstoffAdderRegistry.addWerkstoffAdder(new MaterialPool());
-        new localize().loader();
+        new bwLocalization().loader();
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
-
+        ThTMachineLoader.loadMachine();
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)

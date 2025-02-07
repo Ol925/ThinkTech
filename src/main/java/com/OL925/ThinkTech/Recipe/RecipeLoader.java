@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import com.OL925.ThinkTech.Recipe.machineRecipe.FluidSolidifierRecipePool;
 import com.OL925.ThinkTech.Recipe.machineRecipe.ItemRecipePool;
 import com.OL925.ThinkTech.Recipe.machineRecipe.OtherRecipePool;
-import com.OL925.ThinkTech.common.init.IRItemList;
+import com.OL925.ThinkTech.common.init.ThTList;
 
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -38,7 +38,7 @@ public class RecipeLoader {
 
             @Override
             public int getBurnTime(ItemStack fuel) {
-                return IRItemList.BRIQUETTE.getItem() == fuel.getItem() ? 12800 : 0;
+                return ThTList.BRIQUETTE.getItem() == fuel.getItem() ? 12800 : 0;
             }
         });
 
@@ -46,7 +46,7 @@ public class RecipeLoader {
 
             @Override
             public int getBurnTime(ItemStack fuel) {
-                return IRItemList.METHANE_CLATHRATE.getItem() == fuel.getItem() ? 30000 : 0;
+                return ThTList.METHANE_CLATHRATE.getItem() == fuel.getItem() ? 30000 : 0;
             }
         });
     }

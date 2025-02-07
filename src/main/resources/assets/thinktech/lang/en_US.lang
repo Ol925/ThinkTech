@@ -7,3 +7,9 @@ item.2,4,6-trinitrotoluene.name=2,4,6-Trinitrotoluene
 
 #fluid
 fluid.AlkaneWaterMixture.name=Alkane Water Mixture
+
+#machine
+mte.ImplosionGenerator=Implosion Generator
+mte.ImplosionGenerator.tooltips1=§bExplosions have always been art
+mte.ImplosionGenerator.tooltips2=§bNow we want to make this art flourish again!
+mte.ImplosionGenerator.tooltips3=Feed §b§nfluid explosives§r§7 to §4§nrelease chemical energy§r§7

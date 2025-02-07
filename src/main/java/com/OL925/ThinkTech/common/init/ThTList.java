@@ -5,12 +5,16 @@ import net.minecraft.item.ItemStack;
 
 import gregtech.api.util.GTUtility;
 
-public enum IRItemList {
+public enum ThTList {
 
+    // Item
     BRIQUETTE,
     HALF_BRIQUETTE,
     METHANE_CLATHRATE,
     SUPEROREO,
+
+    // Machine
+    ExplosiveGenerator,
 
     TestItem;
 
@@ -18,18 +22,18 @@ public enum IRItemList {
 
     private ItemStack sStack;
 
-    IRItemList() {
+    ThTList() {
         mHasNotBeenSet = true;
     }
 
-    public IRItemList set(Item aItem) {
+    public ThTList set(Item aItem) {
         if (aItem == null) return this;
         ItemStack aStack = new ItemStack(aItem, 1, 0);
         sStack = GTUtility.copyAmountUnsafe(1, aStack);
         return this;
     }
 
-    public IRItemList set(ItemStack aStack) {
+    public ThTList set(ItemStack aStack) {
         if (aStack != null) {
             sStack = GTUtility.copyAmountUnsafe(1, aStack);
         }

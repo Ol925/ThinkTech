@@ -1,6 +1,6 @@
 package com.OL925.ThinkTech.Recipe.machineRecipe;
 
-import static com.OL925.ThinkTech.common.init.IRItemList.*;
+import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static gregtech.api.enums.TierEU.RECIPE_LV;
 import static gregtech.api.enums.TierEU.RECIPE_MV;
 
