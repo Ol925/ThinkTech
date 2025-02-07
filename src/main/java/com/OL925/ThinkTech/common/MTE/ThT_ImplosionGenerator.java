@@ -22,6 +22,7 @@ import net.minecraftforge.fluids.FluidStack;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 
+import com.dreammaster.block.BlockList;
 import com.google.common.collect.ImmutableList;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
@@ -29,7 +30,6 @@ import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
 import gregtech.api.GregTechAPI;
-import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ISecondaryDescribable;
@@ -88,18 +88,20 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                 .addElement('F', ofFrame(Materials.StainlessSteel))
                 .addElement(
                     'G',
-                    ofBlocksTiered(
-                        ThT_ImplosionGenerator::getGeneratorTier,
-                        ImmutableList.of(
-                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 0), // 硝化淀粉
-                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 8), // 硝化甘油
-                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 9), // 三硝基甲苯
-                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 3), // 黑索金
-                            Pair.of(ItemList.Block_BronzePlate.getBlock(), 1)// CL-20
-                        ),
-                        0,
-                        (m, t) -> m.GeneratorTier = t,
-                        m -> m.GeneratorTier))
+                    withChannel(
+                        "test",
+                        ofBlocksTiered(
+                            ThT_ImplosionGenerator::getGeneratorTier,
+                            ImmutableList.of(
+                                Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉
+                                Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // 硝化甘油
+                                Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯
+                                Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 黑索金
+                                Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20
+                            ),
+                            -1,
+                            (m, t) -> m.GeneratorTier = t,
+                            m -> m.GeneratorTier)))
                 .addElement('H', ofBlockAnyMeta(iron_bars))
                 .build();
         }
@@ -118,10 +120,16 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     // 控制机器的等级
     public static int getGeneratorTier(Block block, int meta) {
-        if (block == ItemList.Block_BronzePlate.getBlock()) {
+        if (block == BlockList.BronzePlatedReinforcedStone.getBlock()) {
             return 1;
-        } else if (block == ItemList.Block_SteelPlate.getBlock()) {
+        } else if (block == BlockList.SteelPlatedReinforcedStone.getBlock()) {
             return 2;
+        } else if (block == BlockList.TitaniumPlatedReinforcedStone.getBlock()) {
+            return 3;
+        } else if (block == BlockList.TungstensteelPlatedReinforcedStone.getBlock()) {
+            return 4;
+        } else if (block == BlockList.NaquadahPlatedReinforcedStone.getBlock()) {
+            return 5;
         }
         return 0;
     }
