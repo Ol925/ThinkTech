@@ -9,10 +9,7 @@ import static gregtech.api.util.GTStructureUtility.ofFrame;
 import static net.minecraft.init.Blocks.iron_bars;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
-import java.util.Arrays;
-import java.util.List;
-
-import javax.annotation.Nonnull;
+import java.util.ArrayList;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
@@ -20,8 +17,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidStack;
 
 import org.apache.commons.lang3.tuple.Pair;
-import org.jetbrains.annotations.NotNull;
 
+import com.OL925.ThinkTech.api.recipe.ImplosionGeneratorRecipeMap;
 import com.dreammaster.block.BlockList;
 import com.google.common.collect.ImmutableList;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
@@ -36,29 +33,29 @@ import gregtech.api.interfaces.ISecondaryDescribable;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
-import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
-import gregtech.api.recipe.check.SimpleCheckRecipeResult;
 import gregtech.api.render.TextureFactory;
-import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
-import gregtech.api.util.shutdown.ShutDownReasonRegistry;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase;
-import gtnhlanth.api.recipe.LanthanidesRecipeMaps;
-import gtnhlanth.util.DescTextLocalization;
 
 public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGenerator>
     implements ISurvivalConstructable, ISecondaryDescribable {
 
+    // 变量声明部分
     private int GeneratorTier = 0;
     private static IStructureDefinition<ThT_ImplosionGenerator> STRUCTURE_DEFINITION = null;
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
 
-    // Structure
+    // 构造方法，三个形参分别是物品id,注册名,本地化名
+    public ThT_ImplosionGenerator(int id, String name, String nameRegional) {
+        super(id, name, nameRegional);
+    }
+
+    // 结构声明部分
     @Override
     public IStructureDefinition<ThT_ImplosionGenerator> getStructureDefinition() {
         if (STRUCTURE_DEFINITION == null) {
@@ -87,35 +84,29 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                 .addElement('E', ofBlock(GregTechAPI.sBlockCasings5, 0))
                 .addElement('F', ofFrame(Materials.StainlessSteel))
                 .addElement(
-                    'G',
-                    withChannel(
-                        "test",
-                        ofBlocksTiered(
-                            ThT_ImplosionGenerator::getGeneratorTier,
-                            ImmutableList.of(
-                                Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉
-                                Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // 硝化甘油
-                                Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯
-                                Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 黑索金
-                                Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20
-                            ),
-                            -1,
-                            (m, t) -> m.GeneratorTier = t,
-                            m -> m.GeneratorTier)))
+                    'G', ofBlocksTiered(
+                        ThT_ImplosionGenerator::getGeneratorTier,
+                        ImmutableList.of(
+                            Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉
+                            Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // 硝化甘油
+                            Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯
+                            Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 黑索金
+                            Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20
+                        ),
+                        0,
+                        (m, t) -> m.GeneratorTier = t,
+                        m -> m.GeneratorTier))
                 .addElement('H', ofBlockAnyMeta(iron_bars))
                 .build();
         }
         return STRUCTURE_DEFINITION;
     }
 
-    public ThT_ImplosionGenerator(String name) {
-        super(name);
-    }
 
-    //
+    // 获取机器类型
     @Override
     public String getMachineType() {
-        return "";
+        return "ImplosionGenerator";
     }
 
     // 控制机器的等级
@@ -134,13 +125,10 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return 0;
     }
 
+    // 获取最大平行配方
     @Override
     public int getMaxParallelRecipes() {
         return 0;
-    }
-
-    public ThT_ImplosionGenerator(int id, String name, String nameRegional) {
-        super(id, name, nameRegional);
     }
 
     @Override
@@ -150,39 +138,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public RecipeMap<?> getRecipeMap() {
-        return LanthanidesRecipeMaps.dissolutionTankRecipes;
-    }
-
-    @Override
-    protected ProcessingLogic createProcessingLogic() {
-        return new ProcessingLogic() {
-
-            @NotNull
-            @Override
-            protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
-                if (!checkRatio(recipe, Arrays.asList(inputFluids))) {
-                    stopMachine(ShutDownReasonRegistry.CRITICAL_NONE);
-                    return SimpleCheckRecipeResult.ofFailurePersistOnShutdown("dissolution_ratio");
-                }
-                return CheckRecipeResultRegistry.SUCCESSFUL;
-            }
-
-        };
-    }
-
-    @Override
-    public boolean supportsVoidProtection() {
-        return true;
-    }
-
-    @Override
-    public boolean supportsInputSeparation() {
-        return true;
-    }
-
-    @Override
-    public boolean supportsBatchMode() {
-        return true;
+        return ImplosionGeneratorRecipeMap.implosionGeneratorFuels;
     }
 
     @Override
@@ -190,46 +146,13 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return true;
     }
 
-    private boolean checkRatio(GTRecipe tRecipe, List<FluidStack> tFluidInputs) {
-        FluidStack majorGenericFluid = tRecipe.mFluidInputs[0];
-        FluidStack minorGenericFluid = tRecipe.mFluidInputs[1];
-
-        int majorAmount;
-        int minorAmount;
-
-        FluidStack fluidInputOne = tFluidInputs.get(0);
-        FluidStack fluidInputTwo = tFluidInputs.get(1);
-
-        if (fluidInputOne.getUnlocalizedName()
-            .equals(majorGenericFluid.getUnlocalizedName())) {
-            if (fluidInputTwo.getUnlocalizedName()
-                .equals(minorGenericFluid.getUnlocalizedName())) {
-                // majorInput = fluidInputOne;
-                majorAmount = fluidInputOne.amount;
-                // minorInput = fluidInputTwo;
-                minorAmount = fluidInputTwo.amount;
-                // GTLog.out.print("in first IF");
-            } else return false; // No valid other input
-
-        } else if (fluidInputTwo.getUnlocalizedName()
-            .equals(majorGenericFluid.getUnlocalizedName())) {
-                if (fluidInputOne.getUnlocalizedName()
-                    .equals(minorGenericFluid.getUnlocalizedName())) {
-                    // majorInput = fluidInputTwo;
-                    majorAmount = fluidInputTwo.amount;
-                    // minorInput = fluidInputOne;
-                    minorAmount = fluidInputOne.amount;
-                    // GTLog.out.print("in second if");
-                } else return false;
-
-            } else return false;
-
-        return majorAmount / tRecipe.mSpecialValue == minorAmount;
-    }
-
     @Override
     public int getMaxEfficiency(ItemStack itemStack) {
         return 10000;
+    }
+
+    public ThT_ImplosionGenerator(String aName) {
+        super(aName);
     }
 
     @Override
@@ -237,6 +160,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return new ThT_ImplosionGenerator(this.mName);
     }
 
+    // 创造模式自动构建
     @Override
     public void construct(ItemStack itemStack, boolean b) {
         buildPiece(mName, itemStack, b, 3, 4, 0);
@@ -251,17 +175,14 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return false;
     }
 
+    // 生存模式自动构建
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
         return survivialBuildPiece(mName, stackSize, 3, 4, 0, elementBudget, env, false, true);
     }
 
-    @Override
-    public String[] getStructureDescription(ItemStack arg0) {
-        return DescTextLocalization.addText("DissolutionTank.hint", 4);
-    }
-
+    // 设置机器主方块贴图
     @Override
     public ITexture[] getTexture(IGregTechTileEntity te, ForgeDirection side, ForgeDirection facing, int colorIndex,
         boolean active, boolean redstone) {
@@ -317,4 +238,15 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return 0;
     }
 
+    // 检查逻辑
+    @Override
+    public CheckRecipeResult checkProcessing() {
+
+        ArrayList<FluidStack> tFluids = getStoredFluids();
+        if (true) {
+            setEnergyUsage(processingLogic);
+        }
+        // return CheckRecipeResultRegistry.GENERATING;
+        return CheckRecipeResultRegistry.NO_FUEL_FOUND;
+    }
 }

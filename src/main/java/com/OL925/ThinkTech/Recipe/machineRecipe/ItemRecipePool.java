@@ -7,7 +7,7 @@ import static gregtech.api.enums.TierEU.RECIPE_MV;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
-import com.OL925.ThinkTech.common.Material.MaterialPool;
+import com.OL925.ThinkTech.common.Material.ThTMaterial;
 
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
@@ -41,7 +41,7 @@ public class ItemRecipePool {
         // MethaneClathrate
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Ice.getDust(64))
-            .fluidInputs(MaterialPool.alkaneWaterMixture.getFluidOrGas(2000))
+            .fluidInputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(2000))
             .itemOutputs(METHANE_CLATHRATE.get(16))
             .noOptimize()
             .eut(RECIPE_MV)

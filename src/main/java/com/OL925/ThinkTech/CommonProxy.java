@@ -3,7 +3,8 @@ package com.OL925.ThinkTech;
 import com.OL925.ThinkTech.Config.Config;
 import com.OL925.ThinkTech.Recipe.RecipeLoader;
 import com.OL925.ThinkTech.Recipe.machineRecipe.MaterialsRecipePool;
-import com.OL925.ThinkTech.common.Material.MaterialPool;
+import com.OL925.ThinkTech.Recipe.machineRecipe.implosionGeneratorFlueRecipe;
+import com.OL925.ThinkTech.common.Material.ThTMaterial;
 import com.OL925.ThinkTech.common.init.ThTItemLoader;
 import com.OL925.ThinkTech.common.init.ThTMachineLoader;
 
@@ -19,24 +20,22 @@ public class CommonProxy {
     // GameRegistry." (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
-
-        // ThinkTech.LOG.info(Config.greeting);
-        // ThinkTech.LOG.info("Industrial Reborn at version " + "0.1.0");
-
         new ThTItemLoader().init();
-        WerkstoffAdderRegistry.addWerkstoffAdder(new MaterialPool());
+        WerkstoffAdderRegistry.addWerkstoffAdder(new ThTMaterial());
         new bwLocalization().loader();
     }
 
     // load "Do your mod setup. Build whatever data structures you care about. Register recipes." (Remove if not needed)
     public void init(FMLInitializationEvent event) {
         ThTMachineLoader.loadMachine();
+
     }
 
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
     public void postInit(FMLPostInitializationEvent event) {
         new MaterialsRecipePool().loadRecipes();
         new RecipeLoader();
+        implosionGeneratorFlueRecipe.loadFuelRecipes();
     }
 
     // register server commands in this event handler (Remove if not needed)

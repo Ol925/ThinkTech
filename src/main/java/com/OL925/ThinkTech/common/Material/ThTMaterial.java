@@ -5,7 +5,7 @@ import static bartworks.util.BWUtil.subscriptNumbers;
 import bartworks.system.material.Werkstoff;
 import gregtech.api.enums.TextureSet;
 
-public class MaterialPool implements Runnable {
+public class ThTMaterial implements Runnable {
 
     protected static final int OffsetID = 18_100;
 

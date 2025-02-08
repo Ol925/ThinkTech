@@ -13,3 +13,9 @@ mte.ImplosionGenerator=聚爆发电机
 mte.ImplosionGenerator.tooltips1=§b爆炸向来都是艺术
 mte.ImplosionGenerator.tooltips2=§b现在我们要让这种艺术再次被发扬光大!
 mte.ImplosionGenerator.tooltips3=输入§b§n流体炸药§r§7以§4§n释放化学能§r§7
+
+#Recipe
+tht.recipe.implosion_generator=聚爆发电机
+
+#NEI Info
+value.implosion_generator=基础输出电压：%s EU/t
