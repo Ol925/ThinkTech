@@ -7,6 +7,7 @@ import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
+import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.init.Blocks.iron_bars;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
@@ -34,6 +35,7 @@ import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
+import gregtech.api.metatileentity.implementations.MTEHatch;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
@@ -91,9 +93,9 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                     ofBlocksTiered(
                         ThT_ImplosionGenerator::getTierOfBlock,
                         ImmutableList.of(
-                            Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉
-                            Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // 硝化甘油
-                            Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯
+                            Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉 HV
+                            Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // 硝化甘油 EV
+                            Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯 IV
                             Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 黑索金
                             Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20
                         ),
@@ -237,7 +239,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     @Override
     public CheckRecipeResult checkProcessing() {
         setEnergyUsage(processingLogic);
-        return CheckRecipeResultRegistry.GENERATING;
+        return super.checkProcessing();
     }
 
     @Override
@@ -247,8 +249,8 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             @Nonnull
             @Override
             protected CheckRecipeResult validateRecipe(@Nonnull GTRecipe recipe) {
-                int power = recipe.getMetadataOrDefault(LNG_BASIC_OUTPUT, 0);
-                if (power == 114514 && mBlockTier == 1) {
+                power = recipe.getMetadataOrDefault(LNG_BASIC_OUTPUT, 0);
+                if (power == 65536 && mBlockTier == 1) {
                     return CheckRecipeResultRegistry.GENERATING;
                 } else {
                     return CheckRecipeResultRegistry.NO_FUEL_FOUND;
@@ -260,6 +262,56 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     @Override
     protected void setEnergyUsage(ProcessingLogic processingLogic) {
         lEUt = power;
+    }
+
+    @Override
+    public boolean addEnergyOutput(long aEU) {
+        if (aEU <= 0) {
+            return true;
+        }
+        if (!this.mAllDynamoHatches.isEmpty()) {
+            return addEnergyOutputMultipleDynamos(aEU, true);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addEnergyOutputMultipleDynamos(long aEU, boolean aAllowMixedVoltageDynamos) {
+        int injected = 0;
+        long aFirstVoltageFound = -1;
+        for (MTEHatch aDynamo : validMTEList(mAllDynamoHatches)) {
+            long aVoltage = aDynamo.maxEUOutput();
+            // Check against voltage to check when hatch mixing
+            if (aFirstVoltageFound == -1) {
+                aFirstVoltageFound = aVoltage;
+            }
+        }
+
+        long leftToInject;
+        long aVoltage;
+        int aAmpsToInject;
+        int aRemainder;
+        int ampsOnCurrentHatch;
+        for (MTEHatch aDynamo : validMTEList(mAllDynamoHatches)) {
+            leftToInject = aEU - injected;
+            aVoltage = aDynamo.maxEUOutput();
+            aAmpsToInject = (int) (leftToInject / aVoltage);
+            aRemainder = (int) (leftToInject - (aAmpsToInject * aVoltage));
+            ampsOnCurrentHatch = (int) Math.min(aDynamo.maxAmperesOut(), aAmpsToInject);
+
+            // add full amps
+            aDynamo.getBaseMetaTileEntity()
+                .increaseStoredEnergyUnits(aVoltage * ampsOnCurrentHatch, false);
+            injected += aVoltage * ampsOnCurrentHatch;
+
+            // add reminder
+            if (aRemainder > 0 && ampsOnCurrentHatch < aDynamo.maxAmperesOut()) {
+                aDynamo.getBaseMetaTileEntity()
+                    .increaseStoredEnergyUnits(aRemainder, false);
+                injected += aRemainder;
+            }
+        }
+        return injected > 0;
     }
 
     @Override

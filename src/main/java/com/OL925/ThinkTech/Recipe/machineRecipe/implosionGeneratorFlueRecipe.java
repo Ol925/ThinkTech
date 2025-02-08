@@ -12,8 +12,8 @@ import gregtech.api.enums.GTValues;
 public class implosionGeneratorFlueRecipe {
 
     FluidStack[] inputs = new FluidStack[] { ThTMaterial.trinitrotoluene.getMolten(1) };
-    int[] IGFuelTime = new int[] { 100 };
-    int[] IGFuelVoltage = new int[] { 114514 };
+    int[] IGFuelTime = new int[] { 20 };
+    int[] IGFuelVoltage = new int[] { 65536 };
 
     public void loadFuelRecipes() {
 
