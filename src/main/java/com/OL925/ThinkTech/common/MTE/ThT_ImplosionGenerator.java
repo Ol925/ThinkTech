@@ -84,7 +84,8 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                 .addElement('E', ofBlock(GregTechAPI.sBlockCasings5, 0))
                 .addElement('F', ofFrame(Materials.StainlessSteel))
                 .addElement(
-                    'G', ofBlocksTiered(
+                    'G',
+                    ofBlocksTiered(
                         ThT_ImplosionGenerator::getGeneratorTier,
                         ImmutableList.of(
                             Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉
@@ -101,7 +102,6 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         }
         return STRUCTURE_DEFINITION;
     }
-
 
     // 获取机器类型
     @Override

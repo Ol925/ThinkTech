@@ -1,11 +1,11 @@
 package com.OL925.ThinkTech.api.recipe;
 
+import static com.OL925.ThinkTech.gui.ThTUITexture.PICTURE_Implosion_Generator;
+
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMapBackend;
 import gregtech.api.recipe.RecipeMapBuilder;
 import gregtech.nei.formatter.SimpleSpecialValueFormatter;
-
-import static com.OL925.ThinkTech.gui.ThTUITexture.PICTURE_Implosion_Generator;
 
 public class ImplosionGeneratorRecipeMap {
 
@@ -15,8 +15,7 @@ public class ImplosionGeneratorRecipeMap {
         .minInputs(0, 1)
         .neiSpecialInfoFormatter(new SimpleSpecialValueFormatter("value.implosion_generator"))
         .progressBar(PICTURE_Implosion_Generator)
-        .progressBarPos(65,16)
-        .progressBarSize(44,41)
-        //.addSpecialTexture(65, 16, 44, 41, PICTURE_IG_PB)
+        .progressBarPos(65, 16)
+        .progressBarSize(44, 41)
         .build();
 }
