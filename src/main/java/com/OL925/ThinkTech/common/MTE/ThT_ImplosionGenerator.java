@@ -4,17 +4,17 @@ import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.HatchElement.Muffler;
 import static gregtech.api.enums.Textures.BlockIcons.*;
+import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
 import static net.minecraft.init.Blocks.iron_bars;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
-import java.util.ArrayList;
+import javax.annotation.Nonnull;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.FluidStack;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -33,10 +33,12 @@ import gregtech.api.interfaces.ISecondaryDescribable;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
+import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.render.TextureFactory;
+import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase;
@@ -45,7 +47,8 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     implements ISurvivalConstructable, ISecondaryDescribable {
 
     // 变量声明部分
-    private int GeneratorTier = 0;
+    private int mBlockTier = 0;
+    private int power = 0;
     private static IStructureDefinition<ThT_ImplosionGenerator> STRUCTURE_DEFINITION = null;
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
@@ -86,7 +89,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                 .addElement(
                     'G',
                     ofBlocksTiered(
-                        ThT_ImplosionGenerator::getGeneratorTier,
+                        ThT_ImplosionGenerator::getTierOfBlock,
                         ImmutableList.of(
                             Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉
                             Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // 硝化甘油
@@ -95,8 +98,8 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                             Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20
                         ),
                         0,
-                        (m, t) -> m.GeneratorTier = t,
-                        m -> m.GeneratorTier))
+                        (m, t) -> m.mBlockTier = t,
+                        m -> m.mBlockTier))
                 .addElement('H', ofBlockAnyMeta(iron_bars))
                 .build();
         }
@@ -110,7 +113,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     }
 
     // 控制机器的等级
-    public static int getGeneratorTier(Block block, int meta) {
+    public static int getTierOfBlock(Block block, int meta) {
         if (block == BlockList.BronzePlatedReinforcedStone.getBlock()) {
             return 1;
         } else if (block == BlockList.SteelPlatedReinforcedStone.getBlock()) {
@@ -136,6 +139,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return true;
     }
 
+    // 设置配方反射
     @Override
     public RecipeMap<?> getRecipeMap() {
         return ImplosionGeneratorRecipeMap.implosionGeneratorFuels;
@@ -164,15 +168,6 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     @Override
     public void construct(ItemStack itemStack, boolean b) {
         buildPiece(mName, itemStack, b, 3, 4, 0);
-    }
-
-    @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(mName, 3, 4, 0) && mMufflerHatches.size() == 1) {
-            fixAllIssues();
-            return true;
-        }
-        return false;
     }
 
     // 生存模式自动构建
@@ -241,12 +236,38 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     // 检查逻辑
     @Override
     public CheckRecipeResult checkProcessing() {
+        setEnergyUsage(processingLogic);
+        return CheckRecipeResultRegistry.GENERATING;
+    }
 
-        ArrayList<FluidStack> tFluids = getStoredFluids();
-        if (true) {
-            setEnergyUsage(processingLogic);
+    @Override
+    protected ProcessingLogic createProcessingLogic() {
+        return new ProcessingLogic() {
+
+            @Nonnull
+            @Override
+            protected CheckRecipeResult validateRecipe(@Nonnull GTRecipe recipe) {
+                int power = recipe.getMetadataOrDefault(LNG_BASIC_OUTPUT, 0);
+                if (power == 114514 && mBlockTier == 1) {
+                    return CheckRecipeResultRegistry.GENERATING;
+                } else {
+                    return CheckRecipeResultRegistry.NO_FUEL_FOUND;
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void setEnergyUsage(ProcessingLogic processingLogic) {
+        lEUt = power;
+    }
+
+    @Override
+    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
+        if (checkPiece(mName, 3, 4, 0) && mMufflerHatches.size() == 1) {
+            fixAllIssues();
+            return true;
         }
-        // return CheckRecipeResultRegistry.GENERATING;
-        return CheckRecipeResultRegistry.NO_FUEL_FOUND;
+        return false;
     }
 }

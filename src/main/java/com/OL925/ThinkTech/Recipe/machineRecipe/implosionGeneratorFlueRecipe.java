@@ -11,10 +11,12 @@ import gregtech.api.enums.GTValues;
 
 public class implosionGeneratorFlueRecipe {
 
-    public static void loadFuelRecipes() {
-        FluidStack[] inputs = new FluidStack[] { ThTMaterial.trinitrotoluene.getMolten(100) };
-        int[] IGFuelTime = new int[] { 100 };
-        int[] IGFuelVoltage = new int[] { 114514 };
+    FluidStack[] inputs = new FluidStack[] { ThTMaterial.trinitrotoluene.getMolten(1) };
+    int[] IGFuelTime = new int[] { 100 };
+    int[] IGFuelVoltage = new int[] { 114514 };
+
+    public void loadFuelRecipes() {
+
         for (int i = 0; i < 1; i++) {
             GTValues.RA.stdBuilder()
                 .fluidInputs(inputs[i])

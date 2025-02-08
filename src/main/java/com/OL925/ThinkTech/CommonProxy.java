@@ -35,7 +35,7 @@ public class CommonProxy {
     public void postInit(FMLPostInitializationEvent event) {
         new MaterialsRecipePool().loadRecipes();
         new RecipeLoader();
-        implosionGeneratorFlueRecipe.loadFuelRecipes();
+        new implosionGeneratorFlueRecipe().loadFuelRecipes();
     }
 
     // register server commands in this event handler (Remove if not needed)
