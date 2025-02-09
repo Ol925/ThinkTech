@@ -36,6 +36,7 @@ public class CommonProxy {
         new MaterialsRecipePool().loadRecipes();
         new RecipeLoader();
         new implosionGeneratorFlueRecipe().loadFuelRecipes();
+
     }
 
     // register server commands in this event handler (Remove if not needed)

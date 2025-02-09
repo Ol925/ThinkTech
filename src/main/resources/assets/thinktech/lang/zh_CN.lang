@@ -5,6 +5,9 @@ item.methaneClathrate.name=可燃冰
 item.superOreo.name=超级“奥利奥”
 item.2,4,6-trinitrotoluene.name=2,4,6-三硝基甲苯
 item.leadAzide.name=叠氮化铅
+item.PETN.name=季戊四醇四硝酸酯(PETN)
+item.HMX.name=环四亚甲基四硝胺(奥克托今)
+item.cl20.name=CL-20(HNIW)
 
 #fluid
 fluid.AlkaneWaterMixture.name=烷烃-水混合物

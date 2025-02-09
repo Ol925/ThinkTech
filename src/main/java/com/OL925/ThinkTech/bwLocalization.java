@@ -6,15 +6,21 @@ import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 public class bwLocalization {
 
     public void loader() {
+        // Material & Molten
+        String[] akey1 = new String[] { "bw.werkstoff.18101.name", "fluid.molten.2,4,6-trinitrotoluene",
+            "bw.werkstoff.18102.name", "bw.werkstoff.18103.name", "fluid.molten.petn", "bw.werkstoff.18104.name",
+            "fluid.molten.hmx", "bw.werkstoff.18105.name", "fluid.molten.hniw" };
+        String[] aenglish1 = new String[] { "item.2,4,6-trinitrotoluene.name", "item.2,4,6-trinitrotoluene.name",
+            "item.leadAzide.name", "item.PETN.name", "item.PETN.name", "item.HMX.name", "item.HMX.name",
+            "item.cl20.name", "item.cl20.name" };
+        for (int i = 0; i < akey1.length; i++) {
+            addStringLocalization(akey1[i], translateToLocalFormatted(aenglish1[i]));
+        }
         // fluid
-        addStringLocalization("bw.werkstoff.18100.name", translateToLocalFormatted("fluid.AlkaneWaterMixture.name"));
-        addStringLocalization("fluid.alkanewatermixture", translateToLocalFormatted("fluid.AlkaneWaterMixture.name"));
-        // Material
-        addStringLocalization("bw.werkstoff.18101.name", translateToLocalFormatted("item.2,4,6-trinitrotoluene.name"));
-        addStringLocalization("bw.werkstoff.18102.name",translateToLocalFormatted("item.leadAzide.name"));
-        // Molten Material
-        addStringLocalization(
-            "fluid.molten.2,4,6-trinitrotoluene",
-            translateToLocalFormatted("item.2,4,6-trinitrotoluene.name"));
+        String[] akey2 = new String[] { "bw.werkstoff.18100.name", "fluid.alkanewatermixture" };
+        String[] aenglish2 = new String[] { "fluid.AlkaneWaterMixture.name", "fluid.AlkaneWaterMixture.name" };
+        for (int i = 0; i < akey2.length; i++) {
+            addStringLocalization(akey2[i], translateToLocalFormatted(aenglish2[i]));
+        }
     }
 }
