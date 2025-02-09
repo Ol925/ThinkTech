@@ -4,6 +4,7 @@ item.halfBriquette.name=半块蜂窝煤
 item.methaneClathrate.name=可燃冰
 item.superOreo.name=超级“奥利奥”
 item.2,4,6-trinitrotoluene.name=2,4,6-三硝基甲苯
+item.leadAzide.name=叠氮化铅
 
 #fluid
 fluid.AlkaneWaterMixture.name=烷烃-水混合物

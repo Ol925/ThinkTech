@@ -13,6 +13,7 @@ import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import javax.annotation.Nonnull;
 
+import gregtech.api.enums.SoundResource;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -93,11 +94,11 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                     ofBlocksTiered(
                         ThT_ImplosionGenerator::getTierOfBlock,
                         ImmutableList.of(
-                            Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 硝化淀粉 HV
-                            Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // 硝化甘油 EV
-                            Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯 IV
-                            Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 黑索金
-                            Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20
+                            Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), //  三硝基甲苯HV
+                            Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), //  PETN EV
+                            Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 硝化甘油 IV
+                            Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 奥克托今 LUV
+                            Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20 ZPM
                         ),
                         0,
                         (m, t) -> m.mBlockTier = t,
@@ -112,6 +113,16 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     @Override
     public String getMachineType() {
         return "ImplosionGenerator";
+    }
+    //音效持续时间
+    @Override
+    protected int getTimeBetweenProcessSounds() {
+        return 10;
+    }
+    //机器运行音效
+    @Override
+    protected SoundResource getProcessStartSound() {
+        return SoundResource.RANDOM_EXPLODE;
     }
 
     // 控制机器的等级

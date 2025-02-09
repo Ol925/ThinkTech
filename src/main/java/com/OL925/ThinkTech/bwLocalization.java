@@ -11,6 +11,7 @@ public class bwLocalization {
         addStringLocalization("fluid.alkanewatermixture", translateToLocalFormatted("fluid.AlkaneWaterMixture.name"));
         // Material
         addStringLocalization("bw.werkstoff.18101.name", translateToLocalFormatted("item.2,4,6-trinitrotoluene.name"));
+        addStringLocalization("bw.werkstoff.18102.name",translateToLocalFormatted("item.leadAzide.name"));
         // Molten Material
         addStringLocalization(
             "fluid.molten.2,4,6-trinitrotoluene",

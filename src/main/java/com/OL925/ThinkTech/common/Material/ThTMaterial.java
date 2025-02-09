@@ -32,6 +32,18 @@ public class ThTMaterial implements Runnable {
         OffsetID + 1,
         TextureSet.SET_RUBY);
 
+    public static final Werkstoff leadAzide = new Werkstoff(
+        new short[]{233,238,232},
+        "LeadAzide",
+        subscriptNumbers("Pb(N3)2"),
+        new Werkstoff.Stats().setMeltingPoint(350),
+        Werkstoff.Types.MATERIAL,
+        new Werkstoff.GenerationFeatures().disable()
+        .onlyDust(),
+        OffsetID + 2,
+        TextureSet.SET_DULL
+    );
+
     @Override
     public void run() {}
 }
