@@ -13,6 +13,7 @@ item.cl20.name=CL-20(HNIW)
 fluid.AlkaneWaterMixture.name=烷烃-水混合物
 
 #machine
+mte.common.tooltips1=使用消声仓可使机器真正消音！
 mte.ImplosionGenerator=聚爆发电机
 mte.ImplosionGenerator.tooltips1=§b爆炸向来都是艺术
 mte.ImplosionGenerator.tooltips2=§b现在我们要让这种艺术再次被发扬光大!

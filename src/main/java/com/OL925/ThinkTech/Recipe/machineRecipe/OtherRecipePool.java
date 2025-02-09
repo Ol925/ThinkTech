@@ -61,7 +61,7 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(ThTMaterial.HMX.getMolten(200))
             .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 32),
+                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polytetrafluoroethylene, 32),
                 ThTMaterial.leadAzide.get(OrePrefixes.dust, 4))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 64))
             .noOptimize()
@@ -72,7 +72,7 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(ThTMaterial.HNIW.getMolten(200))
             .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 64),
+                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polytetrafluoroethylene, 64),
                 ThTMaterial.leadAzide.get(OrePrefixes.dust, 4))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 64), GTModHandler.getIC2Item("industrialTnt", 64))
             .noOptimize()

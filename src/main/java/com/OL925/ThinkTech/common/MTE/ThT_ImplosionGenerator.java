@@ -7,6 +7,7 @@ import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
+import static gregtech.api.util.GTUtility.trans;
 import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.init.Blocks.iron_bars;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
@@ -52,6 +53,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     // 变量声明部分
     private int mBlockTier = 0;
     private int power = 0;
+    private int haveMuffler = 0;
     private static IStructureDefinition<ThT_ImplosionGenerator> STRUCTURE_DEFINITION = null;
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
@@ -61,22 +63,22 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         super(id, name, nameRegional);
     }
 
+    private static final String STRUCTURE_PIECE_MAIN = "main";
+    private static String[][] Shape = new String[][] { { "   B   ", "  BBB  ", "  BBB  ", "BHBBBHB", "BBB~BBB" },
+        { "  FFF  ", " FBBBF ", " FBCBF ", "HFBBBFH", "BDDDDDB" },
+        { "  AFA  ", " AEEEA ", " AECEA ", "HFEEEFH", "BDDDDDB" },
+        { "  AFA  ", " A G A ", " AG GA ", "HF G FH", "BDDDDDB" },
+        { "  AFA  ", " A G A ", " AG GA ", "HF G FH", "BDDDDDB" },
+        { "  AFA  ", " AEEEA ", " AECEA ", "HFEEEFH", "BDDDDDB" },
+        { "  FFF  ", " FBBBF ", " FBCBF ", "HFBBBFH", "BDDDDDB" },
+        { "  BBB  ", " BBCBB ", " BCCCB ", "BBCCCBB", "BBBBBBB" } };
+
     // 结构声明部分
     @Override
     public IStructureDefinition<ThT_ImplosionGenerator> getStructureDefinition() {
         if (STRUCTURE_DEFINITION == null) {
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_ImplosionGenerator>builder()
-                .addShape(
-                    mName,
-
-                    new String[][] { { "   B   ", "  BBB  ", "  BBB  ", "BHBBBHB", "BBB~BBB" },
-                        { "  FFF  ", " FBBBF ", " FBCBF ", "HFBBBFH", "BDDDDDB" },
-                        { "  AFA  ", " AEEEA ", " AECEA ", "HFEEEFH", "BDDDDDB" },
-                        { "  AFA  ", " A G A ", " AG GA ", "HF G FH", "BDDDDDB" },
-                        { "  AFA  ", " A G A ", " AG GA ", "HF G FH", "BDDDDDB" },
-                        { "  AFA  ", " AEEEA ", " AECEA ", "HFEEEFH", "BDDDDDB" },
-                        { "  FFF  ", " FBBBF ", " FBCBF ", "HFBBBFH", "BDDDDDB" },
-                        { "  BBB  ", " BBCBB ", " BCCCB ", "BBCCCBB", "BBBBBBB" } })
+                .addShape(STRUCTURE_PIECE_MAIN, Shape)
                 .addElement('A', ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
                 //
                 .addElement(
@@ -124,7 +126,10 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     // 机器运行音效
     @Override
     protected SoundResource getProcessStartSound() {
-        return SoundResource.RANDOM_EXPLODE;
+        if (mMufflerHatches.isEmpty()) {
+            return SoundResource.RANDOM_EXPLODE;
+        }
+        return null;
     }
 
     // 控制机器的等级
@@ -176,20 +181,20 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public IMetaTileEntity newMetaEntity(IGregTechTileEntity arg0) {
-        return new ThT_ImplosionGenerator(this.mName);
+        return new ThT_ImplosionGenerator(this.STRUCTURE_PIECE_MAIN);
     }
 
     // 创造模式自动构建
     @Override
     public void construct(ItemStack itemStack, boolean b) {
-        buildPiece(mName, itemStack, b, 3, 4, 0);
+        buildPiece(STRUCTURE_PIECE_MAIN, itemStack, b, 3, 4, 0);
     }
 
     // 生存模式自动构建
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(mName, stackSize, 3, 4, 0, elementBudget, env, false, true);
+        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 4, 0, elementBudget, env, false, true);
     }
 
     // 设置机器主方块贴图
@@ -228,6 +233,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips1"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips2"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips3"))
+            .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .beginStructureBlock(7, 5, 8, true)
             .addController("Front bottom")
             .addInputHatch("Hint block with dot 1")
@@ -329,10 +335,11 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(mName, 3, 4, 0) && mMufflerHatches.size() == 1) {
+        if (checkPiece(mName, 3, 4, 0)) {
             fixAllIssues();
             return true;
         }
         return false;
     }
+
 }

@@ -5,11 +5,15 @@ item.methaneClathrate.name=Methane Clathrate
 item.superOreo.name=Super Oreos
 item.2,4,6-trinitrotoluene.name=2,4,6-Trinitrotoluene
 item.leadAzide.name=Lead Azide
+item.PETN.name=PETN
+item.HMX.name=HMX
+item.cl20.name=HNIW
 
 #fluid
 fluid.AlkaneWaterMixture.name=Alkane Water Mixture
 
 #machine
+mte.common.tooltips1=The use of muffler can make the machine really silenced!
 mte.ImplosionGenerator=Implosion Generator
 mte.ImplosionGenerator.tooltips1=§bExplosions have always been art
 mte.ImplosionGenerator.tooltips2=§bNow we want to make this art flourish again!
