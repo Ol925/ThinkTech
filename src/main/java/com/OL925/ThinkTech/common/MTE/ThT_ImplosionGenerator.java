@@ -120,7 +120,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     // 音效持续时间
     @Override
     protected int getTimeBetweenProcessSounds() {
-        return 10;
+        return 20;
     }
 
     // 机器运行音效
@@ -130,6 +130,28 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             return SoundResource.RANDOM_EXPLODE;
         }
         return null;
+    }
+
+    @Override
+    public void doSound(byte aIndex, double aX, double aY, double aZ) {
+        super.doSound(aIndex, aX, aY, aZ);
+        switch (aIndex) {
+            case PROCESS_START_SOUND_INDEX -> {
+                if (getProcessStartSound() != null)
+                    GTUtility.doSoundAtClient(getProcessStartSound(), getTimeBetweenProcessSounds(), 0.5F, aX, aY, aZ);
+            }
+            case INTERRUPT_SOUND_INDEX -> GTUtility
+                .doSoundAtClient(SoundResource.IC2_MACHINES_INTERRUPT_ONE, 100, 1F, aX, aY, aZ);
+        }
+    }
+
+    @Override
+    public void startSoundLoop(byte aIndex, double aX, double aY, double aZ) {
+        super.startSoundLoop(aIndex, aX, aY, aZ);
+        if (aIndex == PROCESS_START_SOUND_INDEX) {
+            if (getProcessStartSound() != null)
+                GTUtility.doSoundAtClient(getProcessStartSound(), getTimeBetweenProcessSounds(), 0.5F, aX, aY, aZ);
+        }
     }
 
     // 控制机器的等级
@@ -181,7 +203,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public IMetaTileEntity newMetaEntity(IGregTechTileEntity arg0) {
-        return new ThT_ImplosionGenerator(this.STRUCTURE_PIECE_MAIN);
+        return new ThT_ImplosionGenerator(this.mName);
     }
 
     // 创造模式自动构建
@@ -335,7 +357,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(mName, 3, 4, 0)) {
+        if (checkPiece(STRUCTURE_PIECE_MAIN, 3, 4, 0)) {
             fixAllIssues();
             return true;
         }
