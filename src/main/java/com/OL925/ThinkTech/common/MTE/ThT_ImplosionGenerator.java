@@ -7,13 +7,14 @@ import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
-import static gregtech.api.util.GTUtility.trans;
 import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.init.Blocks.iron_bars;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import javax.annotation.Nonnull;
 
+import gregtech.api.enums.HeatingCoilLevel;
+import gregtech.api.util.GTStructureUtility;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -52,8 +53,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     // 变量声明部分
     private int mBlockTier = 0;
-    private int power = 0;
-    private int haveMuffler = 0;
+    private HeatingCoilLevel mCoilLevel;
     private static IStructureDefinition<ThT_ImplosionGenerator> STRUCTURE_DEFINITION = null;
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
@@ -89,12 +89,12 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                         .buildAndChain(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C', ofBlock(GregTechAPI.sBlockCasings2, 13))
                 .addElement('D', ofBlock(GregTechAPI.sBlockCasings4, 1))
-                .addElement('E', ofBlock(GregTechAPI.sBlockCasings5, 0))
+                .addElement('E', GTStructureUtility.ofCoil(ThT_ImplosionGenerator::setCoilLevel, ThT_ImplosionGenerator::getCoilLevel))
                 .addElement('F', ofFrame(Materials.StainlessSteel))
                 .addElement(
                     'G',
                     ofBlocksTiered(
-                        ThT_ImplosionGenerator::getTierOfBlock,
+                        ThT_ImplosionGenerator::getTierOfStone,
                         ImmutableList.of(
                             Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯HV
                             Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // PETN EV
@@ -134,11 +134,10 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public void doSound(byte aIndex, double aX, double aY, double aZ) {
-        super.doSound(aIndex, aX, aY, aZ);
         switch (aIndex) {
             case PROCESS_START_SOUND_INDEX -> {
                 if (getProcessStartSound() != null)
-                    GTUtility.doSoundAtClient(getProcessStartSound(), getTimeBetweenProcessSounds(), 0.5F, aX, aY, aZ);
+                    GTUtility.doSoundAtClient(getProcessStartSound(), getTimeBetweenProcessSounds(), 1.0F, aX, aY, aZ);
             }
             case INTERRUPT_SOUND_INDEX -> GTUtility
                 .doSoundAtClient(SoundResource.IC2_MACHINES_INTERRUPT_ONE, 100, 1F, aX, aY, aZ);
@@ -147,15 +146,14 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public void startSoundLoop(byte aIndex, double aX, double aY, double aZ) {
-        super.startSoundLoop(aIndex, aX, aY, aZ);
         if (aIndex == PROCESS_START_SOUND_INDEX) {
             if (getProcessStartSound() != null)
-                GTUtility.doSoundAtClient(getProcessStartSound(), getTimeBetweenProcessSounds(), 0.5F, aX, aY, aZ);
+                GTUtility.doSoundAtClient(getProcessStartSound(), getTimeBetweenProcessSounds(), 1.0F, aX, aY, aZ);
         }
     }
 
     // 控制机器的等级
-    public static int getTierOfBlock(Block block, int meta) {
+    public static int getTierOfStone(Block block, int meta) {
         if (block == BlockList.BronzePlatedReinforcedStone.getBlock()) {
             return 1;
         } else if (block == BlockList.SteelPlatedReinforcedStone.getBlock()) {
@@ -290,7 +288,8 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             @Nonnull
             @Override
             protected CheckRecipeResult validateRecipe(@Nonnull GTRecipe recipe) {
-                power = recipe.getMetadataOrDefault(LNG_BASIC_OUTPUT, 0);
+                int power = recipe.getMetadataOrDefault(LNG_BASIC_OUTPUT, 0);
+                lEUt = power;
                 if (power == 65536 && mBlockTier == 1) {
                     return CheckRecipeResultRegistry.GENERATING;
                 } else {
@@ -302,7 +301,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     protected void setEnergyUsage(ProcessingLogic processingLogic) {
-        lEUt = power;
+        lEUt = (long) (lEUt* (1 + 0.25 * mCoilLevel.getLevel()));
     }
 
     @Override
@@ -353,6 +352,14 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             }
         }
         return injected > 0;
+    }
+
+    public HeatingCoilLevel getCoilLevel() {
+        return mCoilLevel;
+    }
+
+    public void setCoilLevel(HeatingCoilLevel aCoilLevel) {
+        mCoilLevel = aCoilLevel;
     }
 
     @Override
