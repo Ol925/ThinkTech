@@ -13,8 +13,6 @@ import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import javax.annotation.Nonnull;
 
-import gregtech.api.enums.HeatingCoilLevel;
-import gregtech.api.util.GTStructureUtility;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -30,6 +28,7 @@ import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
 import gregtech.api.GregTechAPI;
+import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
 import gregtech.api.enums.Textures;
@@ -44,6 +43,7 @@ import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.render.TextureFactory;
 import gregtech.api.util.GTRecipe;
+import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase;
@@ -89,7 +89,10 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                         .buildAndChain(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C', ofBlock(GregTechAPI.sBlockCasings2, 13))
                 .addElement('D', ofBlock(GregTechAPI.sBlockCasings4, 1))
-                .addElement('E', GTStructureUtility.ofCoil(ThT_ImplosionGenerator::setCoilLevel, ThT_ImplosionGenerator::getCoilLevel))
+                .addElement(
+                    'E',
+                    GTStructureUtility
+                        .ofCoil(ThT_ImplosionGenerator::setCoilLevel, ThT_ImplosionGenerator::getCoilLevel))
                 .addElement('F', ofFrame(Materials.StainlessSteel))
                 .addElement(
                     'G',
@@ -253,6 +256,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips1"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips2"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips3"))
+            .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .beginStructureBlock(7, 5, 8, true)
             .addController("Front bottom")
@@ -301,7 +305,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     protected void setEnergyUsage(ProcessingLogic processingLogic) {
-        lEUt = (long) (lEUt* (1 + 0.25 * mCoilLevel.getLevel()));
+        lEUt = (long) (lEUt * (1 + 0.25 * mCoilLevel.getLevel()));
     }
 
     @Override

@@ -16,6 +16,6 @@ public class ThTMachineLoader {
             "NameExplosiveGenerator",
             translateToLocalFormatted("mte.ImplosionGenerator")).getStackForm(1);
         // ThTList.ExplosiveGenerator.set(ExplosiveGenerator);
-        //"mte.ImplosionGenerator"
+        // "mte.ImplosionGenerator"
     }
 }
