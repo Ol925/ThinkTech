@@ -19,6 +19,7 @@ mte.ImplosionGenerator.tooltips1=§bExplosions have always been art
 mte.ImplosionGenerator.tooltips2=§bNow we want to make this art flourish again!
 mte.ImplosionGenerator.tooltips3=Feed §b§nfluid explosives§r§7 to §4§nrelease chemical energy§r§7
 mte.ImplosionGenerator.tooltips4=§eActual power generation=Basic power generation * (1+0.25*coil Level)
+mte.ImplosionGenerator.tooltips5=§eUse more advanced plated Reinforced stones to unlock better fuel, and use more advanced coils to boost power generation
 
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator

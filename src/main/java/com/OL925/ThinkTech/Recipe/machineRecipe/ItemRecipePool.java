@@ -1,8 +1,7 @@
 package com.OL925.ThinkTech.Recipe.machineRecipe;
 
 import static com.OL925.ThinkTech.common.init.ThTList.*;
-import static gregtech.api.enums.TierEU.RECIPE_LV;
-import static gregtech.api.enums.TierEU.RECIPE_MV;
+import static gregtech.api.enums.TierEU.*;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -10,8 +9,11 @@ import net.minecraft.item.ItemStack;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 
 import gregtech.api.enums.GTValues;
+import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.OrePrefixes;
 import gregtech.api.recipe.RecipeMaps;
+import gregtech.api.util.GTOreDictUnificator;
 
 public class ItemRecipePool {
 
@@ -58,5 +60,20 @@ public class ItemRecipePool {
             .duration(20)
             .addTo(RecipeMaps.assemblerRecipes);
 
+        // implosion Generator
+        GTValues.RA.stdBuilder()
+            .itemInputs(
+                ItemList.Electric_Motor_HV.get(4),
+                ItemList.Electric_Piston_HV.get(8),
+                ItemList.Hull_HV.get(1),
+                GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.StainlessSteel, 4),
+                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.StainlessSteel, 1),
+                GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.StainlessSteel, 16))
+            .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
+            .itemOutputs(ExplosiveGenerator.get(1))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 16)
+            .addTo(RecipeMaps.assemblerRecipes);
     }
 }

@@ -8,12 +8,14 @@ import net.minecraftforge.fluids.FluidStack;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 
 import gregtech.api.enums.GTValues;
+import gregtech.api.enums.Materials;
 
 public class implosionGeneratorFlueRecipe {
 
-    FluidStack[] inputs = new FluidStack[] { ThTMaterial.trinitrotoluene.getMolten(1) };
-    int[] IGFuelTime = new int[] { 20 };
-    int[] IGFuelVoltage = new int[] { 65536 };
+    FluidStack[] inputs = new FluidStack[] { ThTMaterial.trinitrotoluene.getMolten(1), ThTMaterial.PETN.getMolten(1),
+        Materials.Glyceryl.getFluid(1), ThTMaterial.HMX.getMolten(1), ThTMaterial.HNIW.getMolten(1) };
+    int[] IGFuelTime = new int[] { 20, 20, 20, };
+    int[] IGFuelVoltage = new int[] { 65536, 98304, 524288, 2097152, 8388608 };
 
     public void loadFuelRecipes() {
 

@@ -1,10 +1,13 @@
 package com.OL925.ThinkTech;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import com.OL925.ThinkTech.Config.Config;
 import com.OL925.ThinkTech.Recipe.RecipeLoader;
 import com.OL925.ThinkTech.Recipe.machineRecipe.MaterialsRecipePool;
 import com.OL925.ThinkTech.Recipe.machineRecipe.implosionGeneratorFlueRecipe;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
+import com.OL925.ThinkTech.common.event.ExplosionEventHandler;
 import com.OL925.ThinkTech.common.init.ThTItemLoader;
 import com.OL925.ThinkTech.common.init.ThTMachineLoader;
 
@@ -22,6 +25,7 @@ public class CommonProxy {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
         new ThTItemLoader().init();
         WerkstoffAdderRegistry.addWerkstoffAdder(new ThTMaterial());
+        MinecraftForge.EVENT_BUS.register(new ExplosionEventHandler());
         new bwLocalization().loader();
     }
 

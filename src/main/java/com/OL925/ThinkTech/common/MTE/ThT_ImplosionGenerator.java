@@ -257,7 +257,9 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips2"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips3"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips4"))
+            .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips5"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
+            .addPollutionAmount(getPollutionPerSecond(null))
             .beginStructureBlock(7, 5, 8, true)
             .addController("Front bottom")
             .addInputHatch("Hint block with dot 1")
@@ -266,6 +268,11 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .toolTipFinisher();
 
         return tt;
+    }
+
+    @Override
+    public int getPollutionPerSecond(ItemStack aStack) {
+        return 0721;
     }
 
     @Override
@@ -305,7 +312,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     protected void setEnergyUsage(ProcessingLogic processingLogic) {
-        lEUt = (long) (lEUt * (1 + 0.25 * mCoilLevel.getLevel()));
+        lEUt = (long) (lEUt * (1 + 0.25 * (mCoilLevel.getLevel() - 1)));
     }
 
     @Override
