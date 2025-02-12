@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech.common.MTE;
 
+import static com.OL925.ThinkTech.Recipe.machineRecipe.implosionGeneratorFlueRecipe.IGFuelVoltage;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.HatchElement.Muffler;
@@ -258,6 +259,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips3"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips5"))
+            .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips6"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .addPollutionAmount(getPollutionPerSecond(null))
             .beginStructureBlock(7, 5, 8, true)
@@ -301,7 +303,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             protected CheckRecipeResult validateRecipe(@Nonnull GTRecipe recipe) {
                 int power = recipe.getMetadataOrDefault(LNG_BASIC_OUTPUT, 0);
                 lEUt = power;
-                if (power == 65536 && mBlockTier == 1) {
+                if ((mBlockTier >= 1 && mBlockTier <= 5) && power <= IGFuelVoltage[mBlockTier - 1]) {
                     return CheckRecipeResultRegistry.GENERATING;
                 } else {
                     return CheckRecipeResultRegistry.NO_FUEL_FOUND;

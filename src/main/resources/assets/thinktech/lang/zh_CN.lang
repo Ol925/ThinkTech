@@ -19,7 +19,8 @@ mte.ImplosionGenerator.tooltips1=§b爆炸向来都是艺术
 mte.ImplosionGenerator.tooltips2=§b现在我们要让这种艺术再次被发扬光大!
 mte.ImplosionGenerator.tooltips3=输入§b§n流体炸药§r§7以§4§n释放化学能§r§7
 mte.ImplosionGenerator.tooltips4=§e使用更高级的防爆石解锁更好的燃料，使用更高级的线圈提升发电量
-mte.ImplosionGenerator.tooltips5=§e实际发电量=基础发电量*(1+0.25*线圈等级)
+mte.ImplosionGenerator.tooltips5=§e实际发电量=基础发电量*(1+0.25*(线圈等级-1))
+mte.ImplosionGenerator.tooltips6=§e建议使用16A动力仓或者更高级的
 
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机
