@@ -88,7 +88,7 @@ public class MaterialsRecipePool {
 
         //HNIW
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Palladium.getDust(0))
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Palladium, 0,false))
             .fluidInputs(ThTMaterial.phenylmethanamine.getFluidOrGas(6000),ThTMaterial.ethanedial.getFluidOrGas(3000),
                 Materials.Hydrogen.getGas(2000),Materials.NitricAcid.getFluid(6000))
             .fluidOutputs(ThTMaterial.HNIW.getMolten(1000))
