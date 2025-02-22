@@ -1,6 +1,7 @@
 package com.OL925.ThinkTech.Recipe.machineRecipe;
 
 import static gregtech.api.enums.TierEU.*;
+import static gtPlusPlus.core.item.chemistry.RocketFuels.Formaldehyde;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 
@@ -10,6 +11,10 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.util.GTUtility;
+import gtPlusPlus.core.util.minecraft.FluidUtils;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class OtherRecipePool {
 
@@ -78,6 +83,23 @@ public class OtherRecipePool {
             .noOptimize()
             .eut(RECIPE_EV)
             .duration(20)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+        // 大化反合成甲醛
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Methanol.getFluid(32000), Materials.Oxygen.getGas(32000))
+            .itemInputs(GTUtility.getIntegratedCircuit(24))
+            .fluidOutputs(FluidUtils.getFluidStack(Formaldehyde, 32000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 20)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+        //大化反合成乙酸酐
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.MethylAcetate.getFluid(8000),Materials.CarbonMonoxide.getGas(8000))
+            .fluidOutputs(new FluidStack(FluidRegistry.getFluid("molten.aceticanhydride"), 8000))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 10)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
     }
 }

@@ -2,9 +2,7 @@ package com.OL925.ThinkTech.Recipe;
 
 import net.minecraft.item.ItemStack;
 
-import com.OL925.ThinkTech.Recipe.machineRecipe.FluidSolidifierRecipePool;
-import com.OL925.ThinkTech.Recipe.machineRecipe.ItemRecipePool;
-import com.OL925.ThinkTech.Recipe.machineRecipe.OtherRecipePool;
+import com.OL925.ThinkTech.Recipe.machineRecipe.*;
 import com.OL925.ThinkTech.common.init.ThTList;
 
 import cpw.mods.fml.common.IFuelHandler;
@@ -18,6 +16,8 @@ public class RecipeLoader {
         registerFuel();
 
         // load other recipe pool
+        new MaterialsRecipePool().loadRecipes();
+        new implosionGeneratorFlueRecipe().loadFuelRecipes();
         new ItemRecipePool().loadRecipes();
         new FluidSolidifierRecipePool().loadRecipes();
         new OtherRecipePool().loadRecipes();

@@ -8,9 +8,13 @@ item.leadAzide.name=叠氮化铅
 item.PETN.name=季戊四醇四硝酸酯(PETN)
 item.HMX.name=环四亚甲基四硝胺(奥克托今)
 item.cl20.name=CL-20(HNIW)
+item.HMT.name=1,3,5,7-四氮杂金刚烷(乌洛托品)
 
 #fluid
 fluid.AlkaneWaterMixture.name=烷烃-水混合物
+fluid.Ethanedial.name=乙二醛
+fluid.Phenylmethanamine.name=苄胺
+fluid.Benzaldehyde.name=苯甲醛
 
 #machine
 mte.common.tooltips1=使用消声仓可使机器真正消音！
@@ -21,6 +25,7 @@ mte.ImplosionGenerator.tooltips3=输入§b§n流体炸药§r§7以§4§n释放�
 mte.ImplosionGenerator.tooltips4=§e使用更高级的防爆石解锁更好的燃料，使用更高级的线圈提升发电量
 mte.ImplosionGenerator.tooltips5=§e实际发电量=基础发电量*(1+0.25*(线圈等级-1))
 mte.ImplosionGenerator.tooltips6=§e建议使用16A动力仓或者更高级的
+mte.ImplosionGenerator.tooltips7=§e解锁燃料顺序:三硝基甲苯>PETN>硝化甘油>奥克托今>HNIW
 
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机

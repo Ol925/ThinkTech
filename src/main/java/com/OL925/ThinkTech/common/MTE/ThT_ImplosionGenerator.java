@@ -260,6 +260,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips5"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips6"))
+            .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips7"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .addPollutionAmount(getPollutionPerSecond(null))
             .beginStructureBlock(7, 5, 8, true)
@@ -272,10 +273,10 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return tt;
     }
 
-    @Override
-    public int getPollutionPerSecond(ItemStack aStack) {
-        return 0721;
-    }
+//    @Override
+//    public int getPollutionPerSecond(ItemStack aStack) {
+//        return 0721;
+//    }
 
     @Override
     public boolean explodesOnComponentBreak(ItemStack arg0) {

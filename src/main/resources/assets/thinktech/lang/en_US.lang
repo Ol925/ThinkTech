@@ -8,9 +8,13 @@ item.leadAzide.name=Lead Azide
 item.PETN.name=PETN
 item.HMX.name=HMX
 item.cl20.name=HNIW
+item.HMT.name=1,3,5,7-Tetraazaadamantane(HMT)
 
 #fluid
 fluid.AlkaneWaterMixture.name=Alkane Water Mixture
+fluid.Ethanedial.name=Ethanedial
+fluid.Phenylmethanamine.name=Phenylmethanamine
+fluid.Benzaldehyde.name=Benzaldehyde
 
 #machine
 mte.common.tooltips1=The use of muffler can make the machine really silenced!
@@ -21,6 +25,7 @@ mte.ImplosionGenerator.tooltips3=Feed §b§nfluid explosives§r§7 to §4§nrele
 mte.ImplosionGenerator.tooltips4=§eActual power generation=Basic power generation * (1+0.25*(coil Level-1))
 mte.ImplosionGenerator.tooltips5=§eUse more advanced plated Reinforced stones to unlock better fuel, and use more advanced coils to boost power generation
 mte.ImplosionGenerator.tooltips6=§eA 16A dynamo or higher is recommended.
+mte.ImplosionGenerator.tooltips7=§eUnlock fuel sequence:Trinitrotoluene>PETN>nitroglycerin>HMX>HNIW
 
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator

@@ -78,7 +78,51 @@ public class ThTMaterial implements Runnable {
             .addMolten(),
         OffsetID + 5,
         TextureSet.SET_RUBY);
-
+    //HMT(乌洛托品)
+    public static final Werkstoff HMT = new Werkstoff(
+        new short[] { 230, 230, 230 },
+        "HMT",
+        subscriptNumbers("C6H12N4"),
+        new Werkstoff.Stats().setMeltingPoint(280),
+        Werkstoff.Types.MATERIAL,
+        new Werkstoff.GenerationFeatures().disable()
+            .onlyDust()
+            .addMolten(),
+        OffsetID + 6,
+        TextureSet.SET_RUBY);
+    //乙二醛
+    public static final Werkstoff ethanedial = new Werkstoff(
+        new short[] { 182, 186, 44 },//颜色要改成黄色的
+        "Ethanedial",
+        subscriptNumbers("C2H2O2"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 7,
+        TextureSet.SET_FLUID);
+    //苄胺
+    public static final Werkstoff phenylmethanamine = new Werkstoff(
+        new short[] { 178, 176, 176 },
+        "Phenylmethanamine",
+        subscriptNumbers("C6H5CH2NH2"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 8,
+        TextureSet.SET_FLUID);
+    //苯甲醛
+    public static final Werkstoff benzaldehyde = new Werkstoff(
+        new short[] { 178, 176, 176 },
+        "Benzaldehyde",
+        subscriptNumbers("C7H6O"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 9,
+        TextureSet.SET_FLUID);
     @Override
     public void run() {}
 }

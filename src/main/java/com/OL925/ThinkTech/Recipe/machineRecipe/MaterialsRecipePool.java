@@ -2,16 +2,24 @@ package com.OL925.ThinkTech.Recipe.machineRecipe;
 
 import static gregtech.api.enums.Mods.GregTech;
 import static gregtech.api.enums.TierEU.*;
+import static gtPlusPlus.core.item.chemistry.RocketFuels.Formaldehyde;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.MaterialsKevlar;
+import gregtech.api.enums.OrePrefixes;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.GTModHandler;
+import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.api.recipe.GTPPRecipeMaps;
+import gtPlusPlus.core.util.minecraft.FluidUtils;
+import gtnhlanth.common.register.WerkstoffMaterialPool;
 import ic2.api.item.IC2Items;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class MaterialsRecipePool {
 
@@ -67,5 +75,79 @@ public class MaterialsRecipePool {
             .eut(RECIPE_EV)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //PETN
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, MaterialsKevlar.Pentaerythritol, 4))
+            .fluidInputs(Materials.NitricAcid.getFluid(4000))
+            .fluidOutputs(ThTMaterial.PETN.getMolten(1000))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 8)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //HNIW
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Palladium.getDust(0))
+            .fluidInputs(ThTMaterial.phenylmethanamine.getFluidOrGas(6000),ThTMaterial.ethanedial.getFluidOrGas(3000),
+                Materials.Hydrogen.getGas(2000),Materials.NitricAcid.getFluid(6000))
+            .fluidOutputs(ThTMaterial.HNIW.getMolten(1000))
+            .noOptimize()
+            .eut(RECIPE_ZPM)
+            .duration(20 * 5)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //HMT
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Ammonia.getGas(4000), FluidUtils.getFluidStack(Formaldehyde, 6000))
+            .fluidOutputs(ThTMaterial.HMT.getMolten(1000),Materials.Water.getFluid(6000))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 2)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //HMX
+        GTValues.RA.stdBuilder()
+            .fluidInputs(ThTMaterial.HMT.getMolten(1000),Materials.NitricAcid.getFluid(4000), WerkstoffMaterialPool.AmmoniumNitrate.getFluidOrGas(2000),
+        new FluidStack(FluidRegistry.getFluid("molten.aceticanhydride"), 6000))
+            .fluidOutputs(ThTMaterial.HMX.getMolten(1500))
+            .noOptimize()
+            .eut(RECIPE_LuV)
+            .duration(20 * 2)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //乙二醛
+        GTValues.RA.stdBuilder()
+            .fluidInputs(MaterialsKevlar.Ethyleneglycol.getFluid(8000),Materials.Oxygen.getGas(8000))
+            .fluidOutputs(ThTMaterial.ethanedial.getFluidOrGas(8000),Materials.Water.getFluid(8000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 5)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //苯甲醛
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Toluene.getFluid(4000),Materials.Oxygen.getGas(4000))
+            .fluidOutputs(ThTMaterial.benzaldehyde.getFluidOrGas(4000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 3)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //苄胺
+        GTValues.RA.stdBuilder()
+            .fluidInputs(ThTMaterial.benzaldehyde.getFluidOrGas(4000),Materials.Ammonia.getGas(4000) )
+            .fluidOutputs(ThTMaterial.phenylmethanamine.getFluidOrGas(4000))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
     }
 }
+//GTValues.RA.stdBuilder()
+//            .fluidInputs()
+//            .fluidOutputs()
+//            .noOptimize()
+//            .eut(RECIPE_)
+//            .duration()
+//            .addTo(RecipeMaps.);
