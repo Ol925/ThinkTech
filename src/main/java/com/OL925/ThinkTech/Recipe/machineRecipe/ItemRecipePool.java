@@ -69,7 +69,7 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.StainlessSteel, 4),
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.StainlessSteel, 1),
                 GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.StainlessSteel, 16))
-            .fluidInputs(Materials.SolderingAlloy.getFluid(2304))
+            .fluidInputs(Materials.SolderingAlloy.getMolten(2304))
             .itemOutputs(ExplosiveGenerator.get(1))
             .noOptimize()
             .eut(RECIPE_HV)
