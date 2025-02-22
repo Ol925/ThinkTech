@@ -15,7 +15,7 @@ public class implosionGeneratorFlueRecipe {
     FluidStack[] inputs = new FluidStack[] { ThTMaterial.trinitrotoluene.getMolten(1000),
         ThTMaterial.PETN.getMolten(1000), Materials.Glyceryl.getFluid(1000), ThTMaterial.HMX.getMolten(1000),
         ThTMaterial.HNIW.getMolten(1000) };
-    int[] IGFuelTime = new int[] { 200, 80, 30, 12, 5 };
+    int[] IGFuelTime = new int[] { 150, 80, 80, 100, 100 };
     public static int[] IGFuelVoltage = new int[] { 8192, 32768, 131072, 524288, 2097152 };
 
     public void loadFuelRecipes() {
