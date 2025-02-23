@@ -7,7 +7,7 @@ import gregtech.api.enums.TextureSet;
 
 public class ThTMaterial implements Runnable {
 
-    protected static final int OffsetID = 18_100;
+    protected static final int OffsetID = 18100;
 
     public static final Werkstoff alkaneWaterMixture = new Werkstoff(
         new short[] { 178, 176, 176 },
@@ -113,9 +113,9 @@ public class ThTMaterial implements Runnable {
         OffsetID + 8,
         TextureSet.SET_FLUID);
     //苯甲醛
-    public static final Werkstoff benzaldehyde = new Werkstoff(
+    public static final Werkstoff benzaldehyd = new Werkstoff(
         new short[] { 178, 176, 176 },
-        "Benzaldehyde",
+        "Benzaldehyd",
         subscriptNumbers("C7H6O"),
         new Werkstoff.Stats(),
         Werkstoff.Types.MIXTURE,

@@ -128,7 +128,7 @@ public class MaterialsRecipePool {
         //苯甲醛
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Toluene.getFluid(4000),Materials.Oxygen.getGas(4000))
-            .fluidOutputs(ThTMaterial.benzaldehyde.getFluidOrGas(4000))
+            .fluidOutputs(ThTMaterial.benzaldehyd.getFluidOrGas(4000))
             .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 3)
@@ -136,7 +136,7 @@ public class MaterialsRecipePool {
 
         //苄胺
         GTValues.RA.stdBuilder()
-            .fluidInputs(ThTMaterial.benzaldehyde.getFluidOrGas(4000),Materials.Ammonia.getGas(4000) )
+            .fluidInputs(ThTMaterial.benzaldehyd.getFluidOrGas(4000),Materials.Ammonia.getGas(4000) )
             .fluidOutputs(ThTMaterial.phenylmethanamine.getFluidOrGas(4000))
             .noOptimize()
             .eut(RECIPE_HV)

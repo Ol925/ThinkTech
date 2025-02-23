@@ -14,7 +14,7 @@ item.HMT.name=1,3,5,7-四氮杂金刚烷(乌洛托品)
 fluid.AlkaneWaterMixture.name=烷烃-水混合物
 fluid.Ethanedial.name=乙二醛
 fluid.Phenylmethanamine.name=苄胺
-fluid.Benzaldehyde.name=苯甲醛
+fluid.Benzaldehyd.name=苯甲醛
 
 #machine
 mte.common.tooltips1=使用消声仓可使机器真正消音！
