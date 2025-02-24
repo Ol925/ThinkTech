@@ -1,13 +1,15 @@
-package com.OL925.ThinkTech.api.recipe;
+package com.OL925.ThinkTech.Recipe;
 
 import static com.OL925.ThinkTech.gui.ThTUITexture.PICTURE_Implosion_Generator;
 
+import gregtech.api.gui.modularui.GTUITextures;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMapBackend;
 import gregtech.api.recipe.RecipeMapBuilder;
+import gregtech.api.recipe.maps.LargeNEIFrontend;
 import gregtech.nei.formatter.SimpleSpecialValueFormatter;
 
-public class ImplosionGeneratorRecipeMap {
+public class ThTRecipeMap {
 
     public static final RecipeMap<RecipeMapBackend> implosionGeneratorFuels = RecipeMapBuilder
         .of("tht.recipe.implosion_generator")
@@ -17,5 +19,13 @@ public class ImplosionGeneratorRecipeMap {
         .progressBar(PICTURE_Implosion_Generator)
         .progressBarPos(65, 16)
         .progressBarSize(44, 41)
+        .build();
+
+    public static final RecipeMap<RecipeMapBackend> CzochralskiSingleCrystalFurnace = RecipeMapBuilder
+        .of("tht.recipe.CSCF")
+        .maxIO(3, 2, 4, 1)
+        .progressBar(GTUITextures.PROGRESSBAR_ARROW_MULTIPLE)
+        .disableOptimize()
+        .frontend(LargeNEIFrontend::new)
         .build();
 }

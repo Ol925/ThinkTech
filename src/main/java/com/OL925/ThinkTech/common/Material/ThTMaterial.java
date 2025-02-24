@@ -123,6 +123,18 @@ public class ThTMaterial implements Runnable {
             .addCells(),
         OffsetID + 9,
         TextureSet.SET_FLUID);
+    //五氯化磷
+    public static final Werkstoff pentachloride = new Werkstoff(
+        new short[] { 190, 196, 70 },
+        "Pentachloride",
+        subscriptNumbers("PCl5"),
+        new Werkstoff.Stats().setMeltingPoint(440),
+        Werkstoff.Types.MATERIAL,
+        new Werkstoff.GenerationFeatures().disable()
+            .onlyDust()
+            .addMolten(),
+        OffsetID + 10,
+        TextureSet.SET_RUBY);
     @Override
     public void run() {}
 }

@@ -142,6 +142,15 @@ public class MaterialsRecipePool {
             .eut(RECIPE_HV)
             .duration(20)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+        //五氯化磷
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTUtility.getIntegratedCircuit(5),Materials.Phosphorus.getDust(1))
+            .fluidInputs(Materials.Chlorine.getGas(5000))
+            .fluidOutputs(ThTMaterial.pentachloride.getMolten(1000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(30)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
     }
 }
 //GTValues.RA.stdBuilder()

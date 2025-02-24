@@ -9,6 +9,8 @@ item.PETN.name=PETN
 item.HMX.name=HMX
 item.cl20.name=HNIW
 item.HMT.name=1,3,5,7-Tetraazaadamantane(HMT)
+item.crystallineSubstrate.name=Crystalline Substrate
+item.pentachloride.name=Pentachloride
 
 #fluid
 fluid.AlkaneWaterMixture.name=Alkane Water Mixture
@@ -18,6 +20,9 @@ fluid.Benzaldehyd.name=Benzaldehyde
 
 #machine
 mte.common.tooltips1=The use of muffler can make the machine really silenced!
+mte.common.tooltips2=Production machine
+mte.common.tooltips3=Generator
+
 mte.ImplosionGenerator=Implosion Generator
 mte.ImplosionGenerator.tooltips1=§bExplosions have always been art
 mte.ImplosionGenerator.tooltips2=§bNow we want to make this art flourish again!
@@ -27,8 +32,18 @@ mte.ImplosionGenerator.tooltips5=§eUse more advanced plated Reinforced stones t
 mte.ImplosionGenerator.tooltips6=§eA 16A dynamo or higher is recommended.
 mte.ImplosionGenerator.tooltips7=§eUnlock fuel sequence:Trinitrotoluene>PETN>nitroglycerin>HMX>HNIW
 
+mte.CSCF=Czochralski Single Crystal Furnace
+mte.CSCFType=Crystallizer
+mte.CSCF.tooltips1=§eAnother great practical use of Czochralski process
+mte.CSCF.tooltips2=§ePaving the way for you to be the next Gordon Moore!
+mte.CSCF.tooltips3=§e"Melting, spinning, stretching...
+mte.CSCF.tooltips4=§eLook, it's not harder than making marshmallows."
+mte.CSCF.tooltips5=§bHigher efficiency than conventional blast furnace sintering!
+mte.CSCF.tooltips6=§bImprove recipe parallelism by inserting a processor to increase computing power
+
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator
+tht.recipe.CSCF=Czochralski Single Crystal Furnace
 
 #NEI Info
 value.implosion_generator=Basic power generation: %s EU/t

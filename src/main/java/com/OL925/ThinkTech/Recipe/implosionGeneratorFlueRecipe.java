@@ -1,8 +1,8 @@
 package com.OL925.ThinkTech.Recipe.machineRecipe;
 
-import static com.OL925.ThinkTech.api.recipe.ImplosionGeneratorRecipeMap.implosionGeneratorFuels;
 import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 
+import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
@@ -28,7 +28,7 @@ public class implosionGeneratorFlueRecipe {
                 .eut(0)
                 .metadata(LNG_BASIC_OUTPUT, IGFuelVoltage[i])
                 .duration(IGFuelTime[i])
-                .addTo(implosionGeneratorFuels);
+                .addTo(ThTRecipeMap.implosionGeneratorFuels);
         }
     }
 }

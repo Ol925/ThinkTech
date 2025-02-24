@@ -9,6 +9,8 @@ item.PETN.name=季戊四醇四硝酸酯(PETN)
 item.HMX.name=环四亚甲基四硝胺(奥克托今)
 item.cl20.name=CL-20(HNIW)
 item.HMT.name=1,3,5,7-四氮杂金刚烷(乌洛托品)
+item.crystallineSubstrate.name=结晶基底
+item.pentachloride.name=五氯化磷
 
 #fluid
 fluid.AlkaneWaterMixture.name=烷烃-水混合物
@@ -18,6 +20,9 @@ fluid.Benzaldehyd.name=苯甲醛
 
 #machine
 mte.common.tooltips1=使用消声仓可使机器真正消音！
+mte.common.tooltips2=生产机器
+mte.common.tooltips3=发电机
+
 mte.ImplosionGenerator=聚爆发电机
 mte.ImplosionGenerator.tooltips1=§b爆炸向来都是艺术
 mte.ImplosionGenerator.tooltips2=§b现在我们要让这种艺术再次被发扬光大!
@@ -27,8 +32,18 @@ mte.ImplosionGenerator.tooltips5=§e实际发电量=基础发电量*(1+0.25*(线
 mte.ImplosionGenerator.tooltips6=§e建议使用16A动力仓或者更高级的
 mte.ImplosionGenerator.tooltips7=§e解锁燃料顺序:三硝基甲苯>PETN>硝化甘油>奥克托今>HNIW
 
+mte.CSCF=柴式单晶炉
+mte.CSCFType=结晶器
+mte.CSCF.tooltips1=§e柴可拉斯基法的又一伟大实际运用
+mte.CSCF.tooltips2=§e为你成为下一个Gordon Moore而铺路！
+mte.CSCF.tooltips3=§e“熔化，旋转，拉伸……
+mte.CSCF.tooltips4=§e看，这不比做棉花糖难”
+mte.CSCF.tooltips5=§b有着比常规高炉烧结更高效率！
+mte.CSCF.tooltips6=§b通过插入处理器提升算力来提高配方并行
+
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机
+tht.recipe.CSCF=柴式单晶炉
 
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t

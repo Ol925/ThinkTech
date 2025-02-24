@@ -20,7 +20,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import com.OL925.ThinkTech.api.recipe.ImplosionGeneratorRecipeMap;
+import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.dreammaster.block.BlockList;
 import com.google.common.collect.ImmutableList;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
@@ -186,7 +186,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     // 设置配方反射
     @Override
     public RecipeMap<?> getRecipeMap() {
-        return ImplosionGeneratorRecipeMap.implosionGeneratorFuels;
+        return ThTRecipeMap.implosionGeneratorFuels;
     }
 
     @Override
@@ -253,7 +253,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     @Override
     protected MultiblockTooltipBuilder createTooltip() {
         final MultiblockTooltipBuilder tt = new MultiblockTooltipBuilder();
-        tt.addMachineType(translateToLocalFormatted("mte.ImplosionGenerator"))
+        tt.addMachineType(translateToLocalFormatted("mte.common.tooltips3"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips1"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips2"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips3"))
@@ -268,7 +268,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addInputHatch("Hint block with dot 1")
             .addDynamoHatch("Hint block with dot 1")
             .addMufflerHatch("Hint block with dot 1")
-            .toolTipFinisher();
+            .toolTipFinisher("§d§l§oOL925");
 
         return tt;
     }

@@ -12,9 +12,11 @@ public enum ThTList {
     HALF_BRIQUETTE,
     METHANE_CLATHRATE,
     SUPEROREO,
+    CRYSTALLINESUBSTRATE,
 
     // Machine
     ExplosiveGenerator,
+    CzochralskiSingleCrystalFurnace,
 
     TestItem;
 

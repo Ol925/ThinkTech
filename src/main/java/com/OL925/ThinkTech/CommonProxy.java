@@ -3,7 +3,7 @@ package com.OL925.ThinkTech;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.OL925.ThinkTech.Config.Config;
-import com.OL925.ThinkTech.Recipe.RecipeLoader;
+import com.OL925.ThinkTech.common.init.RecipeLoader;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 import com.OL925.ThinkTech.common.event.ExplosionEventHandler;
 import com.OL925.ThinkTech.common.init.ThTItemLoader;

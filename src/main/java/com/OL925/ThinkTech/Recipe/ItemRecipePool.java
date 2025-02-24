@@ -3,7 +3,11 @@ package com.OL925.ThinkTech.Recipe.machineRecipe;
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static gregtech.api.enums.TierEU.*;
 
+import com.OL925.ThinkTech.common.init.ThTList;
+import gregtech.api.util.GTModHandler;
+import ic2.api.item.IC2Items;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
@@ -75,5 +79,34 @@ public class ItemRecipePool {
             .eut(RECIPE_HV)
             .duration(20 * 16)
             .addTo(RecipeMaps.assemblerRecipes);
+
+        //结晶基底
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.plate, Materials.Polytetrafluoroethylene, 8),
+                GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.StainlessSteel, 64),
+                GTModHandler.getIC2Item("carbonFiber", 8L))
+            .fluidInputs(Materials.SiliconSG.getMolten(1296))
+            .itemOutputs(CRYSTALLINESUBSTRATE.get(1))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 16)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //单晶炉 CSCF
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Electric_Motor_HV.get(8),
+                ItemList.Electric_Pump_HV.get(8),
+                ItemList.Electric_Piston_HV.get(8),
+                ItemList.Robot_Arm_HV.get(1),
+                ItemList.Machine_Multi_BlastFurnace.get(1),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 8))
+            .fluidInputs(Materials.StainlessSteel.getMolten(1152))
+            .itemOutputs(CzochralskiSingleCrystalFurnace.get(1))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
     }
 }
+
+
