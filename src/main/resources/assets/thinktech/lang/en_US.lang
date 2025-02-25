@@ -3,6 +3,10 @@ item.briquette.name=Briquette
 item.halfBriquette.name=Half Briquette
 item.methaneClathrate.name=Methane Clathrate
 item.superOreo.name=Super Oreos
+item.chipTier1.name=High computing power chip Tier-1
+item.chipTier2.name=High computing power chip Tier-2
+item.chipTier3.name=High computing power chip Tier-3
+item.chipTier4.name=High computing power chip Tier-4
 item.2,4,6-trinitrotoluene.name=2,4,6-Trinitrotoluene
 item.leadAzide.name=Lead Azide
 item.PETN.name=PETN
@@ -39,8 +43,10 @@ mte.CSCF.tooltips2=§ePaving the way for you to be the next Gordon Moore!
 mte.CSCF.tooltips3=§e"Melting, spinning, stretching...
 mte.CSCF.tooltips4=§eLook, it's not harder than making marshmallows."
 mte.CSCF.tooltips5=§bHigher efficiency than conventional blast furnace sintering!
-mte.CSCF.tooltips6=§bFormula parallel upper limit +4 per step up voltage
-mte.CSCF.tooltips7=§bSupport Tec energy hatch
+mte.CSCF.tooltips6=§bThe machine can be upgraded by inserting a high computing power chip into the machine's UI
+mte.CSCF.tooltips7=§bMachine formula parallel upper limit =4 * Insert chip level, default parallel size is 1
+mte.CSCF.tooltips8=§bEach step up in the chip level provides a 20%% operating speed bonus
+mte.CSCF.tooltips9=§bSupport Tec energy hatch
 
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator

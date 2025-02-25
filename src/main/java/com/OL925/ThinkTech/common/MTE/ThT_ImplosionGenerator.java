@@ -1,6 +1,6 @@
 package com.OL925.ThinkTech.common.MTE;
 
-import static com.OL925.ThinkTech.Recipe.machineRecipe.implosionGeneratorFlueRecipe.IGFuelVoltage;
+import static com.OL925.ThinkTech.Recipe.implosionGeneratorFlueRecipe.IGFuelVoltage;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.HatchElement.Muffler;

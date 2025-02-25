@@ -1,4 +1,4 @@
-package com.OL925.ThinkTech.Recipe.machineRecipe;
+package com.OL925.ThinkTech.Recipe;
 
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;

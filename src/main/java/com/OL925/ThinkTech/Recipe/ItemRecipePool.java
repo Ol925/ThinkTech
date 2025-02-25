@@ -1,10 +1,11 @@
-package com.OL925.ThinkTech.Recipe.machineRecipe;
+package com.OL925.ThinkTech.Recipe;
 
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static gregtech.api.enums.TierEU.*;
 
 import com.OL925.ThinkTech.common.init.ThTList;
 import gregtech.api.util.GTModHandler;
+import gregtech.api.util.GTUtility;
 import ic2.api.item.IC2Items;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -106,7 +107,65 @@ public class ItemRecipePool {
             .eut(RECIPE_HV)
             .duration(20 * 20)
             .addTo(RecipeMaps.assemblerRecipes);
+
+        //chipTier1
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.circuit, Materials.EV, 8),
+                GTUtility.getIntegratedCircuit(24),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Polytetrafluoroethylene, 2),
+            ItemList.Tool_DataStick.get(2))
+            .itemOutputs(CHIPTIER1.get(1))
+            .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 15)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //chipTier2
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.circuit, Materials.IV, 8),
+                GTUtility.getIntegratedCircuit(24),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Polytetrafluoroethylene, 2),
+                ItemList.Tool_DataStick.get(8))
+            .itemOutputs(CHIPTIER2.get(1))
+            .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
+            .noOptimize()
+            .eut(RECIPE_IV)
+            .duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //chipTier3
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.circuit, Materials.LuV, 8),
+                GTUtility.getIntegratedCircuit(24),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Polytetrafluoroethylene, 2),
+                ItemList.Tool_DataStick.get(16))
+            .itemOutputs(CHIPTIER3.get(1))
+            .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
+            .noOptimize()
+            .eut(RECIPE_LuV)
+            .duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //chipTier4
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.circuit, Materials.ZPM, 8),
+                GTUtility.getIntegratedCircuit(24),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Polytetrafluoroethylene, 2),
+                ItemList.Tool_DataStick.get(32))
+            .itemOutputs(CHIPTIER4.get(1))
+            .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
+            .noOptimize()
+            .eut(RECIPE_ZPM)
+            .duration(20 *20)
+            .addTo(RecipeMaps.assemblerRecipes);
     }
 }
-
+//GTValues.RA.stdBuilder()
+//            .fluidInputs()
+//            .fluidOutputs()
+//            .noOptimize()
+//            .eut(RECIPE_)
+//            .duration()
+//            .addTo(RecipeMaps.);
 

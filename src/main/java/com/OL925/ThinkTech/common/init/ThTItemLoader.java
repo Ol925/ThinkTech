@@ -10,5 +10,9 @@ public class ThTItemLoader {
         ThTList.METHANE_CLATHRATE.set(new MethaneClathrate());
         ThTList.SUPEROREO.set(new superOreo());
         ThTList.CRYSTALLINESUBSTRATE.set(new crystallineSubstrate());
+        ThTList.CHIPTIER1.set(new HighComputingCowerChipTier1());
+        ThTList.CHIPTIER2.set(new HighComputingCowerChipTier2());
+        ThTList.CHIPTIER3.set(new HighComputingCowerChipTier3());
+        ThTList.CHIPTIER4.set(new HighComputingCowerChipTier4());
     }
 }

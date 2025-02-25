@@ -10,12 +10,18 @@ import static net.minecraft.init.Blocks.stone_slab;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
+import com.OL925.ThinkTech.common.init.ThTList;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import gregtech.api.enums.SoundResource;
 import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.util.ExoticEnergyInputHelper;
 import gregtech.api.util.GTRecipe;
+import gtPlusPlus.core.util.minecraft.ItemUtils;
+import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -44,14 +50,20 @@ import javax.annotation.Nonnull;
 public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBlockBase<ThT_CzochralskiSingleCrystalFurnace>
     implements ISurvivalConstructable, ISecondaryDescribable {
 
+    private double mSpeedBonus;
+    private int mMachineTier = 0;
+    private boolean mUpgraded = false;
     private static IStructureDefinition<ThT_CzochralskiSingleCrystalFurnace> STRUCTURE_DEFINITION = null;
-    private int mMaxParallel = 4 * GTUtility.getTier(this.getMaxInputVoltage());
     private static ITexture STAINLESS_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings4, 1));
 
 
     public ThT_CzochralskiSingleCrystalFurnace(int id, String name, String nameRegional) {
         super(id, name, nameRegional);
+    }
+
+    public ThT_CzochralskiSingleCrystalFurnace(String aName) {
+        super(aName);
     }
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
@@ -71,7 +83,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
                 .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
                 .addElement('B',ofBlock(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C',ofBlock(GregTechAPI.sBlockCasings3, 10))
-                .addElement('D',buildHatchAdder(ThT_CzochralskiSingleCrystalFurnace.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputBus, OutputHatch)
+                .addElement('D',buildHatchAdder(ThT_CzochralskiSingleCrystalFurnace.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputBus, OutputHatch,Muffler)
                     .casingIndex(Textures.BlockIcons.getTextureIndex(STAINLESS_STEEL_MACHINE_CASING))
                     .dot(1)
                     .buildAndChain(GregTechAPI.sBlockCasings4, 1))
@@ -99,13 +111,64 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
     @Override
     protected ProcessingLogic createProcessingLogic() {
         return new ProcessingLogic() {
+
+            @NotNull
+            @Override
+            public CheckRecipeResult process() {
+                setSpeedBonus(getSpeedBonus());
+                setOverclock(isEnablePerfectOverclock() ? 4 : 2, 4);
+                return super.process();
+            }
+
             @NotNull
             @Override
             protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
-                maxParallel = mMaxParallel;
                 return CheckRecipeResultRegistry.SUCCESSFUL;
             }
-        };
+        }.setMaxParallelSupplier(this::getMaxParallelRecipes);
+    }
+
+    private int getMaxParallelRecipes() {
+        return 1 + 4 * mMachineTier;
+    };
+
+    protected float getSpeedBonus() {
+        mSpeedBonus = 0.0;
+        countSpeedBonus();
+        return (float) mSpeedBonus;
+    }
+
+    private void countSpeedBonus(){
+        if(this.mUpgraded){
+            mSpeedBonus = 1.0 - mMachineTier * 0.2;
+        }else mSpeedBonus = 1.0;
+    }
+
+    protected boolean isEnablePerfectOverclock() {
+        return mSpeedBonus == 0.6;
+    }
+
+    @Override
+    public void onPostTick(IGregTechTileEntity aBaseMetaTileEntity, long aTick) {
+        super.onPostTick(aBaseMetaTileEntity, aTick);
+        if (aTick % 20 == 0 && !mUpgraded) {
+            ItemStack aGuiStack = this.getControllerSlot();
+            if (aGuiStack != null) {
+                if (GTUtility.areStacksEqual(aGuiStack, ThTList.CHIPTIER1.get(1))) {
+                    this.mUpgraded = true;
+                    this.mMachineTier = 1;
+                }else if(GTUtility.areStacksEqual(aGuiStack, ThTList.CHIPTIER2.get(1))){
+                    this.mUpgraded = true;
+                    this.mMachineTier = 2;
+                }else if(GTUtility.areStacksEqual(aGuiStack, ThTList.CHIPTIER3.get(1))){
+                    this.mUpgraded = true;
+                    this.mMachineTier = 3;
+                }else if(GTUtility.areStacksEqual(aGuiStack, ThTList.CHIPTIER4.get(1))){
+                    this.mUpgraded = true;
+                    this.mMachineTier = 4;
+                }
+            }
+        }
     }
 
     @Override
@@ -126,10 +189,6 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
     @Override
     public boolean explodesOnComponentBreak(ItemStack aStack) {
         return false;
-    }
-
-    public ThT_CzochralskiSingleCrystalFurnace(String aName) {
-        super(aName);
     }
 
     @Override
@@ -191,6 +250,9 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips5"))
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips6"))
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips7"))
+            .addInfo(translateToLocalFormatted("mte.CSCF.tooltips8"))
+            .addInfo(translateToLocalFormatted("mte.CSCF.tooltips9"))
+            .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .toolTipFinisher("§d§l§oOL925 & _fantasque_");
 
         return tt;
@@ -205,5 +267,17 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
         return false;
     }
 
+    @SideOnly(Side.CLIENT)
+    @Override
+    protected SoundResource getProcessStartSound() {
+        if (mMufflerHatches.isEmpty()){
+            return SoundResource.GT_MACHINES_EBF_LOOP;
+        }
+        return null;
+    }
 
+    @Override
+    protected int getTimeBetweenProcessSounds() {
+        return 20;
+    }
 }

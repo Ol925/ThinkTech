@@ -1,4 +1,4 @@
-package com.OL925.ThinkTech.Recipe.machineRecipe;
+package com.OL925.ThinkTech.Recipe;
 
 import static gregtech.api.enums.Mods.GregTech;
 import static gregtech.api.enums.TierEU.*;

@@ -2,7 +2,7 @@ package com.OL925.ThinkTech.common.init;
 
 import net.minecraft.item.ItemStack;
 
-import com.OL925.ThinkTech.Recipe.machineRecipe.*;
+import com.OL925.ThinkTech.Recipe.*;
 
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;

@@ -1,4 +1,4 @@
-package com.OL925.ThinkTech.Recipe.machineRecipe;
+package com.OL925.ThinkTech.Recipe;
 
 import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 

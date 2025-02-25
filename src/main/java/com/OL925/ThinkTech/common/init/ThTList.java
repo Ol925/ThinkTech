@@ -14,6 +14,11 @@ public enum ThTList {
     SUPEROREO,
     CRYSTALLINESUBSTRATE,
 
+    CHIPTIER1,
+    CHIPTIER2,
+    CHIPTIER3,
+    CHIPTIER4,
+
     // Machine
     ExplosiveGenerator,
     CzochralskiSingleCrystalFurnace,
