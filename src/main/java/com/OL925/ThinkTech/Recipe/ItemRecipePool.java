@@ -88,7 +88,7 @@ public class ItemRecipePool {
             .fluidInputs(Materials.SiliconSG.getMolten(1296))
             .itemOutputs(CRYSTALLINESUBSTRATE.get(1))
             .noOptimize()
-            .eut(RECIPE_HV)
+            .eut(RECIPE_EV)
             .duration(20 * 16)
             .addTo(RecipeMaps.assemblerRecipes);
 

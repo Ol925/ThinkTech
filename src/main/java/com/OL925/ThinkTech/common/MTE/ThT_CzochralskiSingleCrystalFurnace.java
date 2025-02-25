@@ -5,12 +5,16 @@ import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
+import static net.minecraft.init.Blocks.hopper;
+import static net.minecraft.init.Blocks.stone_slab;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import gregtech.api.logic.ProcessingLogic;
+import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
+import gregtech.api.util.ExoticEnergyInputHelper;
 import gregtech.api.util.GTRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -37,10 +41,11 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
-public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_CzochralskiSingleCrystalFurnace>
+public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBlockBase<ThT_CzochralskiSingleCrystalFurnace>
     implements ISurvivalConstructable, ISecondaryDescribable {
 
     private static IStructureDefinition<ThT_CzochralskiSingleCrystalFurnace> STRUCTURE_DEFINITION = null;
+    private int mMaxParallel = 4 * GTUtility.getTier(this.getMaxInputVoltage());
     private static ITexture STAINLESS_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings4, 1));
 
@@ -51,13 +56,12 @@ public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
     private static String[][] Shape = new String[][]{
-        {" DDD ", "DDDDD", "DD~DD", "DDDDD"},
-        {" ADA ", "D   D", "C E C", "DBBBD"},
-        {" ADA ", "DFFFD", "CFEFC", "DBBBD"},
-        {" ADA ", "D   D", "C E C", "DBBBD"},
-        {" ADA ", "DFFFD", "CFEFC", "DBBBD"},
-        {" ADA ", "D   D", "C E C", "DBBBD"},
-        {" DDD ", "DDDDD", "DDDDD", "DDDDD"}};
+        {"       ","       ","  DDD  ","  DAD  ","  DAD  ","  DDD  ","  D~D  ","  DDD  "},
+        {"  F F  "," FDDDF ","FD   DF","FD   DF","FD   DF","FD   DF","FC G CF","FDBBBDF"},
+        {"  F F  ","  DDD  ","FDEEEDF"," A J A "," A   A "," D H D "," CGBGC "," DBBBD "},
+        {"  F F  "," FDDDF ","FD   DF","FD   DF","FD   DF","FD   DF","FC G CF","FDBBBDF"},
+        {"       ","  F F  ","  DDD  ","  DAD  ","  DAD  ","  DDD  ","  CCC  ","  DDD  "},
+        {"       ","       ","  FFF  ","  F F  ","  F F  ","  F F  ","  F F  ","  F F  "}};
 
     @Override
     public IStructureDefinition<ThT_CzochralskiSingleCrystalFurnace> getStructureDefinition() {
@@ -67,25 +71,24 @@ public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_
                 .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
                 .addElement('B',ofBlock(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C',ofBlock(GregTechAPI.sBlockCasings3, 10))
-                .addElement('D',buildHatchAdder(ThT_CzochralskiSingleCrystalFurnace.class).atLeast(Energy, InputHatch, InputBus, OutputBus, OutputHatch)
+                .addElement('D',buildHatchAdder(ThT_CzochralskiSingleCrystalFurnace.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputBus, OutputHatch)
                     .casingIndex(Textures.BlockIcons.getTextureIndex(STAINLESS_STEEL_MACHINE_CASING))
                     .dot(1)
                     .buildAndChain(GregTechAPI.sBlockCasings4, 1))
                 .addElement('E',ofBlock(GregTechAPI.sBlockCasings8, 1))
-                .addElement('F',ofFrame(Materials.StainlessSteel))
+                .addElement('F',ofFrame(Materials.Steel))
+                .addElement('G',ofFrame(Materials.StainlessSteel))
+                .addElement('H',ofBlockAnyMeta(stone_slab))
+                .addElement('J',ofBlockAnyMeta(hopper))
                 .build();
         }
         return STRUCTURE_DEFINITION;
     }
 
     @Override
-    public String getMachineType() {
-        return "CSCF";
-    }
-    //并行应该由算力仓里面的电路板决定
-    @Override
-    public int getMaxParallelRecipes() {
-        return (4 * GTUtility.getTier(this.getMaxInputVoltage()));
+    public boolean addOutputToMachineList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
+        boolean exotic = addExoticEnergyInputToMachineList(aTileEntity, aBaseCasingIndex);
+        return super.addToMachineList(aTileEntity, aBaseCasingIndex) || exotic;
     }
 
     @Override
@@ -99,6 +102,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_
             @NotNull
             @Override
             protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
+                maxParallel = mMaxParallel;
                 return CheckRecipeResultRegistry.SUCCESSFUL;
             }
         };
@@ -114,8 +118,23 @@ public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_
         return 10000;
     }
 
+    @Override
+    public int getDamageToComponent(ItemStack aStack) {
+        return 0;
+    }
+
+    @Override
+    public boolean explodesOnComponentBreak(ItemStack aStack) {
+        return false;
+    }
+
     public ThT_CzochralskiSingleCrystalFurnace(String aName) {
         super(aName);
+    }
+
+    @Override
+    public boolean isCorrectMachinePart(ItemStack aStack) {
+        return true;
     }
 
     @Override
@@ -125,13 +144,13 @@ public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_
 
     @Override
     public void construct(ItemStack itemStack, boolean b) {
-        buildPiece(STRUCTURE_PIECE_MAIN, itemStack, b, 2, 2, 0);
+        buildPiece(STRUCTURE_PIECE_MAIN, itemStack, b, 3, 6, 0);
     }
 
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 2, 2, 0, elementBudget, env, false, true);
+        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 6, 0, elementBudget, env, false, true);
     }
 
     @Override
@@ -171,6 +190,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips5"))
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips6"))
+            .addInfo(translateToLocalFormatted("mte.CSCF.tooltips7"))
             .toolTipFinisher("§d§l§oOL925 & _fantasque_");
 
         return tt;
@@ -178,7 +198,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends GTPPMultiBlockBase<ThT_
 
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(STRUCTURE_PIECE_MAIN, 2, 2, 0)) {
+        if (checkPiece(STRUCTURE_PIECE_MAIN, 3, 6, 0)) {
             fixAllIssues();
             return true;
         }

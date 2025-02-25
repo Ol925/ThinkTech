@@ -39,7 +39,8 @@ mte.CSCF.tooltips2=§e为你成为下一个Gordon Moore而铺路！
 mte.CSCF.tooltips3=§e“熔化，旋转，拉伸……
 mte.CSCF.tooltips4=§e看，这不比做棉花糖难”
 mte.CSCF.tooltips5=§b有着比常规高炉烧结更高效率！
-mte.CSCF.tooltips6=§b通过插入处理器提升算力来提高配方并行
+mte.CSCF.tooltips6=§b每提升一级电压配方并行上限+4
+mte.CSCF.tooltips7=§b支持Tec能源仓
 
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机

@@ -39,7 +39,8 @@ mte.CSCF.tooltips2=§ePaving the way for you to be the next Gordon Moore!
 mte.CSCF.tooltips3=§e"Melting, spinning, stretching...
 mte.CSCF.tooltips4=§eLook, it's not harder than making marshmallows."
 mte.CSCF.tooltips5=§bHigher efficiency than conventional blast furnace sintering!
-mte.CSCF.tooltips6=§bImprove recipe parallelism by inserting a processor to increase computing power
+mte.CSCF.tooltips6=§bFormula parallel upper limit +4 per step up voltage
+mte.CSCF.tooltips7=§bSupport Tec energy hatch
 
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator
