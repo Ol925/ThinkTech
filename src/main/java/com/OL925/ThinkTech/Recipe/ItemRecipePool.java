@@ -159,6 +159,22 @@ public class ItemRecipePool {
             .eut(RECIPE_ZPM)
             .duration(20 *20)
             .addTo(RecipeMaps.assemblerRecipes);
+
+        //铁触媒催化剂
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Magnetite.getDust(64),
+                Materials.Aluminiumoxide.getDust(10),
+                Materials.Quicklime.getDust(6),
+                Materials.Magnesia.getDust(5),
+                Materials.CobaltOxide.getDust(3))
+            .itemOutputs(IRON_CATALYST.get(1))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 10)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //合成氨工厂
+
     }
 }
 //GTValues.RA.stdBuilder()

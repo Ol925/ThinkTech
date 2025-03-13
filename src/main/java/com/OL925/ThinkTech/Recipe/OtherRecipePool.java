@@ -101,5 +101,6 @@ public class OtherRecipePool {
             .eut(RECIPE_HV)
             .duration(20 * 10)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
     }
 }

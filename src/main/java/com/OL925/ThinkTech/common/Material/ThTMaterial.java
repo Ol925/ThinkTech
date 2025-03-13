@@ -135,6 +135,19 @@ public class ThTMaterial implements Runnable {
             .addMolten(),
         OffsetID + 10,
         TextureSet.SET_RUBY);
+    //叠氮化钠
+    public static final Werkstoff sodiumAzide = new Werkstoff(
+        new short[] { 221, 221, 221 },
+        "SodiumAzide",
+        subscriptNumbers("NaN3"),
+        new Werkstoff.Stats().setMeltingPoint(548),
+        Werkstoff.Types.MATERIAL,
+        new Werkstoff.GenerationFeatures().disable()
+            .onlyDust()
+            .addMolten(),
+        OffsetID + 11,
+        TextureSet.SET_DULL);
+    //
     @Override
     public void run() {}
 }

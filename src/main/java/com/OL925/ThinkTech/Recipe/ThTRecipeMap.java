@@ -28,4 +28,12 @@ public class ThTRecipeMap {
         .disableOptimize()
         .frontend(LargeNEIFrontend::new)
         .build();
+
+    public static final RecipeMap<RecipeMapBackend> GeneralChemicalFactory = RecipeMapBuilder
+        .of("tht.recipe.SAF")
+        .maxIO(6, 6, 6, 6)
+        .progressBar(GTUITextures.PROGRESSBAR_ARROW_MULTIPLE)
+        .disableOptimize()
+        .frontend(LargeNEIFrontend::new)
+        .build();
 }

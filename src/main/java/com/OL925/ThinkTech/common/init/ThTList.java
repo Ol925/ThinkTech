@@ -13,6 +13,7 @@ public enum ThTList {
     METHANE_CLATHRATE,
     SUPEROREO,
     CRYSTALLINESUBSTRATE,
+    IRON_CATALYST,
 
     CHIPTIER1,
     CHIPTIER2,
@@ -22,6 +23,7 @@ public enum ThTList {
     // Machine
     ExplosiveGenerator,
     CzochralskiSingleCrystalFurnace,
+    SyntheticAmmoniaFactory,
 
     TestItem;
 

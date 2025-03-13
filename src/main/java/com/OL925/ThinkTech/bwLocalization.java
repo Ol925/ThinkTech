@@ -13,14 +13,16 @@ public class bwLocalization {
             "bw.werkstoff.18104.name", "fluid.molten.hmx",
             "bw.werkstoff.18105.name", "fluid.molten.hniw",
             "bw.werkstoff.18106.name", "fluid.molten.hmt",
-            "bw.werkstoff.18110.name", "fluid.molten.pentachloride"};
+            "bw.werkstoff.18110.name", "fluid.molten.pentachloride",
+            "bw.werkstoff.18111.name", "fluid.molten.sodiumazide"};
         String[] aenglish1 = new String[] { "item.2,4,6-trinitrotoluene.name", "item.2,4,6-trinitrotoluene.name",
             "item.leadAzide.name",
             "item.PETN.name","item.PETN.name",
             "item.HMX.name","item.HMX.name",
             "item.cl20.name","item.cl20.name",
             "item.HMT.name","item.HMT.name",
-            "item.pentachloride.name","item.pentachloride.name"};
+            "item.pentachloride.name","item.pentachloride.name",
+            "item.sodiumAzide.name", "item.sodiumAzide.name"};
         for (int i = 0; i < akey1.length; i++) {
             addStringLocalization(akey1[i], translateToLocalFormatted(aenglish1[i]));
         }

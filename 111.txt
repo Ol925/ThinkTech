@@ -1,0 +1,179 @@
+Structure:
+
+Blocks:
+A -> ofBlock...(blockAlloyGlass, 0, ...);
+B -> ofBlock...(gt.blockcasings2, 0, ...);
+C -> ofBlock...(gt.blockcasings2, 13, ...);
+D -> ofBlock...(gt.blockcasings3, 10, ...);
+E -> ofBlock...(gt.blockcasings4, 1, ...);
+F -> ofBlock...(gt.blockcasings5, 0, ...);
+G -> ofBlock...(gt.blockcasings8, 0, ...);
+H -> ofBlock...(gt.blockframes, 305, ...);
+I -> ofBlock...(gt.blockframes, 306, ...);
+J -> ofBlock...(gt.blockmetal6, 13, ...);
+K -> ofBlock...(tile.pistonBase, 0, ...);
+
+Tiles:
+
+Special Tiles:
+L -> ofSpecialTileAdder(gregtech.api.metatileentity.BaseMetaTileEntity, ...); // You will probably want to change it to something else
+
+Offsets:
+5 11 2
+
+Normal Scan:
+new String[][]{{
+    "                    ",
+    "                    ",
+    "                    ",
+    "   HHHHH            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   HHHHH            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            "
+},{
+    "                    ",
+    "                    ",
+    "                    ",
+    "   HBBBH            ",
+    "    BBB             ",
+    "    GGG             ",
+    "    GGG             ",
+    "    GGG             ",
+    "    BBB             ",
+    "   HBBBH    HHHHHHH ",
+    "            H     H ",
+    "            H     H ",
+    "            H     H "
+},{
+    "                    ",
+    "    BBB             ",
+    "    BBB             ",
+    "  HB I BH           ",
+    "   B   B            ",
+    "   G   G            ",
+    "   G C G            ",
+    "   GDDDG            ",
+    "   B   B     BBBBB  ",
+    "  HB   BH   HB   BH ",
+    "    BBB      B   B  ",
+    "    BLB      B   B  ",
+    "    BBB      BBBBB  "
+},{
+    "                    ",
+    "   B   B            ",
+    "   BGGGB            ",
+    "HHB  I  BHH         ",
+    "H B     B H         ",
+    "H G     G H         ",
+    "H G  C  G H         ",
+    "H GD   DG H  BBBBB  ",
+    "H B FFF B H BBBBBBB ",
+    "HHB     BHHHBGGGGGBH",
+    "H  BFFFB  H BGAAAGB ",
+    "H  B C B  H BGGGGGB ",
+    "H  BEEEB  H BEEEEEB "
+},{
+    "                    ",
+    "  B     B           ",
+    "  BGGGGGB           ",
+    "HB   I   BH         ",
+    " B   I   B          ",
+    " G   I   G          ",
+    " G   C   G          ",
+    " GD  I  DG   BAAAB  ",
+    " B F I F B  BBJJJBB ",
+    "HB       BH  G   G H",
+    "  BF I FB    G   G  ",
+    "  B  C  B    GKKKG  ",
+    "  BEEEEEB   BEEEEEB "
+},{
+    "     CCCCCCC        ",
+    "  B  C  B  C        ",
+    "  BGGCGGB  C        ",
+    "HBIIICIIIBHC        ",
+    " B  ICI  B C        ",
+    " G  ICI  G C        ",
+    " GCCCCCCCG C        ",
+    " GD ICI DG C BAAAB  ",
+    " B FICIF B CBBJJJBB ",
+    "HB   C   BHCCD   G H",
+    "  BFICIFB    G   G  ",
+    "  BCCCCCB    GKKKG  ",
+    "  BEEEEEB   BEEEEEB "
+},{
+    "                    ",
+    "  B     B           ",
+    "  BGGGGGB           ",
+    "HB   I   BH         ",
+    " B   I   B          ",
+    " G   I   G          ",
+    " G   C   G          ",
+    " GD  I  DG   BBBBB  ",
+    " B F I F B  BBBBBBB ",
+    "HB       BH BGGGGGBH",
+    "  BF I FB   BGGGGGB ",
+    "  B  C  B   BGGGGGB ",
+    "  BEEEEEB   BEEEEEB "
+},{
+    "                    ",
+    "   B   B            ",
+    "   BGGGB            ",
+    "HHB  I  BHH         ",
+    "H B     B H         ",
+    "H G     G H         ",
+    "H G  C  G H         ",
+    "H GD   DG H         ",
+    "H B FFF B H  BBBBB  ",
+    "HHB     BHHHHB   BH ",
+    "H  BFFFB  H  B   B  ",
+    "H  B C B  H  B   B  ",
+    "H  BEEEB  H  BBBBB  "
+},{
+    "                    ",
+    "    BBB             ",
+    "    BBB             ",
+    "  HB I BH           ",
+    "   B   B            ",
+    "   G   G            ",
+    "   G C G            ",
+    "   GDDDG            ",
+    "   B   B            ",
+    "  HB   BH   HHHHHHH ",
+    "    BBB     H     H ",
+    "    BBB     H     H ",
+    "    BBB     H     H "
+},{
+    "                    ",
+    "                    ",
+    "                    ",
+    "   HBBBH            ",
+    "    BBB             ",
+    "    GGG             ",
+    "    GGG             ",
+    "    GGG             ",
+    "    BBB             ",
+    "   HBBBH            ",
+    "                    ",
+    "                    ",
+    "                    "
+},{
+    "                    ",
+    "                    ",
+    "                    ",
+    "   HHHHH            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   HHHHH            ",
+    "   H   H            ",
+    "   H   H            ",
+    "   H   H            "
+}}

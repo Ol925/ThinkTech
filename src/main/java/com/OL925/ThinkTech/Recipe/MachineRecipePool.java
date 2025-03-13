@@ -1,19 +1,17 @@
 package com.OL925.ThinkTech.Recipe;
 
-import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 import com.OL925.ThinkTech.common.init.ThTList;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
+import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.api.util.GTUtility;
 
 import static goodgenerator.items.GGMaterial.naquadahine;
-import static gregtech.api.enums.TierEU.RECIPE_LuV;
-import static gregtech.api.enums.TierEU.RECIPE_IV;
-import static gregtech.api.enums.TierEU.RECIPE_EV;
-import static gregtech.api.enums.TierEU.RECIPE_HV;
+import static gregtech.api.enums.TierEU.*;
 
 public class MachineRecipePool {
     public void loadRecipes(){
@@ -93,6 +91,26 @@ public class MachineRecipePool {
             .eut(RECIPE_LuV)
             .duration(20*1000)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
+        //合成氨
+        GTValues.RA.stdBuilder()
+            .itemInputs(ThTList.IRON_CATALYST.get(0))
+            .fluidInputs(Materials.Hydrogen.getGas(240000),Materials.Nitrogen.getGas(80000))
+            .fluidOutputs(Materials.Ammonia.getGas(80000))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 120)
+            .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
+        //叠氮化钠
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Sodium.getDust(64),Materials.Sodium.getDust(64))
+            .itemOutputs(GTUtility.copyAmountUnsafe(64 * 2,ThTMaterial.sodiumAzide.get(OrePrefixes.dust)))
+            .fluidInputs(Materials.Ammonia.getGas(32000 * 4),Materials.Nitrogen.getGas(16000 *4))
+            .fluidOutputs(Materials.Hydrogen.getGas(48000 * 4))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 8)
+            .addTo(ThTRecipeMap.GeneralChemicalFactory);
     }
 }
 //GTValues.RA.stdBuilder()

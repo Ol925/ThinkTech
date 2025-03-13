@@ -1,6 +1,8 @@
 package com.OL925.ThinkTech.Recipe;
 
+import static bartworks.system.material.WerkstoffLoader.SodiumNitrate;
 import static gregtech.api.enums.Mods.GregTech;
+import static gregtech.api.enums.OrePrefixes.dust;
 import static gregtech.api.enums.TierEU.*;
 import static gtPlusPlus.core.item.chemistry.RocketFuels.Formaldehyde;
 
@@ -150,6 +152,26 @@ public class MaterialsRecipePool {
             .noOptimize()
             .eut(RECIPE_MV)
             .duration(30)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+        //叠氮化铅合成配方   还未注册叠氮化钠 NaN₃ + Pb (NO₃)₂ → Pb (N₃)₂ + NaNO₃
+        GTValues.RA.stdBuilder()
+            .itemInputs(ThTMaterial.sodiumAzide.get(OrePrefixes.dust,64),Materials.Lead.getDust(64))
+            .itemOutputs(SodiumNitrate.get(dust, 64),ThTMaterial.leadAzide.get(OrePrefixes.dust,64))
+            .fluidInputs(Materials.NitricAcid.getFluid(128000))
+            .fluidOutputs(Materials.Hydrogen.getGas(128000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 3)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+        //叠氮化钠
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Sodium.getDust(32))
+            .itemOutputs(ThTMaterial.sodiumAzide.get(OrePrefixes.dust,32))
+            .fluidInputs(Materials.Ammonia.getGas(32000),Materials.Nitrogen.getGas(16000))
+            .fluidOutputs(Materials.Hydrogen.getGas(48000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
     }
 }
