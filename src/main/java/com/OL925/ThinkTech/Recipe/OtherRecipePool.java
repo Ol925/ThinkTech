@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech.Recipe;
 
+import static gregtech.api.enums.OrePrefixes.dust;
 import static gregtech.api.enums.TierEU.*;
 import static gtPlusPlus.core.item.chemistry.RocketFuels.Formaldehyde;
 
@@ -34,7 +35,7 @@ public class OtherRecipePool {
             .fluidInputs(ThTMaterial.trinitrotoluene.getMolten(200))
             .itemInputs(
                 GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 8),
-                ThTMaterial.leadAzide.get(OrePrefixes.dust, 1))
+                ThTMaterial.leadAzide.get(dust, 1))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 1))
             .noOptimize()
             .eut(RECIPE_HV)
@@ -45,7 +46,7 @@ public class OtherRecipePool {
             .fluidInputs(ThTMaterial.PETN.getMolten(200))
             .itemInputs(
                 GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 16),
-                ThTMaterial.leadAzide.get(OrePrefixes.dust, 1))
+                ThTMaterial.leadAzide.get(dust, 1))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 4))
             .noOptimize()
             .eut(RECIPE_EV)
@@ -56,7 +57,7 @@ public class OtherRecipePool {
             .fluidInputs(Materials.Glyceryl.getFluid(200))
             .itemInputs(
                 GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 16),
-                ThTMaterial.leadAzide.get(OrePrefixes.dust, 1))
+                ThTMaterial.leadAzide.get(dust, 1))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 16))
             .noOptimize()
             .eut(RECIPE_EV)
@@ -67,7 +68,7 @@ public class OtherRecipePool {
             .fluidInputs(ThTMaterial.HMX.getMolten(200))
             .itemInputs(
                 GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polytetrafluoroethylene, 32),
-                ThTMaterial.leadAzide.get(OrePrefixes.dust, 4))
+                ThTMaterial.leadAzide.get(dust, 4))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 64))
             .noOptimize()
             .eut(RECIPE_EV)
@@ -78,7 +79,7 @@ public class OtherRecipePool {
             .fluidInputs(ThTMaterial.HNIW.getMolten(200))
             .itemInputs(
                 GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polytetrafluoroethylene, 64),
-                ThTMaterial.leadAzide.get(OrePrefixes.dust, 4))
+                ThTMaterial.leadAzide.get(dust, 4))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 64), GTModHandler.getIC2Item("industrialTnt", 64))
             .noOptimize()
             .eut(RECIPE_EV)
@@ -101,6 +102,14 @@ public class OtherRecipePool {
             .eut(RECIPE_HV)
             .duration(20 * 10)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
-
+        //五氯化磷生产磷酸
+        GTValues.RA.stdBuilder()
+            .itemInputs(ThTMaterial.pentachloride.get(dust,5))
+            .fluidInputs(Materials.Water.getFluid(4000))
+            .fluidOutputs(Materials.HydrochloricAcid.getFluid(5000),Materials.PhosphoricAcid.getFluid(1000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 2)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
     }
 }

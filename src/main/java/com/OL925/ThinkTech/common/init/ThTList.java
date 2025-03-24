@@ -23,7 +23,8 @@ public enum ThTList {
     // Machine
     ExplosiveGenerator,
     CzochralskiSingleCrystalFurnace,
-    SyntheticAmmoniaFactory,
+    GeneralFactory,
+    Kiln,
 
     TestItem;
 

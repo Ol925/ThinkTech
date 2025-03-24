@@ -268,7 +268,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addInputHatch("Hint block with dot 1")
             .addDynamoHatch("Hint block with dot 1")
             .addMufflerHatch("Hint block with dot 1")
-            .toolTipFinisher("§d§l§oOL925");
+            .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;
     }

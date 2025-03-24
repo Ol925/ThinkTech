@@ -51,7 +51,7 @@ mte.CSCF.tooltips8=§b芯片等级每提升一级,提供20%%的运行速度加�
 mte.CSCF.tooltips9=§b支持Tec能源仓
 
 mte.SAF=通用化工厂
-mte.SAF.tooltips1=§eF.Haber会喜欢这个的
+mte.SAF.tooltips1=§eF.Haber
 mte.SAF.tooltips2=§e也许人们不会因为这台机器的诞生而免受饥饿之苦，但你流水线上的饕餮们会很喜欢这个的
 mte.SAF.tooltips3=§4§n重组，交换，冷凝......
 mte.SAF.tooltips4=§e希望你的高炉能经得住如此庞大的钢铁消耗量
@@ -59,6 +59,8 @@ mte.SAF.tooltips5=§b如其名，这是台强大的合成工厂
 mte.SAF.tooltips6=§b通过替换更好的线圈来提高机器运行效率
 mte.SAF.tooltips7=§b每一级线圈提供10%%的速度加成和8的配方并行！
 mte.SAF.tooltips8=§b支持无损超频！
+
+mte.kiln=砖窑
 
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机

@@ -253,7 +253,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips8"))
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips9"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
-            .toolTipFinisher("§d§l§oOL925 & _fantasque_");
+            .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;
     }

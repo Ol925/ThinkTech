@@ -148,7 +148,7 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(GTUtility.getIntegratedCircuit(5),Materials.Phosphorus.getDust(1))
             .fluidInputs(Materials.Chlorine.getGas(5000))
-            .fluidOutputs(ThTMaterial.pentachloride.getMolten(1000))
+            .itemOutputs(ThTMaterial.pentachloride.get(dust,1))
             .noOptimize()
             .eut(RECIPE_MV)
             .duration(30)

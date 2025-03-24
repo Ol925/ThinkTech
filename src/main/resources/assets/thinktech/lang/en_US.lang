@@ -51,7 +51,7 @@ mte.CSCF.tooltips8=§bEach step up in the chip level provides a 20%% operating s
 mte.CSCF.tooltips9=§bSupport Tec energy hatch
 
 mte.SAF=General Chemical Factory
-mte.SAF.tooltips1=§eF.Haber will like this
+mte.SAF.tooltips1=§eF.Haber
 mte.SAF.tooltips2=§eMaybe people won't starve because of this machine, but the gluttons on your assembly line will love this machine
 mte.SAF.tooltips3=§4§nRecombination, exchange, condensation......
 mte.SAF.tooltips4=§eHope that your blast furnace can withstand such a large amount of steel consumption
@@ -59,6 +59,8 @@ mte.SAF.tooltips5=§bTrue to its name, this is a powerful factory
 mte.SAF.tooltips6=§bImprove machine operation efficiency by replacing better coils
 mte.SAF.tooltips7=§bEach stage coil provides 10%% speed bonus and 8 formula parallel!
 mte.SAF.tooltips8=§bSupport lossless overclocking!
+
+mte.kiln=Kiln
 
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator

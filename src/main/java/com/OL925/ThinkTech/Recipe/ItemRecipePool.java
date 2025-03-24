@@ -3,12 +3,9 @@ package com.OL925.ThinkTech.Recipe;
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static gregtech.api.enums.TierEU.*;
 
-import com.OL925.ThinkTech.common.init.ThTList;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTUtility;
-import ic2.api.item.IC2Items;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
@@ -173,8 +170,19 @@ public class ItemRecipePool {
             .duration(20 * 10)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
 
-        //合成氨工厂
-
+        //通用化工厂
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Tool_DataStick.get(4),
+                GTOreDictUnificator.get(OrePrefixes.circuit, Materials.HV, 8),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Polytetrafluoroethylene, 6),
+                ItemList.Hull_EV.get(1),
+                ItemList.Electric_Piston_HV.get(2))
+            .itemOutputs(GeneralFactory.get(1))
+            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(2304))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 15)
+            .addTo(RecipeMaps.assemblerRecipes);
     }
 }
 //GTValues.RA.stdBuilder()

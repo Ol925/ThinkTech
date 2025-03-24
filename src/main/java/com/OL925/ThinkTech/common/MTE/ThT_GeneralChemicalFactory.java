@@ -272,7 +272,10 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     }
 
     private void countSpeedBonus(){
-        mSpeedBonus = 1.0 - (mCoilLevel.getLevel()*0.1);
+        double mSB = 1.0 - ((mCoilLevel.getLevel() - 1) * 0.1);
+        if (mSB <=0){
+            mSpeedBonus = 0.01;
+        }else mSpeedBonus = mSB;
     }
 
     @Override
@@ -298,7 +301,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips6"))
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips7"))
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips8"))
-            .toolTipFinisher("§d§l§oOL925");
+            .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;
     }
