@@ -36,4 +36,12 @@ public class ThTRecipeMap {
         .disableOptimize()
         .frontend(LargeNEIFrontend::new)
         .build();
+
+    public static final RecipeMap<RecipeMapBackend> Kiln = RecipeMapBuilder
+        .of("tht.recipe.kiln")
+        .maxIO(6, 6, 0, 0)
+        .progressBar(GTUITextures.PROGRESSBAR_ARROW_MULTIPLE)
+        .disableOptimize()
+        .frontend(LargeNEIFrontend::new)
+        .build();
 }

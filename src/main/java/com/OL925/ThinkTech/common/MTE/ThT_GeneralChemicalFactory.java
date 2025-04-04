@@ -5,10 +5,14 @@ import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructa
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.GregTechAPI;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.SoundResource;
 import gregtech.api.enums.Textures;
+import gregtech.api.gui.modularui.GTUITextures;
 import gregtech.api.interfaces.ISecondaryDescribable;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
@@ -16,6 +20,7 @@ import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
 import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
 import gregtech.api.recipe.RecipeMap;
+import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.render.TextureFactory;
@@ -23,12 +28,18 @@ import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
+import gtPlusPlus.api.recipe.GTPPRecipeMaps;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
+import java.util.Arrays;
+import java.util.Collection;
+
+import static com.OL925.ThinkTech.Recipe.ThTRecipeMap.GeneralChemicalFactory;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.ofBlockAnyMeta;
 import static gregtech.api.enums.HatchElement.*;
@@ -45,9 +56,13 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     private static final String STRUCTURE_PIECE_MAIN = "main";
     private HeatingCoilLevel mCoilLevel;
     private double mSpeedBonus;
+
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
     private static IStructureDefinition<ThT_GeneralChemicalFactory> STRUCTURE_DEFINITION = null;
+
+    private static final int MACHINEMODE_MTECR = 0;
+    private static final int MACHINEMODE_GCF = 1;
     private static String[][] Shape = new String[][]{{
         "                    ",
         "                    ",
@@ -237,9 +252,47 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
         return STRUCTURE_DEFINITION;
     }
 
+    @SideOnly(Side.CLIENT)
+    @Override
+    protected SoundResource getActivitySoundLoop() {
+        return SoundResource.GT_MACHINES_STEAM_WASHER_LOOP;
+    }
+
     @Override
     public RecipeMap<?> getRecipeMap() {
-        return ThTRecipeMap.GeneralChemicalFactory;
+        if(machineMode == MACHINEMODE_MTECR){
+            return RecipeMaps.multiblockChemicalReactorRecipes;
+        }
+        return GeneralChemicalFactory;
+    }
+
+    @NotNull
+    @Override
+    public Collection<RecipeMap<?>> getAvailableRecipeMaps() {
+        return Arrays.asList(GeneralChemicalFactory,RecipeMaps.multiblockChemicalReactorRecipes);
+    }
+
+    @Override
+    public boolean supportsMachineModeSwitch() {
+        return true;
+    }
+
+    @Override
+    public int nextMachineMode() {
+        if (machineMode == MACHINEMODE_MTECR) return MACHINEMODE_GCF;
+        else return MACHINEMODE_MTECR;
+    }
+
+    @Override
+    public void setMachineModeIcons() {
+        machineModeIcons.clear();
+        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_CHEMBATH);
+        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_SEPARATOR);
+    }
+
+    @Override
+    public String getMachineModeName() {
+        return StatCollector.translateToLocal("mte.SAF.common.mode." + machineMode);
     }
 
     @Override
@@ -301,6 +354,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips6"))
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips7"))
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips8"))
+            .addInfo(translateToLocalFormatted("mte.SAF.tooltips9"))
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;

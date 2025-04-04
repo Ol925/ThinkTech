@@ -35,10 +35,10 @@ public class ThTMachineLoader {
             translateToLocalFormatted("mte.SAF")).getStackForm(1);
         ThTList.GeneralFactory.set(GeneralFactory);
 
-//        Kiln = new ThT_Kiln(
-//            21003,
-//            "NameKiln",
-//            translateToLocalFormatted("mte.kiln")).getStackForm(1);
-//        ThTList.Kiln.set(Kiln);
+        Kiln = new ThT_Kiln(
+            21003,
+            "NameKiln",
+            translateToLocalFormatted("mte.kiln")).getStackForm(1);
+        ThTList.Kiln.set(Kiln);
     }
 }

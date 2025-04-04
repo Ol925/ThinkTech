@@ -111,6 +111,27 @@ public class MachineRecipePool {
             .eut(RECIPE_EV)
             .duration(20 * 8)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
+        //耐火砖 一块砖要6个耐火砖2个石膏粉,即3砖粉3粘土粉2石膏粉
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Gypsum.getDust(64),
+                Materials.Brick.getDust(64),
+                Materials.Brick.getDust(32),
+                Materials.Clay.getDust(32))
+            .itemOutputs(ItemList.Casing_Firebricks.get(32))
+            .noOptimize()
+            .eut(0)
+            .duration(20 * 44)
+            .addTo(ThTRecipeMap.Kiln);
+
+        //红砖
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Coal.getGems(64))
+            .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
+            .noOptimize()
+            .eut(0)
+            .duration(20 * 48)
+            .addTo(ThTRecipeMap.Kiln);
     }
 }
 //GTValues.RA.stdBuilder()

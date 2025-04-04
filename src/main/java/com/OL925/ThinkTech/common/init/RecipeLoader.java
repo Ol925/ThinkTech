@@ -1,11 +1,20 @@
 package com.OL925.ThinkTech.common.init;
 
+import gregtech.api.enums.ItemList;
+import gregtech.api.enums.Materials;
+import gregtech.api.enums.OrePrefixes;
+import gregtech.api.metatileentity.implementations.MTEBasicMachineWithRecipe;
+import gregtech.api.util.GTModHandler;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 
 import com.OL925.ThinkTech.Recipe.*;
 
 import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
+
+import static com.dreammaster.gthandler.GT_Loader_Machines.bitsd;
+import static gtPlusPlus.core.recipe.common.CI.bits;
 
 public class RecipeLoader {
 
@@ -25,7 +34,10 @@ public class RecipeLoader {
 
     private void registerRecipe() {
         // Add your recipes here
-
+        GTModHandler.addCraftingRecipe(
+            ThTList.Kiln.get(1),
+            bitsd,
+            new Object[] { "CCC", "CMC", "CCC", 'M', ItemList.Hull_Bronze_Bricks,'C', ItemList.Firebrick.get(1)});
     }
 
     private void registerSmelting() {

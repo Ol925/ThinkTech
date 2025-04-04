@@ -28,6 +28,7 @@ fluid.Benzaldehyd.name=苯甲醛
 mte.common.tooltips1=使用消声仓可使机器真正消音！
 mte.common.tooltips2=生产机器
 mte.common.tooltips3=发电机
+mte.SAF.common.mode.0=
 
 mte.ImplosionGenerator=聚爆发电机
 mte.ImplosionGenerator.tooltips1=§b爆炸向来都是艺术
@@ -59,13 +60,23 @@ mte.SAF.tooltips5=§b如其名，这是台强大的合成工厂
 mte.SAF.tooltips6=§b通过替换更好的线圈来提高机器运行效率
 mte.SAF.tooltips7=§b每一级线圈提供10%%的速度加成和8的配方并行！
 mte.SAF.tooltips8=§b支持无损超频！
+mte.SAF.tooltips9=§b支持Tec能源仓
 
-mte.kiln=砖窑
+mte.SAF.common.mode.0=大型化学反应釜
+mte.SAF.common.mode.1=通用化工厂
+
+mte.kiln=窑
+mte.kiln.tooltips1=§e为方圆十里寸草不生做充分的准备...
+mte.kiln.tooltips2=§e火焰与时间的艺术
+mte.kiln.tooltips3=§b专精高温处理的窑炉!效率远超常规制作方法
+mte.Kiln.tooltips4=§b“灰烬中诞生的文明基石”
+mte.Kiln.tooltips5=§4注意,它并不需要蒸汽供应!
 
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机
 tht.recipe.CSCF=柴式单晶炉
 tht.recipe.SAF=通用化工厂
+tht.recipe.kiln=§e窑
 
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t
