@@ -2,12 +2,8 @@ package com.OL925.ThinkTech.common.init;
 
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
-import com.OL925.ThinkTech.common.MTE.ThT_CzochralskiSingleCrystalFurnace;
-import com.OL925.ThinkTech.common.MTE.ThT_GeneralChemicalFactory;
-import com.OL925.ThinkTech.common.MTE.ThT_Kiln;
+import com.OL925.ThinkTech.common.MTE.*;
 import net.minecraft.item.ItemStack;
-
-import com.OL925.ThinkTech.common.MTE.ThT_ImplosionGenerator;
 
 public class ThTMachineLoader {
 
@@ -15,6 +11,7 @@ public class ThTMachineLoader {
     public static ItemStack CzochralskiSingleCrystalFurnace;
     public static ItemStack GeneralFactory;
     public static ItemStack Kiln;
+    public static ItemStack NobleGasEnrichmentSystem;
 
     public static void loadMachine() {
         ExplosiveGenerator = new ThT_ImplosionGenerator(
@@ -40,5 +37,11 @@ public class ThTMachineLoader {
             "NameKiln",
             translateToLocalFormatted("mte.kiln")).getStackForm(1);
         ThTList.Kiln.set(Kiln);
+
+        NobleGasEnrichmentSystem = new ThT_NobleGasEnrichmentSystem(
+            21004,
+            "NameNobleGasEnrichmentSystem",
+            translateToLocalFormatted("mte.NGES")).getStackForm(1);
+        ThTList.NobleGasEnrichmentSystem.set(NobleGasEnrichmentSystem);
     }
 }

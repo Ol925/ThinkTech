@@ -72,11 +72,19 @@ mte.kiln.tooltips3=§b专精高温处理的窑炉!效率远超常规制作方法
 mte.Kiln.tooltips4=§b“灰烬中诞生的文明基石”
 mte.Kiln.tooltips5=§4注意,它并不需要蒸汽供应!
 
+mte.NGES=稀有气体富集装置
+mte.NGES.tt1=§e哦,它们无处不在,所以为什么不直接拿来用呢?
+mte.NGES.tt2=§b最新的分子筛网技术,以最高效率从空气中过滤分离各种气体
+mte.NGES.tt3=§b在被动模式下，它会以较低的效率§4§n无需能源§r§7的收集气体
+mte.NGES.tt4=§b通过输入能源来使其转换为主动模式!支持TT的多电流能源仓!
+mte.NGES.tt5=§b同样的,你也可以使用更高级的分子筛网来提高富集效率
+
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机
 tht.recipe.CSCF=柴式单晶炉
 tht.recipe.SAF=通用化工厂
 tht.recipe.kiln=§e窑
+tht.recipe.NGES=§e稀有气体富集
 
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t

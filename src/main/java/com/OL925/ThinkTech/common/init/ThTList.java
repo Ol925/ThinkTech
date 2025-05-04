@@ -25,6 +25,7 @@ public enum ThTList {
     CzochralskiSingleCrystalFurnace,
     GeneralFactory,
     Kiln,
+    NobleGasEnrichmentSystem,
 
     TestItem;
 

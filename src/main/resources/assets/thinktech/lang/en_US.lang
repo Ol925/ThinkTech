@@ -71,10 +71,18 @@ mte.kiln.tooltips3=§bSpecialized high temperature treatment furnace! The effici
 mte.Kiln.tooltips4=§b"The building blocks of civilization born from the ashes"
 mte.Kiln.tooltips5=§4It does not require a steam supply!
 
+mte.NGES=NobleGasEnrichmentSystem
+mte.NGES.tt1=§eOh,they're everywhere,so why not just use them?
+mte.NGES.tt2=§bThe latest molecular screen technology filters and separates gases from the air with maximum efficiency
+mte.NGES.tt3=§bIn passive mode，it well collect gas with lower efficiency §4§n without energy §r§7
+mte.NGES.tt4=§bConvert it to active mode by inputting energy! TT's energy hatch is support!
+mte.NGES.tt5=§bAlso,you can use more advanced molecular screens to improve enrichment efficiency.
+
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator
 tht.recipe.CSCF=Czochralski Single Crystal Furnace
 tht.recipe.SAF=General Chemical Factory
+tht.recipe.NGES=Noble Gas Enrichment System
 
 #NEI Info
 value.implosion_generator=Basic power generation: %s EU/t

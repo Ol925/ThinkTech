@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech.Recipe;
 
+import bartworks.system.material.WerkstoffLoader;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 import com.OL925.ThinkTech.common.init.ThTList;
 import gregtech.api.enums.GTValues;
@@ -9,7 +10,9 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
+import gtPlusPlus.core.material.MaterialsElements;
 
+import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static goodgenerator.items.GGMaterial.naquadahine;
 import static gregtech.api.enums.TierEU.*;
 
@@ -124,7 +127,7 @@ public class MachineRecipePool {
             .duration(20 * 44)
             .addTo(ThTRecipeMap.Kiln);
 
-        //红砖
+        //红砖 Lignite
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Coal.getGems(64))
             .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
@@ -132,12 +135,86 @@ public class MachineRecipePool {
             .eut(0)
             .duration(20 * 48)
             .addTo(ThTRecipeMap.Kiln);
+
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Coal.getDust(64))
+            .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
+            .noOptimize()
+            .eut(0)
+            .duration(20 * 30)
+            .addTo(ThTRecipeMap.Kiln);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Charcoal.getGems(64))
+            .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
+            .noOptimize()
+            .eut(0)
+            .duration(20 * 48)
+            .addTo(ThTRecipeMap.Kiln);
+
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Lignite.getGems(64))
+            .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
+            .noOptimize()
+            .eut(0)
+            .duration(20 * 60)
+            .addTo(ThTRecipeMap.Kiln);
+
+        //被动稀有气体富集 EV
+        GTValues.RA.stdBuilder()
+            .fluidOutputs(
+                Materials.Argon.getGas(8000),
+                WerkstoffLoader.Neon.getFluidOrGas(4000),
+                Materials.Helium.getGas(2000),
+                WerkstoffLoader.Krypton.getFluidOrGas(1000),
+                WerkstoffLoader.Xenon.getFluidOrGas(500))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 80)
+            .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
+
+        //一阶富集 IV
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTUtility.getIntegratedCircuit(1),CHIPTIER1.get(0))
+            .fluidOutputs(
+                Materials.Argon.getGas(8000*4),
+                WerkstoffLoader.Neon.getFluidOrGas(4000*4),
+                Materials.Helium.getGas(2000*4),
+                WerkstoffLoader.Krypton.getFluidOrGas(1000*4),
+                WerkstoffLoader.Xenon.getFluidOrGas(500*4))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 90)
+            .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
+
+        //二阶富集 ZPM
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTUtility.getIntegratedCircuit(2),CHIPTIER2.get(0))
+            .fluidOutputs(
+                Materials.Argon.getGas(8000*8),
+                WerkstoffLoader.Neon.getFluidOrGas(4000*8),
+                Materials.Helium.getGas(2000*8),
+                WerkstoffLoader.Krypton.getFluidOrGas(1000*8),
+                WerkstoffLoader.Xenon.getFluidOrGas(500*32))
+            .noOptimize()
+            .eut(RECIPE_LuV)
+            .duration(20 * 90)
+            .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
+
+        //三阶富集 UHV
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTUtility.getIntegratedCircuit(3),CHIPTIER3.get(0))
+            .fluidOutputs(
+                Materials.Argon.getGas(8000*32),
+                WerkstoffLoader.Neon.getFluidOrGas(4000*32),
+                Materials.Helium.getGas(2000*32),
+                WerkstoffLoader.Krypton.getFluidOrGas(1000*32),
+                WerkstoffLoader.Xenon.getFluidOrGas(500*128))
+            .noOptimize()
+            .eut(RECIPE_ZPM)
+            .duration(20 * 120)
+            .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
     }
 }
-//GTValues.RA.stdBuilder()
-//            .fluidInputs()
-//            .fluidOutputs()
-//            .noOptimize()
-//            .eut(RECIPE_)
-//            .duration()
-//            .addTo(RecipeMaps.);

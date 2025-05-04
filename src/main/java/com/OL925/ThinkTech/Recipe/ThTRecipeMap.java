@@ -44,4 +44,12 @@ public class ThTRecipeMap {
         .disableOptimize()
         .frontend(LargeNEIFrontend::new)
         .build();
+
+    public static final RecipeMap<RecipeMapBackend> NobleGasEnrichmentSystem = RecipeMapBuilder
+        .of("tht.recipe.NGES")
+        .maxIO(3, 0, 9, 9)
+        .progressBar(GTUITextures.PROGRESSBAR_BATH)
+        .disableOptimize()
+        .frontend(LargeNEIFrontend::new)
+        .build();
 }
