@@ -210,9 +210,10 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
         if (mMachine) return -1;
         return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 6, 0, elementBudget, env, false, true);
     }
-
+    //STAINLESS_STEEL_MACHINE_CASING  OVERLAY_FRONT_OIL_CRACKER_ACTIVE  OVERLAY_FRONT_OIL_CRACKER_GLOW
     @Override
-    public ITexture[] getTexture(IGregTechTileEntity te, ForgeDirection side, ForgeDirection facing, int colorIndex, boolean active, boolean redstone) {
+    public ITexture[] getTexture(IGregTechTileEntity te, ForgeDirection side, ForgeDirection facing, int colorIndex,
+                                 boolean active, boolean redstone) {
 
         if (side == facing) {
             if (active) return new ITexture[] { STAINLESS_STEEL_MACHINE_CASING, TextureFactory.builder()
@@ -220,21 +221,19 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(OVERLAY_FRONT_OIL_CRACKER_GLOW)
+                    .addIcon(OVERLAY_FRONT_OIL_CRACKER_ACTIVE_GLOW)
                     .extFacing()
                     .glow()
                     .build() };
-
             return new ITexture[] { STAINLESS_STEEL_MACHINE_CASING, TextureFactory.builder()
                 .addIcon(OVERLAY_FRONT_OIL_CRACKER)
                 .extFacing()
                 .build(),
                 TextureFactory.builder()
-                    .addIcon(OVERLAY_FRONT_OIL_CRACKER_ACTIVE_GLOW)
+                    .addIcon(OVERLAY_FRONT_OIL_CRACKER_GLOW)
                     .extFacing()
                     .glow()
                     .build() };
-
         }
         return new ITexture[] {
             Textures.BlockIcons.getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings4, 1)) };

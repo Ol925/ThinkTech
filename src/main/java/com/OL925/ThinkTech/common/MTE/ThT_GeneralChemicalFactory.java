@@ -233,7 +233,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_GeneralChemicalFactory>builder()
                 .addShape(STRUCTURE_PIECE_MAIN, Shape)
                 .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
-                .addElement('B',buildHatchAdder(ThT_GeneralChemicalFactory.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch)
+                .addElement('B',buildHatchAdder(ThT_GeneralChemicalFactory.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)
                     .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
                     .dot(1)
                     .buildAndChain(GregTechAPI.sBlockCasings2, 0))
