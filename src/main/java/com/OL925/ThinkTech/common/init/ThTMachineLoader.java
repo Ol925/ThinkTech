@@ -15,31 +15,31 @@ public class ThTMachineLoader {
 
     public static void loadMachine() {
         ExplosiveGenerator = new ThT_ImplosionGenerator(
-            21000,
+            27000,
             "NameExplosiveGenerator",
             translateToLocalFormatted("mte.ImplosionGenerator")).getStackForm(1);
         ThTList.ExplosiveGenerator.set(ExplosiveGenerator);
 
         CzochralskiSingleCrystalFurnace = new ThT_CzochralskiSingleCrystalFurnace(
-            21001,
+            27001,
             "NameIndustrialVaporDeposition",
             translateToLocalFormatted("mte.CSCF")).getStackForm(1);
         ThTList.CzochralskiSingleCrystalFurnace.set(CzochralskiSingleCrystalFurnace);
 
         GeneralFactory = new ThT_GeneralChemicalFactory(
-            21002,
+            27002,
             "NameGeneralFactory",
             translateToLocalFormatted("mte.SAF")).getStackForm(1);
         ThTList.GeneralFactory.set(GeneralFactory);
 
         Kiln = new ThT_Kiln(
-            21003,
+            27003,
             "NameKiln",
             translateToLocalFormatted("mte.kiln")).getStackForm(1);
         ThTList.Kiln.set(Kiln);
 
         NobleGasEnrichmentSystem = new ThT_NobleGasEnrichmentSystem(
-            21004,
+            27004,
             "NameNobleGasEnrichmentSystem",
             translateToLocalFormatted("mte.NGES")).getStackForm(1);
         ThTList.NobleGasEnrichmentSystem.set(NobleGasEnrichmentSystem);
