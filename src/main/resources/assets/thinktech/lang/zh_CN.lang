@@ -18,6 +18,11 @@ item.crystallineSubstrate.name=结晶基底
 item.pentachloride.name=五氯化磷
 item.sodiumAzide.name=叠氮化钠
 
+#block
+tile.ControllerTier1.name=集成式分离控制核心T1
+tile.ControllerTier2.name=集成式分离控制核心T2
+tile.ControllerTier3.name=集成式分离控制核心T3
+
 #fluid
 fluid.AlkaneWaterMixture.name=烷烃-水混合物
 fluid.Ethanedial.name=乙二醛

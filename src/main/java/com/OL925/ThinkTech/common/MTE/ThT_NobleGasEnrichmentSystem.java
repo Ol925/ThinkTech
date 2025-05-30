@@ -43,6 +43,9 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
 
     private static ITexture CASING = TextureFactory.of(BLOCK_PLASCRETE);
 
+    private int MTier = 0;
+    private int controllerTier = 0;
+
     private static final String STRUCTURE_PIECE_MAIN = "main";
     private static IStructureDefinition<ThT_NobleGasEnrichmentSystem> STRUCTURE_DEFINITION = null;
     private static String[][] Shape = new String[][]{{
@@ -155,7 +158,17 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
     }
 
     private int getMaxParallelRecipes() {
-        return 6;//固定提供6并行
+        if(MTier == 0){
+            switch (controllerTier){
+                case 1:
+                    return 16;
+                case 2:
+                    return 24;
+                case 3:
+                    return 32;
+            }
+        }
+        return 4;//固定提供4并行
     }
 
     @Override

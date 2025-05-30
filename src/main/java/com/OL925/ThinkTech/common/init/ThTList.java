@@ -20,6 +20,11 @@ public enum ThTList {
     CHIPTIER3,
     CHIPTIER4,
 
+    //Block
+    controllerTier1,
+    controllerTier2,
+    controllerTier3,
+
     // Machine
     ExplosiveGenerator,
     CzochralskiSingleCrystalFurnace,

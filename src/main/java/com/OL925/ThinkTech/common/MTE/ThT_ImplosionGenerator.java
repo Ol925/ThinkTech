@@ -265,9 +265,9 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .addPollutionAmount(getPollutionPerSecond(null))
             .beginStructureBlock(7, 5, 8, true)
             .addController("Front bottom")
-            .addInputHatch("Hint block with dot 1")
-            .addDynamoHatch("Hint block with dot 1")
-            .addMufflerHatch("Hint block with dot 1")
+            .addInputHatch("Hint blocks with dot 1")
+            .addDynamoHatch("Hint blocks with dot 1")
+            .addMufflerHatch("Hint blocks with dot 1")
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;

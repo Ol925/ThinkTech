@@ -18,6 +18,11 @@ item.crystallineSubstrate.name=Crystalline Substrate
 item.pentachloride.name=Pentachloride
 item.sodiumAzide.name=Sodium Azide
 
+#block
+tile.ControllerTier1.name=Separation control core T1
+tile.ControllerTier2.name=Separation control core T2
+tile.ControllerTier3.name=Separation control core T3
+
 #fluid
 fluid.AlkaneWaterMixture.name=Alkane Water Mixture
 fluid.Ethanedial.name=Ethanedial

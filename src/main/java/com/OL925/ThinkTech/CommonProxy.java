@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech;
 
+import com.OL925.ThinkTech.common.init.ThTBlockLoader;
 import net.minecraftforge.common.MinecraftForge;
 
 import com.OL925.ThinkTech.Config.Config;
@@ -19,7 +20,8 @@ public class CommonProxy {
 
     public void preInit(FMLPreInitializationEvent event) {
         Config.synchronizeConfiguration(event.getSuggestedConfigurationFile());
-        new ThTItemLoader().init();
+        ThTItemLoader.init();
+        ThTBlockLoader.init();
         WerkstoffAdderRegistry.addWerkstoffAdder(new ThTMaterial());
         MinecraftForge.EVENT_BUS.register(new ExplosionEventHandler());
         new bwLocalization().loader();
