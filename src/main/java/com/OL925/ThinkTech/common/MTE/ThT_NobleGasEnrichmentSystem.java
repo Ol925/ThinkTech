@@ -1,8 +1,11 @@
 package com.OL925.ThinkTech.common.MTE;
 
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
+import com.OL925.ThinkTech.common.block.ControllerTier1;
+import com.OL925.ThinkTech.common.init.ThTBlockLoader;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
+import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import cpw.mods.fml.relauncher.Side;
@@ -23,8 +26,10 @@ import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.render.TextureFactory;
 
 import gregtech.api.util.GTRecipe;
+import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gtPlusPlus.xmod.gregtech.common.blocks.textures.TexturesGtBlock;
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.jetbrains.annotations.NotNull;
@@ -42,9 +47,11 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
     implements ISurvivalConstructable, ISecondaryDescribable {
 
     private static ITexture CASING = TextureFactory.of(BLOCK_PLASCRETE);
+    private static ITexture STAINLESS_STEEL_MACHINE_CASING = getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings4, 1));
 
     private int MTier = 0;
     private int controllerTier = 0;
+    private Block CT1 = new ControllerTier1();
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
     private static IStructureDefinition<ThT_NobleGasEnrichmentSystem> STRUCTURE_DEFINITION = null;
@@ -126,14 +133,20 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
                 .addShape(STRUCTURE_PIECE_MAIN, Shape)
                 .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
                 .addElement('B',ofBlock(GregTechAPI.sBlockCasings2, 0))
-                .addElement('C',ofBlock(GregTechAPI.sBlockCasings3, 10))
-                .addElement('D',ofBlock(GregTechAPI.sBlockCasings4, 1))
+                .addElement('C',
+                    ofBlock(GregTechAPI.sBlockCasings3, 10))//
+                .addElement('D',buildHatchAdder(ThT_NobleGasEnrichmentSystem.class).atLeast(Energy.or(ExoticEnergy), InputBus, OutputHatch)
+                    .casingIndex(getTextureIndex(STAINLESS_STEEL_MACHINE_CASING))
+                    .dot(1)
+                    .buildAndChain(GregTechAPI.sBlockCasings4, 1))
                 .addElement('E',ofBlock(GregTechAPI.sBlockCasings8, 1))
                 .addElement('F',ofFrame(Materials.Steel))
-                .addElement('G',buildHatchAdder(ThT_NobleGasEnrichmentSystem.class).atLeast(Energy.or(ExoticEnergy),InputBus, OutputHatch)
-                    .casingIndex(Textures.BlockIcons.getTextureIndex(CASING))
-                    .dot(1)
-                    .buildAndChain(GregTechAPI.sBlockReinforced,2))
+                .addElement('G',ofChain(
+                    ofBlock(GregTechAPI.sBlockReinforced,2),
+                    onElementPass(ThT_NobleGasEnrichmentSystem::setT1,ofBlock(ThTBlockLoader.controllerTier1,0)),
+                    onElementPass(ThT_NobleGasEnrichmentSystem::setT2,ofBlock(ThTBlockLoader.controllerTier2,0)),
+                    onElementPass(ThT_NobleGasEnrichmentSystem::setT3,ofBlock(ThTBlockLoader.controllerTier3,0))
+                ))
                 .build();
         }
         return STRUCTURE_DEFINITION;
@@ -163,13 +176,19 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
                 case 1:
                     return 16;
                 case 2:
-                    return 24;
-                case 3:
                     return 32;
+                case 3:
+                    return 64;
             }
         }
-        return 4;//固定提供4并行
+        return 1;
     }
+
+    private void setT1() {controllerTier = 1;}
+
+    private void setT2() {controllerTier = 2;}
+
+    private void setT3() {controllerTier = 3;}
 
     @Override
     public boolean addOutputToMachineList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
@@ -209,6 +228,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
         if (checkPiece(STRUCTURE_PIECE_MAIN, 3, 4, 1)) {
+
             fixAllIssues();
             return true;
         }
@@ -263,7 +283,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
             return new ITexture[] { CASING, TextureFactory.builder()
                 .addIcon(OVERLAY_FUSION1)
                 .extFacing()
-                .build(),};
+                .build() };
         }
         return new ITexture[] {TextureFactory.of(BLOCK_PLASCRETE)};
     }

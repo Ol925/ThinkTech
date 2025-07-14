@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech.common.init;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 

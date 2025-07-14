@@ -163,17 +163,18 @@ public class MachineRecipePool {
             .addTo(ThTRecipeMap.Kiln);
 
         //被动稀有气体富集 EV
-        GTValues.RA.stdBuilder()
-            .fluidOutputs(
-                Materials.Argon.getGas(8000),
-                WerkstoffLoader.Neon.getFluidOrGas(4000),
-                Materials.Helium.getGas(2000),
-                WerkstoffLoader.Krypton.getFluidOrGas(1000),
-                WerkstoffLoader.Xenon.getFluidOrGas(500))
-            .noOptimize()
-            .eut(RECIPE_HV)
-            .duration(20 * 80)
-            .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
+//        GTValues.RA.stdBuilder()
+//            .itemInputs(GTUtility.getIntegratedCircuit(1))
+//            .fluidOutputs(
+//                Materials.Argon.getGas(8000),
+//                WerkstoffLoader.Neon.getFluidOrGas(4000),
+//                Materials.Helium.getGas(2000),
+//                WerkstoffLoader.Krypton.getFluidOrGas(1000),
+//                WerkstoffLoader.Xenon.getFluidOrGas(500))
+//            .noOptimize()
+//            .eut(0)
+//            .duration(20 * 160)
+//            .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
 
         //一阶富集 IV
         GTValues.RA.stdBuilder()
