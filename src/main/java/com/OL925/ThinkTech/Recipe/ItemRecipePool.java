@@ -3,6 +3,7 @@ package com.OL925.ThinkTech.Recipe;
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static gregtech.api.enums.TierEU.*;
 
+import com.OL925.ThinkTech.common.init.ThTList;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTUtility;
 import net.minecraft.init.Items;
@@ -183,11 +184,77 @@ public class ItemRecipePool {
             .eut(RECIPE_EV)
             .duration(20 * 15)
             .addTo(RecipeMaps.assemblerRecipes);
+
+        //稀有气体富集装置
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTUtility.getIntegratedCircuit(2),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 32),
+                GTOreDictUnificator.get(OrePrefixes.circuit, Materials.IV, 8),
+                GTOreDictUnificator.get(OrePrefixes.screw, Materials.TungstenSteel, 8),
+                GTOreDictUnificator.get(OrePrefixes.gear, Materials.TungstenSteel, 4),
+                ItemList.Hull_IV.get(1),
+                ItemList.Electric_Piston_EV.get(16),
+                ItemList.Electric_Piston_EV.get(16))
+            .fluidInputs()
+            .itemOutputs(NobleGasEnrichmentSystem.get(1))
+            .noOptimize()
+            .eut(RECIPE_IV)
+            .duration(20 * 114)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //控制中心T1
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Block_Plascrete.get(1),
+                GTOreDictUnificator.get(OrePrefixes.circuit, Materials.IV, 24),
+                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 48),
+                GTOreDictUnificator.get(OrePrefixes.bolt, Materials.StainlessSteel, 16),
+                GTOreDictUnificator.get(OrePrefixes.screw, Materials.StainlessSteel, 16),
+                ItemList.Tool_DataStick.get(16),
+                ItemList.Cover_Screen.get(4)
+                )
+            .itemOutputs(controllerTier1.get(1))
+            .noOptimize()
+            .eut(RECIPE_IV)
+            .duration(20 * 32)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //控制中心T2
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Block_Plascrete.get(1),
+                GTOreDictUnificator.get(OrePrefixes.circuit, Materials.LuV, 24),
+                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 64),
+                GTOreDictUnificator.get(OrePrefixes.bolt, Materials.EnergeticAlloy, 16),
+                GTOreDictUnificator.get(OrePrefixes.screw, Materials.EnergeticAlloy, 16),
+                ItemList.Tool_DataOrb.get(32),
+                ItemList.Cover_Screen.get(4)
+            )
+            .fluidInputs(Materials.PulsatingIron.getMolten(1152))
+            .itemOutputs(controllerTier2.get(1))
+            .noOptimize()
+            .eut(RECIPE_LuV)
+            .duration(20 * 32)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //控制中心T3
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Block_Plascrete.get(1),
+                GTOreDictUnificator.get(OrePrefixes.circuit, Materials.ZPM, 24),
+                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 64),
+                GTOreDictUnificator.get(OrePrefixes.bolt, Materials.EnergeticAlloy, 16),
+                GTOreDictUnificator.get(OrePrefixes.bolt, Materials.Sunnarium, 8),
+                GTOreDictUnificator.get(OrePrefixes.screw, Materials.Sunnarium, 8),
+                ItemList.Tool_DataOrb.get(48),
+                ItemList.Cover_Screen.get(4)
+            )
+            .itemOutputs(controllerTier3.get(1))
+            .fluidInputs(Materials.Sunnarium.getMolten(144))
+            .noOptimize()
+            .eut(RECIPE_ZPM)
+            .duration(20 * 32)
+            .addTo(RecipeMaps.assemblerRecipes);
     }
 }
 //GTValues.RA.stdBuilder()
-//            .fluidInputs()
-//            .fluidOutputs()
 //            .noOptimize()
 //            .eut(RECIPE_)
 //            .duration()
