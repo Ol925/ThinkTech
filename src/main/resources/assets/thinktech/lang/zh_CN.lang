@@ -18,6 +18,7 @@ item.crystallineSubstrate.name=结晶基底
 item.pentachloride.name=五氯化磷
 item.sodiumAzide.name=叠氮化钠
 item.proteinBlock.name=凝固灭菌蛋白块
+item.seleniumDioxide.name=二氧化硒
 
 #block
 tile.ControllerTier1.name=集成式分离控制核心T1

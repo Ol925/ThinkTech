@@ -18,6 +18,7 @@ item.crystallineSubstrate.name=Crystalline Substrate
 item.pentachloride.name=Pentachloride
 item.sodiumAzide.name=Sodium Azide
 item.proteinBlock.name=Protein Block
+item.seleniumDioxide.name=Selenium Dioxide
 
 #block
 tile.ControllerTier1.name=Separation control core T1

@@ -17,6 +17,7 @@ import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.api.recipe.GTPPRecipeMaps;
+import gtPlusPlus.core.material.MaterialsElements;
 import gtPlusPlus.core.util.minecraft.FluidUtils;
 import gtnhlanth.common.register.WerkstoffMaterialPool;
 import ic2.api.item.IC2Items;
@@ -182,6 +183,17 @@ public class MaterialsRecipePool {
             .eut(RECIPE_EV)
             .duration(20 *25)
             .addTo(RecipeMaps.vacuumFreezerRecipes);
+
+
+        //二氧化硒
+        GTValues.RA.stdBuilder()
+            .itemInputs(MaterialsElements.getInstance().SELENIUM.getDust(1))
+            .fluidInputs(Materials.Oxygen.getGas(2000))
+            .itemOutputs(ThTMaterial.seleniumDioxide.get(dust,1))
+            .noOptimize()
+            .eut(RECIPE_LV)
+            .duration(20)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
 
     }
 }

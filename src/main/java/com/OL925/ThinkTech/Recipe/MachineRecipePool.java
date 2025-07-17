@@ -268,6 +268,18 @@ public class MachineRecipePool {
             .duration(20 * 35)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
 
+        //黄铁矿富集出硒
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Carbon.getDust(4),
+                Materials.Pyrite.getDust(128))
+            .itemOutputs(MaterialsElements.getInstance().SELENIUM.getDust(42))//硒粉
+            .fluidInputs(GTModHandler.getDistilledWater(24000),
+                Materials.HydricSulfide.getGas(12000))
+            .fluidOutputs(Materials.Water.getFluid(24000))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 24)
+            .addTo(ThTRecipeMap.GeneralChemicalFactory);
     }
 }
 //GTValues.RA.stdBuilder()

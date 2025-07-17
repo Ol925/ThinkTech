@@ -257,7 +257,7 @@ public class ItemRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Salt.getDust(64),Materials.MeatRaw.getDust(64))
             .itemOutputs(PROTEIN_BLOCK.get(16))
-            .fluidInputs(GTModHandler.getDistilledWater(16000))
+            .fluidInputs(GTModHandler.getDistilledWater(16000))//蒸馏水
             .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 *25)

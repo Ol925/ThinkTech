@@ -158,7 +158,7 @@ public class ThTMaterial implements Runnable {
             .addCells(),
         OffsetID + 12,
         TextureSet.SET_FLUID);
-    //预培养维生冷藏细菌液 232 228 186
+    //预培养维生冷藏细菌液
     public static final Werkstoff FreezedPreculturedBacterialSolution = new Werkstoff(
         new short[] { 232, 228, 186 },
         "FreezedPreculturedBacterialSolution",
@@ -180,6 +180,18 @@ public class ThTMaterial implements Runnable {
             .addCells(),
         OffsetID + 14,
         TextureSet.SET_FLUID);
+    //二氧化硒
+    public static final Werkstoff seleniumDioxide = new Werkstoff(
+        new short[] { 211, 204, 204 },
+        "seleniumDioxide",
+        subscriptNumbers("SeO2"),
+        new Werkstoff.Stats().setMeltingPoint(456),
+        Werkstoff.Types.MATERIAL,
+        new Werkstoff.GenerationFeatures().disable()
+            .onlyDust()
+            .addMolten(),
+        OffsetID + 15,
+        TextureSet.SET_DULL);
     @Override
     public void run() {}
 }
