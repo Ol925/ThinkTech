@@ -159,11 +159,11 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Carbon.getDust(6))
             .fluidInputs(getFluidStack("molten.teflon", 9))
-            .itemOutputs(ItemUtils.getItemStackWithMeta(true, "IC2:itemCarbonFiber", "RawCarbonFibre", 0, 10))
+            .itemOutputs(GTModHandler.getIC2Item("carbonFiber", 10L))
             .noOptimize()
             .eut(RECIPE_HV)
             .duration(20)
-            .addTo(RecipeMaps.assemblerRecipes);
+            .addTo(RecipeMaps.autoclaveRecipes);
 
         //特氟龙生产光缆&激光管
         GTValues.RA.stdBuilder()
@@ -191,7 +191,8 @@ public class OtherRecipePool {
 
         //硒用于增产三种橡胶
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Sulfur.getDust(1),
+            .itemInputs(GTUtility.getIntegratedCircuit(6),
+                Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
                 Materials.RawRubber.getDust(12))
             .fluidOutputs(Materials.Rubber.getMolten(3240))
@@ -201,7 +202,8 @@ public class OtherRecipePool {
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Sulfur.getDust(1),
+            .itemInputs(GTUtility.getIntegratedCircuit(6),
+                Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
                 Materials.Polydimethylsiloxane.getDust(12))
             .fluidOutputs(Materials.Silicone.getMolten(3240))
@@ -211,7 +213,8 @@ public class OtherRecipePool {
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Sulfur.getDust(1),
+            .itemInputs(GTUtility.getIntegratedCircuit(6),
+                Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
                 Materials.RawStyreneButadieneRubber.getDust(12))
             .fluidOutputs(Materials.StyreneButadieneRubber.getMolten(3240))
