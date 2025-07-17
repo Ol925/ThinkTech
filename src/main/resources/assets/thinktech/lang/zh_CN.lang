@@ -17,6 +17,7 @@ item.HMT.name=1,3,5,7-四氮杂金刚烷(乌洛托品)
 item.crystallineSubstrate.name=结晶基底
 item.pentachloride.name=五氯化磷
 item.sodiumAzide.name=叠氮化钠
+item.proteinBlock.name=凝固灭菌蛋白块
 
 #block
 tile.ControllerTier1.name=集成式分离控制核心T1
@@ -28,6 +29,9 @@ fluid.AlkaneWaterMixture.name=烷烃-水混合物
 fluid.Ethanedial.name=乙二醛
 fluid.Phenylmethanamine.name=苄胺
 fluid.Benzaldehyd.name=苯甲醛
+fluid.PreculturedBacterialSolution.name=预培养维生细菌液
+fluid.FreezedPreculturedBacterialSolution.name=预培养维生冷藏细菌液
+fluid.RawBioSludge=待处理浓缩菌泥
 
 #machine
 mte.common.tooltips1=使用消声仓可使机器真正消音！

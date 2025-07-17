@@ -17,6 +17,7 @@ item.HMT.name=1,3,5,7-Tetraazaadamantane(HMT)
 item.crystallineSubstrate.name=Crystalline Substrate
 item.pentachloride.name=Pentachloride
 item.sodiumAzide.name=Sodium Azide
+item.proteinBlock.name=Protein Block
 
 #block
 tile.ControllerTier1.name=Separation control core T1
@@ -28,6 +29,9 @@ fluid.AlkaneWaterMixture.name=Alkane Water Mixture
 fluid.Ethanedial.name=Ethanedial
 fluid.Phenylmethanamine.name=Phenylmethanamine
 fluid.Benzaldehyd.name=Benzaldehyde
+fluid.PreculturedBacterialSolution.name=Pre-cultured Bacterial Solution
+fluid.FreezedPreculturedBacterialSolution.name=Freezed Precultured Bacterial Solution
+fluid.RawBioSludge=Raw Bio Sludge
 
 #machine
 mte.common.tooltips1=The use of muffler can make the machine really silenced!

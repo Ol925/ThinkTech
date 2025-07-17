@@ -173,6 +173,16 @@ public class MaterialsRecipePool {
             .eut(RECIPE_MV)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //预培养维生冷藏细菌液
+        GTValues.RA.stdBuilder()
+            .fluidInputs(ThTMaterial.PreculturedBacterialSolution.getFluidOrGas(1000))
+            .fluidOutputs(ThTMaterial.FreezedPreculturedBacterialSolution.getFluidOrGas(1000))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 *25)
+            .addTo(RecipeMaps.vacuumFreezerRecipes);
+
     }
 }
 //GTValues.RA.stdBuilder()

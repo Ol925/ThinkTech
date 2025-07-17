@@ -8,13 +8,17 @@ import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.recipe.RecipeMaps;
+import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.core.material.MaterialsElements;
 
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static goodgenerator.items.GGMaterial.naquadahine;
+import static gregtech.api.enums.Mods.GalaxySpace;
+import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
 import static gregtech.api.enums.TierEU.*;
+import static net.minecraftforge.fluids.FluidRegistry.getFluidStack;
 
 public class MachineRecipePool {
     public void loadRecipes(){
@@ -70,7 +74,8 @@ public class MachineRecipePool {
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
         //铕掺杂
         GTValues.RA.stdBuilder()
-            .itemInputs(ThTList.CRYSTALLINESUBSTRATE.get(0),GTOreDictUnificator.get(OrePrefixes.dust, Materials.Europium, 0,false))
+            .itemInputs(ThTList.CRYSTALLINESUBSTRATE.get(0),
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Europium, 0,false))
             .itemOutputs(ItemList.Circuit_Silicon_Ingot4.get(16))
             .fluidInputs(Materials.Europium.getMolten(4608),
                 Materials.GalliumArsenide.getMolten(9216),
@@ -83,7 +88,8 @@ public class MachineRecipePool {
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
         //镅掺杂
         GTValues.RA.stdBuilder()
-            .itemInputs(ThTList.CRYSTALLINESUBSTRATE.get(0),GTOreDictUnificator.get(OrePrefixes.dust, Materials.Americium, 0,false))
+            .itemInputs(ThTList.CRYSTALLINESUBSTRATE.get(0),
+                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Americium, 0,false))
             .itemOutputs(ItemList.Circuit_Silicon_Ingot5.get(16))
             .fluidInputs(Materials.Americium.getMolten(9216),
                 Materials.GalliumArsenide.getMolten(18432),
@@ -217,5 +223,55 @@ public class MachineRecipePool {
             .eut(RECIPE_ZPM)
             .duration(20 * 120)
             .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
+
+        //预培养维生细菌液
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Calcium.getDust(12),
+                PROTEIN_BLOCK.get(8),
+                GTModHandler.getModItem(NewHorizonsCoreMod.ID, "GTNHBioItems", 8, 2),
+                Materials.Sugar.getDust(64))
+            .fluidInputs(Materials.Glycerol.getFluid(32000),
+                Materials.Ethanol.getFluid(16000))
+            .fluidOutputs(ThTMaterial.PreculturedBacterialSolution.getFluidOrGas(1000))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 *40)
+            .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
+        //预培养维生冷藏细菌液处理
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTModHandler.getModItem(GalaxySpace.ID, "item.UnknowCrystal", 4),
+                Materials.Osmiridium.getDust(1),
+                PROTEIN_BLOCK.get(16))
+            .itemOutputs(GTUtility.copyAmountUnsafe(320,ItemList.Circuit_Chip_Stemcell.get(64)))
+            .fluidInputs(ThTMaterial.FreezedPreculturedBacterialSolution.getFluidOrGas(100),
+                Materials.GrowthMediumSterilized.getFluid(800))
+            .fluidOutputs(ThTMaterial.RawBioSludge.getFluidOrGas(1000))
+            .noOptimize()
+            .eut(RECIPE_LuV)
+            .duration(20 * 115)
+            .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
+        //待处理浓缩菌泥
+        GTValues.RA.stdBuilder()
+            .itemOutputs(Materials.Calcium.getDust(1),
+                Materials.Salt.getDust(1),
+                GTModHandler.getModItem(NewHorizonsCoreMod.ID, "GTNHBioItems", 8, 0),
+                GTModHandler.getModItem(GalaxySpace.ID, "item.UnknowCrystal", 4))
+            .outputChances(10000,10000,10000,890)
+            .fluidInputs(ThTMaterial.RawBioSludge.getFluidOrGas(1000),
+                Materials.Glyceryl.getFluid(150),
+                Materials.Ethanol.getFluid(850))
+            .fluidOutputs(getFluidStack("bacterialsludge", 4500))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 35)
+            .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
     }
 }
+//GTValues.RA.stdBuilder()
+//            .noOptimize()
+//            .eut(RECIPE_)
+//            .duration()
+//            .addTo(RecipeMaps.);

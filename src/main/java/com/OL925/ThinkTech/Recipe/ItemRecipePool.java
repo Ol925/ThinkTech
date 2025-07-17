@@ -252,6 +252,16 @@ public class ItemRecipePool {
             .eut(RECIPE_ZPM)
             .duration(20 * 32)
             .addTo(RecipeMaps.assemblerRecipes);
+
+        //凝固灭菌蛋白块
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Salt.getDust(64),Materials.MeatRaw.getDust(64))
+            .itemOutputs(PROTEIN_BLOCK.get(16))
+            .fluidInputs(GTModHandler.getDistilledWater(16000))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 *25)
+            .addTo(RecipeMaps.autoclaveRecipes);
     }
 }
 //GTValues.RA.stdBuilder()

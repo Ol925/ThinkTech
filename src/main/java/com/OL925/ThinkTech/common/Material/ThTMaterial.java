@@ -92,7 +92,7 @@ public class ThTMaterial implements Runnable {
         TextureSet.SET_RUBY);
     //乙二醛
     public static final Werkstoff ethanedial = new Werkstoff(
-        new short[] { 182, 186, 44 },//颜色要改成黄色的
+        new short[] { 182, 186, 44 },
         "Ethanedial",
         subscriptNumbers("C2H2O2"),
         new Werkstoff.Stats(),
@@ -147,7 +147,39 @@ public class ThTMaterial implements Runnable {
             .addMolten(),
         OffsetID + 11,
         TextureSet.SET_DULL);
-    //
+    //预培养维生细菌液
+    public static final Werkstoff PreculturedBacterialSolution = new Werkstoff(
+        new short[] { 254, 243, 97 },
+        "PreculturedBacterialSolution",
+        subscriptNumbers("???"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 12,
+        TextureSet.SET_FLUID);
+    //预培养维生冷藏细菌液 232 228 186
+    public static final Werkstoff FreezedPreculturedBacterialSolution = new Werkstoff(
+        new short[] { 232, 228, 186 },
+        "FreezedPreculturedBacterialSolution",
+        subscriptNumbers("???"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 13,
+        TextureSet.SET_FLUID);
+    //待处理浓缩菌泥
+    public static final Werkstoff RawBioSludge = new Werkstoff(
+        new short[] { 8, 57, 1 },
+        "RawBioSludge",
+        subscriptNumbers("???"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 14,
+        TextureSet.SET_FLUID);
     @Override
     public void run() {}
 }
