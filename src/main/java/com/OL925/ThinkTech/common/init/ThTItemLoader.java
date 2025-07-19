@@ -16,5 +16,6 @@ public class ThTItemLoader {
         ThTList.CHIPTIER4.set(new HighComputingCowerChipTier4());
         ThTList.IRON_CATALYST.set(new IronCatalyst());
         ThTList.PROTEIN_BLOCK.set(new ProteinBlock());
+        ThTList.PWAFER.set(new pWafer());
     }
 }

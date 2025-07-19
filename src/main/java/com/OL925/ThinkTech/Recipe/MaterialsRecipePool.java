@@ -2,9 +2,11 @@ package com.OL925.ThinkTech.Recipe;
 
 import static bartworks.system.material.WerkstoffLoader.SodiumNitrate;
 import static gregtech.api.enums.Mods.GregTech;
+import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.OrePrefixes.dust;
 import static gregtech.api.enums.TierEU.*;
 import static gtPlusPlus.core.item.chemistry.RocketFuels.Formaldehyde;
+import static net.minecraftforge.fluids.FluidRegistry.getFluidStack;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 
@@ -195,9 +197,43 @@ public class MaterialsRecipePool {
             .duration(20)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
 
+        //营养液
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.RockSalt.getDust(4),
+                Materials.Phosphorus.getDust(1),
+                MaterialsElements.getInstance().IODINE.getDust(1))
+            .fluidInputs(Materials.Nitrogen.getGas(2000))
+            .fluidOutputs(ThTMaterial.nutrientSolution.getFluidOrGas(1000))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 3)
+            .addTo(RecipeMaps.mixerRecipes);
+
+        //碘粉
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.RockSalt.getDust(16))
+            .itemOutputs(Materials.Potassium.getDust(4),
+                MaterialsElements.getInstance().IODINE.getDust(3))
+            .fluidInputs(getFluidStack("sodiumpotassium",144),
+                GTModHandler.getDistilledWater(8000))
+            .fluidOutputs(Materials.Chlorine.getGas(1000))
+            .noOptimize()
+            .eut(RECIPE_HV)
+            .duration(20 * 30)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //营养液产肥料
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Calcite.getDust(1))
+            .fluidInputs(ThTMaterial.nutrientSolution.getFluidOrGas(1000))
+            .itemOutputs(GTModHandler.getModItem(IndustrialCraft2.ID,  "itemFertilizer", 40))
+            .noOptimize()
+            .eut(30)
+            .duration(20 * 5)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
     }
 }
-//GTValues.RA.stdBuilder()
+//        GTValues.RA.stdBuilder()
 //            .fluidInputs()
 //            .fluidOutputs()
 //            .noOptimize()

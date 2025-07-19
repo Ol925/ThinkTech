@@ -19,6 +19,7 @@ item.pentachloride.name=Pentachloride
 item.sodiumAzide.name=Sodium Azide
 item.proteinBlock.name=Protein Block
 item.seleniumDioxide.name=Selenium Dioxide
+item.pWafer.name=Pre Wafer
 
 #block
 tile.ControllerTier1.name=Separation control core T1
@@ -33,6 +34,8 @@ fluid.Benzaldehyd.name=Benzaldehyde
 fluid.PreculturedBacterialSolution.name=Pre-cultured Bacterial Solution
 fluid.FreezedPreculturedBacterialSolution.name=Freezed Precultured Bacterial Solution
 fluid.RawBioSludge=Raw Bio Sludge
+fluid.nutrientSolution=Nutrient Solution
+fluid.Photoresist=Photoresist
 
 #machine
 mte.common.tooltips1=The use of muffler can make the machine really silenced!

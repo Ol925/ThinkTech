@@ -192,6 +192,28 @@ public class ThTMaterial implements Runnable {
             .addMolten(),
         OffsetID + 15,
         TextureSet.SET_DULL);
+    //营养液
+    public static final Werkstoff nutrientSolution = new Werkstoff(
+        new short[] { 86, 115, 79 },
+        "nutrientSolution",
+        subscriptNumbers("???"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 16,
+        TextureSet.SET_FLUID);
+    //光刻胶
+    public static final Werkstoff Photoresist = new Werkstoff(
+        new short[] { 156, 238, 220 },
+        "Photoresist",
+        subscriptNumbers("???"),
+        new Werkstoff.Stats(),
+        Werkstoff.Types.MIXTURE,
+        new Werkstoff.GenerationFeatures().disable()
+            .addCells(),
+        OffsetID + 17,
+        TextureSet.SET_FLUID);
     @Override
     public void run() {}
 }

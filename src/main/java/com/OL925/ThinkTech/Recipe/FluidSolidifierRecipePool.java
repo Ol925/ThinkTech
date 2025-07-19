@@ -13,7 +13,6 @@ public class FluidSolidifierRecipePool {
 
         // add crashed ice to recipe
         GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Shape_Mold_Ball.get(0))
             .itemOutputs(Materials.Ice.getDust(64))
             .fluidInputs(Materials.Water.getFluid(8000))
             .noOptimize()

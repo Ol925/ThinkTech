@@ -16,6 +16,7 @@ public enum ThTList {
     CRYSTALLINESUBSTRATE,
     IRON_CATALYST,
     PROTEIN_BLOCK,
+    PWAFER,
 
     CHIPTIER1,
     CHIPTIER2,

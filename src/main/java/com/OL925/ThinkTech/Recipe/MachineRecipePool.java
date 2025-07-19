@@ -15,8 +15,7 @@ import gtPlusPlus.core.material.MaterialsElements;
 
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static goodgenerator.items.GGMaterial.naquadahine;
-import static gregtech.api.enums.Mods.GalaxySpace;
-import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.enums.TierEU.*;
 import static net.minecraftforge.fluids.FluidRegistry.getFluidStack;
 
@@ -280,6 +279,65 @@ public class MachineRecipePool {
             .eut(RECIPE_EV)
             .duration(20 * 24)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
+        //光刻胶
+        GTValues.RA.stdBuilder()
+            .itemInputs(MaterialsElements.getInstance().IODINE.getDust(1))
+            .fluidInputs(Materials.Oxygen.getGas(2000),
+                Materials.Chlorine.getGas(1000),
+                Materials.Ethylene.getGas(1000),
+                Materials.Benzene.getFluid(1000))
+            .fluidOutputs(ThTMaterial.Photoresist.getFluidOrGas(1000))
+            .noOptimize()
+            .eut(RECIPE_IV)
+            .duration(20 * 40)
+            .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
+        //光刻胶预处理五种晶圆
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Circuit_Silicon_Wafer.get(1))
+            .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
+            .itemOutputs(PWAFER.get(1))
+            .noOptimize()
+            .eut(RECIPE_LV)
+            .duration(20 * 25)
+            .addTo(RecipeMaps.laserEngraverRecipes);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Circuit_Silicon_Wafer2.get(1))
+            .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
+            .itemOutputs(PWAFER.get(1))
+            .noOptimize()
+            .eut(RECIPE_MV)
+            .duration(20 * 25)
+            .addTo(RecipeMaps.laserEngraverRecipes);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Circuit_Silicon_Wafer3.get(1))
+            .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
+            .itemOutputs(PWAFER.get(1))
+            .noOptimize()
+            .eut(RECIPE_EV)
+            .duration(20 * 25)
+            .addTo(RecipeMaps.laserEngraverRecipes);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Circuit_Silicon_Wafer4.get(1))
+            .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
+            .itemOutputs(PWAFER.get(1))
+            .noOptimize()
+            .eut(RECIPE_IV)
+            .duration(20 * 25)
+            .addTo(RecipeMaps.laserEngraverRecipes);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Circuit_Silicon_Wafer5.get(1))
+            .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
+            .itemOutputs(PWAFER.get(1))
+            .noOptimize()
+            .eut(RECIPE_LuV)
+            .duration(20 * 25)
+            .addTo(RecipeMaps.laserEngraverRecipes);
     }
 }
 //GTValues.RA.stdBuilder()
