@@ -47,7 +47,7 @@ public class ItemRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Ice.getDust(64))
             .fluidInputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(2000))
-            .itemOutputs(METHANE_CLATHRATE.get(16))
+            .itemOutputs(METHANE_CLATHRATE.get(10))
             .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 25)

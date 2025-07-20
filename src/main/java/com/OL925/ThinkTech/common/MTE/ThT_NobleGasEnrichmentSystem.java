@@ -205,6 +205,18 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
             .addInfo(translateToLocalFormatted("mte.NGES.tt3"))
             .addInfo(translateToLocalFormatted("mte.NGES.tt4"))
             .addInfo(translateToLocalFormatted("mte.NGES.tt5"))
+            .beginStructureBlock(7, 7, 7, false)
+            .addController("见结构预览")
+            .addCasingInfoExactly("塑料混凝土方块",40,false)
+            .addCasingInfoExactly("钢框架",56,false)
+            .addCasingInfoExactly("防爆玻璃",4,false)
+            .addCasingInfoExactly("格栅机械方块",12,false)
+            .addCasingInfoExactly("洁净不锈钢机械方块",29,false)
+            .addCasingInfoExactly("脱氧钢机械方块",33,false)
+            .addCasingInfoExactly("聚四氟乙烯管道方块",4,false)
+            .addInputBus("任意洁净不锈钢机械方块",1)
+            .addDynamoHatch("任意洁净不锈钢机械方块",1)
+            .addOutputHatch("输出稀有气体,任意洁净不锈钢机械方块",1)
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;

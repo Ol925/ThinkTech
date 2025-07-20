@@ -253,6 +253,23 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips8"))
             .addInfo(translateToLocalFormatted("mte.CSCF.tooltips9"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
+            .beginStructureBlock(6, 8, 7, false)
+            .addController("正面第二层中央")
+            .addCasingInfoExactly("洁净不锈钢机械方块",57,false)
+            .addCasingInfoExactly("格栅机械方块",9,false)
+            .addCasingInfoExactly("钢框架",51,false)
+            .addCasingInfoExactly("脱氧钢机械方块",10,false)
+            .addCasingInfoExactly("不锈钢框架",4,false)
+            .addCasingInfoExactly("防爆玻璃",8,false)
+            .addCasingInfoExactly("聚四氟乙烯管道方块",3,false)
+            .addCasingInfoExactly("漏斗",1,false)
+            .addCasingInfoExactly("石台阶",1,false)
+            .addMufflerHatch("任意洁净不锈钢机械方块")
+            .addInputBus("任意洁净不锈钢机械方块")
+            .addInputHatch("任意洁净不锈钢机械方块")
+            .addOutputHatch("任意洁净不锈钢机械方块")
+            .addOutputBus("任意洁净不锈钢机械方块")
+            .addEnergyHatch("任意洁净不锈钢机械方块")
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;

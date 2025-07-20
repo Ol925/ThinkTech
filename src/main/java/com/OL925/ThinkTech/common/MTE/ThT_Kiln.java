@@ -229,6 +229,12 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
             .addInfo(translateToLocalFormatted("mte.kiln.tooltips3"))
             .addInfo(translateToLocalFormatted("mte.Kiln.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.Kiln.tooltips5"))
+            .beginStructureBlock(6, 5, 5, false)
+            .addController("正面中央")
+            .addCasingInfoExactly("耐火砖",64,false)
+            .addCasingInfoExactly("石台阶",8,false)
+            .addCasingInfoMin("输入总线(蒸汽)",1,false)
+            .addCasingInfoMin("输出总线(蒸汽)",1,false)
             .toolTipFinisher("§d§l§oThinkTech");
         return tt;
     }

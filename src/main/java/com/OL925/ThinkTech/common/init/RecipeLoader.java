@@ -58,7 +58,7 @@ public class RecipeLoader {
 
             @Override
             public int getBurnTime(ItemStack fuel) {
-                return ThTList.METHANE_CLATHRATE.getItem() == fuel.getItem() ? 30000 : 0;
+                return ThTList.METHANE_CLATHRATE.getItem() == fuel.getItem() ? 100000 : 0;
             }
         });
     }
