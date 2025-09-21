@@ -25,7 +25,6 @@ public class ThTRecipeMap {
         .of("tht.recipe.CSCF")
         .maxIO(3, 2, 4, 1)
         .progressBar(GTUITextures.PROGRESSBAR_ARROW_MULTIPLE)
-        .disableOptimize()
         .frontend(LargeNEIFrontend::new)
         .build();
 
@@ -33,7 +32,6 @@ public class ThTRecipeMap {
         .of("tht.recipe.SAF")
         .maxIO(12, 12, 9, 9)
         .progressBar(GTUITextures.PROGRESSBAR_ARROW_MULTIPLE)
-        .disableOptimize()
         .frontend(LargeNEIFrontend::new)
         .build();
 
@@ -41,7 +39,6 @@ public class ThTRecipeMap {
         .of("tht.recipe.kiln")
         .maxIO(6, 6, 0, 0)
         .progressBar(GTUITextures.PROGRESSBAR_ARROW_MULTIPLE)
-        .disableOptimize()
         .frontend(LargeNEIFrontend::new)
         .build();
 
@@ -49,7 +46,6 @@ public class ThTRecipeMap {
         .of("tht.recipe.NGES")
         .maxIO(3, 0, 9, 9)
         .progressBar(GTUITextures.PROGRESSBAR_BATH)
-        .disableOptimize()
         .frontend(LargeNEIFrontend::new)
         .build();
 }

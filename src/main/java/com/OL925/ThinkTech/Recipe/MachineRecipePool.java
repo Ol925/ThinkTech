@@ -29,7 +29,6 @@ public class MachineRecipePool {
                 Materials.Hydrogen.getGas(64000),
                 Materials.GalliumArsenide.getMolten(2304))
             .fluidOutputs(Materials.HydrochloricAcid.getFluid(64000))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20 *450)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
@@ -42,7 +41,6 @@ public class MachineRecipePool {
                 Materials.GalliumArsenide.getMolten(4608),
                 ThTMaterial.pentachloride.getMolten(8000))
             .fluidOutputs(Materials.HydrochloricAcid.getFluid(64000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 *250)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
@@ -55,7 +53,6 @@ public class MachineRecipePool {
                 Materials.SiliconTetrachloride.getFluid(128000),
                 Materials.Hydrogen.getGas(256000))
             .fluidOutputs(Materials.HydrochloricAcid.getFluid(128000))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20*400)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
@@ -67,7 +64,6 @@ public class MachineRecipePool {
                 Materials.SiliconTetrachloride.getFluid(128000),
                 Materials.Hydrogen.getGas(256000))
             .fluidOutputs(Materials.HydrochloricAcid.getFluid(128000))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20*125)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
@@ -81,7 +77,6 @@ public class MachineRecipePool {
                 Materials.SiliconTetrachloride.getFluid(128000),
                 Materials.Hydrogen.getGas(256000))
             .fluidOutputs(Materials.HydrochloricAcid.getFluid(128000))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20*690)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
@@ -95,7 +90,6 @@ public class MachineRecipePool {
                 Materials.SiliconTetrachloride.getFluid(256000),
                 Materials.Hydrogen.getGas(512000))
             .fluidOutputs(Materials.HydrochloricAcid.getFluid(256000))
-            .noOptimize()
             .eut(RECIPE_LuV)
             .duration(20*1000)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
@@ -104,7 +98,6 @@ public class MachineRecipePool {
             .itemInputs(ThTList.IRON_CATALYST.get(0))
             .fluidInputs(Materials.Hydrogen.getGas(240000),Materials.Nitrogen.getGas(80000))
             .fluidOutputs(Materials.Ammonia.getGas(80000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 120)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
@@ -115,7 +108,6 @@ public class MachineRecipePool {
             .itemOutputs(GTUtility.copyAmountUnsafe(64 * 2,ThTMaterial.sodiumAzide.get(OrePrefixes.dust)))
             .fluidInputs(Materials.Ammonia.getGas(32000 * 4),Materials.Nitrogen.getGas(16000 *4))
             .fluidOutputs(Materials.Hydrogen.getGas(48000 * 4))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 8)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
@@ -127,7 +119,6 @@ public class MachineRecipePool {
                 Materials.Brick.getDust(32),
                 Materials.Clay.getDust(32))
             .itemOutputs(ItemList.Casing_Firebricks.get(32))
-            .noOptimize()
             .eut(0)
             .duration(20 * 44)
             .addTo(ThTRecipeMap.Kiln);
@@ -136,7 +127,6 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Coal.getGems(64))
             .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
-            .noOptimize()
             .eut(0)
             .duration(20 * 48)
             .addTo(ThTRecipeMap.Kiln);
@@ -145,7 +135,6 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Coal.getDust(64))
             .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
-            .noOptimize()
             .eut(0)
             .duration(20 * 30)
             .addTo(ThTRecipeMap.Kiln);
@@ -153,7 +142,6 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Charcoal.getGems(64))
             .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
-            .noOptimize()
             .eut(0)
             .duration(20 * 48)
             .addTo(ThTRecipeMap.Kiln);
@@ -162,7 +150,6 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Clay.getDust(64),Materials.Clay.getDust(64),Materials.Lignite.getGems(64))
             .itemOutputs(Materials.Brick.getIngots(64),Materials.Brick.getIngots(64))
-            .noOptimize()
             .eut(0)
             .duration(20 * 60)
             .addTo(ThTRecipeMap.Kiln);
@@ -190,7 +177,6 @@ public class MachineRecipePool {
                 Materials.Helium.getGas(2000*4),
                 WerkstoffLoader.Krypton.getFluidOrGas(1000*4),
                 WerkstoffLoader.Xenon.getFluidOrGas(500*4))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 90)
             .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
@@ -204,7 +190,6 @@ public class MachineRecipePool {
                 Materials.Helium.getGas(2000*8),
                 WerkstoffLoader.Krypton.getFluidOrGas(1000*8),
                 WerkstoffLoader.Xenon.getFluidOrGas(500*32))
-            .noOptimize()
             .eut(RECIPE_LuV)
             .duration(20 * 90)
             .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
@@ -218,7 +203,6 @@ public class MachineRecipePool {
                 Materials.Helium.getGas(2000*32),
                 WerkstoffLoader.Krypton.getFluidOrGas(1000*32),
                 WerkstoffLoader.Xenon.getFluidOrGas(500*128))
-            .noOptimize()
             .eut(RECIPE_ZPM)
             .duration(20 * 120)
             .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
@@ -232,7 +216,6 @@ public class MachineRecipePool {
             .fluidInputs(Materials.Glycerol.getFluid(32000),
                 Materials.Ethanol.getFluid(16000))
             .fluidOutputs(ThTMaterial.PreculturedBacterialSolution.getFluidOrGas(1000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 *40)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
@@ -246,7 +229,6 @@ public class MachineRecipePool {
             .fluidInputs(ThTMaterial.FreezedPreculturedBacterialSolution.getFluidOrGas(100),
                 Materials.GrowthMediumSterilized.getFluid(800))
             .fluidOutputs(ThTMaterial.RawBioSludge.getFluidOrGas(1000))
-            .noOptimize()
             .eut(RECIPE_LuV)
             .duration(20 * 115)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
@@ -262,7 +244,6 @@ public class MachineRecipePool {
                 Materials.Glyceryl.getFluid(150),
                 Materials.Ethanol.getFluid(850))
             .fluidOutputs(getFluidStack("bacterialsludge", 4500))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20 * 35)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
@@ -275,7 +256,6 @@ public class MachineRecipePool {
             .fluidInputs(GTModHandler.getDistilledWater(24000),
                 Materials.HydricSulfide.getGas(12000))
             .fluidOutputs(Materials.Water.getFluid(24000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 24)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
@@ -288,7 +268,6 @@ public class MachineRecipePool {
                 Materials.Ethylene.getGas(1000),
                 Materials.Benzene.getFluid(1000))
             .fluidOutputs(ThTMaterial.Photoresist.getFluidOrGas(1000))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20 * 40)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
@@ -298,7 +277,6 @@ public class MachineRecipePool {
             .itemInputs(ItemList.Circuit_Silicon_Wafer.get(1))
             .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
             .itemOutputs(PWAFER.get(1))
-            .noOptimize()
             .eut(RECIPE_LV)
             .duration(20 * 25)
             .addTo(RecipeMaps.laserEngraverRecipes);
@@ -307,7 +285,6 @@ public class MachineRecipePool {
             .itemInputs(ItemList.Circuit_Silicon_Wafer2.get(1))
             .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
             .itemOutputs(PWAFER.get(1))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 25)
             .addTo(RecipeMaps.laserEngraverRecipes);
@@ -316,7 +293,6 @@ public class MachineRecipePool {
             .itemInputs(ItemList.Circuit_Silicon_Wafer3.get(1))
             .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
             .itemOutputs(PWAFER.get(1))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 25)
             .addTo(RecipeMaps.laserEngraverRecipes);
@@ -325,7 +301,6 @@ public class MachineRecipePool {
             .itemInputs(ItemList.Circuit_Silicon_Wafer4.get(1))
             .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
             .itemOutputs(PWAFER.get(1))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20 * 25)
             .addTo(RecipeMaps.laserEngraverRecipes);
@@ -334,7 +309,6 @@ public class MachineRecipePool {
             .itemInputs(ItemList.Circuit_Silicon_Wafer5.get(1))
             .fluidInputs(ThTMaterial.Photoresist.getFluidOrGas(200))
             .itemOutputs(PWAFER.get(1))
-            .noOptimize()
             .eut(RECIPE_LuV)
             .duration(20 * 25)
             .addTo(RecipeMaps.laserEngraverRecipes);

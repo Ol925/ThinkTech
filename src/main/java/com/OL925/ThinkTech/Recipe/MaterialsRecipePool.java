@@ -5,7 +5,7 @@ import static gregtech.api.enums.Mods.GregTech;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.OrePrefixes.dust;
 import static gregtech.api.enums.TierEU.*;
-import static gtPlusPlus.core.item.chemistry.RocketFuels.Formaldehyde;
+import static gtPlusPlus.core.fluids.GTPPFluids.*;
 import static net.minecraftforge.fluids.FluidRegistry.getFluidStack;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
@@ -36,7 +36,6 @@ public class MaterialsRecipePool {
             .itemInputs(GTUtility.getIntegratedCircuit(24))
             .fluidInputs(Materials.NatruralGas.getGas(4000), GTModHandler.getSteam(20000))
             .fluidOutputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(12000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 10)
             .addTo(GTPPRecipeMaps.mixerNonCellRecipes);
@@ -47,7 +46,6 @@ public class MaterialsRecipePool {
             .itemOutputs(IC2Items.getItem("cell"))
             .fluidInputs(GTModHandler.getSteam(5000))
             .fluidOutputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(3000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 4)
             .addTo(RecipeMaps.mixerRecipes);
@@ -58,7 +56,6 @@ public class MaterialsRecipePool {
             .itemOutputs(IC2Items.getItem("cell"))
             .fluidInputs(Materials.NatruralGas.getGas(1000))
             .fluidOutputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(3000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 4)
             .addTo(RecipeMaps.mixerRecipes);
@@ -67,7 +64,6 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Toluene.getFluid(1000), Materials.NitricAcid.getFluid(3000))
             .fluidOutputs(ThTMaterial.trinitrotoluene.getMolten(1000), Materials.Water.getFluid(3000))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20 * 3)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -76,7 +72,6 @@ public class MaterialsRecipePool {
             .itemInputs(GTUtility.getIntegratedCircuit(24))
             .fluidInputs(Materials.Toluene.getFluid(8000), Materials.NitricAcid.getFluid(24000))
             .fluidOutputs(ThTMaterial.trinitrotoluene.getMolten(8000), Materials.Water.getFluid(24000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -86,7 +81,6 @@ public class MaterialsRecipePool {
             .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, MaterialsKevlar.Pentaerythritol, 4))
             .fluidInputs(Materials.NitricAcid.getFluid(4000))
             .fluidOutputs(ThTMaterial.PETN.getMolten(1000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 8)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -97,7 +91,6 @@ public class MaterialsRecipePool {
             .fluidInputs(ThTMaterial.phenylmethanamine.getFluidOrGas(6000),ThTMaterial.ethanedial.getFluidOrGas(3000),
                 Materials.Hydrogen.getGas(2000),Materials.NitricAcid.getFluid(6000))
             .fluidOutputs(ThTMaterial.HNIW.getMolten(1000))
-            .noOptimize()
             .eut(RECIPE_ZPM)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -106,7 +99,6 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Ammonia.getGas(4000), FluidUtils.getFluidStack(Formaldehyde, 6000))
             .fluidOutputs(ThTMaterial.HMT.getMolten(1000),Materials.Water.getFluid(6000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 2)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -116,7 +108,6 @@ public class MaterialsRecipePool {
             .fluidInputs(ThTMaterial.HMT.getMolten(1000),Materials.NitricAcid.getFluid(4000), WerkstoffMaterialPool.AmmoniumNitrate.getFluidOrGas(2000),
         new FluidStack(FluidRegistry.getFluid("molten.aceticanhydride"), 6000))
             .fluidOutputs(ThTMaterial.HMX.getMolten(1500))
-            .noOptimize()
             .eut(RECIPE_LuV)
             .duration(20 * 2)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -125,7 +116,6 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(MaterialsKevlar.Ethyleneglycol.getFluid(8000),Materials.Oxygen.getGas(8000))
             .fluidOutputs(ThTMaterial.ethanedial.getFluidOrGas(8000),Materials.Water.getFluid(8000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -134,7 +124,6 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Toluene.getFluid(4000),Materials.Oxygen.getGas(4000))
             .fluidOutputs(ThTMaterial.benzaldehyd.getFluidOrGas(4000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 3)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -143,7 +132,6 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(ThTMaterial.benzaldehyd.getFluidOrGas(4000),Materials.Ammonia.getGas(4000) )
             .fluidOutputs(ThTMaterial.phenylmethanamine.getFluidOrGas(4000))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -152,7 +140,6 @@ public class MaterialsRecipePool {
             .itemInputs(GTUtility.getIntegratedCircuit(5),Materials.Phosphorus.getDust(1))
             .fluidInputs(Materials.Chlorine.getGas(5000))
             .itemOutputs(ThTMaterial.pentachloride.get(dust,1))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(30)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -162,7 +149,6 @@ public class MaterialsRecipePool {
             .itemOutputs(SodiumNitrate.get(dust, 64),ThTMaterial.leadAzide.get(OrePrefixes.dust,64))
             .fluidInputs(Materials.NitricAcid.getFluid(128000))
             .fluidOutputs(Materials.Hydrogen.getGas(128000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 3)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -172,7 +158,6 @@ public class MaterialsRecipePool {
             .itemOutputs(ThTMaterial.sodiumAzide.get(OrePrefixes.dust,32))
             .fluidInputs(Materials.Ammonia.getGas(32000),Materials.Nitrogen.getGas(16000))
             .fluidOutputs(Materials.Hydrogen.getGas(48000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -181,7 +166,6 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(ThTMaterial.PreculturedBacterialSolution.getFluidOrGas(1000))
             .fluidOutputs(ThTMaterial.FreezedPreculturedBacterialSolution.getFluidOrGas(1000))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 *25)
             .addTo(RecipeMaps.vacuumFreezerRecipes);
@@ -192,7 +176,6 @@ public class MaterialsRecipePool {
             .itemInputs(MaterialsElements.getInstance().SELENIUM.getDust(1))
             .fluidInputs(Materials.Oxygen.getGas(2000))
             .itemOutputs(ThTMaterial.seleniumDioxide.get(dust,1))
-            .noOptimize()
             .eut(RECIPE_LV)
             .duration(20)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -204,7 +187,6 @@ public class MaterialsRecipePool {
                 MaterialsElements.getInstance().IODINE.getDust(1))
             .fluidInputs(Materials.Nitrogen.getGas(2000))
             .fluidOutputs(ThTMaterial.nutrientSolution.getFluidOrGas(1000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 3)
             .addTo(RecipeMaps.mixerRecipes);
@@ -217,7 +199,6 @@ public class MaterialsRecipePool {
             .fluidInputs(getFluidStack("sodiumpotassium",144),
                 GTModHandler.getDistilledWater(8000))
             .fluidOutputs(Materials.Chlorine.getGas(1000))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20 * 30)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -227,7 +208,6 @@ public class MaterialsRecipePool {
             .itemInputs(Materials.Calcite.getDust(1))
             .fluidInputs(ThTMaterial.nutrientSolution.getFluidOrGas(1000))
             .itemOutputs(GTModHandler.getModItem(IndustrialCraft2.ID,  "itemFertilizer", 40))
-            .noOptimize()
             .eut(30)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);

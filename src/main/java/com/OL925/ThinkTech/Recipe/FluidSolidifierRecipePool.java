@@ -15,7 +15,6 @@ public class FluidSolidifierRecipePool {
         GTValues.RA.stdBuilder()
             .itemOutputs(Materials.Ice.getDust(64))
             .fluidInputs(Materials.Water.getFluid(8000))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 5)
             .addTo(RecipeMaps.fluidSolidifierRecipes);

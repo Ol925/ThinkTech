@@ -24,7 +24,6 @@ public class implosionGeneratorFlueRecipe {
             GTValues.RA.stdBuilder()
                 .fluidInputs(inputs[i])
                 .fluidOutputs()
-                .noOptimize()
                 .eut(0)
                 .metadata(LNG_BASIC_OUTPUT, IGFuelVoltage[i])
                 .duration(IGFuelTime[i])

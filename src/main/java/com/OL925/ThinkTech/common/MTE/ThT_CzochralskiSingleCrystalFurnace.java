@@ -127,7 +127,8 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
         }.setMaxParallelSupplier(this::getMaxParallelRecipes);
     }
 
-    private int getMaxParallelRecipes() {
+    @Override
+    public int getMaxParallelRecipes() {
         return 1 + 4 * mMachineTier;
     };
 
@@ -186,11 +187,6 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
     }
 
     @Override
-    public boolean explodesOnComponentBreak(ItemStack aStack) {
-        return false;
-    }
-
-    @Override
     public boolean isCorrectMachinePart(ItemStack aStack) {
         return true;
     }
@@ -208,7 +204,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 6, 0, elementBudget, env, false, true);
+        return survivalBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 6, 0, elementBudget, env, false, true);
     }
     //STAINLESS_STEEL_MACHINE_CASING  OVERLAY_FRONT_OIL_CRACKER_ACTIVE  OVERLAY_FRONT_OIL_CRACKER_GLOW
     @Override
