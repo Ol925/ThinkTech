@@ -314,8 +314,9 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
         }.setMaxParallelSupplier(this::getMaxParallelRecipes);
     }
 
-    private int getMaxParallelRecipes() {
-        return 8 * mCoilLevel.getLevel();
+    @Override
+    public int getMaxParallelRecipes() {
+        return 8 * mCoilLevel.getTier();
     }
 
     protected float getSpeedBonus() {
@@ -325,7 +326,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     }
 
     private void countSpeedBonus(){
-        double mSB = 1.0 - ((mCoilLevel.getLevel() - 1) * 0.1);
+        double mSB = 1.0 - ((mCoilLevel.getTier() - 1) * 0.1);
         if (mSB <=0){
             mSpeedBonus = 0.01;
         }else mSpeedBonus = mSB;
@@ -339,7 +340,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 5, 11, 2, elementBudget, env, false, true);
+        return survivalBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 5, 11, 2, elementBudget, env, false, true);
     }
 
     @Override
@@ -406,11 +407,6 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     public int getDamageToComponent(ItemStack aStack) {
         return 0;
-    }
-
-    @Override
-    public boolean explodesOnComponentBreak(ItemStack aStack) {
-        return false;
     }
 
     public void setCoilLevel(HeatingCoilLevel aCoilLevel) {

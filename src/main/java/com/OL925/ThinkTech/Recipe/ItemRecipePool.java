@@ -48,7 +48,6 @@ public class ItemRecipePool {
             .itemInputs(Materials.Ice.getDust(64))
             .fluidInputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(2000))
             .itemOutputs(METHANE_CLATHRATE.get(10))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20 * 25)
             .addTo(RecipeMaps.autoclaveRecipes);
@@ -58,7 +57,6 @@ public class ItemRecipePool {
             .itemInputs(HALF_BRIQUETTE.get(2))
             .fluidInputs(Materials.Milk.getFluid(1000))
             .itemOutputs(SUPEROREO.get(4))
-            .noOptimize()
             .eut(RECIPE_MV)
             .duration(20)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -74,7 +72,6 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.wireFine, Materials.StainlessSteel, 16))
             .fluidInputs(Materials.SolderingAlloy.getMolten(2304))
             .itemOutputs(ExplosiveGenerator.get(1))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20 * 16)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -86,7 +83,6 @@ public class ItemRecipePool {
                 GTModHandler.getIC2Item("carbonFiber", 8L))
             .fluidInputs(Materials.SiliconSG.getMolten(1296))
             .itemOutputs(CRYSTALLINESUBSTRATE.get(1))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 16)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -101,7 +97,6 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 8))
             .fluidInputs(Materials.StainlessSteel.getMolten(1152))
             .itemOutputs(CzochralskiSingleCrystalFurnace.get(1))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20 * 20)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -114,7 +109,6 @@ public class ItemRecipePool {
             ItemList.Tool_DataStick.get(2))
             .itemOutputs(CHIPTIER1.get(1))
             .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 15)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -127,7 +121,6 @@ public class ItemRecipePool {
                 ItemList.Tool_DataStick.get(8))
             .itemOutputs(CHIPTIER2.get(1))
             .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20 * 20)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -140,7 +133,6 @@ public class ItemRecipePool {
                 ItemList.Tool_DataStick.get(16))
             .itemOutputs(CHIPTIER3.get(1))
             .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
-            .noOptimize()
             .eut(RECIPE_LuV)
             .duration(20 * 20)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -153,7 +145,6 @@ public class ItemRecipePool {
                 ItemList.Tool_DataStick.get(32))
             .itemOutputs(CHIPTIER4.get(1))
             .fluidInputs(Materials.SolderingAlloy.getMolten(9216))
-            .noOptimize()
             .eut(RECIPE_ZPM)
             .duration(20 *20)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -166,7 +157,6 @@ public class ItemRecipePool {
                 Materials.Magnesia.getDust(5),
                 Materials.CobaltOxide.getDust(3))
             .itemOutputs(IRON_CATALYST.get(1))
-            .noOptimize()
             .eut(RECIPE_HV)
             .duration(20 * 10)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -180,7 +170,6 @@ public class ItemRecipePool {
                 ItemList.Electric_Piston_HV.get(2))
             .itemOutputs(GeneralFactory.get(1))
             .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(2304))
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 * 15)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -197,7 +186,6 @@ public class ItemRecipePool {
                 ItemList.Electric_Piston_EV.get(16))
             .fluidInputs()
             .itemOutputs(NobleGasEnrichmentSystem.get(1))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20 * 114)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -213,7 +201,6 @@ public class ItemRecipePool {
                 ItemList.Cover_Screen.get(4)
                 )
             .itemOutputs(controllerTier1.get(1))
-            .noOptimize()
             .eut(RECIPE_IV)
             .duration(20 * 32)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -230,7 +217,6 @@ public class ItemRecipePool {
             )
             .fluidInputs(Materials.PulsatingIron.getMolten(1152))
             .itemOutputs(controllerTier2.get(1))
-            .noOptimize()
             .eut(RECIPE_LuV)
             .duration(20 * 32)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -248,7 +234,6 @@ public class ItemRecipePool {
             )
             .itemOutputs(controllerTier3.get(1))
             .fluidInputs(Materials.Sunnarium.getMolten(144))
-            .noOptimize()
             .eut(RECIPE_ZPM)
             .duration(20 * 32)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -258,7 +243,6 @@ public class ItemRecipePool {
             .itemInputs(Materials.Salt.getDust(64),Materials.MeatRaw.getDust(64))
             .itemOutputs(PROTEIN_BLOCK.get(16))
             .fluidInputs(GTModHandler.getDistilledWater(16000))//蒸馏水
-            .noOptimize()
             .eut(RECIPE_EV)
             .duration(20 *25)
             .addTo(RecipeMaps.autoclaveRecipes);

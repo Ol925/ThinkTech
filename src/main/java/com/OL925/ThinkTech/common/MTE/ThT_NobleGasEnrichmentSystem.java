@@ -170,7 +170,8 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
         }.setMaxParallelSupplier(this::getMaxParallelRecipes);
     }
 
-    private int getMaxParallelRecipes() {
+    @Override
+    public int getMaxParallelRecipes() {
         if(MTier == 0){
             switch (controllerTier){
                 case 1:
@@ -258,11 +259,6 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
     }
 
     @Override
-    public boolean explodesOnComponentBreak(ItemStack aStack) {
-        return false;
-    }
-
-    @Override
     public IMetaTileEntity newMetaEntity(IGregTechTileEntity aTileEntity) {
         return new ThT_NobleGasEnrichmentSystem(this.mName);
     }
@@ -270,7 +266,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 4, 1, elementBudget, env, false, true);
+        return survivalBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 4, 1, elementBudget, env, false, true);
     }
 
     @SideOnly(Side.CLIENT)

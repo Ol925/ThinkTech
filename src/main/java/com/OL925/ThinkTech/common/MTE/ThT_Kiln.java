@@ -1,7 +1,6 @@
 package com.OL925.ThinkTech.common.MTE;
 
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
-import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 
@@ -13,11 +12,8 @@ import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.enums.SoundResource;
-import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
 
-import gregtech.api.objects.GTRenderedTexture;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTESteamMultiBase;
-import gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.processing.steam.MTESteamWasher;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
 
@@ -28,7 +24,6 @@ import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
 import gregtech.api.GregTechAPI;
 import gregtech.api.enums.Textures;
-import gregtech.api.interfaces.ISecondaryDescribable;
 import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
@@ -151,11 +146,6 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     }
 
     @Override
-    public boolean explodesOnComponentBreak(ItemStack aStack) {
-        return false;
-    }
-
-    @Override
     public boolean isCorrectMachinePart(ItemStack aStack) {
         return true;
     }
@@ -179,7 +169,7 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 2, 3, 0, elementBudget, env, false, true);
+        return survivalBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 2, 3, 0, elementBudget, env, false, true);
     }
 
     @Override
@@ -206,12 +196,12 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     }
 
     @Override
-    protected GTRenderedTexture getFrontOverlay() {
+    protected ITexture getFrontOverlay() {
         return null;
     }
 
     @Override
-    protected GTRenderedTexture getFrontOverlayActive() {
+    protected ITexture getFrontOverlayActive() {
         return null;
     }
 

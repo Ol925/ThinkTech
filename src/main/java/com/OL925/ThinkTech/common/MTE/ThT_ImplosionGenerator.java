@@ -224,7 +224,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     @Override
     public int survivalConstruct(ItemStack stackSize, int elementBudget, ISurvivalBuildEnvironment env) {
         if (mMachine) return -1;
-        return survivialBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 4, 0, elementBudget, env, false, true);
+        return survivalBuildPiece(STRUCTURE_PIECE_MAIN, stackSize, 3, 4, 0, elementBudget, env, false, true);
     }
 
     // 设置机器主方块贴图
@@ -293,11 +293,6 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 //    }
 
     @Override
-    public boolean explodesOnComponentBreak(ItemStack arg0) {
-        return false;
-    }
-
-    @Override
     public int getDamageToComponent(ItemStack arg0) {
         return 0;
     }
@@ -329,7 +324,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     protected void setEnergyUsage(ProcessingLogic processingLogic) {
-        lEUt = (long) (lEUt * (1 + 0.25 * (mCoilLevel.getLevel() - 1)));
+        lEUt = (long) (lEUt * (1 + 0.25 * (mCoilLevel.getTier() - 1)));
     }
 
     @Override
