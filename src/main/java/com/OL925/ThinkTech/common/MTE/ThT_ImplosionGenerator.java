@@ -14,6 +14,10 @@ import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import javax.annotation.Nonnull;
 
+import com.gtnewhorizons.modularui.common.widget.DynamicPositionedColumn;
+import com.gtnewhorizons.modularui.common.widget.FakeSyncWidget;
+import com.gtnewhorizons.modularui.common.widget.SlotWidget;
+import com.gtnewhorizons.modularui.common.widget.TextWidget;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -58,6 +62,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     private static IStructureDefinition<ThT_ImplosionGenerator> STRUCTURE_DEFINITION = null;
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
+    private static long displayGenerating;
 
     // 构造方法，三个形参分别是物品id,注册名,本地化名
     public ThT_ImplosionGenerator(int id, String name, String nameRegional) {
@@ -84,7 +89,8 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                 //
                 .addElement(
                     'B',
-                    buildHatchAdder(ThT_ImplosionGenerator.class).atLeast(Dynamo, InputHatch, Muffler)
+                    buildHatchAdder(ThT_ImplosionGenerator.class)
+                        .atLeast(Dynamo, InputHatch, Muffler)
                         .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
                         .dot(1)
                         .buildAndChain(GregTechAPI.sBlockCasings2, 0))
@@ -92,23 +98,23 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                 .addElement('D', ofBlock(GregTechAPI.sBlockCasings4, 1))
                 .addElement(
                     'E',
-                    GTStructureUtility
-                        .ofCoil(ThT_ImplosionGenerator::setCoilLevel, ThT_ImplosionGenerator::getCoilLevel))
+                    withChannel("coil", GTStructureUtility.ofCoil(ThT_ImplosionGenerator::setCoilLevel, ThT_ImplosionGenerator::getCoilLevel)))
                 .addElement('F', ofFrame(Materials.StainlessSteel))
                 .addElement(
                     'G',
-                    ofBlocksTiered(
-                        ThT_ImplosionGenerator::getTierOfStone,
-                        ImmutableList.of(
-                            Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯HV
-                            Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // PETN EV
-                            Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 硝化甘油 IV
-                            Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 奥克托今 LUV
-                            Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20 ZPM
-                        ),
-                        0,
-                        (m, t) -> m.mBlockTier = t,
-                        m -> m.mBlockTier))
+                    withChannel("stone",
+                        ofBlocksTiered(
+                            ThT_ImplosionGenerator::getTierOfStone,
+                            ImmutableList.of(
+                                Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯HV
+                                Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // PETN EV
+                                Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 硝化甘油 IV
+                                Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 奥克托今 LUV
+                                Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20 ZPM
+                            ),
+                            0,
+                            (m, t) -> m.mBlockTier = t,
+                            m -> m.mBlockTier)))
                 .addElement('H', ofBlockAnyMeta(iron_bars))
                 .build();
         }
@@ -328,6 +334,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
 
     @Override
     public boolean addEnergyOutput(long aEU) {
+        displayGenerating = aEU;
         if (aEU <= 0) {
             return true;
         }
@@ -393,4 +400,15 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return false;
     }
 
+    @Override
+    protected void drawTexts(DynamicPositionedColumn screenElements, SlotWidget inventorySlot) {
+        super.drawTexts(screenElements, inventorySlot);
+        screenElements
+            .widget(
+                new TextWidget().setStringSupplier(() -> "Last EU generating(eu/tick):" + numberFormat.format(displayGenerating))
+                    .setDefaultColor(COLOR_TEXT_WHITE.get())
+                    .setEnabled(widget -> getBaseMetaTileEntity().getErrorDisplayID() == 0)
+            )
+            .widget(new FakeSyncWidget.LongSyncer(() ->displayGenerating,val -> displayGenerating = val));
+    }
 }
