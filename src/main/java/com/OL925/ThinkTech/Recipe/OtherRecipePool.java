@@ -117,23 +117,24 @@ public class OtherRecipePool {
             .eut(RECIPE_MV)
             .duration(20 * 2)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
         //特氟龙大化反配方
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTUtility.getIntegratedCircuit(4),
-                GTOreDictUnificator.get(dust, Materials.Polytetrafluoroethylene, 15),
-                Materials.Carbon.getDust(1),
-                Materials.Plastic.getDust(3))
-            .fluidInputs(getFluidStack("liquid_sodium", 1000))
-        //    .fluidOutputs(getFluidStack("molten.teflon", 2880))
-            .eut(RECIPE_HV)
-            .duration(20 * 9)
-            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+//        GTValues.RA.stdBuilder()
+//            .itemInputs(GTUtility.getIntegratedCircuit(4),
+//                GTOreDictUnificator.get(dust, Materials.Polytetrafluoroethylene, 15),
+//                Materials.Carbon.getDust(1),
+//                Materials.Plastic.getDust(3))
+//            .fluidInputs(getFluidStack("liquid_sodium", 1000))
+//        .fluidOutputs(Materials.Polytetrafluoroethylene.getMolten(2880))
+//            .eut(RECIPE_HV)
+//            .duration(20 * 9)
+//            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
 
         //特氟龙产胶带
         GTValues.RA.stdBuilder()
             .itemInputs(GTOreDictUnificator.get(plate, Materials.Polytetrafluoroethylene, 1),
                 GTModHandler.getModItem(IndustrialCraft2.ID, "itemPartCarbonMesh", 2, 0))
-        //    .fluidInputs(getFluidStack("molten.teflon", 288))
+            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(288))
             .itemOutputs(ItemList.Duct_Tape.get(6))
             .eut(RECIPE_HV)
             .duration(20 * 5)
@@ -143,7 +144,7 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Casing_SolidSteel.get(1), GTUtility.getIntegratedCircuit(6))
             .itemOutputs(ItemList.Casing_Chemically_Inert.get(1))
-        //    .fluidInputs(getFluidStack("molten.teflon", 72))
+            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(72))
             .duration(20)
             .eut(RECIPE_LV)
             .addTo(RecipeMaps.assemblerRecipes);
@@ -151,7 +152,7 @@ public class OtherRecipePool {
         //特氟龙产生碳纤维
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Carbon.getDust(6))
-        //    .fluidInputs(getFluidStack("molten.teflon", 9))
+            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(9))
             .itemOutputs(GTModHandler.getIC2Item("carbonFiber", 10L))
             .eut(RECIPE_HV)
             .duration(20)
@@ -162,7 +163,7 @@ public class OtherRecipePool {
             .itemInputs(ItemList.Circuit_Parts_GlassFiber.get(8),//硼玻璃线圈
                 GTOreDictUnificator.get(OrePrefixes.foil, Materials.Silver, 8))
             .itemOutputs(CustomItemList.DATApipe.get(16L))
-        //    .fluidInputs(getFluidStack("molten.teflon", 144))
+            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(144))
             .requiresCleanRoom()
             .eut(RECIPE_LuV)
             .duration(20 * 10)
@@ -174,7 +175,7 @@ public class OtherRecipePool {
                 GTModHandler.getIC2Item("reinforcedGlass", 12L),
                 GTOreDictUnificator.get(OrePrefixes.foil, Materials.Osmiridium, 4))
             .itemOutputs(CustomItemList.LASERpipe.get(16))
-        //    .fluidInputs(getFluidStack("molten.teflon", 1440))
+            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(1440))
             .requiresCleanRoom()
             .duration(20 * 12)
             .eut(RECIPE_UV)
