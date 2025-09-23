@@ -1,4 +1,4 @@
-# 出于某些原因，ThinkTech至此停止更新
+# 出于某些原因，ThinkTech准备复活
 
 # Think Tech 俺寻思科技
 GTNH整合包的拓展Mod,致力于将新的产线和机器加入到游戏中以丰富流程
