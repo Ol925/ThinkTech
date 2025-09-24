@@ -133,6 +133,11 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return 20;
     }
 
+    @Override
+    public boolean shouldCheckMaintenance(){
+        return false;
+    }
+
     // 机器运行音效
     @Override
     protected SoundResource getProcessStartSound() {
