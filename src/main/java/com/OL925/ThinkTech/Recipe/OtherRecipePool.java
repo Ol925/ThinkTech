@@ -130,56 +130,56 @@ public class OtherRecipePool {
 //            .duration(20 * 9)
 //            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
 
-        //特氟龙产胶带
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(plate, Materials.Polytetrafluoroethylene, 1),
-                GTModHandler.getModItem(IndustrialCraft2.ID, "itemPartCarbonMesh", 2, 0))
-            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(288))
-            .itemOutputs(ItemList.Duct_Tape.get(6))
-            .eut(RECIPE_HV)
-            .duration(20 * 5)
-            .addTo(RecipeMaps.assemblerRecipes);
-
-        //特氟龙产化学惰性方块
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Casing_SolidSteel.get(1), GTUtility.getIntegratedCircuit(6))
-            .itemOutputs(ItemList.Casing_Chemically_Inert.get(1))
-            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(72))
-            .duration(20)
-            .eut(RECIPE_LV)
-            .addTo(RecipeMaps.assemblerRecipes);
-
-        //特氟龙产生碳纤维
-        GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Carbon.getDust(6))
-            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(9))
-            .itemOutputs(GTModHandler.getIC2Item("carbonFiber", 10L))
-            .eut(RECIPE_HV)
-            .duration(20)
-            .addTo(RecipeMaps.autoclaveRecipes);
-
-        //特氟龙生产光缆&激光管
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Circuit_Parts_GlassFiber.get(8),//硼玻璃线圈
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Silver, 8))
-            .itemOutputs(CustomItemList.DATApipe.get(16L))
-            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(144))
-            .requiresCleanRoom()
-            .eut(RECIPE_LuV)
-            .duration(20 * 10)
-            .addTo(assemblerRecipes);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                CustomItemList.DATApipe.get(8),
-                GTModHandler.getIC2Item("reinforcedGlass", 12L),
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Osmiridium, 4))
-            .itemOutputs(CustomItemList.LASERpipe.get(16))
-            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(1440))
-            .requiresCleanRoom()
-            .duration(20 * 12)
-            .eut(RECIPE_UV)
-            .addTo(assemblerRecipes);
+//        //特氟龙产胶带
+//        GTValues.RA.stdBuilder()
+//            .itemInputs(GTOreDictUnificator.get(plate, Materials.Polytetrafluoroethylene, 1),
+//                GTModHandler.getModItem(IndustrialCraft2.ID, "itemPartCarbonMesh", 2, 0))
+//            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(288))
+//            .itemOutputs(ItemList.Duct_Tape.get(6))
+//            .eut(RECIPE_HV)
+//            .duration(20 * 5)
+//            .addTo(RecipeMaps.assemblerRecipes);
+//
+//        //特氟龙产化学惰性方块
+//        GTValues.RA.stdBuilder()
+//            .itemInputs(ItemList.Casing_SolidSteel.get(1), GTUtility.getIntegratedCircuit(6))
+//            .itemOutputs(ItemList.Casing_Chemically_Inert.get(1))
+//            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(72))
+//            .duration(20)
+//            .eut(RECIPE_LV)
+//            .addTo(RecipeMaps.assemblerRecipes);
+//
+//        //特氟龙产生碳纤维
+//        GTValues.RA.stdBuilder()
+//            .itemInputs(Materials.Carbon.getDust(6))
+//            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(9))
+//            .itemOutputs(GTModHandler.getIC2Item("carbonFiber", 10L))
+//            .eut(RECIPE_HV)
+//            .duration(20)
+//            .addTo(RecipeMaps.autoclaveRecipes);
+//
+//        //特氟龙生产光缆&激光管
+//        GTValues.RA.stdBuilder()
+//            .itemInputs(ItemList.Circuit_Parts_GlassFiber.get(8),//硼玻璃线圈
+//                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Silver, 8))
+//            .itemOutputs(CustomItemList.DATApipe.get(16L))
+//            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(144))
+//            .requiresCleanRoom()
+//            .eut(RECIPE_LuV)
+//            .duration(20 * 10)
+//            .addTo(assemblerRecipes);
+//
+//        GTValues.RA.stdBuilder()
+//            .itemInputs(
+//                CustomItemList.DATApipe.get(8),
+//                GTModHandler.getIC2Item("reinforcedGlass", 12L),
+//                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Osmiridium, 4))
+//            .itemOutputs(CustomItemList.LASERpipe.get(16))
+//            .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(1440))
+//            .requiresCleanRoom()
+//            .duration(20 * 12)
+//            .eut(RECIPE_UV)
+//            .addTo(assemblerRecipes);
 
         //硒用于增产三种橡胶
         GTValues.RA.stdBuilder()
