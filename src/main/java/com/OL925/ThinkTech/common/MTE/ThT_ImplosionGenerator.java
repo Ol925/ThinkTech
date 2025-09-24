@@ -402,7 +402,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             .widget(
                 new TextWidget().setStringSupplier(() -> "Last EU generating(eu/tick):" + numberFormat.format(displayGenerating))
                     .setDefaultColor(COLOR_TEXT_WHITE.get())
-                    .setEnabled(widget -> getBaseMetaTileEntity().getErrorDisplayID() == 0)
+                    .setEnabled(widget -> getErrorDisplayID() == 0)
             )
             .widget(new FakeSyncWidget.LongSyncer(() ->displayGenerating,val -> displayGenerating = val));
     }
