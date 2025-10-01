@@ -36,7 +36,8 @@ fluid.FreezedPreculturedBacterialSolution.name=Freezed Precultured Bacterial Sol
 fluid.RawBioSludge=Raw Bio Sludge
 fluid.nutrientSolution=Nutrient Solution
 fluid.Photoresist=Photoresist
-
+fluid.Sxcqyry=Three-phase Indium Extraction Solution
+fluid.Dndcq=Low-Concentration Extract Solution
 #machine
 mte.common.tooltips1=The use of muffler can make the machine really silenced!
 mte.common.tooltips2=Production machine

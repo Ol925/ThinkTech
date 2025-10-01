@@ -38,7 +38,9 @@ public class bwLocalization {
             "bw.werkstoff.18113.name","fluid.freezedpreculturedbacterialsolution",
             "bw.werkstoff.18114.name","fluid.rawbiosludge",
             "bw.werkstoff.18116.name","fluid.nutrientsolution",
-            "bw.werkstoff.18117.name","fluid.photoresist"};
+            "bw.werkstoff.18117.name","fluid.photoresist",
+            "bw.werkstoff.18118.name","fluid.sxcqyry",
+            "bw.werkstoff.18119.name","fluid.dndcq"};
         String[] aenglish2 = new String[] {
             "fluid.AlkaneWaterMixture.name", "fluid.AlkaneWaterMixture.name",
             "fluid.Ethanedial.name","fluid.Ethanedial.name",
@@ -48,7 +50,9 @@ public class bwLocalization {
             "fluid.FreezedPreculturedBacterialSolution.name","fluid.FreezedPreculturedBacterialSolution.name",
             "fluid.RawBioSludge","fluid.RawBioSludge",
             "fluid.nutrientSolution","fluid.nutrientSolution",
-            "fluid.Photoresist","fluid.Photoresist"};
+            "fluid.Photoresist","fluid.Photoresist",
+            "fluid.Sxcqyry","fluid.Sxcqyry",
+            "fluid.Dndcq","fluid.Dndcq"};
         for (int i = 0; i < akey2.length; i++) {
             addStringLocalization(akey2[i], translateToLocalFormatted(aenglish2[i]));
         }

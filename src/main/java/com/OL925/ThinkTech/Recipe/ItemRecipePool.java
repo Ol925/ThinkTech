@@ -45,7 +45,7 @@ public class ItemRecipePool {
 
         // MethaneClathrate
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Ice.getDust(64))
+            .itemInputs(Materials.Ice.getDust(24))
             .fluidInputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(2000))
             .itemOutputs(METHANE_CLATHRATE.get(10))
             .eut(RECIPE_MV)

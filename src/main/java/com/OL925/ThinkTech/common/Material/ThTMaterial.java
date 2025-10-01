@@ -214,6 +214,31 @@ public class ThTMaterial implements Runnable {
             .addCells(),
         OffsetID + 17,
         TextureSet.SET_FLUID);
+
+    //三相萃取铟溶液
+    public static final Werkstoff Sxcqyry = new Werkstoff(
+            new short[] { 12, 72, 82 },
+            "Sxcqyry",
+            subscriptNumbers("??In??"),
+            new Werkstoff.Stats(),
+            Werkstoff.Types.MIXTURE,
+            new Werkstoff.GenerationFeatures().disable()
+                    .addCells(),
+            OffsetID + 18,
+            TextureSet.SET_FLUID);
+
+    //低浓度萃取液
+    public static final Werkstoff Dndcq = new Werkstoff(
+            new short[] { 180, 194, 197 },
+            "Dndcq",
+            subscriptNumbers("???"),
+            new Werkstoff.Stats(),
+            Werkstoff.Types.MIXTURE,
+            new Werkstoff.GenerationFeatures().disable()
+                    .addCells(),
+            OffsetID + 19,
+            TextureSet.SET_FLUID);
+
     @Override
     public void run() {}
 }

@@ -8,8 +8,11 @@ import static gregtech.api.enums.TierEU.*;
 import static gtPlusPlus.core.fluids.GTPPFluids.*;
 import static net.minecraftforge.fluids.FluidRegistry.getFluidStack;
 
+import bartworks.system.material.WerkstoffLoader;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
 
+import com.OL925.ThinkTech.common.init.ThTList;
+import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.MaterialsKevlar;
@@ -19,6 +22,7 @@ import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.api.recipe.GTPPRecipeMaps;
+import gtPlusPlus.core.material.Material;
 import gtPlusPlus.core.material.MaterialsElements;
 import gtPlusPlus.core.util.minecraft.FluidUtils;
 import gtnhlanth.common.register.WerkstoffMaterialPool;
@@ -211,6 +215,44 @@ public class MaterialsRecipePool {
             .eut(30)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //焙烧锌-铟线
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.SulfuricAcid.getFluid(16000))
+            .fluidOutputs(Materials.Hydrogen.getGas(32000))
+            .itemInputs(Materials.RoastedZinc.getDust(16))
+            .itemOutputs(WerkstoffLoader.ZincSulfate.get(dust,16))
+            .eut(RECIPE_HV)
+            .duration(20 * 6)
+            .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        GTValues.RA.stdBuilder()
+                .fluidInputs(GTModHandler.getDistilledWater(8000),
+                        GGMaterial.ether.getFluidOrGas(4000),
+                        Materials.Acetone.getFluid(4000))
+                .fluidOutputs(ThTMaterial.Sxcqyry.getFluidOrGas(16000))
+                .itemInputs(WerkstoffLoader.ZincSulfate.get(dust,24))
+                .eut(RECIPE_EV)
+                .duration(20 * 30)
+                .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        GTValues.RA.stdBuilder()
+                .fluidInputs(GTModHandler.getDistilledWater(6000),
+                        ThTMaterial.Dndcq.getFluidOrGas(10000))
+                .fluidOutputs(ThTMaterial.Sxcqyry.getFluidOrGas(16000))
+                .itemInputs(WerkstoffLoader.ZincSulfate.get(dust,24))
+                .eut(RECIPE_EV)
+                .duration(20 * 15)
+                .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        GTValues.RA.stdBuilder()
+                .fluidInputs(ThTMaterial.Sxcqyry.getFluidOrGas(4000))
+                .fluidOutputs(ThTMaterial.Dndcq.getFluidOrGas(2500))
+                .itemInputs(ThTList.IRON_CATALYST.get(0))
+                .itemOutputs(Materials.Indium.getDust(6))
+                .eut(RECIPE_HV)
+                .duration(20 * 45)
+                .addTo(ThTRecipeMap.GeneralChemicalFactory);
     }
 }
 //        GTValues.RA.stdBuilder()

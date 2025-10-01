@@ -36,6 +36,8 @@ fluid.FreezedPreculturedBacterialSolution.name=预培养维生冷藏细菌液
 fluid.RawBioSludge=待处理浓缩菌泥
 fluid.nutrientSolution=营养液
 fluid.Photoresist=光刻胶
+fluid.Sxcqyry=三相萃取铟溶液
+fluid.Dndcq=低浓度萃取液
 
 #machine
 mte.common.tooltips1=使用消声仓可使机器真正消音！

@@ -12,6 +12,8 @@ import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.core.material.MaterialsElements;
+import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
+import net.minecraft.block.material.Material;
 
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static goodgenerator.items.GGMaterial.naquadahine;
@@ -204,8 +206,25 @@ public class MachineRecipePool {
                 WerkstoffLoader.Krypton.getFluidOrGas(1000*32),
                 WerkstoffLoader.Xenon.getFluidOrGas(500*128))
             .eut(RECIPE_ZPM)
-            .duration(20 * 120)
+            .duration(20 * 90)
             .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
+
+        //三阶富集 下届空气
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(4),CHIPTIER3.get(0), Materials.Netherrack.getDust(16))
+                .fluidInputs(Materials.Ice.getSolid(1000L))
+                .fluidOutputs(Materials.NetherSemiFluid.getFluid(160000))
+                .eut(RECIPE_ZPM)
+                .duration(20 * 5)
+                .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
+
+        //三阶富集 Og
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(4), GregtechItemList.Compressed_Fusion_Reactor.get(0),CHIPTIER3.get(0))
+                .fluidOutputs(WerkstoffLoader.Oganesson.getFluidOrGas(64000))
+                .eut(RECIPE_ZPM)
+                .duration(20 * 150)
+                .addTo(ThTRecipeMap.NobleGasEnrichmentSystem);
 
         //预培养维生细菌液
         GTValues.RA.stdBuilder()

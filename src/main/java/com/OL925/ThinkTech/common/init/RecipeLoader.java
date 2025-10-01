@@ -22,7 +22,6 @@ public class RecipeLoader {
         new MaterialsRecipePool().loadRecipes();
         new implosionGeneratorFlueRecipe().loadFuelRecipes();
         new ItemRecipePool().loadRecipes();
-        new FluidSolidifierRecipePool().loadRecipes();
         new OtherRecipePool().loadRecipes();
         new MachineRecipePool().loadRecipes();
     }

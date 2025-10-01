@@ -117,7 +117,7 @@ public class OtherRecipePool {
             .eut(RECIPE_MV)
             .duration(20 * 2)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
-        
+
 
         //硒用于增产三种橡胶
         GTValues.RA.stdBuilder()
@@ -175,6 +175,14 @@ public class OtherRecipePool {
             .eut(RECIPE_EV)
             .duration(20 * 5)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
+
+        //冰箱冻碎冰
+        GTValues.RA.stdBuilder()
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ice, 8L))
+                .fluidInputs(Materials.Water.getFluid(8000))
+                .eut(RECIPE_MV)
+                .duration(20 * 3)
+                .addTo(RecipeMaps.vacuumFreezerRecipes);
     }
 }
 //GTValues.RA.stdBuilder()
