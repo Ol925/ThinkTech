@@ -70,13 +70,16 @@ mte.SAF.tooltips2=§eMaybe people won't starve because of this machine, but the 
 mte.SAF.tooltips3=§4§nRecombination, exchange, condensation......
 mte.SAF.tooltips4=§eHope that your blast furnace can withstand such a large amount of steel consumption
 mte.SAF.tooltips5=§bTrue to its name, this is a powerful factory
-mte.SAF.tooltips6=§bImprove machine operation efficiency by replacing better coils
-mte.SAF.tooltips7=§bEach stage coil provides 10%% speed bonus and 8 formula parallel!
-mte.SAF.tooltips8=§bSupport lossless overclocking!
-mte.SAF.tooltips9=§bSupport Tec energy hatch
+mte.SAF.tooltips6=§bIt has three modes:Chemical Reactor/General Chemical Factory/Chemical Plant.
+mte.SAF.tooltips7=§bIn Chemical Plant mode,it can operate recipes unaffected by machine tier requirements and without consuming catalysts.
+mte.SAF.tooltips8=§bImprove machine operation efficiency by replacing better coils
+mte.SAF.tooltips9=§bEach stage coil provides 10%% speed bonus and 8 formula parallel!
+mte.SAF.tooltips10=§bSupport lossless overclocking!
+mte.SAF.tooltips11=§bSupport Tec energy hatch
 
 mte.SAF.common.mode.0=MTEChemicalReactor
 mte.SAF.common.mode.1=General Chemical Factory
+mte.SAF.common.mode.2=ChemicalPlant
 
 mte.kiln=Kiln
 mte.kiln.tooltips1=§eTo be prepared for nothing to grow within ten miles...

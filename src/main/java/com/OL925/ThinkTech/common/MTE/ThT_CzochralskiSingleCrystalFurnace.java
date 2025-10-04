@@ -280,6 +280,16 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
         return false;
     }
 
+    @Override
+    public boolean supportsVoidProtection(){
+        return true;
+    }
+
+    @Override
+    public boolean supportsInputSeparation() {
+        return true;
+    }
+
     @SideOnly(Side.CLIENT)
     @Override
     protected SoundResource getProcessStartSound() {

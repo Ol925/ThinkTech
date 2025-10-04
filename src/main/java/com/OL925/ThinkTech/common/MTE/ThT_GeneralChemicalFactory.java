@@ -23,12 +23,14 @@ import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
+import gregtech.api.recipe.check.SimpleCheckRecipeResult;
 import gregtech.api.render.TextureFactory;
 import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gtPlusPlus.api.recipe.GTPPRecipeMaps;
+import gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.chemplant.MTEChemicalPlant;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -63,6 +65,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
 
     private static final int MACHINEMODE_MTECR = 0;
     private static final int MACHINEMODE_GCF = 1;
+    private static final int MACHINEMODE_GTPP = 2;
     private static String[][] Shape = new String[][]{{
         "                    ",
         "                    ",
@@ -262,6 +265,8 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     public RecipeMap<?> getRecipeMap() {
         if(machineMode == MACHINEMODE_MTECR){
             return RecipeMaps.multiblockChemicalReactorRecipes;
+        }else if(machineMode==MACHINEMODE_GTPP){
+            return GTPPRecipeMaps.chemicalPlantRecipes;
         }
         return GeneralChemicalFactory;
     }
@@ -269,7 +274,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @NotNull
     @Override
     public Collection<RecipeMap<?>> getAvailableRecipeMaps() {
-        return Arrays.asList(GeneralChemicalFactory,RecipeMaps.multiblockChemicalReactorRecipes);
+        return Arrays.asList(GeneralChemicalFactory,RecipeMaps.multiblockChemicalReactorRecipes,GTPPRecipeMaps.chemicalPlantRecipes);
     }
 
     @Override
@@ -279,15 +284,31 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
 
     @Override
     public int nextMachineMode() {
-        if (machineMode == MACHINEMODE_MTECR) return MACHINEMODE_GCF;
-        else return MACHINEMODE_MTECR;
+        if (machineMode == MACHINEMODE_MTECR) {
+            return MACHINEMODE_GTPP;
+        } else if (machineMode == MACHINEMODE_GTPP) {
+            return MACHINEMODE_GCF;
+        } else {
+            return MACHINEMODE_MTECR;
+        }
+    }
+
+    @Override
+    public boolean supportsVoidProtection(){
+        return true;
+    }
+
+    @Override
+    public boolean supportsInputSeparation() {
+        return true;
     }
 
     @Override
     public void setMachineModeIcons() {
         machineModeIcons.clear();
         machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_CHEMBATH);
-        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_SEPARATOR);
+        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_CHEMBATH);
+        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_CHEMBATH);
     }
 
     @Override
@@ -298,6 +319,12 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     protected ProcessingLogic createProcessingLogic() {
         return new ProcessingLogic() {
+            //no need to catalysts and check the tier of recipes.
+            @NotNull
+            @Override
+            protected CheckRecipeResult validateRecipe(@NotNull GTRecipe recipe) {
+                return CheckRecipeResultRegistry.SUCCESSFUL;
+            }
 
             @NotNull
             @Override
@@ -356,6 +383,8 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips7"))
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips8"))
             .addInfo(translateToLocalFormatted("mte.SAF.tooltips9"))
+            .addInfo(translateToLocalFormatted("mte.SAF.tooltips10"))
+            .addInfo(translateToLocalFormatted("mte.SAF.tooltips11"))
             .beginStructureBlock(11, 13, 20, false)
             .addController("见结构预览")
             .addCasingInfoExactly("洁净不锈钢机械方块",41,false)

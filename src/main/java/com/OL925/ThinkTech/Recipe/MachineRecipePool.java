@@ -11,9 +11,12 @@ import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
+import gtPlusPlus.core.fluids.GTPPFluids;
 import gtPlusPlus.core.material.MaterialsElements;
 import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static goodgenerator.items.GGMaterial.naquadahine;
@@ -278,6 +281,17 @@ public class MachineRecipePool {
             .eut(RECIPE_EV)
             .duration(20 * 24)
             .addTo(ThTRecipeMap.GeneralChemicalFactory);
+
+        //硼砂处理
+        GTValues.RA.stdBuilder()
+                .itemInputs(Materials.SodiumHydroxide.getDust(64),Materials.SodiumHydroxide.getDust(64),Materials.SodiumHydroxide.getDust(64),
+                        Materials.SodiumCarbonate.getDust(64),Materials.SodiumCarbonate.getDust(32))
+                .itemOutputs(GTUtility.copyAmountUnsafe(24,Materials.Salt.getDust(1)),
+                        GTUtility.copyAmountUnsafe(736,Materials.Borax.getDust(64)))
+                .fluidInputs(Materials.SaltWater.getFluid(128000), new FluidStack(GTPPFluids.Kerosene, 6000))
+                .eut(RECIPE_IV)
+                .duration(20 * 64)
+                .addTo(ThTRecipeMap.GeneralChemicalFactory);
 
         //光刻胶
         GTValues.RA.stdBuilder()

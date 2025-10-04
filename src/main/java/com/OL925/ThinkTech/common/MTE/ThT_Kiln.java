@@ -244,4 +244,10 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
         }
         return false;
     }
+
+    @Override
+    public boolean supportsInputSeparation() {
+        return true;
+    }
+
 }
