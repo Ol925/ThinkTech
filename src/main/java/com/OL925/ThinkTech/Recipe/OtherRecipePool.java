@@ -178,6 +178,7 @@ public class OtherRecipePool {
 
         //冰箱冻碎冰
         GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(24))
                 .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ice, 8L))
                 .fluidInputs(Materials.Water.getFluid(8000))
                 .eut(RECIPE_MV)

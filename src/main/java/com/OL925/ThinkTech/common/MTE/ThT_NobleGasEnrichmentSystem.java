@@ -150,7 +150,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
                 .build();
         }
         return STRUCTURE_DEFINITION;
-    }//结构还没写完
+    }
 
     @Override
     protected ProcessingLogic createProcessingLogic() {
