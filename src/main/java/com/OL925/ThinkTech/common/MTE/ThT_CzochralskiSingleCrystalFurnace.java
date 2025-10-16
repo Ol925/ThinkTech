@@ -129,7 +129,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
 
     @Override
     public int getMaxParallelRecipes() {
-        return 1 + 4 * mMachineTier;
+        return 4 + 8 * mMachineTier;
     };
 
     protected float getSpeedBonus() {
@@ -302,5 +302,19 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
     @Override
     protected int getTimeBetweenProcessSounds() {
         return 20;
+    }
+
+    //maintenance
+    @Override
+    public void checkMaintenance() {}
+
+    @Override
+    public boolean getDefaultHasMaintenanceChecks() {
+        return false;
+    }
+
+    @Override
+    public boolean shouldCheckMaintenance() {
+        return false;
     }
 }

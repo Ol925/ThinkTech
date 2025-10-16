@@ -133,11 +133,6 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return 20;
     }
 
-    @Override
-    public boolean shouldCheckMaintenance(){
-        return false;
-    }
-
     // 机器运行音效
     @Override
     protected SoundResource getProcessStartSound() {
@@ -412,5 +407,18 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
                     .setEnabled(widget -> getErrorDisplayID() == 0)
             )
             .widget(new FakeSyncWidget.LongSyncer(() ->displayGenerating,val -> displayGenerating = val));
+    }
+    //maintenance
+    @Override
+    public void checkMaintenance() {}
+
+    @Override
+    public boolean getDefaultHasMaintenanceChecks() {
+        return false;
+    }
+
+    @Override
+    public boolean shouldCheckMaintenance() {
+        return false;
     }
 }

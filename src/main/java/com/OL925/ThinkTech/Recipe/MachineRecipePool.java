@@ -14,6 +14,7 @@ import gregtech.api.util.GTUtility;
 import gtPlusPlus.core.fluids.GTPPFluids;
 import gtPlusPlus.core.material.MaterialsElements;
 import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
+import gtnhlanth.common.register.WerkstoffMaterialPool;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
@@ -26,6 +27,7 @@ import static net.minecraftforge.fluids.FluidRegistry.getFluidStack;
 
 public class MachineRecipePool {
     public void loadRecipes(){
+
         //单晶硅
         GTValues.RA.stdBuilder()
             .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.SiliconSG, 0,false))
@@ -98,6 +100,16 @@ public class MachineRecipePool {
             .eut(RECIPE_LuV)
             .duration(20*1000)
             .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
+
+        //立方氧化锆
+        GTValues.RA.stdBuilder()
+                .itemInputs(WerkstoffMaterialPool.Zirconium.get(OrePrefixes.dust, 10))
+                .fluidInputs(Materials.Oxygen.getGas(1000 * 20))
+                .itemOutputs(WerkstoffLoader.CubicZirconia.get(OrePrefixes.gem, 30))
+                .eut(RECIPE_HV)
+                .duration(20 * 40)
+                .addTo(ThTRecipeMap.CzochralskiSingleCrystalFurnace);
+
         //合成氨
         GTValues.RA.stdBuilder()
             .itemInputs(ThTList.IRON_CATALYST.get(0))

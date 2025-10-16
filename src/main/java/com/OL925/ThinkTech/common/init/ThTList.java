@@ -67,7 +67,7 @@ public enum ThTList {
     public ItemStack get(int aAmount, Object... temp) {
         // if invalid, return a replacements
         if (GTUtility.isStackInvalid(sStack)) {
-            return GTUtility.copyAmountUnsafe(aAmount, TestItem.get(1));
+            return GTUtility.copyAmountUnsafe(aAmount, new ItemStack(net.minecraft.init.Items.stick, 1, 0));  // ✅ 返回一个默认物品
         }
         return GTUtility.copyAmountUnsafe(aAmount, sStack);
     }

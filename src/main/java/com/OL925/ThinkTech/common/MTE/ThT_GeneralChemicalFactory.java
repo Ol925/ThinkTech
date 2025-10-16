@@ -3,6 +3,7 @@ package com.OL925.ThinkTech.common.MTE;
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
+import com.gtnewhorizon.structurelib.structure.IStructureElement;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import cpw.mods.fml.relauncher.Side;
@@ -18,7 +19,7 @@ import gregtech.api.interfaces.ITexture;
 import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.logic.ProcessingLogic;
-import gregtech.api.metatileentity.implementations.MTEExtendedPowerMultiBlockBase;
+import gregtech.api.metatileentity.implementations.*;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.recipe.check.CheckRecipeResult;
@@ -29,7 +30,14 @@ import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
+import gtPlusPlus.GTplusplus;
+import gtPlusPlus.api.objects.Logger;
+import gtPlusPlus.api.objects.minecraft.BlockPos;
 import gtPlusPlus.api.recipe.GTPPRecipeMaps;
+import gtPlusPlus.core.config.ASMConfiguration;
+import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
+import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase;
+import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.nbthandlers.MTEHatchCatalysts;
 import gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.chemplant.MTEChemicalPlant;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
@@ -38,6 +46,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -53,7 +62,7 @@ import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<ThT_GeneralChemicalFactory>
-    implements ISurvivalConstructable, ISecondaryDescribable {
+        implements ISurvivalConstructable, ISecondaryDescribable {
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
     private HeatingCoilLevel mCoilLevel;
@@ -62,6 +71,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
     private static IStructureDefinition<ThT_GeneralChemicalFactory> STRUCTURE_DEFINITION = null;
+
 
     private static final int MACHINEMODE_MTECR = 0;
     private static final int MACHINEMODE_GCF = 1;
@@ -233,26 +243,38 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     public IStructureDefinition<ThT_GeneralChemicalFactory> getStructureDefinition() {
         if (STRUCTURE_DEFINITION == null) {
+
+
+
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_GeneralChemicalFactory>builder()
-                .addShape(STRUCTURE_PIECE_MAIN, Shape)
-                .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
-                .addElement('B',buildHatchAdder(ThT_GeneralChemicalFactory.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)
-                    .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
-                    .dot(1)
-                    .buildAndChain(GregTechAPI.sBlockCasings2, 0))
-                .addElement('C',ofBlock(GregTechAPI.sBlockCasings2, 13))
-                .addElement('D',ofBlock(GregTechAPI.sBlockCasings3, 10))
-                .addElement('E',ofBlock(GregTechAPI.sBlockCasings4, 1))
-                .addElement('F', GTStructureUtility
-                    .ofCoil(ThT_GeneralChemicalFactory::setCoilLevel, ThT_GeneralChemicalFactory::getCoilLevel))
-                .addElement('G',ofBlock(GregTechAPI.sBlockCasings8, 0))
-                .addElement('H',ofFrame(Materials.Steel))
-                .addElement('I',ofFrame(Materials.StainlessSteel))
-                .addElement('J',ofBlock(GregTechAPI.sBlockMetal6,13))
-                .addElement('K',ofBlockAnyMeta(piston))
-                .build();
+                    .addShape(STRUCTURE_PIECE_MAIN, Shape)
+                    .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
+                    .addElement('B',
+                            buildHatchAdder(ThT_GeneralChemicalFactory.class)
+                                    .atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)
+                                    .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
+                                    .dot(1)
+                                    .buildAndChain(GregTechAPI.sBlockCasings2, 0))
+                    .addElement('C',ofBlock(GregTechAPI.sBlockCasings2, 13))
+                    .addElement('D',ofBlock(GregTechAPI.sBlockCasings3, 10))
+                    .addElement('E',ofBlock(GregTechAPI.sBlockCasings4, 1))
+                    .addElement('F', GTStructureUtility
+                            .ofCoil(ThT_GeneralChemicalFactory::setCoilLevel, ThT_GeneralChemicalFactory::getCoilLevel))
+                    .addElement('G',ofBlock(GregTechAPI.sBlockCasings8, 0))
+                    .addElement('H',ofFrame(Materials.Steel))
+                    .addElement('I',ofFrame(Materials.StainlessSteel))
+                    .addElement('J',ofBlock(GregTechAPI.sBlockMetal6,13))
+                    .addElement('K',ofBlockAnyMeta(piston))
+                    .build();
         }
         return STRUCTURE_DEFINITION;
+    }
+
+
+    @Override
+    public boolean addOutputToMachineList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
+        boolean exotic = addExoticEnergyInputToMachineList(aTileEntity, aBaseCasingIndex);
+        return addToMachineList(aTileEntity, aBaseCasingIndex) || exotic;
     }
 
     @SideOnly(Side.CLIENT)
@@ -414,12 +436,6 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     }
 
     @Override
-    public boolean addOutputToMachineList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
-        boolean exotic = addExoticEnergyInputToMachineList(aTileEntity, aBaseCasingIndex);
-        return super.addToMachineList(aTileEntity, aBaseCasingIndex) || exotic;
-    }
-
-    @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
         if (checkPiece(STRUCTURE_PIECE_MAIN, 5, 11, 2)) {
             fixAllIssues();
@@ -477,5 +493,19 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
         }
         return new ITexture[] {
             Textures.BlockIcons.getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0)) };
+    }
+
+    //maintenance
+    @Override
+    public void checkMaintenance() {}
+
+    @Override
+    public boolean getDefaultHasMaintenanceChecks() {
+        return false;
+    }
+
+    @Override
+    public boolean shouldCheckMaintenance() {
+        return false;
     }
 }

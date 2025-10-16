@@ -63,4 +63,18 @@ public class ThT_NuclideFurance extends MTEExtendedPowerMultiBlockBase<ThT_Nucli
     public ITexture[] getTexture(IGregTechTileEntity baseMetaTileEntity, ForgeDirection side, ForgeDirection facing, int colorIndex, boolean active, boolean redstoneLevel) {
         return new ITexture[0];
     }
+
+    //maintenance
+    @Override
+    public void checkMaintenance() {}
+
+    @Override
+    public boolean getDefaultHasMaintenanceChecks() {
+        return false;
+    }
+
+    @Override
+    public boolean shouldCheckMaintenance() {
+        return false;
+    }
 }

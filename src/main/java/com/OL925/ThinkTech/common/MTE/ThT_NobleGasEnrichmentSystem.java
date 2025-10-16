@@ -135,7 +135,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
                 .addElement('B',ofBlock(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C',
                     ofBlock(GregTechAPI.sBlockCasings3, 10))//
-                .addElement('D',buildHatchAdder(ThT_NobleGasEnrichmentSystem.class).atLeast(Energy.or(ExoticEnergy), InputBus, OutputHatch)
+                .addElement('D',buildHatchAdder(ThT_NobleGasEnrichmentSystem.class).atLeast(Energy.or(ExoticEnergy), InputBus, OutputBus, InputHatch, OutputHatch)
                     .casingIndex(getTextureIndex(STAINLESS_STEEL_MACHINE_CASING))
                     .dot(1)
                     .buildAndChain(GregTechAPI.sBlockCasings4, 1))
@@ -216,7 +216,9 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
             .addCasingInfoExactly("脱氧钢机械方块",33,false)
             .addCasingInfoExactly("聚四氟乙烯管道方块",4,false)
             .addInputBus("任意洁净不锈钢机械方块",1)
+            .addInputHatch("任意洁净不锈钢机械方块",1)
             .addDynamoHatch("任意洁净不锈钢机械方块",1)
+            //.addOutputBus("任意洁净不锈钢机械方块",1)
             .addOutputHatch("输出稀有气体,任意洁净不锈钢机械方块",1)
             .toolTipFinisher("§d§l§oThinkTech");
 
@@ -241,7 +243,6 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
     @Override
     public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
         if (checkPiece(STRUCTURE_PIECE_MAIN, 3, 4, 1)) {
-
             fixAllIssues();
             return true;
         }
@@ -304,5 +305,19 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
                 .build() };
         }
         return new ITexture[] {TextureFactory.of(BLOCK_PLASCRETE)};
+    }
+
+    //maintenance
+    @Override
+    public void checkMaintenance() {}
+
+    @Override
+    public boolean getDefaultHasMaintenanceChecks() {
+        return false;
+    }
+
+    @Override
+    public boolean shouldCheckMaintenance() {
+        return false;
     }
 }
