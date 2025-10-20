@@ -1,10 +1,12 @@
 package com.OL925.ThinkTech.common.MTE;
 
 import static com.OL925.ThinkTech.Recipe.implosionGeneratorFlueRecipe.IGFuelVoltage;
+import static com.OL925.ThinkTech.Recipe.implosionGeneratorFlueRecipe.IMPLOSION_GENERATOR_BASIC_OUTPUT;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
 import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.HatchElement.Muffler;
 import static gregtech.api.enums.Textures.BlockIcons.*;
+import static gregtech.api.recipe.check.CheckRecipeResultRegistry.insufficientMachineTier;
 import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
@@ -53,7 +55,7 @@ import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase;
 
-public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGenerator>
+    public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGenerator>
     implements ISurvivalConstructable, ISecondaryDescribable {
 
     // 变量声明部分
@@ -287,10 +289,10 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
         return tt;
     }
 
-//    @Override
-//    public int getPollutionPerSecond(ItemStack aStack) {
-//        return 0721;
-//    }
+    @Override
+    public int getPollutionPerSecond(ItemStack aStack) {
+        return 721;
+    }
 
     @Override
     public int getDamageToComponent(ItemStack arg0) {
@@ -298,6 +300,7 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
     }
 
     // 检查逻辑
+    @Nonnull
     @Override
     public CheckRecipeResult checkProcessing() {
         setEnergyUsage(processingLogic);
@@ -311,14 +314,26 @@ public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGene
             @Nonnull
             @Override
             protected CheckRecipeResult validateRecipe(@Nonnull GTRecipe recipe) {
-                int power = recipe.getMetadataOrDefault(LNG_BASIC_OUTPUT, 0);
+                int power = recipe.getMetadataOrDefault(IMPLOSION_GENERATOR_BASIC_OUTPUT, 0);
+                if (power == 0) return CheckRecipeResultRegistry.NO_FUEL_FOUND;
                 lEUt = power;
                 if ((mBlockTier >= 1 && mBlockTier <= 5) && power <= IGFuelVoltage[mBlockTier - 1]) {
                     return CheckRecipeResultRegistry.GENERATING;
                 } else {
-                    return CheckRecipeResultRegistry.NO_FUEL_FOUND;
+                    return insufficientMachineTier(getRequiredTier(power));
                 }
             }
+        };
+    }
+
+    public int getRequiredTier(int aRecipeTier) {
+        return switch (aRecipeTier) {
+            case 8192 -> 1;
+            case 32768 -> 2;
+            case 131072 -> 3;
+            case 524288 -> 4;
+            case 2097152 -> 5;
+            default -> 0;
         };
     }
 

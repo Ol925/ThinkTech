@@ -58,6 +58,7 @@ import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.enums.Textures.BlockIcons.OVERLAY_FRONT_OIL_CRACKER_GLOW;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
+import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.init.Blocks.*;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
@@ -67,6 +68,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     private static final String STRUCTURE_PIECE_MAIN = "main";
     private HeatingCoilLevel mCoilLevel;
     private double mSpeedBonus;
+    private final ArrayList<MTEHatchCatalysts> mCatalystHatches = new ArrayList<>();
 
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
@@ -243,18 +245,21 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     public IStructureDefinition<ThT_GeneralChemicalFactory> getStructureDefinition() {
         if (STRUCTURE_DEFINITION == null) {
-
-
-
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_GeneralChemicalFactory>builder()
                     .addShape(STRUCTURE_PIECE_MAIN, Shape)
                     .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
                     .addElement('B',
-                            buildHatchAdder(ThT_GeneralChemicalFactory.class)
+                            ofChain(buildHatchAdder(ThT_GeneralChemicalFactory.class)
                                     .atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)
                                     .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
                                     .dot(1)
-                                    .buildAndChain(GregTechAPI.sBlockCasings2, 0))
+                                    .buildAndChain(GregTechAPI.sBlockCasings2, 0),
+                                buildHatchAdder(ThT_GeneralChemicalFactory.class).hatchClass(MTEHatchCatalysts.class)
+                                    .shouldReject(t -> !t.mCatalystHatches.isEmpty())
+                                    .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
+                                    .adder(ThT_GeneralChemicalFactory::addChemicalPlantList)
+                                    .dot(2)
+                                    .buildAndChain(GregTechAPI.sBlockCasings2, 0)))
                     .addElement('C',ofBlock(GregTechAPI.sBlockCasings2, 13))
                     .addElement('D',ofBlock(GregTechAPI.sBlockCasings3, 10))
                     .addElement('E',ofBlock(GregTechAPI.sBlockCasings4, 1))
@@ -271,9 +276,37 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     }
 
 
+    public boolean addChemicalPlantList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
+        final IMetaTileEntity aMetaTileEntity = aTileEntity.getMetaTileEntity();
+        if (aMetaTileEntity == null) {
+            return false;
+        }
+        if (aMetaTileEntity instanceof MTEHatchCatalysts hatchCatalysts) {
+            hatchCatalysts.updateTexture(aBaseCasingIndex);
+            return mCatalystHatches.add(hatchCatalysts);
+        }
+        return false;
+    }
+
+    @Override
+    public void clearHatches() {
+        super.clearHatches();
+        mCatalystHatches.clear();
+    }
+
+    @Override
+    public void updateSlots() {
+        super.updateSlots();
+        for (MTEHatchCatalysts h : mCatalystHatches) {
+            h.updateSlots();
+            h.tryFillUsageSlots();
+        }
+    }
+
     @Override
     public boolean addOutputToMachineList(IGregTechTileEntity aTileEntity, int aBaseCasingIndex) {
         boolean exotic = addExoticEnergyInputToMachineList(aTileEntity, aBaseCasingIndex);
+
         return addToMachineList(aTileEntity, aBaseCasingIndex) || exotic;
     }
 
@@ -341,26 +374,81 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     protected ProcessingLogic createProcessingLogic() {
         return new ProcessingLogic() {
+
+            ItemStack catalyst;
+
             //no need to catalysts and check the tier of recipes.
             @NotNull
             @Override
             protected CheckRecipeResult validateRecipe(@NotNull GTRecipe recipe) {
-                return CheckRecipeResultRegistry.SUCCESSFUL;
+                RecipeMap<?> recipeMap = getCurrentRecipeMap();
+                if (recipeMap == GTPPRecipeMaps.chemicalPlantRecipes){
+                    ItemStack catalystInRecipe = null;
+                    for (ItemStack item : recipe.mInputs) {
+                        if (MTEChemicalPlant.isCatalyst(item)) {
+                            catalystInRecipe = item;
+                            break;
+                        }
+                    }
+                    if (catalystInRecipe != null) {
+                        catalyst = findCatalyst(getCatalystInputs().toArray(new ItemStack[0]), catalystInRecipe);
+                        if (catalyst == null) {
+                            return SimpleCheckRecipeResult.ofFailure("no_catalyst");
+                        }
+                    } else {
+                        // remove reference to the old catalyst if our new recipe doesn't use it
+                        catalyst = null;
+                    }
+                    return CheckRecipeResultRegistry.SUCCESSFUL;
+                }
+                return super.validateRecipe(recipe);
             }
 
             @NotNull
             @Override
             public CheckRecipeResult process() {
                 setSpeedBonus(getSpeedBonus());
+                if (getCurrentRecipeMap() == GTPPRecipeMaps.chemicalPlantRecipes){
+                    ArrayList<ItemStack> inputItemsList = new ArrayList<>(Arrays.asList(inputItems));
+                    inputItemsList.addAll(getCatalystInputs());
+                    inputItems = inputItemsList.toArray(new ItemStack[0]);
+                }
                 return super.process();
             }
 
             @NotNull
             @Override
             protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
-                return CheckRecipeResultRegistry.SUCCESSFUL;
+                if (getCurrentRecipeMap() == GTPPRecipeMaps.chemicalPlantRecipes){
+                    if (!GTUtility.isStackValid(catalyst)){
+                        catalyst = null;
+                    }
+                }
+                return super.onRecipeStart(recipe);
             }
         }.setMaxParallelSupplier(this::getMaxParallelRecipes);
+    }
+
+    private ItemStack findCatalyst(ItemStack[] aItemInputs, ItemStack catalyst) {
+        if (aItemInputs != null) {
+            for (ItemStack item : aItemInputs) {
+                if (GTUtility.areStacksEqual(item, catalyst, true)) {
+                    return item;
+                }
+            }
+        }
+        return null;
+    }
+
+    public ArrayList<ItemStack> getCatalystInputs() {
+        ArrayList<ItemStack> tItems = new ArrayList<>();
+        for (MTEHatchCatalysts tHatch : validMTEList(mCatalystHatches)) {
+            ArrayList<ItemStack> aHatchContent = tHatch.getContentUsageSlots();
+            if (!aHatchContent.isEmpty()) {
+                tItems.addAll(aHatchContent);
+            }
+        }
+        return tItems;
     }
 
     @Override

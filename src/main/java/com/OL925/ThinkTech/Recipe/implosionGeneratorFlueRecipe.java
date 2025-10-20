@@ -3,6 +3,9 @@ package com.OL925.ThinkTech.Recipe;
 import static gregtech.api.util.GTRecipeConstants.LNG_BASIC_OUTPUT;
 
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
+import gregtech.api.recipe.RecipeMetadataKey;
+import gregtech.api.recipe.metadata.SimpleRecipeMetadataKey;
+import gregtech.api.util.GTRecipeMapUtil;
 import net.minecraftforge.fluids.FluidStack;
 
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
@@ -11,6 +14,13 @@ import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
 
 public class implosionGeneratorFlueRecipe {
+
+    public static final RecipeMetadataKey<Integer> IMPLOSION_GENERATOR_BASIC_OUTPUT = SimpleRecipeMetadataKey
+        .create(Integer.class, "implosion_basic_output");
+
+    static {
+        GTRecipeMapUtil.SPECIAL_VALUE_ALIASES.add(IMPLOSION_GENERATOR_BASIC_OUTPUT);
+    }
 
     FluidStack[] inputs = new FluidStack[] { ThTMaterial.trinitrotoluene.getMolten(1000),
         ThTMaterial.PETN.getMolten(1000), Materials.Glyceryl.getFluid(1000), ThTMaterial.HMX.getMolten(1000),
@@ -25,7 +35,7 @@ public class implosionGeneratorFlueRecipe {
                 .fluidInputs(inputs[i])
                 .fluidOutputs()
                 .eut(0)
-                .metadata(LNG_BASIC_OUTPUT, IGFuelVoltage[i])
+                .metadata(IMPLOSION_GENERATOR_BASIC_OUTPUT, IGFuelVoltage[i])
                 .duration(IGFuelTime[i])
                 .addTo(ThTRecipeMap.implosionGeneratorFuels);
         }
