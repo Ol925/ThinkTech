@@ -14,6 +14,11 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.enums.SoundResource;
 
 import gregtech.api.enums.StructureError;
+import gregtech.api.metatileentity.implementations.MTEHatchInput;
+import gregtech.api.metatileentity.implementations.MTEHatchVoidBus;
+import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchSteamBusInput;
+import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchSteamBusOutput;
+import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTEHatchCustomFluidBase;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTESteamMultiBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -40,7 +45,7 @@ import java.util.Collection;
 public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalConstructable {
 
     private static IStructureDefinition<ThT_Kiln> STRUCTURE_DEFINITION = null;
-    private static ITexture BRICK = Textures.BlockIcons
+    private static final ITexture BRICK = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings4, 15));
 
 
@@ -59,11 +64,11 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
 
     @Override
     public int getMaxParallelRecipes() {
-        return 1;
+        return super.getMaxParallelRecipes();
     }
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
-    private static String[][] Shape = new String[][]{{
+    private static final String[][] Shape = new String[][]{{
         "     ",
         "  A  ",
         " AAA ",
@@ -127,6 +132,57 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
                 .build();
         }
         return STRUCTURE_DEFINITION;
+    }
+
+    @Override
+    public boolean addToMachineList(final IGregTechTileEntity aTileEntity, final int aBaseCasingIndex) {
+        if (aTileEntity == null) {
+            log("Invalid IGregTechTileEntity");
+            return false;
+        }
+        final IMetaTileEntity aMetaTileEntity = aTileEntity.getMetaTileEntity();
+        if (aMetaTileEntity == null) {
+            log("Invalid IMetaTileEntity");
+            return false;
+        }
+
+        // Use this to determine the correct value, then update the hatch texture after.
+        boolean aDidAdd = false;
+
+        if (aMetaTileEntity instanceof MTEHatchCustomFluidBase) {
+            log("Adding Steam Input Hatch");
+            aDidAdd = addToMachineListInternal(mSteamInputFluids, aMetaTileEntity, aBaseCasingIndex);
+        } else if (aMetaTileEntity instanceof MTEHatchSteamBusInput) {
+            log(
+                "Trying to set recipe map. Type: "
+                    + (getRecipeMap() != null ? getRecipeMap().unlocalizedName : "Null"));
+            this.resetRecipeMapForHatch(aTileEntity, getRecipeMap());
+            log("Adding Steam Input Bus");
+            aDidAdd = addToMachineListInternal(mSteamInputs, aMetaTileEntity, aBaseCasingIndex);
+            if (aDidAdd) this.mInputBusses.addAll(mSteamInputs);
+        } else if (aMetaTileEntity instanceof MTEHatchSteamBusOutput || aMetaTileEntity instanceof MTEHatchVoidBus) {
+            log("Adding Steam Output Bus");
+            aDidAdd = addToMachineListInternal(mSteamOutputs, aMetaTileEntity, aBaseCasingIndex);
+        } else if (aMetaTileEntity instanceof MTEHatchInput)
+            aDidAdd = addToMachineListInternal(mInputHatches, aMetaTileEntity, aBaseCasingIndex);
+
+        return aDidAdd;
+    }
+
+    @Override
+    public void onPostTick(final IGregTechTileEntity aBaseMetaTileEntity, final long aTick) {
+        if (aBaseMetaTileEntity.isServerSide()) {
+            if (this.mUpdate == 1 || this.mStartUpCheck == 1) {
+                 this.mInputBusses.clear();
+            }
+        }
+        super.onPostTick(aBaseMetaTileEntity, aTick);
+    }
+
+    @Override
+    public void clearHatches() {
+        super.clearHatches();
+
     }
 
     @Override
@@ -255,7 +311,7 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
 
     @Override
     public boolean getDefaultHasMaintenanceChecks() {
-        return false;
+        return super.getDefaultHasMaintenanceChecks();
     }
 
     @Override
