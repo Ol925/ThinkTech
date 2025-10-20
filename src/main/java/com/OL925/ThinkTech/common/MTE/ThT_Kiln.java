@@ -182,7 +182,6 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     @Override
     public void clearHatches() {
         super.clearHatches();
-
     }
 
     @Override
