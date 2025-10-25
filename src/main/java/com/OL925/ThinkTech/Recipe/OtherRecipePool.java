@@ -122,7 +122,7 @@ public class OtherRecipePool {
         //硒用于增产三种橡胶
         GTValues.RA.stdBuilder()
             .itemInputs(GTUtility.getIntegratedCircuit(6),
-                Materials.Sulfur.getDust(1),
+                //Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
                 Materials.RawRubber.getDust(12))
             .fluidOutputs(Materials.Rubber.getMolten(3240))
@@ -132,7 +132,7 @@ public class OtherRecipePool {
 
         GTValues.RA.stdBuilder()
             .itemInputs(GTUtility.getIntegratedCircuit(6),
-                Materials.Sulfur.getDust(1),
+                //Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
                 Materials.Polydimethylsiloxane.getDust(12))
             .fluidOutputs(Materials.Silicone.getMolten(3240))
@@ -142,7 +142,7 @@ public class OtherRecipePool {
 
         GTValues.RA.stdBuilder()
             .itemInputs(GTUtility.getIntegratedCircuit(6),
-                Materials.Sulfur.getDust(1),
+                //Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
                 Materials.RawStyreneButadieneRubber.getDust(12))
             .fluidOutputs(Materials.StyreneButadieneRubber.getMolten(3240))
