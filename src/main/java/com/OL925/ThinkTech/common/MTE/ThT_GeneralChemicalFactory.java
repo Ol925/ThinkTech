@@ -66,7 +66,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
         implements ISurvivalConstructable, ISecondaryDescribable {
 
     private static final String STRUCTURE_PIECE_MAIN = "main";
-    private HeatingCoilLevel mCoilLevel;
+    private HeatingCoilLevel mCoilLevel = HeatingCoilLevel.None;
     private double mSpeedBonus;
     private final ArrayList<MTEHatchCatalysts> mCatalystHatches = new ArrayList<>();
 
@@ -297,7 +297,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     public void updateSlots() {
         super.updateSlots();
-        for (MTEHatchCatalysts h : mCatalystHatches) {
+        for (MTEHatchCatalysts h : validMTEList(mCatalystHatches)) {
             h.updateSlots();
             h.tryFillUsageSlots();
         }
@@ -408,8 +408,9 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             @Override
             public CheckRecipeResult process() {
                 setSpeedBonus(getSpeedBonus());
-                if (getCurrentRecipeMap() == GTPPRecipeMaps.chemicalPlantRecipes){
-                    ArrayList<ItemStack> inputItemsList = new ArrayList<>(Arrays.asList(inputItems));
+                if (getCurrentRecipeMap() == GTPPRecipeMaps.chemicalPlantRecipes) {
+                    ItemStack[] baseInputs = (inputItems == null) ? new ItemStack[0] : inputItems;
+                    ArrayList<ItemStack> inputItemsList = new ArrayList<>(Arrays.asList(baseInputs));
                     inputItemsList.addAll(getCatalystInputs());
                     inputItems = inputItemsList.toArray(new ItemStack[0]);
                 }
