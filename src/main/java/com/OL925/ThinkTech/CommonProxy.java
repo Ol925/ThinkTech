@@ -23,7 +23,7 @@ public class CommonProxy {
         ThTItemLoader.init();
         ThTBlockLoader.init();
         WerkstoffAdderRegistry.addWerkstoffAdder(new ThTMaterial());
-        MinecraftForge.EVENT_BUS.register(new ExplosionEventHandler());
+        //MinecraftForge.EVENT_BUS.register(new ExplosionEventHandler());
         new bwLocalization().loader();
     }
 

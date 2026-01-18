@@ -166,11 +166,13 @@ public class OtherRecipePool {
         //白钨矿酸洗
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Scheelite.getDust(18),
+                    GTUtility.getIntegratedCircuit(24),
                 Materials.Salt.getDust(2),
                 ThTMaterial.seleniumDioxide.get(dust,1))
             .itemOutputs(BotWerkstoffMaterialPool.TungstenTrioxide.get(dust,12),
                 WerkstoffLoader.CalciumChloride.get(dust,9))//三氧化钨
-            .fluidInputs(Materials.HydrochloricAcid.getFluid(3000))
+            .fluidInputs(Materials.Hydrogen.getGas(3000),
+                    Materials.Chlorine.getGas(3000))
             .fluidOutputs(Materials.Water.getFluid(1000))
             .eut(RECIPE_EV)
             .duration(20 * 5)
