@@ -454,7 +454,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
 
     @Override
     public int getMaxParallelRecipes() {
-        return 8 * mCoilLevel.getTier();
+        return 8 * (mCoilLevel.getTier() +1);
     }
 
     protected float getSpeedBonus() {
