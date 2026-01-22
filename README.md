@@ -43,7 +43,7 @@
 - ✅ V0.1.7和之后的版本：支持 **GTNH 2.8.0**
 
 ## 详细的内容在这里不多赘述，请：
--  在游戏内查看相关内容
+-  查阅[日志文档](https://github.com/Ol925/ThinkTech/blob/master/Log.md)
 -  查阅以往的 [Release](../../releases)
 
 ## 🤝 加入我们
