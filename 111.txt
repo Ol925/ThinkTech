@@ -1,0 +1,59 @@
+油气钻井：
+功能：
+1.无损超频
+2.机器并行配方数量基础为8,在主方块放入高算力芯片(我写的一个物品,在item包里面可以找到,比如HighComputingCowerChipTier1)后会升高并行配方，公式为：8+Tier*4
+3.机器的结构方块等级决定了运行速度，每一级提升20%的配方运行速度
+
+结构：
+
+注：这里的blockcasing和blockframes共同决定了机器等级mechineLevels,现在最低级是钢机器方块和钢框架，然后是不锈钢机器方块和不锈钢框架，接着是钛，然后是钨钢，最后是中子
+
+Blocks:
+A -> ofBlock...(gt.blockcasings2, 0, ...);
+B -> ofBlock...(gt.blockframes, 305, ...);
+C -> ofBlock...(gtplusplus.blockcasings.pipesgears, 10, ...);
+
+Offsets:
+6 4 1
+
+Normal Scan:
+new String[][]{{
+    "        ",
+    "        ",
+    "BBBBB   ",
+    "B   B   ",
+    "B   B   ",
+    "B   B   "
+},{
+    "        ",
+    "        ",
+    "B A B   ",
+    "  A   A ",
+    "  A  A~A",
+    " AAA AAA"
+},{
+    "  A     ",
+    "  A     ",
+    "BACAB   ",
+    " ACA  A ",
+    " ACA AAA",
+    " AAA AAA"
+},{
+    "        ",
+    "        ",
+    "B A B   ",
+    "  A   A ",
+    "  A  AAA",
+    " AAA AAA"
+},{
+    "        ",
+    "        ",
+    "BBBBB   ",
+    "B   B   ",
+    "B   B   ",
+    "B   B   "
+}}
+
+主机有两层材质，一层是OVERLAY，一层是底部材质，我要求底部材质会随着结构方块的等级而变化，比如最低级的时候底部材质是脱氧钢的，换成钛结构方块后会同步变成钛机械方块的材质
+1,2,3点功能都是写进createProcessingLogic()这个方法里面的
+其他的部分代码我要求你仿照我仓库里MTE包里面其他类来写
