@@ -159,6 +159,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
             @NotNull
             @Override
             public CheckRecipeResult process() {
+                setOverclock(4,4);
                 return super.process();
             }
 
@@ -177,9 +178,9 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
                 case 1:
                     return 16;
                 case 2:
-                    return 32;
-                case 3:
                     return 64;
+                case 3:
+                    return 128;
             }
         }
         return 1;
