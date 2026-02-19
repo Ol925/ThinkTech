@@ -143,9 +143,9 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
                 .addElement('F',ofFrame(Materials.Steel))
                 .addElement('G',ofChain(
                     ofBlock(GregTechAPI.sBlockReinforced,2),
-                    onElementPass(ThT_NobleGasEnrichmentSystem::setT1,ofBlock(ThTBlockLoader.controllerTier1,0)),
-                    onElementPass(ThT_NobleGasEnrichmentSystem::setT2,ofBlock(ThTBlockLoader.controllerTier2,0)),
-                    onElementPass(ThT_NobleGasEnrichmentSystem::setT3,ofBlock(ThTBlockLoader.controllerTier3,0))
+                        onElementPass(ThT_NobleGasEnrichmentSystem::setT1, ofBlock(ThTBlockLoader.thtCasings0, 0)),
+                        onElementPass(ThT_NobleGasEnrichmentSystem::setT2, ofBlock(ThTBlockLoader.thtCasings0, 1)),
+                        onElementPass(ThT_NobleGasEnrichmentSystem::setT3, ofBlock(ThTBlockLoader.thtCasings0, 2))
                 ))
                 .build();
         }

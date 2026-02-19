@@ -3,25 +3,25 @@ package com.OL925.ThinkTech.common.init;
 import com.OL925.ThinkTech.common.block.ControllerTier1;
 import com.OL925.ThinkTech.common.block.ControllerTier2;
 import com.OL925.ThinkTech.common.block.ControllerTier3;
+import com.OL925.ThinkTech.common.block.ThTCasings0;
+import com.OL925.ThinkTech.common.tile.TileThTCasingFacing;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class ThTBlockLoader {
 
-    public static Block controllerTier1 = new ControllerTier1();
-    public static Block controllerTier2 = new ControllerTier2();
-    public static Block controllerTier3 = new ControllerTier3();
+    public static Block thtCasings0 = new ThTCasings0();
 
     public static void init()
     {
-        GameRegistry.registerBlock(controllerTier1, "controllerTier1");
-        ThTList.controllerTier1.set(Item.getItemFromBlock(controllerTier1));
+        GameRegistry.registerTileEntity(TileThTCasingFacing.class, "ThinkTech.TileThTCasingFacing");
 
-        GameRegistry.registerBlock(controllerTier2, "controllerTier2");
-        ThTList.controllerTier2.set(Item.getItemFromBlock(controllerTier2));
+        // 继续复用你原本的 ThTList 三个枚举项，但改成 ItemStack 指向不同 meta
+        ThTList.controllerTier1.set(new ItemStack(thtCasings0, 1, 0));
+        ThTList.controllerTier2.set(new ItemStack(thtCasings0, 1, 1));
+        ThTList.controllerTier3.set(new ItemStack(thtCasings0, 1, 2));
 
-        GameRegistry.registerBlock(controllerTier3, "controllerTier3");
-        ThTList.controllerTier3.set(Item.getItemFromBlock(controllerTier3));
     }
 }

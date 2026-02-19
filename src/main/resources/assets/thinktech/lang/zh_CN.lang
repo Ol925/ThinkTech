@@ -21,10 +21,10 @@ item.proteinBlock.name=凝固灭菌蛋白块
 item.seleniumDioxide.name=二氧化硒
 item.pWafer.name=预处理晶圆
 
-#block
-tile.ControllerTier1.name=集成式分离控制核心T1
-tile.ControllerTier2.name=集成式分离控制核心T2
-tile.ControllerTier3.name=集成式分离控制核心T3
+#tile
+thinktech.thtCasings0.0.name=集成式分离控制核心T1
+thinktech.thtCasings0.1.name=集成式分离控制核心T2
+thinktech.thtCasings0.2.name=集成式分离控制核心T3
 
 #fluid
 fluid.AlkaneWaterMixture.name=烷烃-水混合物
