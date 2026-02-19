@@ -1,13 +1,8 @@
 package com.OL925.ThinkTech.common.init;
 
-import com.OL925.ThinkTech.common.block.ControllerTier1;
-import com.OL925.ThinkTech.common.block.ControllerTier2;
-import com.OL925.ThinkTech.common.block.ControllerTier3;
 import com.OL925.ThinkTech.common.block.ThTCasings0;
-import com.OL925.ThinkTech.common.tile.TileThTCasingFacing;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class ThTBlockLoader {
@@ -16,8 +11,6 @@ public class ThTBlockLoader {
 
     public static void init()
     {
-        GameRegistry.registerTileEntity(TileThTCasingFacing.class, "ThinkTech.TileThTCasingFacing");
-
         // 继续复用你原本的 ThTList 三个枚举项，但改成 ItemStack 指向不同 meta
         ThTList.controllerTier1.set(new ItemStack(thtCasings0, 1, 0));
         ThTList.controllerTier2.set(new ItemStack(thtCasings0, 1, 1));
