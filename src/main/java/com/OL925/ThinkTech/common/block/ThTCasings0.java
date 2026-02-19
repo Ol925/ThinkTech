@@ -24,7 +24,7 @@ public class ThTCasings0 extends BlockCasingsAbstract implements net.minecraft.b
     private IIcon plascrete;
 
     @SideOnly(Side.CLIENT)
-    private IIcon[] fronts = new IIcon[3];
+    private final IIcon[] fronts = new IIcon[3];
 
     public ThTCasings0() {
         // 继承 GT casing 基类 -> wrench harvest tool、machine update、硬度抗爆、casing render 都自动具备
