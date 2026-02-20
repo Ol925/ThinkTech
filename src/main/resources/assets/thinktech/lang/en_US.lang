@@ -109,6 +109,7 @@ tht.recipe.implosion_generator=Implosion Generator
 tht.recipe.CSCF=Czochralski Single Crystal Furnace
 tht.recipe.SAF=General Chemical Factory
 tht.recipe.NGES=Noble Gas Enrichment System
+tht.recipe.DR=§2§nDrilling Rig
 
 #NEI Info
 value.implosion_generator=Basic power generation: %s EU/t

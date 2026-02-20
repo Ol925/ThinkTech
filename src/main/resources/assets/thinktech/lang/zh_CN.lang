@@ -111,6 +111,7 @@ tht.recipe.CSCF=柴式单晶炉
 tht.recipe.SAF=通用化工厂
 tht.recipe.kiln=§e窑
 tht.recipe.NGES=§e稀有气体富集
+tht.recipe.DR=§2§n钻井平台
 
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t

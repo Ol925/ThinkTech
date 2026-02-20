@@ -9,6 +9,7 @@ import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import javax.annotation.Nonnull;
 
+import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.OL925.ThinkTech.common.init.ThTList;
 import com.google.common.collect.ImmutableList;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
@@ -248,7 +249,6 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
             public CheckRecipeResult process() {
                 setSpeedBonus(getSpeedBonus());
                 setOverclock(4, 4); // 无损超频
-                setBatchSize(isBatchModeEnabled() ? getMaxBatchSize() : 1);
                 return super.process();
             }
 
@@ -311,11 +311,7 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
 
     // ==================== 配方表 ====================
     @Override
-    public RecipeMap<?> getRecipeMap() {
-        // TODO: 替换为你的钻井配方表
-        // return ThTRecipeMap.DrillingRig;
-        return null;
-    }
+    public RecipeMap<?> getRecipeMap() {return ThTRecipeMap.DrillingRig;}
 
     // ==================== NBT ====================
     @Override

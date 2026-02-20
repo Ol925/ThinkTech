@@ -48,4 +48,11 @@ public class ThTRecipeMap {
         .progressBar(GTUITextures.PROGRESSBAR_BATH)
         .frontend(LargeNEIFrontend::new)
         .build();
+
+    public static final RecipeMap<RecipeMapBackend> DrillingRig = RecipeMapBuilder
+        .of("tht.recipe.DR")
+        .maxIO(3, 0, 3, 3 )
+        .progressBar(GTUITextures.PROGRESSBAR_FISHING)
+        .frontend(LargeNEIFrontend::new)
+        .build();
 }
