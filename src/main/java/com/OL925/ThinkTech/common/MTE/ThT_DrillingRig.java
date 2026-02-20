@@ -377,7 +377,7 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
                 .addInfo(translateToLocalFormatted("mte.DR.tooltips5"))
                 .addInfo(translateToLocalFormatted("mte.common.tooltips5"))
                 .addInfo(translateToLocalFormatted("mte.common.tooltips4"))
-                .addInfo("添加者：§4§nOL925 §r& §9§l瑶光")
+                .addInfo("添加者：§4§nOL925 §r& §9瑶光")
                 .beginStructureBlock(9, 12, 7, false)
                 .addController("见结构预览")
                 .addCasingInfoExactly("脱氧钢机械方块", 0, false)
