@@ -286,6 +286,11 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
     }
 
     @Override
+    public boolean supportsBatchMode() {
+        return true;
+    }
+
+    @Override
     public boolean supportsInputSeparation() {
         return true;
     }

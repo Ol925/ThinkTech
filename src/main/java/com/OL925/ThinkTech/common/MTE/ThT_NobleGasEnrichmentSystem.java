@@ -261,6 +261,11 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
     }
 
     @Override
+    public boolean supportsBatchMode() {
+        return true;
+    }
+
+    @Override
     public int getMaxEfficiency(ItemStack aStack) {
         return 10000;
     }
