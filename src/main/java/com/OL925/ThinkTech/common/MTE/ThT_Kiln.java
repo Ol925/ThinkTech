@@ -281,6 +281,7 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
             .addInfo(translateToLocalFormatted("mte.kiln.tooltips3"))
             .addInfo(translateToLocalFormatted("mte.Kiln.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.Kiln.tooltips5"))
+            .addInfo("添加者：§4§nOL925")
             .beginStructureBlock(6, 5, 5, false)
             .addController("正面中央")
             .addCasingInfoExactly("耐火砖",64,false)

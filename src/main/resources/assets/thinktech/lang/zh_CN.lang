@@ -43,7 +43,8 @@ fluid.Dndcq=低浓度萃取液
 mte.common.tooltips1=使用消声仓可使机器真正消音！
 mte.common.tooltips2=生产机器
 mte.common.tooltips3=发电机
-mte.common.tooltips4=§3支持无线能源仓和多A能源仓
+mte.common.tooltips4=§3支持TecTech多A能源仓
+mte.common.tooltips5=§e超频时不会损失效率
 
 mte.ImplosionGenerator=聚爆发电机
 mte.ImplosionGenerator.tooltips1=§b爆炸向来都是艺术
@@ -64,7 +65,6 @@ mte.CSCF.tooltips5=§b有着比常规高炉烧结更高效率！
 mte.CSCF.tooltips6=§b可以在机器主机UI中插入高算力芯片来升级机器
 mte.CSCF.tooltips7=§b机器配方并行上限=4 * 插入芯片等级，默认并行大小为1
 mte.CSCF.tooltips8=§b芯片等级每提升一级,提供20%%的运行速度加成
-mte.CSCF.tooltips9=§b支持Tec能源仓
 
 mte.SAF=通用化工厂
 mte.SAF.tooltips1=§eF.Haber
@@ -76,8 +76,6 @@ mte.SAF.tooltips6=§b它有三种模式：化学反应釜/通用化工厂/美孚
 mte.SAF.tooltips7=§b美孚化工厂模式下，它可以无视机器等级需求和不消耗催化剂运行配方
 mte.SAF.tooltips8=§b通过替换更好的线圈来提高机器运行效率
 mte.SAF.tooltips9=§b每一级线圈提供10%%的速度加成和8的配方并行！
-mte.SAF.tooltips10=§b支持无损超频！
-mte.SAF.tooltips11=§b支持Tec能源仓
 
 mte.SAF.common.mode.0=大型化学反应釜
 mte.SAF.common.mode.1=通用化工厂
@@ -93,7 +91,7 @@ mte.Kiln.tooltips5=§4注意,它并不需要蒸汽供应!
 mte.NGES=稀有气体富集装置
 mte.NGES.tt1=§e哦,它们无处不在,所以为什么不直接拿来用呢?
 mte.NGES.tt2=§b最新的分子筛网技术,以最高效率从空气中过滤分离各种气体,默认仅提供1的配方并行
-mte.NGES.tt3=§b通过输入能源来使其转换为主动模式!支持TT的多电流能源仓!
+mte.NGES.tt3=§3支持TecTech多A能源仓!
 mte.NGES.tt4=§b同样的,你也可以使用更高级的分子筛网来提高富集效率
 mte.NGES.tt5=§b塑料混凝土方块可以被替换为集成式分离控制核心T1/T2/T3,以此来解锁更高的并行配方
 
@@ -103,7 +101,7 @@ mte.DR.tooltips2=§b大型多方块钻井,可直接虚空生产流体,默认提�
 mte.DR.tooltips3=§b使用更高级的管道方块来提升运行速度,§4§n每级提升15%%
 mte.DR.tooltips4=§b管道等级: §6钢(T1) §f/ §6钛(T2) §f/ §6钨钢(T3) §f/ §6PBI(T4) §f/ §6TT中空机械方块(T5)
 mte.DR.tooltips5=§b在控制器中放入芯片可额外增加并行: §6T1(+8) §f/ §6T2(+16) §f/ §6T3(+24) §f/ §6T4(+32)
-mte.DR.tooltips6=§b支持4/4无损超频
+mte.common.tooltips5=§b超频时不会损失效率
 
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机

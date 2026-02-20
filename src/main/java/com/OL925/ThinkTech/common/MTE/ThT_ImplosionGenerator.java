@@ -270,6 +270,7 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips6"))
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips7"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
+            .addInfo("添加者：§4§nOL925")
             .addPollutionAmount(getPollutionPerSecond(null))
             .beginStructureBlock(7, 5, 8, false)
             .addController("正面底部中央")
