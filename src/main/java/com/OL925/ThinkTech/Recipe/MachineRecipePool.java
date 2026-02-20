@@ -362,7 +362,7 @@ public class MachineRecipePool {
         //岩浆
         GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(1))
-                .fluidOutputs(Materials.Lava.getFluid(16000))
+                .fluidOutputs(Materials.Lava.getFluid(24000))
                 .eut(RECIPE_MV)
                 .duration(20 * 5)
                 .addTo(ThTRecipeMap.DrillingRig);
@@ -370,28 +370,28 @@ public class MachineRecipePool {
         //天然气
         GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(2))
-                .fluidOutputs(Materials.NatruralGas.getGas(16000))
+                .fluidOutputs(Materials.NatruralGas.getGas(18000))
                 .eut(RECIPE_MV)
                 .duration(70)
                 .addTo(ThTRecipeMap.DrillingRig);
         //原油
         GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(3))
-                .fluidOutputs(Materials.OilMedium.getFluid(16000))
+                .fluidOutputs(Materials.OilMedium.getFluid(18000))
                 .eut(RECIPE_HV)
                 .duration(20 * 5)
                 .addTo(ThTRecipeMap.DrillingRig);
         //轻油
         GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(4))
-                .fluidOutputs(Materials.OilLight.getFluid(20000))
+                .fluidOutputs(Materials.OilLight.getFluid(22000))
                 .eut(RECIPE_HV)
                 .duration(20 * 3)
                 .addTo(ThTRecipeMap.DrillingRig);
         //重油
         GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(5))
-                .fluidOutputs(Materials.OilHeavy.getFluid(12000))
+                .fluidOutputs(Materials.OilHeavy.getFluid(14000))
                 .eut(RECIPE_HV)
                 .duration(20 * 7)
                 .addTo(ThTRecipeMap.DrillingRig);
