@@ -42,6 +42,7 @@ fluid.Dndcq=Low-Concentration Extract Solution
 mte.common.tooltips1=The use of muffler can make the machine really silenced!
 mte.common.tooltips2=Production machine
 mte.common.tooltips3=Generator
+mte.common.tooltips4=§3Support Tec energy hatch
 
 mte.ImplosionGenerator=Implosion Generator
 mte.ImplosionGenerator.tooltips1=§bExplosions have always been art
@@ -94,6 +95,14 @@ mte.NGES.tt2=§bThe latest molecular screen technology filters and separates gas
 mte.NGES.tt3=§bConvert it to active mode by inputting energy! TT's energy hatch is support!
 mte.NGES.tt4=§bAlso,you can use more advanced molecular screens to improve enrichment efficiency.
 mte.NGES.tt5=§bPlascrete Block can be replaced by Separation control core T1/T2/T3,so that it can provide more parallel recipes.
+
+mte.DR=Drilling Rig
+mte.DR.tooltips1=§eDrain every drop of liquid gold from deep within the crust, be the iron man of the new era!
+mte.DR.tooltips2=§bLarge multiblock drilling rig, produces fluids from the void, provides 8 parallel recipes by default
+mte.DR.tooltips3=§bUse higher tier pipe casings to increase operation speed, §4§n15%% boost per tier
+mte.DR.tooltips4=§bPipe tier: §6Steel(T1) §f/ §6Titanium(T2) §f/ §6Tungstensteel(T3) §f/ §6PBI(T4) §f/ §6TT Hollow Casing(T5)
+mte.DR.tooltips5=§bInsert chips into the controller for extra parallels: §6T1(+8) §f/ §6T2(+16) §f/ §6T3(+24) §f/ §6T4(+32)
+mte.DR.tooltips6=§bSupports 4/4 lossless overclock
 
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator

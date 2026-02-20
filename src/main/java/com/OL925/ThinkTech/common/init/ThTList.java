@@ -34,6 +34,7 @@ public enum ThTList {
     GeneralFactory,
     Kiln,
     NobleGasEnrichmentSystem,
+    DrillingRig,
 
     TestItem;
 

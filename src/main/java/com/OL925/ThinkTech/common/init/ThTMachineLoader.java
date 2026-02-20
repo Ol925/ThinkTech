@@ -12,6 +12,7 @@ public class ThTMachineLoader {
     public static ItemStack GeneralFactory;
     public static ItemStack Kiln;
     public static ItemStack NobleGasEnrichmentSystem;
+    public static ItemStack DrillingRig;
 
     public static void loadMachine() {
         ExplosiveGenerator = new ThT_ImplosionGenerator(
@@ -43,5 +44,11 @@ public class ThTMachineLoader {
             "NameNobleGasEnrichmentSystem",
             translateToLocalFormatted("mte.NGES")).getStackForm(1);
         ThTList.NobleGasEnrichmentSystem.set(NobleGasEnrichmentSystem);
+
+        DrillingRig = new ThT_DrillingRig(
+            27005,
+            "NameDrillingRig",
+            translateToLocalFormatted("mte.DR")).getStackForm(1);
+        ThTList.DrillingRig.set(DrillingRig);
     }
 }
