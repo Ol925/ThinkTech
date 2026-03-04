@@ -171,6 +171,50 @@ public class MachineRecipePool {
             .duration(20 * 60)
             .addTo(ThTRecipeMap.Kiln);
 
+        //焦炉砖
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        Materials.Clay.getDust(16),
+                        GTModHandler.getModItem("minecraft", "sand", 32, 1) // Red Sand meta=1
+                )
+                .itemOutputs(GTModHandler.getModItem(Railcraft.ID, "machine.alpha", 64, 7)) // Coke Oven Brick
+                .eut(0)
+                .duration(20 * 20)
+                .addTo(ThTRecipeMap.Kiln);
+
+        //焦炉砖
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        Materials.Clay.getDust(16),
+                        GTModHandler.getModItem("minecraft", "sand", 32, 0) // Sand meta=0
+                )
+                .itemOutputs(GTModHandler.getModItem(Railcraft.ID, "machine.alpha", 64, 7)) // Coke Oven Brick
+                .eut(0)
+                .duration(20 * 20)
+                .addTo(ThTRecipeMap.Kiln);
+
+        // 焦黑砖
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTModHandler.getModItem("minecraft", "sand", 16, 0),
+                        GTModHandler.getModItem("minecraft", "gravel", 16, 0)
+                )
+                .itemOutputs(GTModHandler.getModItem("TConstruct", "Smeltery", 16, 2))
+                .eut(0)
+                .duration(20 * 16)
+                .addTo(ThTRecipeMap.Kiln);
+
+        // 焦黑砖（红沙版本）
+        GTValues.RA.stdBuilder()
+                .itemInputs(
+                        GTModHandler.getModItem("minecraft", "sand", 16, 1),
+                        GTModHandler.getModItem("minecraft", "gravel", 16, 0)
+                )
+                .itemOutputs(GTModHandler.getModItem("TConstruct", "Smeltery", 16, 2))
+                .eut(0)
+                .duration(20 * 16)
+                .addTo(ThTRecipeMap.Kiln);
+
         //被动稀有气体富集 EV
 //        GTValues.RA.stdBuilder()
 //            .itemInputs(GTUtility.getIntegratedCircuit(1))
