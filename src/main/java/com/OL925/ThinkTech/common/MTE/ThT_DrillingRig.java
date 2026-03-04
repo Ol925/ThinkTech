@@ -255,6 +255,11 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
             @NotNull
             @Override
             protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
+
+                if (mMachineLevel < recipe.mSpecialValue) {
+                    return CheckRecipeResultRegistry.NONE;
+                }
+
                 return CheckRecipeResultRegistry.SUCCESSFUL;
             }
         }.setMaxParallelSupplier(this::getMaxParallelRecipes);

@@ -12,12 +12,12 @@ import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.core.fluids.GTPPFluids;
+import gtPlusPlus.core.material.Material;
 import gtPlusPlus.core.material.MaterialsElements;
 import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
 import gtnhlanth.common.register.WerkstoffMaterialPool;
-import net.minecraft.block.material.Material;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.OreDictionary;
 
 import static com.OL925.ThinkTech.common.init.ThTList.*;
 import static goodgenerator.items.GGMaterial.naquadahine;
@@ -409,6 +409,7 @@ public class MachineRecipePool {
                 .fluidOutputs(Materials.Lava.getFluid(24000))
                 .eut(RECIPE_MV)
                 .duration(20 * 5)
+                .specialValue(1)
                 .addTo(ThTRecipeMap.DrillingRig);
 
         //天然气
@@ -417,6 +418,7 @@ public class MachineRecipePool {
                 .fluidOutputs(Materials.NatruralGas.getGas(18000))
                 .eut(RECIPE_MV)
                 .duration(70)
+                .specialValue(1)
                 .addTo(ThTRecipeMap.DrillingRig);
         //原油
         GTValues.RA.stdBuilder()
@@ -424,6 +426,7 @@ public class MachineRecipePool {
                 .fluidOutputs(Materials.OilMedium.getFluid(18000))
                 .eut(RECIPE_HV)
                 .duration(20 * 5)
+                .specialValue(1)
                 .addTo(ThTRecipeMap.DrillingRig);
         //轻油
         GTValues.RA.stdBuilder()
@@ -431,6 +434,7 @@ public class MachineRecipePool {
                 .fluidOutputs(Materials.OilLight.getFluid(22000))
                 .eut(RECIPE_HV)
                 .duration(20 * 3)
+                .specialValue(1)
                 .addTo(ThTRecipeMap.DrillingRig);
         //重油
         GTValues.RA.stdBuilder()
@@ -438,6 +442,7 @@ public class MachineRecipePool {
                 .fluidOutputs(Materials.OilHeavy.getFluid(14000))
                 .eut(RECIPE_HV)
                 .duration(20 * 7)
+                .specialValue(1)
                 .addTo(ThTRecipeMap.DrillingRig);
         //极重油
         GTValues.RA.stdBuilder()
@@ -445,6 +450,71 @@ public class MachineRecipePool {
                 .fluidOutputs(Materials.OilExtraHeavy.getFluid(24000))
                 .eut(RECIPE_IV)
                 .duration(20 * 8)
+                .specialValue(1)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //盐水
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(7))
+                .fluidOutputs(Materials.SaltWater.getFluid(16000))
+                .eut(RECIPE_EV)
+                .duration(20 * 4)
+                .specialValue(2)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //蒸馏水
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(8))
+                .fluidOutputs(GTModHandler.getDistilledWater(24000))
+                .eut(RECIPE_HV)
+                .duration(20 * 4)
+                .specialValue(2)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //氯苯
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(9))
+                .fluidOutputs(Materials.Chlorobenzene.getFluid(20000))
+                .eut(RECIPE_EV)
+                .duration(20 * 8)
+                .specialValue(3)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //硫酸
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(10))
+                .fluidOutputs(Materials.SulfuricAcid.getFluid(18000))
+                .eut(RECIPE_EV)
+                .duration(20 * 10)
+                .specialValue(3)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //不明液体
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(11))
+                .fluidOutputs(FluidRegistry.getFluidStack("unknowwater", 12000))
+                .eut(RECIPE_LuV)
+                .duration(20 * 10)
+                .specialValue(5)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //熔融铁
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(12))
+                .fluidOutputs(Materials.Iron.getMolten(12000))
+                .eut(RECIPE_LuV)
+                .duration(20 * 16)
+                .specialValue(4)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //熔融铅
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(11))
+                .fluidOutputs(Materials.Lead.getMolten(14000))
+                .eut(RECIPE_LuV)
+                .duration(20 * 16)
+                .specialValue(4)
+                .addTo(ThTRecipeMap.DrillingRig);
+        //末影粘浆
+        GTValues.RA.stdBuilder()
+                .itemInputs(GTUtility.getIntegratedCircuit(14))
+                .fluidOutputs(FluidRegistry.getFluidStack("endergoo", 12000))
+                .eut(RECIPE_EV)
+                .duration(20 * 8)
+                .specialValue(3)
                 .addTo(ThTRecipeMap.DrillingRig);
     }
 }

@@ -1,6 +1,7 @@
 package com.OL925.ThinkTech.Recipe;
 
 import static com.OL925.ThinkTech.gui.ThTUITexture.PICTURE_Implosion_Generator;
+import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import gregtech.api.gui.modularui.GTUITextures;
 import gregtech.api.recipe.RecipeMap;
@@ -54,5 +55,6 @@ public class ThTRecipeMap {
         .maxIO(3, 0, 3, 3 )
         .progressBar(GTUITextures.PROGRESSBAR_FISHING)
         .frontend(LargeNEIFrontend::new)
+        .neiSpecialInfoFormatter(new SimpleSpecialValueFormatter("value.machineLevel"))
         .build();
 }

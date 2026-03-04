@@ -113,3 +113,4 @@ tht.recipe.DR=§2§n钻井平台
 
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t
+value.machineLevel=机器等级：%s
