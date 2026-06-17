@@ -46,6 +46,8 @@ mte.common.tooltips3=发电机
 mte.common.tooltips4=§3支持TecTech多A能源仓
 mte.common.tooltips5=§e超频时不会损失效率
 
+mte.common.error.1=管道方块放置错误
+
 mte.ImplosionGenerator=聚爆发电机
 mte.ImplosionGenerator.tooltips1=§b爆炸向来都是艺术
 mte.ImplosionGenerator.tooltips2=§b现在我们要让这种艺术再次被发扬光大!

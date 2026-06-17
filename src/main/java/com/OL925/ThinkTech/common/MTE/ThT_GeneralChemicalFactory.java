@@ -26,17 +26,13 @@ import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.recipe.check.SimpleCheckRecipeResult;
 import gregtech.api.render.TextureFactory;
+import gregtech.api.structure.error.StructureError;
+import gregtech.api.structure.error.StructureErrorRegistry;
 import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
-import gtPlusPlus.GTplusplus;
-import gtPlusPlus.api.objects.Logger;
-import gtPlusPlus.api.objects.minecraft.BlockPos;
 import gtPlusPlus.api.recipe.GTPPRecipeMaps;
-import gtPlusPlus.core.config.ASMConfiguration;
-import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
-import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.nbthandlers.MTEHatchCatalysts;
 import gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.chemplant.MTEChemicalPlant;
 import net.minecraft.item.ItemStack;
@@ -49,6 +45,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 import static com.OL925.ThinkTech.Recipe.ThTRecipeMap.GeneralChemicalFactory;
 import static com.gtnewhorizon.structurelib.structure.StructureUtility.*;
@@ -252,13 +249,13 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
                             ofChain(buildHatchAdder(ThT_GeneralChemicalFactory.class)
                                     .atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)
                                     .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
-                                    .dot(1)
+                                    .hint(1)
                                     .buildAndChain(GregTechAPI.sBlockCasings2, 0),
                                 buildHatchAdder(ThT_GeneralChemicalFactory.class).hatchClass(MTEHatchCatalysts.class)
                                     .shouldReject(t -> !t.mCatalystHatches.isEmpty())
                                     .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
+                                    .hint(2)
                                     .adder(ThT_GeneralChemicalFactory::addChemicalPlantList)
-                                    .dot(2)
                                     .buildAndChain(GregTechAPI.sBlockCasings2, 0)))
                     .addElement('C',ofBlock(GregTechAPI.sBlockCasings2, 13))
                     .addElement('D',ofBlock(GregTechAPI.sBlockCasings3, 10))
@@ -531,12 +528,8 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     }
 
     @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(STRUCTURE_PIECE_MAIN, 5, 11, 2)) {
-            fixAllIssues();
-            return true;
-        }
-        return false;
+    public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 5, 11, 2, errors)) return;
     }
 
     @Override

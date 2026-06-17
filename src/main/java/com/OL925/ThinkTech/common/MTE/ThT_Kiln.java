@@ -13,15 +13,17 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.enums.SoundResource;
 
-import gregtech.api.enums.StructureError;
+import gregtech.api.interfaces.IIconContainer;
 import gregtech.api.metatileentity.implementations.MTEHatchInput;
+import gregtech.api.metatileentity.implementations.MTEHatchOutputBus;
 import gregtech.api.metatileentity.implementations.MTEHatchVoidBus;
+import gregtech.api.structure.error.StructureError;
+import gregtech.api.structure.error.StructureErrorRegistry;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchSteamBusInput;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchSteamBusOutput;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTEHatchCustomFluidBase;
-import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTESteamMultiBase;
+import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTESteamMultiBlockBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
@@ -36,13 +38,14 @@ import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.render.TextureFactory;
+import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 
-import java.util.Collection;
+import java.util.List;
 
 
-public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalConstructable {
+public class ThT_Kiln extends MTESteamMultiBlockBase<ThT_Kiln> implements ISurvivalConstructable {
 
     private static IStructureDefinition<ThT_Kiln> STRUCTURE_DEFINITION = null;
     private static final ITexture BRICK = Textures.BlockIcons
@@ -115,15 +118,15 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
                     ofChain(
                         buildSteamInput(ThT_Kiln.class)
                             .casingIndex(Textures.BlockIcons.getTextureIndex(BRICK))
-                            .dot(1)
                             .allowOnly(ForgeDirection.NORTH)
+                                .hint(1)
                             .build(),
                         buildHatchAdder(ThT_Kiln.class)
                             .atLeast(
                                 SteamHatchElement.InputBus_Steam,
                                 SteamHatchElement.OutputBus_Steam)
                             .casingIndex(Textures.BlockIcons.getTextureIndex(BRICK))
-                            .dot(1)
+                                .hint(2)
                             .allowOnly(ForgeDirection.NORTH)
                             .buildAndChain(),
                         ofBlock(GregTechAPI.sBlockCasings4, 15))
@@ -135,36 +138,35 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     }
 
     @Override
+    public String[] getStructureDescription(ItemStack stackSize) {
+        return new String[0];
+    }
+
+    @Override
     public boolean addToMachineList(final IGregTechTileEntity aTileEntity, final int aBaseCasingIndex) {
-        if (aTileEntity == null) {
-            log("Invalid IGregTechTileEntity");
-            return false;
-        }
+        if (aTileEntity == null) return false;
         final IMetaTileEntity aMetaTileEntity = aTileEntity.getMetaTileEntity();
-        if (aMetaTileEntity == null) {
-            log("Invalid IMetaTileEntity");
-            return false;
-        }
+        if (aMetaTileEntity == null) return false;
 
         // Use this to determine the correct value, then update the hatch texture after.
         boolean aDidAdd = false;
 
-        if (aMetaTileEntity instanceof MTEHatchCustomFluidBase) {
-            log("Adding Steam Input Hatch");
-            aDidAdd = addToMachineListInternal(mSteamInputFluids, aMetaTileEntity, aBaseCasingIndex);
-        } else if (aMetaTileEntity instanceof MTEHatchSteamBusInput) {
-            log(
+        if (aMetaTileEntity instanceof MTEHatchCustomFluidBase fluidHatch) {
+            GTLog.out.println("Adding Steam Input Hatch");
+            aDidAdd = addToMachineListInternal(mSteamInputFluids, fluidHatch, aBaseCasingIndex);
+        } else if (aMetaTileEntity instanceof MTEHatchSteamBusInput steamBus) {
+            GTLog.out.println(
                 "Trying to set recipe map. Type: "
                     + (getRecipeMap() != null ? getRecipeMap().unlocalizedName : "Null"));
             this.resetRecipeMapForHatch(aTileEntity, getRecipeMap());
-            log("Adding Steam Input Bus");
-            aDidAdd = addToMachineListInternal(mSteamInputs, aMetaTileEntity, aBaseCasingIndex);
+            GTLog.out.println("Adding Steam Input Bus");
+            aDidAdd = addToMachineListInternal(mSteamInputs, steamBus, aBaseCasingIndex);
             if (aDidAdd) this.mInputBusses.addAll(mSteamInputs);
         } else if (aMetaTileEntity instanceof MTEHatchSteamBusOutput || aMetaTileEntity instanceof MTEHatchVoidBus) {
-            log("Adding Steam Output Bus");
-            aDidAdd = addToMachineListInternal(mSteamOutputs, aMetaTileEntity, aBaseCasingIndex);
-        } else if (aMetaTileEntity instanceof MTEHatchInput)
-            aDidAdd = addToMachineListInternal(mInputHatches, aMetaTileEntity, aBaseCasingIndex);
+            GTLog.out.println("Adding Steam Output Bus");
+            aDidAdd = addToMachineListInternal(mSteamOutputs, (MTEHatchOutputBus) aMetaTileEntity, aBaseCasingIndex);
+        } else if (aMetaTileEntity instanceof MTEHatchInput inputHatch)
+            aDidAdd = addToMachineListInternal(mInputHatches, inputHatch, aBaseCasingIndex);
 
         return aDidAdd;
     }
@@ -208,9 +210,6 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     public boolean isCorrectMachinePart(ItemStack aStack) {
         return true;
     }
-
-    @Override
-    protected void validateStructure(Collection<StructureError> errors, NBTTagCompound context) {}
 
     @SideOnly(Side.CLIENT)
     @Override
@@ -258,18 +257,23 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     }
 
     @Override
-    protected ITexture getFrontOverlay() {
-        return null;
-    }
-
-    @Override
-    protected ITexture getFrontOverlayActive() {
-        return null;
-    }
-
-    @Override
     public int getTierRecipes() {
         return 1;
+    }
+
+    @Override
+    protected boolean isHighPressure() {
+        return false;
+    }
+
+    @Override
+    protected IIconContainer getActiveOverlay() {
+        return null;
+    }
+
+    @Override
+    protected IIconContainer getInactiveOverlay() {
+        return null;
     }
 
     @Override
@@ -293,12 +297,8 @@ public class ThT_Kiln extends MTESteamMultiBase<ThT_Kiln> implements ISurvivalCo
     }
 
     @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(STRUCTURE_PIECE_MAIN, 2, 3, 0)) {
-            fixAllIssues();
-            return true;
-        }
-        return false;
+    public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 2, 3, 0, errors)) return;
     }
 
     @Override

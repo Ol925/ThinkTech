@@ -39,6 +39,8 @@ import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.render.TextureFactory;
+import gregtech.api.structure.error.StructureError;
+import gregtech.api.structure.error.StructureErrorRegistry;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 
@@ -46,6 +48,8 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
+
+import java.util.List;
 
 public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBlockBase<ThT_CzochralskiSingleCrystalFurnace>
     implements ISurvivalConstructable, ISecondaryDescribable {
@@ -83,9 +87,10 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
                 .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
                 .addElement('B',ofBlock(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C',ofBlock(GregTechAPI.sBlockCasings3, 10))
-                .addElement('D',buildHatchAdder(ThT_CzochralskiSingleCrystalFurnace.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputBus, OutputHatch,Muffler)
+                .addElement('D',
+                        buildHatchAdder(ThT_CzochralskiSingleCrystalFurnace.class).atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputBus, OutputHatch,Muffler)
                     .casingIndex(Textures.BlockIcons.getTextureIndex(STAINLESS_STEEL_MACHINE_CASING))
-                    .dot(1)
+                    .hint(1)
                     .buildAndChain(GregTechAPI.sBlockCasings4, 1))
                 .addElement('E',ofBlock(GregTechAPI.sBlockCasings8, 1))
                 .addElement('F',ofFrame(Materials.Steel))
@@ -273,12 +278,8 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
     }
 
     @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(STRUCTURE_PIECE_MAIN, 3, 6, 0)) {
-            fixAllIssues();
-            return true;
-        }
-        return false;
+    public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 3, 6, 0, errors)) return;
     }
 
     @Override

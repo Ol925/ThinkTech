@@ -10,7 +10,6 @@ import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import static gregtech.api.util.GTRecipeBuilder.TICKS;
 import static gtPlusPlus.core.fluids.GTPPFluids.*;
-import static net.minecraftforge.fluids.FluidRegistry.getFluidStack;
 
 import bartworks.system.material.WerkstoffLoader;
 import com.OL925.ThinkTech.common.Material.ThTMaterial;
@@ -22,7 +21,6 @@ import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.core.material.MaterialMisc;
 import gtPlusPlus.core.material.MaterialsElements;
-import gtPlusPlus.core.util.minecraft.FluidUtils;
 import gtPlusPlus.core.util.minecraft.ItemUtils;
 import gtnhlanth.common.register.BotWerkstoffMaterialPool;
 import gtnhlanth.common.register.WerkstoffMaterialPool;
@@ -48,7 +46,7 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(ThTMaterial.trinitrotoluene.getMolten(200))
             .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 8),
+                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polyethylene, 8),
                 ThTMaterial.leadAzide.get(dust, 1))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 1))
             .eut(RECIPE_HV)
@@ -58,7 +56,7 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(ThTMaterial.PETN.getMolten(200))
             .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 16),
+                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polyethylene, 16),
                 ThTMaterial.leadAzide.get(dust, 1))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 4))
             .eut(RECIPE_EV)
@@ -68,7 +66,7 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Glyceryl.getFluid(200))
             .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Plastic, 16),
+                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polyethylene, 16),
                 ThTMaterial.leadAzide.get(dust, 1))
             .itemOutputs(GTModHandler.getIC2Item("industrialTnt", 16))
             .eut(RECIPE_EV)
@@ -98,7 +96,7 @@ public class OtherRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Methanol.getFluid(32000), Materials.Oxygen.getGas(32000))
             .itemInputs(GTUtility.getIntegratedCircuit(24))
-            .fluidOutputs(FluidUtils.getFluidStack(Formaldehyde, 32000))
+            .fluidOutputs(new FluidStack(Formaldehyde, 32000))
             .eut(RECIPE_MV)
             .duration(20 * 20)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);
@@ -124,7 +122,7 @@ public class OtherRecipePool {
             .itemInputs(GTUtility.getIntegratedCircuit(6),
                 //Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
-                Materials.RawRubber.getDust(12))
+                Materials.RubberRaw.getDust(12))
             .fluidOutputs(Materials.Rubber.getMolten(3240))
             .eut(RECIPE_MV)
             .duration(20 * 6)
@@ -135,7 +133,7 @@ public class OtherRecipePool {
                 //Materials.Sulfur.getDust(1),
                 MaterialsElements.getInstance().SELENIUM.getDust(1),
                 Materials.Polydimethylsiloxane.getDust(12))
-            .fluidOutputs(Materials.Silicone.getMolten(3240))
+            .fluidOutputs(Materials.RubberSilicone.getMolten(3240))
             .eut(RECIPE_MV)
             .duration(20 * 36)
             .addTo(RecipeMaps.multiblockChemicalReactorRecipes);

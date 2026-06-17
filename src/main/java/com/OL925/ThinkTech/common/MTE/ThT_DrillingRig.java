@@ -33,6 +33,8 @@ import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.render.TextureFactory;
+import gregtech.api.structure.error.StructureError;
+import gregtech.api.structure.error.StructureErrorRegistry;
 import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
@@ -43,6 +45,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import org.apache.commons.lang3.tuple.Pair;
 import org.jetbrains.annotations.NotNull;
 import tectech.thing.casing.TTCasingsContainer;
+
+import java.util.List;
 
 public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_DrillingRig>
         implements ISurvivalConstructable, ISecondaryDescribable {
@@ -193,14 +197,15 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
     @Override
     public IStructureDefinition<ThT_DrillingRig> getStructureDefinition() {
         if (STRUCTURE_DEFINITION == null) {
-            STRUCTURE_DEFINITION = StructureDefinition.<ThT_DrillingRig>builder()
+            STRUCTURE_DEFINITION = StructureDefinition
+                    .<ThT_DrillingRig>builder()
                     .addShape(STRUCTURE_PIECE_MAIN, Shape)
                     .addElement('A',
                             buildHatchAdder(ThT_DrillingRig.class)
                                     .atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)
                                     .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
-                                    .dot(1)
-                                    .buildAndChain(GregTechAPI.sBlockCasings2, 0))
+                                    .hint(1)
+                                    .buildAndChain(GregTechAPI.sBlockCasings2, 0 ))
                     // B -> 化学惰性机械方块
                     .addElement('B', ofBlock(GregTechAPI.sBlockCasings8, 0))
                     // C -> 分级管道方块（决定机器等级）
@@ -228,15 +233,12 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
 
     // ==================== 检查结构 ====================
     @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
+    public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
         mMachineLevel = 0;
-        if (checkPiece(STRUCTURE_PIECE_MAIN, 4, 10, 1)) {
-            if (mMachineLevel > 0) {
-                fixAllIssues();
-                return true;
-            }
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 4, 10, 1, errors)) return;
+        if (mMachineLevel == 0) {
+            errors.add(StructureErrorRegistry.UNKNOWN_STRUCTURE_ERROR);
         }
-        return false;
     }
 
     // ==================== 处理逻辑 ====================
@@ -385,10 +387,10 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
                 .addInfo("添加者：§4§nOL925 §r& §9瑶光")
                 .beginStructureBlock(9, 12, 7, false)
                 .addController("见结构预览")
-                .addCasingInfoExactly("脱氧钢机械方块", 0, false)
-                .addCasingInfoExactly("化学惰性机械方块", 0, false)
-                .addCasingInfoExactly("管道方块(决定等级)", 0, true)
-                .addCasingInfoExactly("钢框架", 0, false)
+                .addCasingInfoExactly("脱氧钢机械方块", 84, false)
+                .addCasingInfoExactly("化学惰性机械方块", 20, false)
+                .addCasingInfoExactly("管道方块(决定等级)", 10, true)
+                .addCasingInfoExactly("钢框架", 60, false)
                 .addInputBus("任意脱氧钢机械方块")
                 .addInputHatch("任意脱氧钢机械方块")
                 .addOutputBus("任意脱氧钢机械方块")

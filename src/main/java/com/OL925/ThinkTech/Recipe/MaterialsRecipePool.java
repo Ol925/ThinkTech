@@ -15,16 +15,14 @@ import com.OL925.ThinkTech.common.init.ThTList;
 import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.Materials;
-import gregtech.api.enums.MaterialsKevlar;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.api.recipe.GTPPRecipeMaps;
-import gtPlusPlus.core.material.Material;
 import gtPlusPlus.core.material.MaterialsElements;
-import gtPlusPlus.core.util.minecraft.FluidUtils;
+
 import gtnhlanth.common.register.WerkstoffMaterialPool;
 import ic2.api.item.IC2Items;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -38,7 +36,7 @@ public class MaterialsRecipePool {
         // GT++ mixer
         GTValues.RA.stdBuilder()
             .itemInputs(GTUtility.getIntegratedCircuit(24))
-            .fluidInputs(Materials.NatruralGas.getGas(4000), GTModHandler.getSteam(20000))
+            .fluidInputs(Materials.NaturalGas.getGas(4000), GTModHandler.getSteam(20000))
             .fluidOutputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(12000))
             .eut(RECIPE_MV)
             .duration(20 * 10)
@@ -46,9 +44,9 @@ public class MaterialsRecipePool {
 
         // GT mixer
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.NatruralGas.getCells(1))
+            .itemInputs(Materials.NaturalGas.getCells(1))
             .itemOutputs(IC2Items.getItem("cell"))
-            .fluidInputs(GTModHandler.getSteam(5000))
+            .fluidInputs(Materials.Steam.getGas(5000))
             .fluidOutputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(3000))
             .eut(RECIPE_MV)
             .duration(20 * 4)
@@ -58,7 +56,7 @@ public class MaterialsRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(GTModHandler.getModItem(GregTech.ID, "gt.metaitem.98", 5))
             .itemOutputs(IC2Items.getItem("cell"))
-            .fluidInputs(Materials.NatruralGas.getGas(1000))
+            .fluidInputs(Materials.NaturalGas.getGas(1000))
             .fluidOutputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(3000))
             .eut(RECIPE_MV)
             .duration(20 * 4)
@@ -82,7 +80,7 @@ public class MaterialsRecipePool {
 
         //PETN
         GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, MaterialsKevlar.Pentaerythritol, 4))
+            .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Pentaerythritol, 4))
             .fluidInputs(Materials.NitricAcid.getFluid(4000))
             .fluidOutputs(ThTMaterial.PETN.getMolten(1000))
             .eut(RECIPE_EV)
@@ -101,7 +99,7 @@ public class MaterialsRecipePool {
 
         //HMT
         GTValues.RA.stdBuilder()
-            .fluidInputs(Materials.Ammonia.getGas(4000), FluidUtils.getFluidStack(Formaldehyde, 6000))
+            .fluidInputs(Materials.Ammonia.getGas(4000), new FluidStack(Formaldehyde, 6000))
             .fluidOutputs(ThTMaterial.HMT.getMolten(1000),Materials.Water.getFluid(6000))
             .eut(RECIPE_EV)
             .duration(20 * 2)
@@ -118,7 +116,7 @@ public class MaterialsRecipePool {
 
         //乙二醛
         GTValues.RA.stdBuilder()
-            .fluidInputs(MaterialsKevlar.Ethyleneglycol.getFluid(8000),Materials.Oxygen.getGas(8000))
+            .fluidInputs(Materials.Ethyleneglycol.getFluid(8000),Materials.Oxygen.getGas(8000))
             .fluidOutputs(ThTMaterial.ethanedial.getFluidOrGas(8000),Materials.Water.getFluid(8000))
             .eut(RECIPE_MV)
             .duration(20 * 5)

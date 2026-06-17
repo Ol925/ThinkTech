@@ -16,10 +16,8 @@ import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import javax.annotation.Nonnull;
 
-import com.gtnewhorizons.modularui.common.widget.DynamicPositionedColumn;
-import com.gtnewhorizons.modularui.common.widget.FakeSyncWidget;
-import com.gtnewhorizons.modularui.common.widget.SlotWidget;
-import com.gtnewhorizons.modularui.common.widget.TextWidget;
+import com.OL925.ThinkTech.gui.ThT_ImplosionGeneratorGui;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -49,11 +47,17 @@ import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.check.CheckRecipeResult;
 import gregtech.api.recipe.check.CheckRecipeResultRegistry;
 import gregtech.api.render.TextureFactory;
+import gregtech.api.structure.error.StructureError;
+import gregtech.api.structure.error.StructureErrorRegistry;
 import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
+import gregtech.common.gui.modularui.multiblock.base.MTEMultiBlockBaseGui;
+
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMultiBlockBase;
+
+import java.util.List;
 
     public class ThT_ImplosionGenerator extends GTPPMultiBlockBase<ThT_ImplosionGenerator>
     implements ISurvivalConstructable, ISecondaryDescribable {
@@ -65,6 +69,14 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
     private static long displayGenerating;
+
+    public static long getDisplayGenerating() {
+        return displayGenerating;
+    }
+
+    public static void setDisplayGenerating(long val) {
+        displayGenerating = val;
+    }
 
     // 构造方法，三个形参分别是物品id,注册名,本地化名
     public ThT_ImplosionGenerator(int id, String name, String nameRegional) {
@@ -94,7 +106,7 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
                     buildHatchAdder(ThT_ImplosionGenerator.class)
                         .atLeast(Dynamo, InputHatch, Muffler)
                         .casingIndex(Textures.BlockIcons.getTextureIndex(SOLID_STEEL_MACHINE_CASING))
-                        .dot(1)
+                        .hint(1)
                         .buildAndChain(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C', ofBlock(GregTechAPI.sBlockCasings2, 13))
                 .addElement('D', ofBlock(GregTechAPI.sBlockCasings4, 1))
@@ -108,11 +120,11 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
                         ofBlocksTiered(
                             ThT_ImplosionGenerator::getTierOfStone,
                             ImmutableList.of(
-                                Pair.of(BlockList.BronzePlatedReinforcedStone.getBlock(), 0), // 三硝基甲苯HV
-                                Pair.of(BlockList.SteelPlatedReinforcedStone.getBlock(), 0), // PETN EV
-                                Pair.of(BlockList.TitaniumPlatedReinforcedStone.getBlock(), 0), // 硝化甘油 IV
-                                Pair.of(BlockList.TungstensteelPlatedReinforcedStone.getBlock(), 0), // 奥克托今 LUV
-                                Pair.of(BlockList.NaquadahPlatedReinforcedStone.getBlock(), 0)// CL-20 ZPM
+                                Pair.of(BlockList.BronzePlatedReinforcedStone.block, 0), // 三硝基甲苯HV
+                                Pair.of(BlockList.SteelPlatedReinforcedStone.block, 0), // PETN EV
+                                Pair.of(BlockList.TitaniumPlatedReinforcedStone.block, 0), // 硝化甘油 IV
+                                Pair.of(BlockList.TungstensteelPlatedReinforcedStone.block, 0), // 奥克托今 LUV
+                                Pair.of(BlockList.NaquadahPlatedReinforcedStone.block, 0)// CL-20 ZPM
                             ),
                             0,
                             (m, t) -> m.mBlockTier = t,
@@ -166,15 +178,15 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
 
     // 控制机器的等级
     public static int getTierOfStone(Block block, int meta) {
-        if (block == BlockList.BronzePlatedReinforcedStone.getBlock()) {
+        if (block == BlockList.BronzePlatedReinforcedStone.block) {
             return 1;
-        } else if (block == BlockList.SteelPlatedReinforcedStone.getBlock()) {
+        } else if (block == BlockList.SteelPlatedReinforcedStone.block) {
             return 2;
-        } else if (block == BlockList.TitaniumPlatedReinforcedStone.getBlock()) {
+        } else if (block == BlockList.TitaniumPlatedReinforcedStone.block) {
             return 3;
-        } else if (block == BlockList.TungstensteelPlatedReinforcedStone.getBlock()) {
+        } else if (block == BlockList.TungstensteelPlatedReinforcedStone.block) {
             return 4;
-        } else if (block == BlockList.NaquadahPlatedReinforcedStone.getBlock()) {
+        } else if (block == BlockList.NaquadahPlatedReinforcedStone.block) {
             return 5;
         }
         return 0;
@@ -271,7 +283,6 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips7"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .addInfo("添加者：§4§nOL925")
-            .addPollutionAmount(getPollutionPerSecond(null))
             .beginStructureBlock(7, 5, 8, false)
             .addController("正面底部中央")
             .addCasingInfoExactly("脱氧钢机械方块",66,false)
@@ -288,11 +299,6 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;
-    }
-
-    @Override
-    public int getPollutionPerSecond(ItemStack aStack) {
-        return 721;
     }
 
     @Override
@@ -403,27 +409,17 @@ import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.GTPPMult
     }
 
     @Override
-    public boolean checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack) {
-        if (checkPiece(STRUCTURE_PIECE_MAIN, 3, 4, 0)) {
-            fixAllIssues();
-            return true;
-        }
-        return false;
+    public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
+        if (!checkPiece(STRUCTURE_PIECE_MAIN, 3, 4, 0, errors)) return;
     }
 
 
-
+    @Nonnull
     @Override
-    protected void drawTexts(DynamicPositionedColumn screenElements, SlotWidget inventorySlot) {
-        super.drawTexts(screenElements, inventorySlot);
-        screenElements
-            .widget(
-                new TextWidget().setStringSupplier(() -> "Last EU generating(eu/tick):" + numberFormat.format(displayGenerating))
-                    .setDefaultColor(COLOR_TEXT_WHITE.get())
-                    .setEnabled(widget -> getErrorDisplayID() == 0)
-            )
-            .widget(new FakeSyncWidget.LongSyncer(() ->displayGenerating,val -> displayGenerating = val));
+    protected MTEMultiBlockBaseGui<?> getGui() {
+        return new ThT_ImplosionGeneratorGui(this);
     }
+
     //maintenance
     @Override
     public void checkMaintenance() {}

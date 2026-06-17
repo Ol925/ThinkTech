@@ -103,7 +103,7 @@ public class MachineRecipePool {
 
         //立方氧化锆
         GTValues.RA.stdBuilder()
-                .itemInputs(WerkstoffMaterialPool.Zirconium.get(OrePrefixes.dust, 10))
+                .itemInputs(WerkstoffMaterialPool.Zirconia.get(OrePrefixes.dust, 10))
                 .fluidInputs(Materials.Oxygen.getGas(1000 * 20))
                 .itemOutputs(WerkstoffLoader.CubicZirconia.get(OrePrefixes.gem, 30))
                 .eut(RECIPE_HV)
@@ -415,7 +415,7 @@ public class MachineRecipePool {
         //天然气
         GTValues.RA.stdBuilder()
                 .itemInputs(GTUtility.getIntegratedCircuit(2))
-                .fluidOutputs(Materials.NatruralGas.getGas(18000))
+                .fluidOutputs(Materials.NaturalGas.getGas(18000))
                 .eut(RECIPE_MV)
                 .duration(70)
                 .specialValue(1)

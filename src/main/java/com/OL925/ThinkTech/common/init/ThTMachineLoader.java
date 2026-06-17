@@ -17,7 +17,7 @@ public class ThTMachineLoader {
     public static void loadMachine() {
         ExplosiveGenerator = new ThT_ImplosionGenerator(
             27000,
-            "NameExplosiveGenerator",
+            "NameThTImplosionGenerator",
             translateToLocalFormatted("mte.ImplosionGenerator")).getStackForm(1);
         ThTList.ExplosiveGenerator.set(ExplosiveGenerator);
 

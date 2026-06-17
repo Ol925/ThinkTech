@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech.Recipe;
 
+import static com.OL925.ThinkTech.Recipe.implosionGeneratorFlueRecipe.IMPLOSION_GENERATOR_BASIC_OUTPUT;
 import static com.OL925.ThinkTech.gui.ThTUITexture.PICTURE_Implosion_Generator;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
@@ -8,9 +9,14 @@ import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMapBackend;
 import gregtech.api.recipe.RecipeMapBuilder;
 import gregtech.api.recipe.maps.LargeNEIFrontend;
+import gregtech.api.util.GTRecipeMapUtil;
 import gregtech.nei.formatter.SimpleSpecialValueFormatter;
 
 public class ThTRecipeMap {
+
+    static {
+        GTRecipeMapUtil.SPECIAL_VALUE_ALIASES.add(IMPLOSION_GENERATOR_BASIC_OUTPUT);
+    }
 
     public static final RecipeMap<RecipeMapBackend> implosionGeneratorFuels = RecipeMapBuilder
         .of("tht.recipe.implosion_generator")
