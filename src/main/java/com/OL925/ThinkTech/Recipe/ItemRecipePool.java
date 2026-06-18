@@ -247,6 +247,18 @@ public class ItemRecipePool {
             .duration(20 *25)
             .addTo(RecipeMaps.autoclaveRecipes);
 
+        //坩埚
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Casing_Firebricks.get(16),
+                ItemList.Hull_HV.get(1),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Steel, 8),
+                ItemList.Electric_Piston_HV.get(4))
+            .fluidInputs(Materials.Steel.getMolten(1152))
+            .itemOutputs(ThTList.Crucible.get(1))
+            .eut(RECIPE_HV)
+            .duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
         //钻井平台
         GTValues.RA.stdBuilder()
             .itemInputs(

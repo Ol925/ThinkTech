@@ -107,12 +107,25 @@ mte.DR.tooltips4=§bPipe tier: §6Steel(T1) §f/ §6Titanium(T2) §f/ §6Tungste
 mte.DR.tooltips5=§bInsert chips into the controller for extra parallels: §6T1(+8) §f/ §6T2(+16) §f/ §6T3(+24) §f/ §6T4(+32)
 mte.DR.tooltips6=§bSupports 4/4 lossless overclock
 
+mte.crucible=Crucible
+mte.crucibleType=Crucible
+mte.crucible.tooltips1=§bSolid fuel driven smelting multiblock
+mte.crucible.tooltips2=§eConsumes solid fuel from input bus, accumulates heat by fuel value
+mte.crucible.tooltips3=§eHeat capacity: 20,000,000 EU (1 coal = 4000 EU)
+mte.crucible.tooltips4=§eRecipes consume heat per tick instead of EU power
+mte.crucible.tooltips5=§eRecipes pause when heat insufficient (no shutdown), resume when heat recovers
+mte.crucible.tooltips6=§aHeat boost at ≥ 10,000,000 EU: recipe time reduced by 30%%
+mte.crucible.tooltips7=§cLoses 0.1%% heat per second when idle (half-life ~11.5 min)
+mte.crucible.tooltips8=Smelts large batches of ore into molten metal, also supports alloy smelting
+mte.crucible.tooltips9=Fixed 4 parallels
+
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator
 tht.recipe.CSCF=Czochralski Single Crystal Furnace
 tht.recipe.SAF=General Chemical Factory
 tht.recipe.NGES=Noble Gas Enrichment System
 tht.recipe.DR=§2§nDrilling Rig
+tht.recipe.crucible=Crucible
 
 #NEI Info
 value.implosion_generator=Basic power generation: %s EU/t

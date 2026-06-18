@@ -63,4 +63,11 @@ public class ThTRecipeMap {
         .frontend(LargeNEIFrontend::new)
         .neiSpecialInfoFormatter(new SimpleSpecialValueFormatter("value.machineLevel"))
         .build();
+
+    public static final RecipeMap<RecipeMapBackend> Crucible = RecipeMapBuilder
+        .of("tht.recipe.crucible")
+        .maxIO(6, 1, 6, 6)
+        .progressBar(GTUITextures.PROGRESSBAR_ARROW_MULTIPLE)
+        .frontend(LargeNEIFrontend::new)
+        .build();
 }

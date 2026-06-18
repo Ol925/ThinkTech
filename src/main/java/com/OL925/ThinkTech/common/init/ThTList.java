@@ -35,6 +35,7 @@ public enum ThTList {
     Kiln,
     NobleGasEnrichmentSystem,
     DrillingRig,
+    Crucible,
 
     TestItem;
 

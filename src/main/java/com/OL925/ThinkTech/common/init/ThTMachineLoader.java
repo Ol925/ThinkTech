@@ -13,6 +13,7 @@ public class ThTMachineLoader {
     public static ItemStack Kiln;
     public static ItemStack NobleGasEnrichmentSystem;
     public static ItemStack DrillingRig;
+    public static ItemStack Crucible;
 
     public static void loadMachine() {
         ExplosiveGenerator = new ThT_ImplosionGenerator(
@@ -50,5 +51,11 @@ public class ThTMachineLoader {
             "NameDrillingRig",
             translateToLocalFormatted("mte.DR")).getStackForm(1);
         ThTList.DrillingRig.set(DrillingRig);
+
+        Crucible = new ThT_Crucible(
+            27006,
+            "NameCrucible",
+            translateToLocalFormatted("mte.crucible")).getStackForm(1);
+        ThTList.Crucible.set(Crucible);
     }
 }

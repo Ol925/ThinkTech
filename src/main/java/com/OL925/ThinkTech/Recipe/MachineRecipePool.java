@@ -516,6 +516,22 @@ public class MachineRecipePool {
                 .duration(20 * 8)
                 .specialValue(3)
                 .addTo(ThTRecipeMap.DrillingRig);
+
+        // 矿石熔化：磁铁矿 → 熔融铁
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Magnetite.getDust(4))
+            .fluidOutputs(Materials.Iron.getMolten(288))
+            .eut(120)
+            .duration(20 * 20)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 合金：熔融铁 + 碳 → 熔融钢
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Iron.getMolten(144), Materials.Carbon.getMolten(36))
+            .fluidOutputs(Materials.Steel.getMolten(144))
+            .eut(60)
+            .duration(20 * 15)
+            .addTo(ThTRecipeMap.Crucible);
     }
 }
 //GTValues.RA.stdBuilder()
