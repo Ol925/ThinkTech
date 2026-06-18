@@ -109,13 +109,13 @@ mte.crucible=坩埚
 mte.crucibleType=坩埚
 mte.crucible.tooltips1=§b固体燃料驱动的熔炼多方块结构
 mte.crucible.tooltips2=§e从输入总线消耗固体燃料，按热值累加到内部热池
-mte.crucible.tooltips3=§e热池容量：20,000,000 EU（1 煤炭 = 4000 EU）
+mte.crucible.tooltips3=§e热池容量：20,000,000 HU（1 煤炭燃烧刻 1600 × 10 = 16,000 HU）
 mte.crucible.tooltips4=§e运行配方时不消耗电力，而是每 tick 从热池扣除热量
 mte.crucible.tooltips5=§e热量不足时配方暂停（不关机），热量恢复后继续
-mte.crucible.tooltips6=§a热量 ≥ 10,000,000 EU 时触发加速，配方时间减少 30%%
-mte.crucible.tooltips7=§c空闲时每秒散热 0.1%%（半衰期约 11.5 分钟）
+mte.crucible.tooltips6=§a热量 ≥ 10,000,000 HU 时触发加速，配方时间减少 30%%
+mte.crucible.tooltips7=§c空闲时每秒散热 0.01%%（半衰期约 1 小时）
 mte.crucible.tooltips8=可大批量熔炼矿石为流体金属，也可进行合金合成
-mte.crucible.tooltips9=固定 4 并行
+mte.crucible.tooltips9=燃料需放入专用燃料输入舱（16槽）
 
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机
@@ -129,3 +129,10 @@ tht.recipe.crucible=坩埚
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t
 value.machineLevel=机器等级：%s
+
+#Waila
+waila.crucible.heat=热量：%s / %s HU (%s%%)
+
+#Hatch
+mte.FuelInputBus=燃料输入舱
+tht.hatch.fuel_bus=燃料输入舱

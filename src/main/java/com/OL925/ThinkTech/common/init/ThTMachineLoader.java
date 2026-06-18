@@ -3,6 +3,7 @@ package com.OL925.ThinkTech.common.init;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import com.OL925.ThinkTech.common.MTE.*;
+import com.OL925.ThinkTech.common.hatch.ThT_HatchFuelBus;
 import net.minecraft.item.ItemStack;
 
 public class ThTMachineLoader {
@@ -14,6 +15,7 @@ public class ThTMachineLoader {
     public static ItemStack NobleGasEnrichmentSystem;
     public static ItemStack DrillingRig;
     public static ItemStack Crucible;
+    public static ItemStack FuelInputBus;
 
     public static void loadMachine() {
         ExplosiveGenerator = new ThT_ImplosionGenerator(
@@ -57,5 +59,11 @@ public class ThTMachineLoader {
             "NameCrucible",
             translateToLocalFormatted("mte.crucible")).getStackForm(1);
         ThTList.Crucible.set(Crucible);
+
+        FuelInputBus = new ThT_HatchFuelBus(
+            27007,
+            "NameThTFuelInputBus",
+            translateToLocalFormatted("mte.FuelInputBus")).getStackForm(1);
+        ThTList.FuelInputBus.set(FuelInputBus);
     }
 }
