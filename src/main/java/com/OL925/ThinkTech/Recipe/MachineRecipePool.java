@@ -594,13 +594,13 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Iron.getMolten(144))
             .itemInputs(Materials.Coal.getDust(1))
-            .fluidOutputs(Materials.PigIron.getMolten(144))
+            .fluidOutputs(Materials.CastIron.getMolten(144))
             .eut(30).duration(50).circuit(2)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Iron.getDust(1), Materials.Coal.getDust(1))
-            .fluidOutputs(Materials.PigIron.getMolten(144))
+            .fluidOutputs(Materials.CastIron.getMolten(144))
             .eut(30).duration(100).circuit(2)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -674,17 +674,31 @@ public class MachineRecipePool {
 
         // ==================== 合金配方 ====================
 
-        // 红色合金 RedAlloy (Cu₁Redstone₄, N=5 → 720L)
+        // 红色合金 RedAlloy (Cu₁Redstone₄): 铜1+红石4 → 1 锭 = 144L（红石不贡献金属体积）
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Copper.getDust(1), Materials.Redstone.getDust(4))
-            .fluidOutputs(Materials.RedAlloy.getMolten(720))
+            .fluidOutputs(Materials.RedAlloy.getMolten(144))
             .eut(30).duration(100).circuit(2)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Copper.getMolten(144))
             .itemInputs(Materials.Redstone.getDust(4))
-            .fluidOutputs(Materials.RedAlloy.getMolten(720))
+            .fluidOutputs(Materials.RedAlloy.getMolten(144))
+            .eut(30).duration(50).circuit(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 红石合金 RedstoneAlloy (Cu₁Redstone₄): 同上，GT 另一材料
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Copper.getDust(1), Materials.Redstone.getDust(4))
+            .fluidOutputs(Materials.RedstoneAlloy.getMolten(144))
+            .eut(30).duration(100).circuit(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Copper.getMolten(144))
+            .itemInputs(Materials.Redstone.getDust(4))
+            .fluidOutputs(Materials.RedstoneAlloy.getMolten(144))
             .eut(30).duration(50).circuit(2)
             .addTo(ThTRecipeMap.Crucible);
 
