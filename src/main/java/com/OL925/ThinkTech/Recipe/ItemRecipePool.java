@@ -247,6 +247,82 @@ public class ItemRecipePool {
             .duration(20 *25)
             .addTo(RecipeMaps.autoclaveRecipes);
 
+        //坩埚
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Casing_Firebricks.get(16),
+                ItemList.Hull_LV.get(1),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Steel, 8),
+                ItemList.Electric_Piston_LV.get(4),
+                GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.Steel, 4),
+                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Steel, 1))
+            .fluidInputs(Materials.Steel.getMolten(1152))
+            .itemOutputs(ThTList.SteelCrucible.get(1))
+            .eut(RECIPE_LV)
+            .duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //燃料输入仓
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Hatch_Input_Bus_LV.get(1),
+                ItemList.Casing_Firebricks.get(4))
+            .fluidInputs(Materials.Steel.getMolten(576))
+            .itemOutputs(ThTList.FuelInputBus.get(1))
+            .eut(RECIPE_LV)
+            .duration(20 * 10)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //殷钢坩埚（MV级）
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Casing_Firebricks.get(16),
+                ItemList.Hull_MV.get(1),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Invar, 8),
+                ItemList.Electric_Piston_MV.get(4),
+                GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.Invar, 4),
+                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Invar, 1))
+            .fluidInputs(Materials.Invar.getMolten(576))
+            .itemOutputs(ThTList.InvarCrucible.get(1))
+            .eut(RECIPE_MV).duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //不锈钢坩埚（HV级）
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Casing_Firebricks.get(16),
+                ItemList.Hull_HV.get(1),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 8),
+                ItemList.Electric_Piston_HV.get(4),
+                GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.StainlessSteel, 4),
+                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.StainlessSteel, 1))
+            .fluidInputs(Materials.StainlessSteel.getMolten(576))
+            .itemOutputs(ThTList.StainlessCrucible.get(1))
+            .eut(RECIPE_HV).duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //钛坩埚（EV级）
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Casing_Firebricks.get(16),
+                ItemList.Hull_EV.get(1),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 8),
+                ItemList.Electric_Piston_EV.get(4),
+                GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.Titanium, 4),
+                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Titanium, 1))
+            .fluidInputs(Materials.Titanium.getMolten(576))
+            .itemOutputs(ThTList.TitaniumCrucible.get(1))
+            .eut(RECIPE_EV).duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
+        //钨钢坩埚（IV级）
+        GTValues.RA.stdBuilder()
+            .itemInputs(ItemList.Casing_Firebricks.get(16),
+                ItemList.Hull_IV.get(1),
+                GTOreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 8),
+                ItemList.Electric_Piston_IV.get(4),
+                GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.TungstenSteel, 4),
+                GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.TungstenSteel, 1))
+            .fluidInputs(Materials.TungstenSteel.getMolten(576))
+            .itemOutputs(ThTList.TungstenSteelCrucible.get(1))
+            .eut(RECIPE_IV).duration(20 * 20)
+            .addTo(RecipeMaps.assemblerRecipes);
+
         //钻井平台
         GTValues.RA.stdBuilder()
             .itemInputs(

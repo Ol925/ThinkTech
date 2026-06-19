@@ -35,6 +35,12 @@ public enum ThTList {
     Kiln,
     NobleGasEnrichmentSystem,
     DrillingRig,
+    SteelCrucible,
+    FuelInputBus,
+    InvarCrucible,
+    StainlessCrucible,
+    TitaniumCrucible,
+    TungstenSteelCrucible,
 
     TestItem;
 

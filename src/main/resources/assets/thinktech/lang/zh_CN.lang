@@ -105,6 +105,45 @@ mte.DR.tooltips4=§b管道等级: §6钢(T1) §f/ §6钛(T2) §f/ §6钨钢(T3) 
 mte.DR.tooltips5=§b在控制器中放入芯片可额外增加并行: §6T1(+8) §f/ §6T2(+16) §f/ §6T3(+24) §f/ §6T4(+32)
 mte.common.tooltips5=§b超频时不会损失效率
 
+mte.crucibleType=坩埚
+mte.steelCrucible=钢坩埚
+mte.steelCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级1）
+mte.steelCrucible.tooltips2=§e热池容量：20,000,000 HU（1 煤炭 = 16,000 HU）
+mte.steelCrucible.tooltips3=§e4 并行 | 0.01%%/秒散热 | 4秒/燃料
+mte.steelCrucible.tooltips4=§a热量 ≥ 50%% 时加速 10%%
+mte.steelCrucible.tooltips5=§c仅配方运行时消耗燃料
+mte.steelCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
+mte.invarCrucible=殷钢坩埚
+mte.invarCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级2）
+mte.invarCrucible.tooltips2=§e热池容量：40,000,000 HU（1 煤炭 = 16,000 HU）
+mte.invarCrucible.tooltips3=§e8 并行 | 0.01%%/秒散热 | 2秒/燃料
+mte.invarCrucible.tooltips4=§a热量 ≥ 55%% 时加速 15%%
+mte.invarCrucible.tooltips5=§c仅配方运行时消耗燃料
+mte.invarCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
+mte.stainlessCrucible=不锈钢坩埚
+mte.stainlessCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级3）
+mte.stainlessCrucible.tooltips2=§e热池容量：80,000,000 HU（1 煤炭 = 16,000 HU）
+mte.stainlessCrucible.tooltips3=§e16 并行 | 0.01%%/秒散热 | 1秒/燃料
+mte.stainlessCrucible.tooltips4=§a热量 ≥ 60%% 时加速 20%%
+mte.stainlessCrucible.tooltips5=§c仅配方运行时消耗燃料
+mte.stainlessCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
+mte.titaniumCrucible=钛坩埚
+mte.titaniumCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级4）
+mte.titaniumCrucible.tooltips2=§e热池容量：160,000,000 HU（1 煤炭 = 16,000 HU）
+mte.titaniumCrucible.tooltips3=§e32 并行 | 0.01%%/秒散热 | 0.5秒/燃料
+mte.titaniumCrucible.tooltips4=§a热量 ≥ 65%% 时加速 25%%
+mte.titaniumCrucible.tooltips5=§c仅配方运行时消耗燃料
+mte.titaniumCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
+mte.tungstenSteelCrucible=钨钢坩埚
+mte.tungstenSteelCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级5）
+mte.tungstenSteelCrucible.tooltips2=§e热池容量：320,000,000 HU（1 煤炭 = 16,000 HU）
+mte.tungstenSteelCrucible.tooltips3=§e64 并行 | 0.01%%/秒散热 | 0.25秒/燃料
+mte.tungstenSteelCrucible.tooltips4=§a热量 ≥ 70%% 时加速 30%%
+mte.tungstenSteelCrucible.tooltips5=§c仅配方运行时消耗燃料
+mte.tungstenSteelCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
+
+#Recipe
+
 #Recipe
 tht.recipe.implosion_generator=聚爆发电机
 tht.recipe.CSCF=柴式单晶炉
@@ -112,7 +151,17 @@ tht.recipe.SAF=通用化工厂
 tht.recipe.kiln=§e窑
 tht.recipe.NGES=§e稀有气体富集
 tht.recipe.DR=§2§n钻井平台
+tht.recipe.crucible=坩埚
 
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t
 value.machineLevel=机器等级：%s
+GT5U.gui.text.recipe_result.crucible_insufficient_tier=需要更高级的坩埚
+value.crucible_tier=需要坩埚等级：%s
+
+#Waila
+waila.crucible.heat=热量：%s / %s HU (%s%%)
+
+#Hatch
+mte.FuelInputBus=燃料输入舱
+tht.hatch.fuel_bus=燃料输入舱
