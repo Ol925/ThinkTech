@@ -155,7 +155,7 @@ tht.recipe.crucible=Crucible
 #NEI Info
 value.implosion_generator=Basic power generation: %s EU/t
 value.machineLevel=Machine Level：%s
-crucible_insufficient_tier=Requires a higher tier Crucible
+GT5U.gui.text.recipe_result.crucible_insufficient_tier=Requires a higher tier Crucible
 value.crucible_tier=Required Crucible Tier: %s
 
 #Waila

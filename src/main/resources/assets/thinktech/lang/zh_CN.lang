@@ -156,7 +156,7 @@ tht.recipe.crucible=坩埚
 #NEI Info
 value.implosion_generator=基础输出电压：%s EU/t
 value.machineLevel=机器等级：%s
-crucible_insufficient_tier=需要更高级的坩埚
+GT5U.gui.text.recipe_result.crucible_insufficient_tier=需要更高级的坩埚
 value.crucible_tier=需要坩埚等级：%s
 
 #Waila
