@@ -529,6 +529,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Cinnabar.getDust(2))
             .fluidOutputs(Materials.Mercury.getFluid(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 熔融铁/铁粉 + 氧气 → 液态钢
@@ -536,6 +537,7 @@ public class MachineRecipePool {
             .fluidInputs(Materials.Iron.getMolten(144), Materials.Oxygen.getGas(1000))
             .fluidOutputs(Materials.Steel.getMolten(144))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
@@ -543,6 +545,7 @@ public class MachineRecipePool {
             .fluidInputs(Materials.Oxygen.getGas(1000))
             .fluidOutputs(Materials.Steel.getMolten(144))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 铁矿石 → 液态铁
@@ -550,30 +553,35 @@ public class MachineRecipePool {
             .itemInputs(Materials.Magnetite.getDust(7))
             .fluidOutputs(Materials.Iron.getMolten(432))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.BandedIron.getDust(5))
             .fluidOutputs(Materials.Iron.getMolten(288))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.BrownLimonite.getDust(4))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.YellowLimonite.getDust(4))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Pyrite.getDust(3))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 孔雀石 → 液态铜 Cu₂CH₂O₅ (N=10): 10粉 → 288L
@@ -581,6 +589,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Malachite.getDust(10))
             .fluidOutputs(Materials.Copper.getMolten(288))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 黄铜矿 → 液态铜 + 液态铁 CuFeS₂ (N=4): 4粉 → 144L Cu + 144L Fe
@@ -588,6 +597,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Chalcopyrite.getDust(4))
             .fluidOutputs(Materials.Copper.getMolten(144), Materials.Iron.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 熔融铁/铁粉 + 煤粉 → 液态生铁
@@ -596,12 +606,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Coal.getDust(1))
             .fluidOutputs(Materials.CastIron.getMolten(144))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Iron.getDust(1), Materials.Coal.getDust(1))
             .fluidOutputs(Materials.CastIron.getMolten(144))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 闪锌矿 → 液态锌 ZnS (N=2): 2粉 → 144L
@@ -609,6 +621,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Sphalerite.getDust(2))
             .fluidOutputs(Materials.Zinc.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 黝铜矿 → Cu+Fe+Sb Cu₃FeSbS₃ (N=8): 8粉 → 432L Cu + 144L Fe + 144L Sb
@@ -617,6 +630,7 @@ public class MachineRecipePool {
             .fluidOutputs(Materials.Copper.getMolten(432), Materials.Iron.getMolten(144),
                 Materials.Antimony.getMolten(144))
             .eut(30).duration(150)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 辉锑矿 → 液态锑 Sb₂S₃ (N=5): 5粉 → 288L
@@ -624,6 +638,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Stibnite.getDust(5))
             .fluidOutputs(Materials.Antimony.getMolten(288))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 锡石矿/锡石矿砂 → 液态锡 SnO₂ (N=3): 3粉 → 144L
@@ -631,12 +646,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Cassiterite.getDust(3))
             .fluidOutputs(Materials.Tin.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.CassiteriteSand.getDust(3))
             .fluidOutputs(Materials.Tin.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 锡粉/金粉 → 直接熔化
@@ -644,12 +661,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Tin.getDust(1))
             .fluidOutputs(Materials.Tin.getMolten(144))
             .eut(16).duration(50)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Gold.getDust(1))
             .fluidOutputs(Materials.Gold.getMolten(144))
             .eut(16).duration(50)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 镍黄铁矿 → 液态镍 Ni₉S₈ (N=17): 17粉 → 1296L
@@ -657,6 +676,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Pentlandite.getDust(17))
             .fluidOutputs(Materials.Nickel.getMolten(1296))
             .eut(30).duration(200)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 花岗岩矿砂/玄武岩矿砂 → 液态铁
@@ -664,12 +684,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.GraniticMineralSand.getDust(2))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.BasalticMineralSand.getDust(2))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // ==================== 合金配方 ====================
@@ -679,6 +701,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Copper.getDust(1), Materials.Redstone.getDust(4))
             .fluidOutputs(Materials.RedAlloy.getMolten(144))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
@@ -686,6 +709,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Redstone.getDust(4))
             .fluidOutputs(Materials.RedAlloy.getMolten(144))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 红石合金 RedstoneAlloy (Cu₁Redstone₄): 同上，GT 另一材料
@@ -693,6 +717,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Copper.getDust(1), Materials.Redstone.getDust(4))
             .fluidOutputs(Materials.RedstoneAlloy.getMolten(144))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
@@ -700,6 +725,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Redstone.getDust(4))
             .fluidOutputs(Materials.RedstoneAlloy.getMolten(144))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 青铜 Bronze (Sn₁Cu₃, N=4 → 576L)
@@ -707,12 +733,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Tin.getDust(1), Materials.Copper.getDust(3))
             .fluidOutputs(Materials.Bronze.getMolten(576))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Tin.getMolten(144), Materials.Copper.getMolten(432))
             .fluidOutputs(Materials.Bronze.getMolten(576))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 白铜 Cupronickel (Cu₁Ni₁, N=2 → 288L)
@@ -720,12 +748,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Copper.getDust(1), Materials.Nickel.getDust(1))
             .fluidOutputs(Materials.Cupronickel.getMolten(288))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Copper.getMolten(144), Materials.Nickel.getMolten(144))
             .fluidOutputs(Materials.Cupronickel.getMolten(288))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 殷钢 Invar (Fe₂Ni₁, N=3 → 432L)
@@ -733,12 +763,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Iron.getDust(2), Materials.Nickel.getDust(1))
             .fluidOutputs(Materials.Invar.getMolten(432))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Iron.getMolten(288), Materials.Nickel.getMolten(144))
             .fluidOutputs(Materials.Invar.getMolten(432))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 琥珀金 Electrum (Ag₁Au₁, N=2 → 288L)
@@ -746,12 +778,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Silver.getDust(1), Materials.Gold.getDust(1))
             .fluidOutputs(Materials.Electrum.getMolten(288))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Silver.getMolten(144), Materials.Gold.getMolten(144))
             .fluidOutputs(Materials.Electrum.getMolten(288))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 焊锡 SolderingAlloy (Sn₉Sb₁, N=10 → 1440L)
@@ -759,17 +793,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.Tin.getDust(9), Materials.Antimony.getDust(1))
             .fluidOutputs(Materials.SolderingAlloy.getMolten(1440))
             .eut(30).duration(100).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Tin.getMolten(1296), Materials.Antimony.getMolten(144))
             .fluidOutputs(Materials.SolderingAlloy.getMolten(1440))
             .eut(30).duration(50).circuit(2)
+            .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
     }
 }
-//GTValues.RA.stdBuilder()
-//            .noOptimize()
-//            .eut(RECIPE_)
-//            .duration()
-//            .addTo(RecipeMaps.);

@@ -14,8 +14,12 @@ public class ThTMachineLoader {
     public static ItemStack Kiln;
     public static ItemStack NobleGasEnrichmentSystem;
     public static ItemStack DrillingRig;
-    public static ItemStack Crucible;
+    public static ItemStack SteelCrucible;
     public static ItemStack FuelInputBus;
+    public static ItemStack InvarCrucible;
+    public static ItemStack StainlessCrucible;
+    public static ItemStack TitaniumCrucible;
+    public static ItemStack TungstenSteelCrucible;
 
     public static void loadMachine() {
         ExplosiveGenerator = new ThT_ImplosionGenerator(
@@ -54,16 +58,40 @@ public class ThTMachineLoader {
             translateToLocalFormatted("mte.DR")).getStackForm(1);
         ThTList.DrillingRig.set(DrillingRig);
 
-        Crucible = new ThT_Crucible(
+        SteelCrucible = new ThT_SteelCrucible(
             27006,
-            "NameCrucible",
-            translateToLocalFormatted("mte.crucible")).getStackForm(1);
-        ThTList.Crucible.set(Crucible);
+            "NameSteelCrucible",
+            translateToLocalFormatted("mte.steelCrucible")).getStackForm(1);
+        ThTList.SteelCrucible.set(SteelCrucible);
 
         FuelInputBus = new ThT_HatchFuelBus(
             27007,
             "NameThTFuelInputBus",
             translateToLocalFormatted("mte.FuelInputBus")).getStackForm(1);
         ThTList.FuelInputBus.set(FuelInputBus);
+
+        InvarCrucible = new ThT_InvarCrucible(
+            27008,
+            "NameInvarCrucible",
+            translateToLocalFormatted("mte.invarCrucible")).getStackForm(1);
+        ThTList.InvarCrucible.set(InvarCrucible);
+
+        StainlessCrucible = new ThT_StainlessCrucible(
+            27009,
+            "NameStainlessCrucible",
+            translateToLocalFormatted("mte.stainlessCrucible")).getStackForm(1);
+        ThTList.StainlessCrucible.set(StainlessCrucible);
+
+        TitaniumCrucible = new ThT_TitaniumCrucible(
+            27010,
+            "NameTitaniumCrucible",
+            translateToLocalFormatted("mte.titaniumCrucible")).getStackForm(1);
+        ThTList.TitaniumCrucible.set(TitaniumCrucible);
+
+        TungstenSteelCrucible = new ThT_TungstenSteelCrucible(
+            27011,
+            "NameTungstenSteelCrucible",
+            translateToLocalFormatted("mte.tungstenSteelCrucible")).getStackForm(1);
+        ThTList.TungstenSteelCrucible.set(TungstenSteelCrucible);
     }
 }
