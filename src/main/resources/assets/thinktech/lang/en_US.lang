@@ -114,35 +114,35 @@ mte.steelCrucible.tooltips2=§eHeat capacity: 20,000,000 HU (1 coal = 16,000 HU)
 mte.steelCrucible.tooltips3=§e4 parallels | 0.01%%/s heat loss | 4s/fuel
 mte.steelCrucible.tooltips4=§aHeat ≥ 50%%: 10%% speed bonus
 mte.steelCrucible.tooltips5=§cFuel consumed only while running recipes
-mte.steelCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (16 slots)
+mte.steelCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (25 slots)
 mte.invarCrucible=Invar Crucible
 mte.invarCrucible.tooltips1=§bSolid fuel driven smelting multiblock (Tier 2)
 mte.invarCrucible.tooltips2=§eHeat capacity: 40,000,000 HU (1 coal = 16,000 HU)
 mte.invarCrucible.tooltips3=§e8 parallels | 0.01%%/s heat loss | 2s/fuel
 mte.invarCrucible.tooltips4=§aHeat ≥ 55%%: 15%% speed bonus
 mte.invarCrucible.tooltips5=§cFuel consumed only while running recipes
-mte.invarCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (16 slots)
+mte.invarCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (25 slots)
 mte.stainlessCrucible=Stainless Steel Crucible
 mte.stainlessCrucible.tooltips1=§bSolid fuel driven smelting multiblock (Tier 3)
 mte.stainlessCrucible.tooltips2=§eHeat capacity: 80,000,000 HU (1 coal = 16,000 HU)
 mte.stainlessCrucible.tooltips3=§e16 parallels | 0.01%%/s heat loss | 1s/fuel
 mte.stainlessCrucible.tooltips4=§aHeat ≥ 60%%: 20%% speed bonus
 mte.stainlessCrucible.tooltips5=§cFuel consumed only while running recipes
-mte.stainlessCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (16 slots)
+mte.stainlessCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (25 slots)
 mte.titaniumCrucible=Titanium Crucible
 mte.titaniumCrucible.tooltips1=§bSolid fuel driven smelting multiblock (Tier 4)
 mte.titaniumCrucible.tooltips2=§eHeat capacity: 160,000,000 HU (1 coal = 16,000 HU)
 mte.titaniumCrucible.tooltips3=§e32 parallels | 0.01%%/s heat loss | 0.5s/fuel
 mte.titaniumCrucible.tooltips4=§aHeat ≥ 65%%: 25%% speed bonus
 mte.titaniumCrucible.tooltips5=§cFuel consumed only while running recipes
-mte.titaniumCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (16 slots)
+mte.titaniumCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (25 slots)
 mte.tungstenSteelCrucible=Tungstensteel Crucible
 mte.tungstenSteelCrucible.tooltips1=§bSolid fuel driven smelting multiblock (Tier 5)
 mte.tungstenSteelCrucible.tooltips2=§eHeat capacity: 320,000,000 HU (1 coal = 16,000 HU)
 mte.tungstenSteelCrucible.tooltips3=§e64 parallels | 0.01%%/s heat loss | 0.25s/fuel
 mte.tungstenSteelCrucible.tooltips4=§aHeat ≥ 70%%: 30%% speed bonus
 mte.tungstenSteelCrucible.tooltips5=§cFuel consumed only while running recipes
-mte.tungstenSteelCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (16 slots)
+mte.tungstenSteelCrucible.tooltips6=Fuel must go in dedicated Fuel Input Bus (25 slots)
 
 #Recipe
 tht.recipe.implosion_generator=Implosion Generator

@@ -13,6 +13,7 @@ import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
 import gtPlusPlus.core.fluids.GTPPFluids;
 import gtPlusPlus.core.material.Material;
+import gtPlusPlus.core.material.MaterialsAlloy;
 import gtPlusPlus.core.material.MaterialsElements;
 import gtPlusPlus.xmod.gregtech.api.enums.GregtechItemList;
 import gtnhlanth.common.register.WerkstoffMaterialPool;
@@ -524,10 +525,10 @@ public class MachineRecipePool {
 
         // ==================== 坩埚配方 ====================
 
-        // 朱砂 → 液态汞 HgS (N=2): 2粉 → 144L
+        // 朱砂 → 液态汞
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Cinnabar.getDust(2))
-            .fluidOutputs(Materials.Mercury.getFluid(144))
+            .itemInputs(Materials.Cinnabar.getDust(1))
+            .fluidOutputs(Materials.Mercury.getFluid(1000))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
@@ -548,59 +549,59 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 铁矿石 → 液态铁
+        // 铁矿石
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Magnetite.getDust(7))
-            .fluidOutputs(Materials.Iron.getMolten(432))
-            .eut(30).duration(100)
-            .specialValue(1)
-            .addTo(ThTRecipeMap.Crucible);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(Materials.BandedIron.getDust(5))
-            .fluidOutputs(Materials.Iron.getMolten(288))
-            .eut(30).duration(100)
-            .specialValue(1)
-            .addTo(ThTRecipeMap.Crucible);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(Materials.BrownLimonite.getDust(4))
+            .itemInputs(Materials.Magnetite.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.YellowLimonite.getDust(4))
+            .itemInputs(Materials.BandedIron.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Pyrite.getDust(3))
+            .itemInputs(Materials.BrownLimonite.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 孔雀石 → 液态铜 Cu₂CH₂O₅ (N=10): 10粉 → 288L
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Malachite.getDust(10))
-            .fluidOutputs(Materials.Copper.getMolten(288))
+            .itemInputs(Materials.YellowLimonite.getDust(1))
+            .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 黄铜矿 → 液态铜 + 液态铁 CuFeS₂ (N=4): 4粉 → 144L Cu + 144L Fe
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Chalcopyrite.getDust(4))
+            .itemInputs(Materials.Pyrite.getDust(1))
+            .fluidOutputs(Materials.Iron.getMolten(144))
+            .eut(30).duration(100)
+            .specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 孔雀石
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Malachite.getDust(1))
+            .fluidOutputs(Materials.Copper.getMolten(144))
+            .eut(30).duration(100)
+            .specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 黄铜矿
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Chalcopyrite.getDust(2))
             .fluidOutputs(Materials.Copper.getMolten(144), Materials.Iron.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 熔融铁/铁粉 + 煤粉 → 液态生铁
+        // 熔融铁/铁粉
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Iron.getMolten(144))
             .itemInputs(Materials.Coal.getDust(1))
@@ -616,15 +617,32 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 闪锌矿 → 液态锌 ZnS (N=2): 2粉 → 144L
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Sphalerite.getDust(2))
+                .fluidInputs(Materials.Iron.getMolten(144))
+                .itemInputs(Materials.Carbon.getDust(1))
+                .fluidOutputs(Materials.CastIron.getMolten(144))
+                .eut(30).duration(50).circuit(2)
+                .specialValue(1)
+                .addTo(ThTRecipeMap.Crucible);
+
+        GTValues.RA.stdBuilder()
+                .itemInputs(Materials.Iron.getDust(1), Materials.Carbon.getDust(1))
+                .fluidOutputs(Materials.CastIron.getMolten(144))
+                .eut(30).duration(100).circuit(2)
+                .specialValue(1)
+                .addTo(ThTRecipeMap.Crucible);
+
+        // 闪锌矿
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Sphalerite.getDust(1))
+            .itemOutputs(Materials.Gallium.getDust(1))
+            .outputChances(800)
             .fluidOutputs(Materials.Zinc.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 黝铜矿 → Cu+Fe+Sb Cu₃FeSbS₃ (N=8): 8粉 → 432L Cu + 144L Fe + 144L Sb
+        // 黝铜矿
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Tetrahedrite.getDust(8))
             .fluidOutputs(Materials.Copper.getMolten(432), Materials.Iron.getMolten(144),
@@ -633,30 +651,30 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 辉锑矿 → 液态锑 Sb₂S₃ (N=5): 5粉 → 288L
+        // 辉锑矿
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Stibnite.getDust(5))
-            .fluidOutputs(Materials.Antimony.getMolten(288))
+            .itemInputs(Materials.Stibnite.getDust(1))
+            .fluidOutputs(Materials.Antimony.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 锡石矿/锡石矿砂 → 液态锡 SnO₂ (N=3): 3粉 → 144L
+        // 锡石矿/锡石矿砂
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Cassiterite.getDust(3))
+            .itemInputs(Materials.Cassiterite.getDust(1))
             .fluidOutputs(Materials.Tin.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.CassiteriteSand.getDust(3))
+            .itemInputs(Materials.CassiteriteSand.getDust(1))
             .fluidOutputs(Materials.Tin.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 锡粉/金粉 → 直接熔化
+        // 锡粉/金粉
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Tin.getDust(1))
             .fluidOutputs(Materials.Tin.getMolten(144))
@@ -671,7 +689,7 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 镍黄铁矿 → 液态镍 Ni₉S₈ (N=17): 17粉 → 1296L
+        // 镍黄铁矿
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Pentlandite.getDust(17))
             .fluidOutputs(Materials.Nickel.getMolten(1296))
@@ -679,16 +697,16 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 花岗岩矿砂/玄武岩矿砂 → 液态铁
+        // 花岗岩矿砂/玄武岩矿砂
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.GraniticMineralSand.getDust(2))
+            .itemInputs(Materials.GraniticMineralSand.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.BasalticMineralSand.getDust(2))
+            .itemInputs(Materials.BasalticMineralSand.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
             .eut(30).duration(100)
             .specialValue(1)
@@ -696,7 +714,7 @@ public class MachineRecipePool {
 
         // ==================== 合金配方 ====================
 
-        // 红色合金 RedAlloy (Cu₁Redstone₄): 铜1+红石4 → 1 锭 = 144L（红石不贡献金属体积）
+        // 红色合金 RedAlloy
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Copper.getDust(1), Materials.Redstone.getDust(4))
             .fluidOutputs(Materials.RedAlloy.getMolten(144))
@@ -712,23 +730,15 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 红石合金 RedstoneAlloy (Cu₁Redstone₄): 同上，GT 另一材料
+        // 红石合金 RedstoneAlloy
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Copper.getDust(1), Materials.Redstone.getDust(4))
-            .fluidOutputs(Materials.RedstoneAlloy.getMolten(144))
-            .eut(30).duration(100).circuit(2)
-            .specialValue(1)
-            .addTo(ThTRecipeMap.Crucible);
-
-        GTValues.RA.stdBuilder()
-            .fluidInputs(Materials.Copper.getMolten(144))
-            .itemInputs(Materials.Redstone.getDust(4))
-            .fluidOutputs(Materials.RedstoneAlloy.getMolten(144))
+            .itemInputs(Materials.Silicon.getDust(1),Materials.Carbon.getDust(1),Materials.Redstone.getDust(1))
+            .fluidOutputs(Materials.RedstoneAlloy.getMolten(432))
             .eut(30).duration(50).circuit(2)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 青铜 Bronze (Sn₁Cu₃, N=4 → 576L)
+        // 青铜 Bronze
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Tin.getDust(1), Materials.Copper.getDust(3))
             .fluidOutputs(Materials.Bronze.getMolten(576))
@@ -743,7 +753,7 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 白铜 Cupronickel (Cu₁Ni₁, N=2 → 288L)
+        // 白铜
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Copper.getDust(1), Materials.Nickel.getDust(1))
             .fluidOutputs(Materials.Cupronickel.getMolten(288))
@@ -758,7 +768,7 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 殷钢 Invar (Fe₂Ni₁, N=3 → 432L)
+        // 殷钢
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Iron.getDust(2), Materials.Nickel.getDust(1))
             .fluidOutputs(Materials.Invar.getMolten(432))
@@ -773,7 +783,7 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 琥珀金 Electrum (Ag₁Au₁, N=2 → 288L)
+        // 琥珀金
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Silver.getDust(1), Materials.Gold.getDust(1))
             .fluidOutputs(Materials.Electrum.getMolten(288))
@@ -788,7 +798,7 @@ public class MachineRecipePool {
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
-        // 焊锡 SolderingAlloy (Sn₉Sb₁, N=10 → 1440L)
+        // 焊锡
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Tin.getDust(9), Materials.Antimony.getDust(1))
             .fluidOutputs(Materials.SolderingAlloy.getMolten(1440))
@@ -801,6 +811,207 @@ public class MachineRecipePool {
             .fluidOutputs(Materials.SolderingAlloy.getMolten(1440))
             .eut(30).duration(50).circuit(2)
             .specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 钴黄铜 CobaltBrass: 7黄铜 + 1钴 + 1锡 → 9×144 = 1296L
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Brass.getDust(7), Materials.Cobalt.getDust(1), Materials.Tin.getDust(1))
+            .fluidOutputs(Materials.CobaltBrass.getMolten(1296))
+            .eut(30).duration(100).circuit(1)
+            .specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 镁铝合金 Magnalium: 1镁 + 2铝 → 3×144 = 432L
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Magnesium.getDust(1), Materials.Aluminium.getDust(2))
+            .fluidOutputs(Materials.Magnalium.getMolten(432))
+            .eut(30).duration(100).circuit(1)
+            .specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 退火铜 AnnealedCopper: 1铜 + 1000L 氧气
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Copper.getDust(1))
+            .fluidInputs(Materials.Oxygen.getGas(1000))
+            .fluidOutputs(Materials.AnnealedCopper.getMolten(144))
+            .eut(30).duration(100).circuit(11)
+            .specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // Potin: 2铅 + 1锡 + 2青铜 → 5×144 = 720L
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Lead.getDust(2), Materials.Tin.getDust(1), Materials.Bronze.getDust(2))
+            .fluidOutputs(MaterialsAlloy.POTIN.getFluidStack(720))
+            .eut(30).duration(100).circuit(13)
+            .specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 玄钢
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Steel.getMolten(144))
+            .itemInputs(Materials.Coal.getDust(4), Materials.Silicon.getDust(1), Materials.Obsidian.getDust(3))
+            .fluidOutputs(Materials.DarkSteel.getMolten(1296))
+            .eut(60).duration(200).circuit(14)
+            .specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 魂金
+        GTValues.RA.stdBuilder()
+            .itemInputs(GTModHandler.getModItem("minecraft", "soul_sand", 1, 0),
+                Materials.Gold.getDust(1), Materials.Ash.getDust(1))
+            .fluidOutputs(Materials.Soularium.getMolten(432))
+            .eut(60).duration(200)
+            .specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 熔融铝
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Aluminiumoxide.getDust(10), Materials.Cryolite.getDust(5))
+            .fluidOutputs(Materials.Aluminium.getMolten(576))
+            .eut(60).duration(200)
+            .specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // ==================== 高级配方 v7 (specialValue 2-5) ====================
+
+        // ---- specialValue(2) ----
+
+        // 导电铁+黑钢+金 → 充能合金
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.ConductiveIron.getDust(1), Materials.BlackSteel.getDust(1),
+                Materials.Gold.getDust(1))
+            .fluidOutputs(Materials.EnergeticAlloy.getMolten(432))
+            .eut(30).duration(300).circuit(3).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 末影之眼+铬+充能合金 → 充能银合金
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.EnderEye.getDust(1), Materials.Chrome.getDust(1),
+                Materials.EnergeticAlloy.getDust(1))
+            .fluidOutputs(Materials.VibrantAlloy.getMolten(432))
+            .eut(30).duration(300).circuit(3).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 钽铁矿 → 锰 + 钽
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Tantalite.getDust(9))
+            .fluidOutputs(Materials.Manganese.getMolten(144), Materials.Tantalum.getMolten(288))
+            .eut(30).duration(300).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 钽粉 → 熔融钽
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Tantalum.getDust(1))
+            .fluidOutputs(Materials.Tantalum.getMolten(144))
+            .eut(30).duration(300).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 红石合金+铁+银 → 导电铁
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.RedstoneAlloy.getDust(1), Materials.Iron.getDust(1),
+                Materials.Silver.getDust(1))
+            .fluidOutputs(Materials.ConductiveIron.getMolten(432))
+            .eut(30).duration(300).circuit(2).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 铜+琥珀金 → 黑铜
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Copper.getDust(3), Materials.Electrum.getDust(2))
+            .fluidOutputs(Materials.BlackBronze.getMolten(720))
+            .eut(30).duration(300).circuit(1).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 黑铜+银+钢 → 黑钢
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.BlackBronze.getDust(1), Materials.Silver.getDust(1),
+                Materials.Steel.getDust(3))
+            .fluidOutputs(Materials.BlackSteel.getMolten(720))
+            .eut(30).duration(300).circuit(1).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // ---- specialValue(3) ----
+
+        // 铝粉 → 熔融铝
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Aluminium.getDust(1))
+            .fluidOutputs(Materials.Aluminium.getMolten(144))
+            .eut(30).duration(400).specialValue(3)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 熔融铁+铝+铬 → 坎塔尔合金
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Iron.getMolten(144), Materials.Aluminium.getMolten(144),
+                Materials.Chrome.getMolten(144))
+            .fluidOutputs(Materials.Kanthal.getMolten(432))
+            .eut(30).duration(400).circuit(2).specialValue(3)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 铬粉 → 熔融铬
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Chrome.getDust(1))
+            .fluidOutputs(Materials.Chrome.getMolten(144))
+            .eut(30).duration(400).specialValue(3)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 铂金属粉 → 熔融铂
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Platinum.getDust(9))
+            .fluidOutputs(Materials.Platinum.getMolten(144))
+            .eut(30).duration(400).specialValue(3)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 银+蓝石 → 蓝色合金
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Silver.getDust(1), Materials.Electrotine.getDust(4))
+            .fluidOutputs(Materials.BlueAlloy.getMolten(144))
+            .eut(30).duration(400).circuit(2).specialValue(3)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // ---- specialValue(4) ----
+
+        // 熔融镍+铬 → 镍铬合金
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Nickel.getMolten(576), Materials.Chrome.getMolten(144))
+            .fluidOutputs(Materials.Nichrome.getMolten(144))
+            .eut(30).duration(500).circuit(1).specialValue(4)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 铁+镍+锰+铬 → 不锈钢
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Iron.getDust(6), Materials.Nickel.getDust(1),
+                Materials.Manganese.getDust(1), Materials.Chrome.getDust(1))
+            .fluidOutputs(Materials.StainlessSteel.getMolten(1296))
+            .eut(30).duration(500).circuit(2).specialValue(4)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // ---- specialValue(5) ----
+
+        // 钛粉 → 熔融钛
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Titanium.getDust(1))
+            .fluidOutputs(Materials.Titanium.getMolten(144))
+            .eut(30).duration(600).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 金红石+碳 → 钛
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Rutile.getDust(2), Materials.Carbon.getDust(2))
+            .fluidOutputs(Materials.Titanium.getMolten(144))
+            .eut(30).duration(600).circuit(2).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 钨粉 → 熔融钨
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Tungsten.getDust(1))
+            .fluidOutputs(Materials.Tungsten.getMolten(144))
+            .eut(30).duration(600).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 钨+钢 → 钨钢
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Tungsten.getDust(1), Materials.Steel.getDust(1))
+            .fluidOutputs(Materials.TungstenSteel.getMolten(288))
+            .eut(30).duration(600).circuit(2).specialValue(5)
             .addTo(ThTRecipeMap.Crucible);
     }
 }

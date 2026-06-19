@@ -112,35 +112,35 @@ mte.steelCrucible.tooltips2=§e热池容量：20,000,000 HU（1 煤炭 = 16,000 
 mte.steelCrucible.tooltips3=§e4 并行 | 0.01%%/秒散热 | 4秒/燃料
 mte.steelCrucible.tooltips4=§a热量 ≥ 50%% 时加速 10%%
 mte.steelCrucible.tooltips5=§c仅配方运行时消耗燃料
-mte.steelCrucible.tooltips6=燃料需放入专用燃料输入舱（16槽）
+mte.steelCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
 mte.invarCrucible=殷钢坩埚
 mte.invarCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级2）
 mte.invarCrucible.tooltips2=§e热池容量：40,000,000 HU（1 煤炭 = 16,000 HU）
 mte.invarCrucible.tooltips3=§e8 并行 | 0.01%%/秒散热 | 2秒/燃料
 mte.invarCrucible.tooltips4=§a热量 ≥ 55%% 时加速 15%%
 mte.invarCrucible.tooltips5=§c仅配方运行时消耗燃料
-mte.invarCrucible.tooltips6=燃料需放入专用燃料输入舱（16槽）
+mte.invarCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
 mte.stainlessCrucible=不锈钢坩埚
 mte.stainlessCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级3）
 mte.stainlessCrucible.tooltips2=§e热池容量：80,000,000 HU（1 煤炭 = 16,000 HU）
 mte.stainlessCrucible.tooltips3=§e16 并行 | 0.01%%/秒散热 | 1秒/燃料
 mte.stainlessCrucible.tooltips4=§a热量 ≥ 60%% 时加速 20%%
 mte.stainlessCrucible.tooltips5=§c仅配方运行时消耗燃料
-mte.stainlessCrucible.tooltips6=燃料需放入专用燃料输入舱（16槽）
+mte.stainlessCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
 mte.titaniumCrucible=钛坩埚
 mte.titaniumCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级4）
 mte.titaniumCrucible.tooltips2=§e热池容量：160,000,000 HU（1 煤炭 = 16,000 HU）
 mte.titaniumCrucible.tooltips3=§e32 并行 | 0.01%%/秒散热 | 0.5秒/燃料
 mte.titaniumCrucible.tooltips4=§a热量 ≥ 65%% 时加速 25%%
 mte.titaniumCrucible.tooltips5=§c仅配方运行时消耗燃料
-mte.titaniumCrucible.tooltips6=燃料需放入专用燃料输入舱（16槽）
+mte.titaniumCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
 mte.tungstenSteelCrucible=钨钢坩埚
 mte.tungstenSteelCrucible.tooltips1=§b固体燃料驱动的熔炼多方块结构（等级5）
 mte.tungstenSteelCrucible.tooltips2=§e热池容量：320,000,000 HU（1 煤炭 = 16,000 HU）
 mte.tungstenSteelCrucible.tooltips3=§e64 并行 | 0.01%%/秒散热 | 0.25秒/燃料
 mte.tungstenSteelCrucible.tooltips4=§a热量 ≥ 70%% 时加速 30%%
 mte.tungstenSteelCrucible.tooltips5=§c仅配方运行时消耗燃料
-mte.tungstenSteelCrucible.tooltips6=燃料需放入专用燃料输入舱（16槽）
+mte.tungstenSteelCrucible.tooltips6=燃料需放入专用燃料输入舱（25槽）
 
 #Recipe
 

@@ -10,10 +10,10 @@ import net.minecraftforge.common.util.ForgeDirection;
 
 public class ThT_HatchFuelBus extends MTEHatchInputBus {
 
-    private static final int FUEL_SLOTS = 16;
+    private static final int FUEL_SLOTS = 25;
 
     public ThT_HatchFuelBus(int id, String name, String nameRegional) {
-        super(id, name, nameRegional, 1, FUEL_SLOTS + 1);
+        super(id, name, nameRegional, 4, FUEL_SLOTS + 1);
     }
 
     public ThT_HatchFuelBus(String aName, int aTier, int aSlots, String[] aDescription, ITexture[][][] aTextures) {
