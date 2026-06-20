@@ -131,7 +131,7 @@ public abstract class ThT_CrucibleBase<T extends ThT_CrucibleBase<T>> extends MT
         if (!aBaseMetaTileEntity.isServerSide()) return;
 
         long cap = getHeatCapacity();
-        if (aTick % getFuelBurnInterval() == 0 && mMaxProgresstime > 0 && mHeat < cap) {
+        if (aTick % getFuelBurnInterval() == 0 && mHeat < cap) {
             for (ThT_HatchFuelBus tHatch : mFuelBusses) {
                 for (int i = 0; i < tHatch.getSizeInventory(); i++) {
                     ItemStack stack = tHatch.getStackInSlot(i);
