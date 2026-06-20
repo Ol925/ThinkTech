@@ -1013,5 +1013,143 @@ public class MachineRecipePool {
             .fluidOutputs(Materials.TungstenSteel.getMolten(288))
             .eut(30).duration(600).circuit(2).specialValue(5)
             .addTo(ThTRecipeMap.Crucible);
+
+        // ==================== v8 高级合金配方 ====================
+
+        // ---- specialValue(2) 新增 ----
+
+        // 红钢（100秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Copper.getDust(4), Materials.Silver.getDust(4),
+                Materials.Bismuth.getDust(1), Materials.Zinc.getDust(1),
+                Materials.BlackSteel.getDust(20), Materials.Steel.getDust(10))
+            .fluidOutputs(Materials.RedSteel.getMolten(5760))
+            .eut(30).duration(2000).circuit(15).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 蓝钢（100秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Copper.getDust(19), Materials.Gold.getDust(16),
+                Materials.Zinc.getDust(5), Materials.BlackSteel.getDust(80),
+                Materials.Steel.getDust(40))
+            .fluidOutputs(Materials.BlueSteel.getMolten(23040))
+            .eut(30).duration(2000).circuit(16).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 钒钢（15秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Vanadium.getDust(1), Materials.Chrome.getDust(1),
+                Materials.Steel.getDust(7))
+            .fluidOutputs(Materials.VanadiumSteel.getMolten(1296))
+            .eut(30).duration(300).circuit(3).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // ---- specialValue(4) 新增 ----
+
+        // 高速钢-G（50秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.TungstenSteel.getDust(5), Materials.Chrome.getDust(1),
+                Materials.Molybdenum.getDust(2), Materials.Vanadium.getDust(1))
+            .fluidOutputs(Materials.HSSG.getMolten(1296))
+            .eut(30).duration(1000).circuit(4).specialValue(4)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 高速钢-E（60秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.HSSG.getDust(6), Materials.Cobalt.getDust(1),
+                Materials.Manganese.getDust(1), Materials.Silicon.getDust(1))
+            .fluidOutputs(Materials.HSSE.getMolten(1296))
+            .eut(30).duration(1200).circuit(4).specialValue(4)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 高速钢-S（60秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.HSSG.getDust(6), Materials.Iridium.getDust(2),
+                Materials.Osmium.getDust(1))
+            .fluidOutputs(Materials.HSSS.getMolten(1296))
+            .eut(30).duration(1200).circuit(3).specialValue(4)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 黄铜（10秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Copper.getDust(3), Materials.Zinc.getDust(1))
+            .fluidOutputs(Materials.Brass.getMolten(576))
+            .eut(30).duration(200).circuit(2).specialValue(1)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 玫瑰金（10秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Copper.getDust(1), Materials.Gold.getDust(4))
+            .fluidOutputs(Materials.RoseGold.getMolten(720))
+            .eut(30).duration(200).circuit(2).specialValue(2)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // TPV合金（10秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Titanium.getDust(3), Materials.Platinum.getDust(3),
+                Materials.Vanadium.getDust(1))
+            .fluidOutputs(Materials.TPV.getMolten(1008))
+            .eut(30).duration(200).circuit(3).specialValue(4)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // ---- specialValue(5) 新增 ----
+
+        // PGM 熔化（6个配方，20秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Platinum.getDust(1))
+            .fluidOutputs(Materials.Platinum.getMolten(144))
+            .eut(30).duration(400).circuit(1).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(WerkstoffLoader.Rhodium.get(OrePrefixes.dust, 1))
+            .fluidOutputs(WerkstoffLoader.Rhodium.getMolten(144))
+            .eut(30).duration(400).circuit(1).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Palladium.getDust(1))
+            .fluidOutputs(Materials.Palladium.getMolten(144))
+            .eut(30).duration(400).circuit(1).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(WerkstoffLoader.Ruthenium.get(OrePrefixes.dust, 1))
+            .fluidOutputs(WerkstoffLoader.Ruthenium.getMolten(144))
+            .eut(30).duration(400).circuit(1).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Osmium.getDust(1))
+            .fluidOutputs(Materials.Osmium.getMolten(144))
+            .eut(30).duration(400).circuit(1).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Iridium.getDust(1))
+            .fluidOutputs(Materials.Iridium.getMolten(144))
+            .eut(30).duration(400).circuit(1).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 镀铑钯（40秒）
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Palladium.getMolten(432), WerkstoffLoader.Rhodium.getMolten(144))
+            .fluidOutputs(WerkstoffLoader.RhodiumPlatedPalladium.getMolten(576))
+            .eut(30).duration(800).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 铱锇合金（40秒）
+        GTValues.RA.stdBuilder()
+            .fluidInputs(Materials.Iridium.getMolten(432), Materials.Osmium.getMolten(144))
+            .fluidOutputs(Materials.Osmiridium.getMolten(576))
+            .eut(30).duration(800).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
+
+        // 铌钛合金（40秒）
+        GTValues.RA.stdBuilder()
+            .itemInputs(Materials.Niobium.getDust(1), Materials.Titanium.getDust(1))
+            .fluidOutputs(Materials.NiobiumTitanium.getMolten(288))
+            .eut(30).duration(800).circuit(2).specialValue(5)
+            .addTo(ThTRecipeMap.Crucible);
     }
 }
