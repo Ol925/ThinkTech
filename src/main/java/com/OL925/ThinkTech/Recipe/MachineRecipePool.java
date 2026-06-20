@@ -529,7 +529,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Cinnabar.getDust(1))
             .fluidOutputs(Materials.Mercury.getFluid(1000))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -553,35 +553,35 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Magnetite.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.BandedIron.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.BrownLimonite.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.YellowLimonite.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Pyrite.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -589,7 +589,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Malachite.getDust(1))
             .fluidOutputs(Materials.Copper.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -597,7 +597,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Chalcopyrite.getDust(2))
             .fluidOutputs(Materials.Copper.getMolten(144), Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -638,7 +638,7 @@ public class MachineRecipePool {
             .itemOutputs(Materials.Gallium.getDust(1))
             .outputChances(800)
             .fluidOutputs(Materials.Zinc.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -647,7 +647,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Tetrahedrite.getDust(8))
             .fluidOutputs(Materials.Copper.getMolten(432), Materials.Iron.getMolten(144),
                 Materials.Antimony.getMolten(144))
-            .eut(30).duration(150)
+            .eut(30).duration(150).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -655,7 +655,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Stibnite.getDust(1))
             .fluidOutputs(Materials.Antimony.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -663,14 +663,14 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Cassiterite.getDust(1))
             .fluidOutputs(Materials.Tin.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.CassiteriteSand.getDust(1))
             .fluidOutputs(Materials.Tin.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -678,14 +678,14 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Tin.getDust(1))
             .fluidOutputs(Materials.Tin.getMolten(144))
-            .eut(16).duration(50)
+            .eut(16).duration(50).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Gold.getDust(1))
             .fluidOutputs(Materials.Gold.getMolten(144))
-            .eut(16).duration(50)
+            .eut(16).duration(50).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -693,7 +693,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Pentlandite.getDust(17))
             .fluidOutputs(Materials.Nickel.getMolten(1296))
-            .eut(30).duration(200)
+            .eut(30).duration(200).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -701,14 +701,14 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.GraniticMineralSand.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.BasalticMineralSand.getDust(1))
             .fluidOutputs(Materials.Iron.getMolten(144))
-            .eut(30).duration(100)
+            .eut(30).duration(100).circuit(1)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -817,7 +817,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Brass.getDust(7), Materials.Cobalt.getDust(1), Materials.Tin.getDust(1))
             .fluidOutputs(Materials.CobaltBrass.getMolten(1296))
-            .eut(30).duration(100).circuit(1)
+            .eut(30).duration(100).circuit(3)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -825,7 +825,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Magnesium.getDust(1), Materials.Aluminium.getDust(2))
             .fluidOutputs(Materials.Magnalium.getMolten(432))
-            .eut(30).duration(100).circuit(1)
+            .eut(30).duration(100).circuit(2)
             .specialValue(1)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -860,7 +860,7 @@ public class MachineRecipePool {
             .itemInputs(GTModHandler.getModItem("minecraft", "soul_sand", 1, 0),
                 Materials.Gold.getDust(1), Materials.Ash.getDust(1))
             .fluidOutputs(Materials.Soularium.getMolten(432))
-            .eut(60).duration(200)
+            .eut(60).duration(200).circuit(2)
             .specialValue(2)
             .addTo(ThTRecipeMap.Crucible);
 
@@ -903,7 +903,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Tantalum.getDust(1))
             .fluidOutputs(Materials.Tantalum.getMolten(144))
-            .eut(30).duration(300).specialValue(2)
+            .eut(30).duration(300).specialValue(2).circuit(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 红石合金+铁+银 → 导电铁
@@ -911,14 +911,14 @@ public class MachineRecipePool {
             .itemInputs(Materials.RedstoneAlloy.getDust(1), Materials.Iron.getDust(1),
                 Materials.Silver.getDust(1))
             .fluidOutputs(Materials.ConductiveIron.getMolten(432))
-            .eut(30).duration(300).circuit(2).specialValue(2)
+            .eut(30).duration(300).circuit(3).specialValue(2)
             .addTo(ThTRecipeMap.Crucible);
 
         // 铜+琥珀金 → 黑铜
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Copper.getDust(3), Materials.Electrum.getDust(2))
             .fluidOutputs(Materials.BlackBronze.getMolten(720))
-            .eut(30).duration(300).circuit(1).specialValue(2)
+            .eut(30).duration(300).circuit(2).specialValue(2)
             .addTo(ThTRecipeMap.Crucible);
 
         // 黑铜+银+钢 → 黑钢
@@ -926,7 +926,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.BlackBronze.getDust(1), Materials.Silver.getDust(1),
                 Materials.Steel.getDust(3))
             .fluidOutputs(Materials.BlackSteel.getMolten(720))
-            .eut(30).duration(300).circuit(1).specialValue(2)
+            .eut(30).duration(300).circuit(3).specialValue(2)
             .addTo(ThTRecipeMap.Crucible);
 
         // ---- specialValue(3) ----
@@ -935,7 +935,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Aluminium.getDust(1))
             .fluidOutputs(Materials.Aluminium.getMolten(144))
-            .eut(30).duration(400).specialValue(3)
+            .eut(30).duration(400).specialValue(3).circuit(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 熔融铁+铝+铬 → 坎塔尔合金
@@ -943,21 +943,21 @@ public class MachineRecipePool {
             .fluidInputs(Materials.Iron.getMolten(144), Materials.Aluminium.getMolten(144),
                 Materials.Chrome.getMolten(144))
             .fluidOutputs(Materials.Kanthal.getMolten(432))
-            .eut(30).duration(400).circuit(2).specialValue(3)
+            .eut(30).duration(400).circuit(3).specialValue(3)
             .addTo(ThTRecipeMap.Crucible);
 
         // 铬粉 → 熔融铬
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Chrome.getDust(1))
             .fluidOutputs(Materials.Chrome.getMolten(144))
-            .eut(30).duration(400).specialValue(3)
+            .eut(30).duration(400).specialValue(3).circuit(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 铂金属粉 → 熔融铂
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Platinum.getDust(9))
             .fluidOutputs(Materials.Platinum.getMolten(144))
-            .eut(30).duration(400).specialValue(3)
+            .eut(30).duration(400).specialValue(3).circuit(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 银+蓝石 → 蓝色合金
@@ -973,7 +973,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Nickel.getMolten(576), Materials.Chrome.getMolten(144))
             .fluidOutputs(Materials.Nichrome.getMolten(144))
-            .eut(30).duration(500).circuit(1).specialValue(4)
+            .eut(30).duration(500).circuit(2).specialValue(4)
             .addTo(ThTRecipeMap.Crucible);
 
         // 铁+镍+锰+铬 → 不锈钢
@@ -990,7 +990,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Titanium.getDust(1))
             .fluidOutputs(Materials.Titanium.getMolten(144))
-            .eut(30).duration(600).specialValue(5)
+            .eut(30).duration(600).specialValue(5).circuit(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 金红石+碳 → 钛
@@ -1004,7 +1004,7 @@ public class MachineRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Tungsten.getDust(1))
             .fluidOutputs(Materials.Tungsten.getMolten(144))
-            .eut(30).duration(600).specialValue(5)
+            .eut(30).duration(600).specialValue(5).circuit(1)
             .addTo(ThTRecipeMap.Crucible);
 
         // 钨+钢 → 钨钢
