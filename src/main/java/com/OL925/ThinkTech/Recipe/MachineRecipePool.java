@@ -981,7 +981,7 @@ public class MachineRecipePool {
             .itemInputs(Materials.Iron.getDust(6), Materials.Nickel.getDust(1),
                 Materials.Manganese.getDust(1), Materials.Chrome.getDust(1))
             .fluidOutputs(Materials.StainlessSteel.getMolten(1296))
-            .eut(30).duration(500).circuit(2).specialValue(4)
+            .eut(30).duration(500).circuit(6).specialValue(4)
             .addTo(ThTRecipeMap.Crucible);
 
         // ---- specialValue(5) ----
