@@ -257,7 +257,7 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Steel, 1))
             .fluidInputs(Materials.Steel.getMolten(1152))
             .itemOutputs(ThTList.SteelCrucible.get(1))
-            .eut(RECIPE_LV)
+            .eut(RECIPE_LV).circuit(14)
             .duration(20 * 20)
             .addTo(RecipeMaps.assemblerRecipes);
 
@@ -281,7 +281,7 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Invar, 1))
             .fluidInputs(Materials.Invar.getMolten(576))
             .itemOutputs(ThTList.InvarCrucible.get(1))
-            .eut(RECIPE_MV).duration(20 * 20)
+            .eut(RECIPE_MV).duration(20 * 20).circuit(14)
             .addTo(RecipeMaps.assemblerRecipes);
 
         //不锈钢坩埚（HV级）
@@ -294,7 +294,7 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.StainlessSteel, 1))
             .fluidInputs(Materials.StainlessSteel.getMolten(576))
             .itemOutputs(ThTList.StainlessCrucible.get(1))
-            .eut(RECIPE_HV).duration(20 * 20)
+            .eut(RECIPE_HV).duration(20 * 20).circuit(14)
             .addTo(RecipeMaps.assemblerRecipes);
 
         //钛坩埚（EV级）
@@ -307,7 +307,7 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Titanium, 1))
             .fluidInputs(Materials.Titanium.getMolten(576))
             .itemOutputs(ThTList.TitaniumCrucible.get(1))
-            .eut(RECIPE_EV).duration(20 * 20)
+            .eut(RECIPE_EV).duration(20 * 20).circuit(14)
             .addTo(RecipeMaps.assemblerRecipes);
 
         //钨钢坩埚（IV级）
@@ -320,7 +320,7 @@ public class ItemRecipePool {
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.TungstenSteel, 1))
             .fluidInputs(Materials.TungstenSteel.getMolten(576))
             .itemOutputs(ThTList.TungstenSteelCrucible.get(1))
-            .eut(RECIPE_IV).duration(20 * 20)
+            .eut(RECIPE_IV).duration(20 * 20).circuit(14)
             .addTo(RecipeMaps.assemblerRecipes);
 
         //钻井平台
