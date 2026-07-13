@@ -255,7 +255,7 @@ public class ItemRecipePool {
                 ItemList.Electric_Piston_LV.get(4),
                 GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.Steel, 4),
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Steel, 1))
-            .fluidInputs(Materials.Steel.getMolten(1152))
+            .fluidInputs(Materials.TinAlloy.getMolten(1152))
             .itemOutputs(ThTList.SteelCrucible.get(1))
             .eut(RECIPE_LV).circuit(14)
             .duration(20 * 20)
