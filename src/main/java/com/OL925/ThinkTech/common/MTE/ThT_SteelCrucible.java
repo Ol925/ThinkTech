@@ -138,11 +138,11 @@ public class ThT_SteelCrucible extends ThT_CrucibleBase<ThT_SteelCrucible>
             .addInfo("添加者：§4§nOL925")
             .beginStructureBlock(4, 4, 3, false)
             .addController("正面底层右侧")
-            .addCasingInfoExactly("脱氧钢机械方块", 40, false)
-            .addInputBus("任意脱氧钢机械方块")
-            .addInputHatch("任意脱氧钢机械方块")
-            .addOutputBus("任意脱氧钢机械方块")
-            .addOutputHatch("任意脱氧钢机械方块")
+            .addCasing("40", "脱氧钢机械方块", false)
+            .addInputBus("1", "任意脱氧钢机械方块")
+            .addInputHatch("1", "任意脱氧钢机械方块")
+            .addOutputBus("1", "任意脱氧钢机械方块")
+            .addOutputHatch("1", "任意脱氧钢机械方块")
             .toolTipFinisher("§d§l§oThinkTech");
         return tt;
     }

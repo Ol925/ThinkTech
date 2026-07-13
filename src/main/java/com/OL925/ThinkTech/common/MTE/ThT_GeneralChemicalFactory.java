@@ -9,6 +9,7 @@ import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.GregTechAPI;
+import gregtech.api.casing.Casings;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
@@ -244,7 +245,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
         if (STRUCTURE_DEFINITION == null) {
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_GeneralChemicalFactory>builder()
                     .addShape(STRUCTURE_PIECE_MAIN, Shape)
-                    .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
+                    .addElement('A', Casings.ReinforcedGlass.asElement())
                     .addElement('B',
                             ofChain(buildHatchAdder(ThT_GeneralChemicalFactory.class)
                                     .atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)
@@ -501,22 +502,22 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             .addInfo("添加者：§4§nOL925")
             .beginStructureBlock(11, 13, 20, false)
             .addController("见结构预览")
-            .addCasingInfoExactly("洁净不锈钢机械方块",41,false)
-            .addCasingInfoExactly("钢管道方块",48,false)
-            .addCasingInfoExactly("脱氧钢机械方块",242,false)
-            .addCasingInfoExactly("格栅机械方块",17,false)
-            .addCasingInfoExactly("任意线圈方块",24,true)
-            .addCasingInfoExactly("不锈钢框架",32,false)
-            .addCasingInfoExactly("化学惰性机械方块",118,false)
-            .addCasingInfoExactly("活塞",6,false)
-            .addCasingInfoExactly("钢块",6,false)
-            .addCasingInfoExactly("防爆玻璃",9,false)
-            .addCasingInfoExactly("钢框架",164,false)
-            .addInputBus("任意脱氧钢机械方块")
-            .addInputHatch("任意脱氧钢机械方块")
-            .addOutputBus("任意脱氧钢机械方块")
-            .addOutputHatch("任意脱氧钢机械方块")
-            .addEnergyHatch("任意脱氧钢机械方块")
+            .addCasing("41", "洁净不锈钢机械方块", false)
+            .addCasing("48", "钢管道方块", false)
+            .addCasing("242", "脱氧钢机械方块", false)
+            .addCasing("17", "格栅机械方块", false)
+            .addCasing("24", "任意线圈方块", true)
+            .addCasing("32", "不锈钢框架", false)
+            .addCasing("118", "化学惰性机械方块", false)
+            .addCasing("6", "活塞", false)
+            .addCasing("6", "钢块", false)
+            .addCasing("9", "防爆玻璃", false)
+            .addCasing("164", "钢框架", false)
+            .addInputBus("1", "任意脱氧钢机械方块")
+            .addInputHatch("1", "任意脱氧钢机械方块")
+            .addOutputBus("1", "任意脱氧钢机械方块")
+            .addOutputHatch("1", "任意脱氧钢机械方块")
+            .addEnergyHatch("1", "任意脱氧钢机械方块")
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;

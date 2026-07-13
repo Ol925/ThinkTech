@@ -277,6 +277,16 @@ public class ThT_Kiln extends MTESteamMultiBlockBase<ThT_Kiln> implements ISurvi
     }
 
     @Override
+    protected IIconContainer getActiveGlowOverlay() {
+        return null;
+    }
+
+    @Override
+    protected IIconContainer getInactiveGlowOverlay() {
+        return null;
+    }
+
+    @Override
     protected MultiblockTooltipBuilder createTooltip() {
         final MultiblockTooltipBuilder tt = new MultiblockTooltipBuilder();
         tt.addMachineType(translateToLocalFormatted("mte.common.tooltips2"))
@@ -288,10 +298,10 @@ public class ThT_Kiln extends MTESteamMultiBlockBase<ThT_Kiln> implements ISurvi
             .addInfo("添加者：§4§nOL925")
             .beginStructureBlock(6, 5, 5, false)
             .addController("正面中央")
-            .addCasingInfoExactly("耐火砖",64,false)
-            .addCasingInfoExactly("石台阶",8,false)
-            .addCasingInfoMin("输入总线(蒸汽)",1,false)
-            .addCasingInfoMin("输出总线(蒸汽)",1,false)
+            .addCasing("64", "耐火砖", false)
+            .addCasing("8", "石台阶", false)
+            .addCasing("1+", "输入总线(蒸汽)", false)
+            .addCasing("1+", "输出总线(蒸汽)", false)
             .toolTipFinisher("§d§l§oThinkTech");
         return tt;
     }

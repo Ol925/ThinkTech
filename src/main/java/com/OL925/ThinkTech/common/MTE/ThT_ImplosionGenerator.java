@@ -33,6 +33,7 @@ import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
 import gregtech.api.GregTechAPI;
+import gregtech.api.casing.Casings;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
@@ -99,7 +100,7 @@ import java.util.List;
         if (STRUCTURE_DEFINITION == null) {
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_ImplosionGenerator>builder()
                 .addShape(STRUCTURE_PIECE_MAIN, Shape)
-                .addElement('A', ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
+                .addElement('A', Casings.ReinforcedGlass.asElement())
                 //
                 .addElement(
                     'B',
@@ -285,17 +286,17 @@ import java.util.List;
             .addInfo("添加者：§4§nOL925")
             .beginStructureBlock(7, 5, 8, false)
             .addController("正面底部中央")
-            .addCasingInfoExactly("脱氧钢机械方块",66,false)
-            .addCasingInfoExactly("不锈钢框架",30,false)
-            .addCasingInfoExactly("铁栏杆",14,false)
-            .addCasingInfoExactly("任意线圈方块",16,true)
-            .addCasingInfoExactly("洁净不锈钢机械方块",30,false)
-            .addCasingInfoExactly("钢管道方块",11,false)
-            .addCasingInfoExactly("防爆玻璃",24,false)
-            .addCasingInfoExactly("镀层防爆石",8,true)
-            .addInputHatch("任意脱氧钢机械方块")
-            .addDynamoHatch("任意脱氧钢机械方块")
-            .addMufflerHatch("任意脱氧钢机械方块")
+            .addCasing("66", "脱氧钢机械方块", false)
+            .addCasing("30", "不锈钢框架", false)
+            .addCasing("14", "铁栏杆", false)
+            .addCasing("16", "任意线圈方块", true)
+            .addCasing("30", "洁净不锈钢机械方块", false)
+            .addCasing("11", "钢管道方块", false)
+            .addCasing("24", "防爆玻璃", false)
+            .addCasing("8", "镀层防爆石", true)
+            .addInputHatch("1", "任意脱氧钢机械方块")
+            .addDynamoHatch("1", "任意脱氧钢机械方块")
+            .addMufflerHatch("1", "任意脱氧钢机械方块")
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;
