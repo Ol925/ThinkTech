@@ -14,7 +14,6 @@ import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
 import gregtech.api.enums.Textures;
-import gregtech.api.gui.modularui.GTUITextures;
 import gregtech.api.interfaces.ISecondaryDescribable;
 import gregtech.api.modularui2.GTGuiTextures;
 import gregtech.api.interfaces.ITexture;
@@ -361,14 +360,6 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @Override
     public boolean supportsBatchMode() {
         return true;
-    }
-
-    @Override
-    public void setMachineModeIcons() {
-        machineModeIcons.clear();
-        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_CHEMBATH);
-        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_CHEMBATH);
-        machineModeIcons.add(GTUITextures.OVERLAY_BUTTON_MACHINEMODE_CHEMBATH);
     }
 
     @Override
