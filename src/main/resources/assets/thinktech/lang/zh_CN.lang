@@ -39,6 +39,28 @@ fluid.Photoresist=光刻胶
 fluid.Sxcqyry=三相萃取铟溶液
 fluid.Dndcq=低浓度萃取液
 
+#material (Werkstoff Material.* keys — 流体/物品显示名的实际查找键)
+Material.alkanewatermixture=烷烃-水混合物
+Material.ethanedial=乙二醛
+Material.phenylmethanamine=苄胺
+Material.benzaldehyd=苯甲醛
+Material.preculturedbacterialsolution=预培养维生细菌液
+Material.freezedpreculturedbacterialsolution=预培养维生冷藏细菌液
+Material.rawbiosludge=待处理浓缩菌泥
+Material.nutrientsolution=营养液
+Material.photoresist=光刻胶
+Material.sxcqyry=三相萃取铟溶液
+Material.dndcq=低浓度萃取液
+Material.2,4,6-trinitrotoluene=2,4,6-三硝基甲苯
+Material.leadazide=叠氮化铅
+Material.petn=季戊四醇四硝酸酯(PETN)
+Material.hmx=环四亚甲基四硝胺(奥克托今)
+Material.hniw=CL-20(HNIW)
+Material.hmt=1,3,5,7-四氮杂金刚烷(乌洛托品)
+Material.pentachloride=五氯化磷
+Material.sodiumazide=叠氮化钠
+Material.seleniumdioxide=二氧化硒
+
 #machine
 mte.common.tooltips1=使用消声仓可使机器真正消音！
 mte.common.tooltips2=生产机器

@@ -5,6 +5,12 @@ import static bartworks.util.BWUtil.subscriptNumbers;
 import bartworks.system.material.Werkstoff;
 import gregtech.api.enums.TextureSet;
 
+import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.Map;
+import java.util.Set;
+
 public class ThTMaterial implements Runnable {
 
     protected static final int OffsetID = 18100;
@@ -238,6 +244,40 @@ public class ThTMaterial implements Runnable {
                     .addCells(),
             OffsetID + 19,
             TextureSet.SET_FLUID);
+
+    /** Werkstoff → .lang 翻译引用键。
+     *  Werkstoff 只写 Material.* 键，不会覆盖 fluid.* 和 item.*，
+     *  因此 translateToLocalFormatted 从这些键读取能拿到 .lang 文件的原始翻译。 */
+    public static final Map<Werkstoff, String> TRANSLATION_REF = new LinkedHashMap<>();
+    static {
+        // MIXTURE 类型流体 → fluid.* 翻译键
+        TRANSLATION_REF.put(alkaneWaterMixture, "fluid.AlkaneWaterMixture.name");
+        TRANSLATION_REF.put(ethanedial, "fluid.Ethanedial.name");
+        TRANSLATION_REF.put(phenylmethanamine, "fluid.Phenylmethanamine.name");
+        TRANSLATION_REF.put(benzaldehyd, "fluid.Benzaldehyd.name");
+        TRANSLATION_REF.put(PreculturedBacterialSolution, "fluid.PreculturedBacterialSolution.name");
+        TRANSLATION_REF.put(FreezedPreculturedBacterialSolution, "fluid.FreezedPreculturedBacterialSolution.name");
+        TRANSLATION_REF.put(RawBioSludge, "fluid.RawBioSludge");
+        TRANSLATION_REF.put(nutrientSolution, "fluid.nutrientSolution");
+        TRANSLATION_REF.put(Photoresist, "fluid.Photoresist");
+        TRANSLATION_REF.put(Sxcqyry, "fluid.Sxcqyry");
+        TRANSLATION_REF.put(Dndcq, "fluid.Dndcq");
+        // MATERIAL 类型材料 → item.* 翻译键
+        TRANSLATION_REF.put(trinitrotoluene, "item.2,4,6-trinitrotoluene.name");
+        TRANSLATION_REF.put(leadAzide, "item.leadAzide.name");
+        TRANSLATION_REF.put(PETN, "item.PETN.name");
+        TRANSLATION_REF.put(HMX, "item.HMX.name");
+        TRANSLATION_REF.put(HNIW, "item.cl20.name");
+        TRANSLATION_REF.put(HMT, "item.HMT.name");
+        TRANSLATION_REF.put(pentachloride, "item.pentachloride.name");
+        TRANSLATION_REF.put(sodiumAzide, "item.sodiumAzide.name");
+        TRANSLATION_REF.put(seleniumDioxide, "item.seleniumDioxide.name");
+    }
+
+    /** 启用了 addMolten() 的材料 */
+    public static final Set<Werkstoff> THT_MOLTEN_WERKSTOFFS = new LinkedHashSet<>(Arrays.asList(
+        trinitrotoluene, PETN, HMX, HNIW, HMT, pentachloride, sodiumAzide, seleniumDioxide
+    ));
 
     @Override
     public void run() {}
