@@ -39,27 +39,6 @@ fluid.Photoresist=Photoresist
 fluid.Sxcqyry=Three-phase Indium Extraction Solution
 fluid.Dndcq=Low-Concentration Extract Solution
 
-#material (Werkstoff Material.* keys — actual lookup keys for fluid/item display names)
-Material.alkanewatermixture=Alkane Water Mixture
-Material.ethanedial=Ethanedial
-Material.phenylmethanamine=Phenylmethanamine
-Material.benzaldehyd=Benzaldehyde
-Material.preculturedbacterialsolution=Pre-cultured Bacterial Solution
-Material.freezedpreculturedbacterialsolution=Freezed Precultured Bacterial Solution
-Material.rawbiosludge=Raw Bio Sludge
-Material.nutrientsolution=Nutrient Solution
-Material.photoresist=Photoresist
-Material.sxcqyry=Three-phase Indium Extraction Solution
-Material.dndcq=Low-Concentration Extract Solution
-Material.2,4,6-trinitrotoluene=2,4,6-Trinitrotoluene
-Material.leadazide=Lead Azide
-Material.petn=PETN
-Material.hmx=HMX
-Material.hniw=HNIW
-Material.hmt=1,3,5,7-Tetraazaadamantane(HMT)
-Material.pentachloride=Pentachloride
-Material.sodiumazide=Sodium Azide
-Material.seleniumdioxide=Selenium Dioxide
 
 #machine
 mte.common.tooltips1=The use of muffler can make the machine really silenced!
