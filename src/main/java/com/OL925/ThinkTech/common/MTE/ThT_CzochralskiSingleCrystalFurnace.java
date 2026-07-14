@@ -31,7 +31,6 @@ import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
 import gregtech.api.GregTechAPI;
-import gregtech.api.casing.Casings;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ISecondaryDescribable;
@@ -85,7 +84,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
         if (STRUCTURE_DEFINITION == null) {
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_CzochralskiSingleCrystalFurnace>builder()
                 .addShape(STRUCTURE_PIECE_MAIN, Shape)
-                .addElement('A', Casings.ReinforcedGlass.asElement())
+                .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
                 .addElement('B',ofBlock(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C',ofBlock(GregTechAPI.sBlockCasings3, 10))
                 .addElement('D',
@@ -258,21 +257,21 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
             .addInfo("添加者：§4§nOL925")
             .beginStructureBlock(6, 8, 7, false)
             .addController("正面第二层中央")
-            .addCasing("57", "洁净不锈钢机械方块", false)
-            .addCasing("9", "格栅机械方块", false)
-            .addCasing("51", "钢框架", false)
-            .addCasing("10", "脱氧钢机械方块", false)
-            .addCasing("4", "不锈钢框架", false)
-            .addCasing("8", "防爆玻璃", false)
-            .addCasing("3", "聚四氟乙烯管道方块", false)
-            .addCasing("1", "漏斗", false)
-            .addCasing("1", "石台阶", false)
-            .addMufflerHatch("1", "任意洁净不锈钢机械方块")
-            .addInputBus("1", "任意洁净不锈钢机械方块")
-            .addInputHatch("1", "任意洁净不锈钢机械方块")
-            .addOutputHatch("1", "任意洁净不锈钢机械方块")
-            .addOutputBus("1", "任意洁净不锈钢机械方块")
-            .addEnergyHatch("1", "任意洁净不锈钢机械方块")
+            .addCasingInfoExactly("洁净不锈钢机械方块",57,false)
+            .addCasingInfoExactly("格栅机械方块",9,false)
+            .addCasingInfoExactly("钢框架",51,false)
+            .addCasingInfoExactly("脱氧钢机械方块",10,false)
+            .addCasingInfoExactly("不锈钢框架",4,false)
+            .addCasingInfoExactly("防爆玻璃",8,false)
+            .addCasingInfoExactly("聚四氟乙烯管道方块",3,false)
+            .addCasingInfoExactly("漏斗",1,false)
+            .addCasingInfoExactly("石台阶",1,false)
+            .addMufflerHatch("任意洁净不锈钢机械方块")
+            .addInputBus("任意洁净不锈钢机械方块")
+            .addInputHatch("任意洁净不锈钢机械方块")
+            .addOutputHatch("任意洁净不锈钢机械方块")
+            .addOutputBus("任意洁净不锈钢机械方块")
+            .addEnergyHatch("任意洁净不锈钢机械方块")
             .toolTipFinisher("§d§l§oThinkTech");
 
         return tt;
