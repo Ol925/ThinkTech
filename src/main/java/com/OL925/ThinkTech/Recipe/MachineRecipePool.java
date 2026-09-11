@@ -178,7 +178,7 @@ public class MachineRecipePool {
                         Materials.Clay.getDust(16),
                         GTModHandler.getModItem("minecraft", "sand", 32, 1) // Red Sand meta=1
                 )
-                .itemOutputs(GTModHandler.getModItem(Railcraft.ID, "machine.alpha", 64, 7)) // Coke Oven Brick
+                .itemOutputs(ItemList.CokeOvenCasing.get(64))
                 .eut(0)
                 .duration(20 * 20)
                 .addTo(ThTRecipeMap.Kiln);
@@ -189,7 +189,7 @@ public class MachineRecipePool {
                         Materials.Clay.getDust(16),
                         GTModHandler.getModItem("minecraft", "sand", 32, 0) // Sand meta=0
                 )
-                .itemOutputs(GTModHandler.getModItem(Railcraft.ID, "machine.alpha", 64, 7)) // Coke Oven Brick
+                .itemOutputs(ItemList.CokeOvenCasing.get(64))
                 .eut(0)
                 .duration(20 * 20)
                 .addTo(ThTRecipeMap.Kiln);
