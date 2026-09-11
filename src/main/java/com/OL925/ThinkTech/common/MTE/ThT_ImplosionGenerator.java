@@ -306,14 +306,6 @@ import java.util.List;
         return 0;
     }
 
-    // 检查逻辑
-    @Nonnull
-    @Override
-    public CheckRecipeResult checkProcessing() {
-        setEnergyUsage(processingLogic);
-        return super.checkProcessing();
-    }
-
     @Override
     protected ProcessingLogic createProcessingLogic() {
         return new ProcessingLogic() {
@@ -346,7 +338,9 @@ import java.util.List;
 
     @Override
     protected void setEnergyUsage(ProcessingLogic processingLogic) {
-        lEUt = (long) (lEUt * (1 + 0.25 * (mCoilLevel.getTier() - 1)));
+        // HeatingCoilLevel.getTier() is 0-based: Cupronickel (the lowest coil) == 0,
+        // so the human-facing "coil level" in the tooltip is getTier() + 1.
+        lEUt = (long) (lEUt * (1 + 0.25 * mCoilLevel.getTier()));
     }
 
     @Override
@@ -403,7 +397,7 @@ import java.util.List;
     public HeatingCoilLevel getCoilLevel() {
         return mCoilLevel;
     }
-
+    //default -> 0? need to fix issue
     public void setCoilLevel(HeatingCoilLevel aCoilLevel) {
         mCoilLevel = aCoilLevel;
     }
