@@ -14,14 +14,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.enums.SoundResource;
 
 import gregtech.api.interfaces.IIconContainer;
-import gregtech.api.metatileentity.implementations.MTEHatchInput;
-import gregtech.api.metatileentity.implementations.MTEHatchOutputBus;
-import gregtech.api.metatileentity.implementations.MTEHatchVoidBus;
 import gregtech.api.structure.error.StructureError;
-import gregtech.api.structure.error.StructureErrorRegistry;
-import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchSteamBusInput;
-import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.MTEHatchSteamBusOutput;
-import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTEHatchCustomFluidBase;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.base.MTESteamMultiBlockBase;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -38,9 +31,9 @@ import gregtech.api.interfaces.metatileentity.IMetaTileEntity;
 import gregtech.api.interfaces.tileentity.IGregTechTileEntity;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.render.TextureFactory;
-import gregtech.api.util.GTLog;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
+import net.minecraft.nbt.NBTTagCompound;
 
 import java.util.List;
 
@@ -143,52 +136,18 @@ public class ThT_Kiln extends MTESteamMultiBlockBase<ThT_Kiln> implements ISurvi
     }
 
     @Override
-    public boolean addToMachineList(final IGregTechTileEntity aTileEntity, final int aBaseCasingIndex) {
-        if (aTileEntity == null) return false;
-        final IMetaTileEntity aMetaTileEntity = aTileEntity.getMetaTileEntity();
-        if (aMetaTileEntity == null) return false;
-
-        // Use this to determine the correct value, then update the hatch texture after.
-        boolean aDidAdd = false;
-
-        if (aMetaTileEntity instanceof MTEHatchCustomFluidBase fluidHatch) {
-            GTLog.out.println("Adding Steam Input Hatch");
-            aDidAdd = addToMachineListInternal(mSteamInputFluids, fluidHatch, aBaseCasingIndex);
-        } else if (aMetaTileEntity instanceof MTEHatchSteamBusInput steamBus) {
-            GTLog.out.println(
-                "Trying to set recipe map. Type: "
-                    + (getRecipeMap() != null ? getRecipeMap().unlocalizedName : "Null"));
-            this.resetRecipeMapForHatch(aTileEntity, getRecipeMap());
-            GTLog.out.println("Adding Steam Input Bus");
-            aDidAdd = addToMachineListInternal(mSteamInputs, steamBus, aBaseCasingIndex);
-            if (aDidAdd) this.mInputBusses.addAll(mSteamInputs);
-        } else if (aMetaTileEntity instanceof MTEHatchSteamBusOutput || aMetaTileEntity instanceof MTEHatchVoidBus) {
-            GTLog.out.println("Adding Steam Output Bus");
-            aDidAdd = addToMachineListInternal(mSteamOutputs, (MTEHatchOutputBus) aMetaTileEntity, aBaseCasingIndex);
-        } else if (aMetaTileEntity instanceof MTEHatchInput inputHatch)
-            aDidAdd = addToMachineListInternal(mInputHatches, inputHatch, aBaseCasingIndex);
-
-        return aDidAdd;
-    }
-
-    @Override
-    public void onPostTick(final IGregTechTileEntity aBaseMetaTileEntity, final long aTick) {
-        if (aBaseMetaTileEntity.isServerSide()) {
-            if (this.mUpdate == 1 || this.mStartUpCheck == 1) {
-                 this.mInputBusses.clear();
-            }
-        }
-        super.onPostTick(aBaseMetaTileEntity, aTick);
-    }
-
-    @Override
-    public void clearHatches() {
-        super.clearHatches();
-    }
-
-    @Override
     public RecipeMap<?> getRecipeMap() {
         return ThTRecipeMap.Kiln;
+    }
+
+    /**
+     * Steam input buses live in mSteamInputs, never in mInputBusses, so input separation makes the recipe lookup see no
+     * items at all. Drop any leftover flag written by older versions.
+     */
+    @Override
+    public void loadNBTData(NBTTagCompound aNBT) {
+        super.loadNBTData(aNBT);
+        setInputSeparation(false);
     }
 
     @Override
@@ -301,10 +260,6 @@ public class ThT_Kiln extends MTESteamMultiBlockBase<ThT_Kiln> implements ISurvi
         if (!checkPiece(STRUCTURE_PIECE_MAIN, 2, 3, 0, errors)) return;
     }
 
-    @Override
-    public boolean supportsInputSeparation() {
-        return true;
-    }
     //maintenance
     @Override
     public void checkMaintenance() {}
