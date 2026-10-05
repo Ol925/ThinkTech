@@ -33,7 +33,6 @@ import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gregtech.common.gui.modularui.multiblock.base.MTEMultiBlockBaseGui;
-import gtPlusPlus.api.recipe.GTPPRecipeMaps;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.nbthandlers.MTEHatchCatalysts;
 import gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.chemplant.MTEChemicalPlant;
 import net.minecraft.item.ItemStack;
@@ -319,7 +318,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
         if(machineMode == MACHINEMODE_MTECR){
             return RecipeMaps.multiblockChemicalReactorRecipes;
         }else if(machineMode==MACHINEMODE_GTPP){
-            return GTPPRecipeMaps.chemicalPlantRecipes;
+            return RecipeMaps.chemicalPlantRecipes;
         }
         return GeneralChemicalFactory;
     }
@@ -327,7 +326,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     @NotNull
     @Override
     public Collection<RecipeMap<?>> getAvailableRecipeMaps() {
-        return Arrays.asList(GeneralChemicalFactory,RecipeMaps.multiblockChemicalReactorRecipes,GTPPRecipeMaps.chemicalPlantRecipes);
+        return Arrays.asList(GeneralChemicalFactory,RecipeMaps.multiblockChemicalReactorRecipes,RecipeMaps.chemicalPlantRecipes);
     }
 
     @Override
@@ -385,7 +384,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             @Override
             protected CheckRecipeResult validateRecipe(@NotNull GTRecipe recipe) {
                 RecipeMap<?> recipeMap = getCurrentRecipeMap();
-                if (recipeMap == GTPPRecipeMaps.chemicalPlantRecipes){
+                if (recipeMap == RecipeMaps.chemicalPlantRecipes){
                     ItemStack catalystInRecipe = null;
                     for (ItemStack item : recipe.mInputs) {
                         if (MTEChemicalPlant.isCatalyst(item)) {
@@ -411,7 +410,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             @Override
             public CheckRecipeResult process() {
                 setSpeedBonus(getSpeedBonus());
-                if (getCurrentRecipeMap() == GTPPRecipeMaps.chemicalPlantRecipes) {
+                if (getCurrentRecipeMap() == RecipeMaps.chemicalPlantRecipes) {
                     ItemStack[] baseInputs = (inputItems == null) ? new ItemStack[0] : inputItems;
                     ArrayList<ItemStack> inputItemsList = new ArrayList<>(Arrays.asList(baseInputs));
                     inputItemsList.addAll(getCatalystInputs());
@@ -423,7 +422,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             @NotNull
             @Override
             protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
-                if (getCurrentRecipeMap() == GTPPRecipeMaps.chemicalPlantRecipes){
+                if (getCurrentRecipeMap() == RecipeMaps.chemicalPlantRecipes){
                     if (!GTUtility.isStackValid(catalyst)){
                         catalyst = null;
                     }

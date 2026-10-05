@@ -236,6 +236,16 @@ public class ThT_Kiln extends MTESteamMultiBlockBase<ThT_Kiln> implements ISurvi
     }
 
     @Override
+    protected IIconContainer getActiveGlowOverlay() {
+        return null;
+    }
+
+    @Override
+    protected IIconContainer getInactiveGlowOverlay() {
+        return null;
+    }
+
+    @Override
     protected MultiblockTooltipBuilder createTooltip() {
         final MultiblockTooltipBuilder tt = new MultiblockTooltipBuilder();
         tt.addMachineType(translateToLocalFormatted("mte.common.tooltips2"))

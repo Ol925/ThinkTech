@@ -20,7 +20,6 @@ import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.util.GTModHandler;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTUtility;
-import gtPlusPlus.api.recipe.GTPPRecipeMaps;
 import gtPlusPlus.core.material.MaterialsElements;
 
 import gtnhlanth.common.register.WerkstoffMaterialPool;
@@ -40,7 +39,7 @@ public class MaterialsRecipePool {
             .fluidOutputs(ThTMaterial.alkaneWaterMixture.getFluidOrGas(12000))
             .eut(RECIPE_MV)
             .duration(20 * 10)
-            .addTo(GTPPRecipeMaps.mixerNonCellRecipes);
+            .addTo(RecipeMaps.mixerNonCellRecipes);
 
         // GT mixer
         GTValues.RA.stdBuilder()
