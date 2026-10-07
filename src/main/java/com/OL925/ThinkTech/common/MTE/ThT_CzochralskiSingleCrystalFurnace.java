@@ -31,6 +31,7 @@ import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
 import gregtech.api.GregTechAPI;
+import gregtech.api.casing.Casings;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Textures;
 import gregtech.api.interfaces.ISecondaryDescribable;
@@ -84,7 +85,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
         if (STRUCTURE_DEFINITION == null) {
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_CzochralskiSingleCrystalFurnace>builder()
                 .addShape(STRUCTURE_PIECE_MAIN, Shape)
-                .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
+                .addElement('A',Casings.ReinforcedGlass.asElement())
                 .addElement('B',ofBlock(GregTechAPI.sBlockCasings2, 0))
                 .addElement('C',ofBlock(GregTechAPI.sBlockCasings3, 10))
                 .addElement('D',

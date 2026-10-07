@@ -9,6 +9,7 @@ import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import gregtech.api.GregTechAPI;
+import gregtech.api.casing.Casings;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
@@ -244,7 +245,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
         if (STRUCTURE_DEFINITION == null) {
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_GeneralChemicalFactory>builder()
                     .addShape(STRUCTURE_PIECE_MAIN, Shape)
-                    .addElement('A',ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
+                    .addElement('A',Casings.ReinforcedGlass.asElement())
                     .addElement('B',
                             ofChain(buildHatchAdder(ThT_GeneralChemicalFactory.class)
                                     .atLeast(Energy.or(ExoticEnergy), InputHatch, InputBus, OutputHatch, OutputBus)

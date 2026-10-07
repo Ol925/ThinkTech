@@ -33,6 +33,7 @@ import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
 
 import gregtech.api.GregTechAPI;
+import gregtech.api.casing.Casings;
 import gregtech.api.enums.HeatingCoilLevel;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
@@ -99,7 +100,7 @@ import java.util.List;
         if (STRUCTURE_DEFINITION == null) {
             STRUCTURE_DEFINITION = StructureDefinition.<ThT_ImplosionGenerator>builder()
                 .addShape(STRUCTURE_PIECE_MAIN, Shape)
-                .addElement('A', ofBlockUnlocalizedName("IC2", "blockAlloyGlass", 0, true))
+                .addElement('A', Casings.ReinforcedGlass.asElement())
                 //
                 .addElement(
                     'B',
