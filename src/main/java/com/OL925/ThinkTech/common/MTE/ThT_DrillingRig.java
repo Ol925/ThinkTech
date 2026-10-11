@@ -5,6 +5,7 @@ import static gregtech.api.enums.HatchElement.*;
 import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static gregtech.api.util.GTStructureUtility.ofFrame;
+import static net.minecraft.util.StatCollector.translateToLocal;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
 import javax.annotation.Nonnull;
@@ -16,9 +17,19 @@ import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructa
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
 import com.gtnewhorizon.structurelib.structure.StructureDefinition;
+import com.gtnewhorizons.modularui.api.math.Alignment;
+import com.gtnewhorizons.modularui.common.widget.DynamicPositionedColumn;
+import com.gtnewhorizons.modularui.common.widget.FakeSyncWidget;
+import com.gtnewhorizons.modularui.common.widget.SlotWidget;
+import com.gtnewhorizons.modularui.common.widget.TextWidget;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import gregtech.api.GregTechAPI;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.SoundResource;
@@ -62,6 +73,14 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
     private int mChipTier = 0;
     private boolean mUpgraded = false;
     private double mSpeedBonus = 1.0;
+    /** 每级芯片的配方耗电折扣（0.5 = 耗电减半） */
+    private static final double CHIP_EU_DISCOUNT_PER_TIER = 0.5;
+    /** 最近一次启动的配方耗电(EU/t)；-1 = 还没跑过配方 */
+    private long mLastRecipeEUt = -1L;
+    /** 机器 GUI 显示用（服务端计算，FakeSyncWidget 同步到客户端） */
+    private long mSyncedFullParallelEUt = -1L;
+    private long mSyncedPowerBudget = -1L;
+    private int mSyncedParallelCap = 0;
 
     private static IStructureDefinition<ThT_DrillingRig> STRUCTURE_DEFINITION = null;
 
@@ -250,6 +269,7 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
             @Override
             public CheckRecipeResult process() {
                 setSpeedBonus(getSpeedBonus());
+                setEuModifier(getChipEuModifier()); // 芯片效率加成，见 getChipEuModifier
                 setOverclock(4, 4); // 无损超频
                 return super.process();
             }
@@ -257,6 +277,8 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
             @NotNull
             @Override
             protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
+
+                mLastRecipeEUt = recipe.mEUt; // 供 UI 提示满并行所需电力
 
                 if (mMachineLevel < recipe.mSpecialValue) {
                     return CheckRecipeResultRegistry.NONE;
@@ -268,11 +290,108 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
     }
 
     /**
-     * 并行数 = 8 + chipTier * 8
+     * 并行数 = 8 * 2^chipTier（8 / 16 / 32 / 64 / 128）。
+     * <p>
+     * 与 {@link #getChipEuModifier()} 的耗电折扣(×0.5)同比例，使 C/P 恒定，
+     * 因此芯片每提升一级，超频档位不变而并行翻倍，产出恰好 ×2。
      */
     @Override
     public int getMaxParallelRecipes() {
-        return 8 + mChipTier * 8;
+        return 8 << mChipTier;
+    }
+
+    /**
+     * 芯片效率加成：每级芯片使配方耗电减半（无芯片时为 1.0）。
+     * <p>
+     * 本机器使用 4/4 无损超频：1 次超频 = 4 倍耗电换 4 倍速度，因此"4 并行"与"1 次超频"
+     * 在电力与产出上完全等价。电力受限时吞吐量只由电力上限决定，而超频档位按 4 倍量化取整，
+     * 于是并行数一旦落在量化间隙，就会丢掉一整个超频档：表现为高等级芯片出现负收益/零收益。
+     * 并行按 ×2 递增、耗电按 ×0.5 递减时，可用电力与并行同比例增长，超频档位保持不变，
+     * 吞吐量随芯片等级均匀 ×2（不再是锯齿）。
+     */
+    protected double getChipEuModifier() {
+        return Math.pow(CHIP_EU_DISCOUNT_PER_TIER, mChipTier);
+    }
+
+    // ==================== 满并行电力提示 ====================
+
+    /** 选定配方的单次并行耗电：ceil(配方EU/t × 0.5^芯片等级)，与 ParallelHelper 的算法一致 */
+    private long perParallelEnergy(long aRecipeEUt, int aChipTier) {
+        if (aRecipeEUt <= 0) return 0L;
+        return (long) Math.ceil(aRecipeEUt * Math.pow(CHIP_EU_DISCOUNT_PER_TIER, aChipTier));
+    }
+
+    /** 跑满并行(8 * 2^芯片等级)所需的可用电力(EU/t)；未选定配方时返回 -1 */
+    public long getFullParallelEnergy() {
+        if (mLastRecipeEUt <= 0) return -1L;
+        return (8L << mChipTier) * perParallelEnergy(mLastRecipeEUt, mChipTier);
+    }
+
+    /** 能源仓当前能提供的电力(EU/t)，口径与 ProcessingLogic.setAvailableVoltage/Amperage 相同（单仓只算 1A） */
+    public long getPowerBudget() {
+        boolean singleAmp = !debugEnergyPresent && mEnergyHatches.size() == 1 && mExoticEnergyHatches.isEmpty();
+        return getAverageInputVoltage() * (singleAmp ? 1L : getMaxInputAmps());
+    }
+
+    /** 当前电力下实际能跑的并行数（电力不足时小于满并行） */
+    public int getPowerLimitedParallel() {
+        long per = perParallelEnergy(mLastRecipeEUt, mChipTier);
+        if (per <= 0) return getMaxParallelRecipes();
+        return (int) Math.min(getMaxParallelRecipes(), getPowerBudget() / per);
+    }
+
+    /** 满并行电力提示文本（数值由调用方提供，便于客户端使用同步值） */
+    private static String parallelHint(long aRequiredEUt, long aBudget, int aCap) {
+        if (aRequiredEUt <= 0) return translateToLocal("mte.DR.ui.parallel_unknown");
+        if (aBudget >= aRequiredEUt) return translateToLocalFormatted("mte.DR.ui.parallel_ok", aRequiredEUt, aBudget);
+        return translateToLocalFormatted("mte.DR.ui.parallel_short", aRequiredEUt, aBudget, aCap);
+    }
+
+    private static final String WAILA_FULL_PARALLEL_EU = "thtDrFullParallelEUt";
+    private static final String WAILA_POWER_BUDGET = "thtDrPowerBudget";
+    private static final String WAILA_PARALLEL_CAP = "thtDrParallelCap";
+
+    @Override
+    public void getWailaNBTData(EntityPlayerMP player, TileEntity tile, NBTTagCompound tag, World world, int x, int y,
+            int z) {
+        super.getWailaNBTData(player, tile, tag, world, x, y, z);
+        if (!mMachine) return; // 结构未成型时不显示电力提示
+        tag.setLong(WAILA_FULL_PARALLEL_EU, getFullParallelEnergy());
+        tag.setLong(WAILA_POWER_BUDGET, getPowerBudget());
+        tag.setInteger(WAILA_PARALLEL_CAP, getPowerLimitedParallel());
+    }
+
+    @Override
+    public void getWailaBody(ItemStack itemStack, List<String> currentTip, IWailaDataAccessor accessor,
+            IWailaConfigHandler config) {
+        super.getWailaBody(itemStack, currentTip, accessor, config);
+        final NBTTagCompound tag = accessor.getNBTData();
+        if (!tag.hasKey(WAILA_POWER_BUDGET)) return;
+        currentTip.add(
+                parallelHint(
+                        tag.getLong(WAILA_FULL_PARALLEL_EU),
+                        tag.getLong(WAILA_POWER_BUDGET),
+                        tag.getInteger(WAILA_PARALLEL_CAP)));
+    }
+
+    /** 在机器主机 UI 的信息栏显示满并行所需电力 */
+    @Override
+    protected void drawTexts(DynamicPositionedColumn screenElements, SlotWidget inventorySlot) {
+        super.drawTexts(screenElements, inventorySlot);
+
+        screenElements
+                .widget(new FakeSyncWidget.LongSyncer(this::getFullParallelEnergy, v -> mSyncedFullParallelEUt = v))
+                .widget(new FakeSyncWidget.LongSyncer(this::getPowerBudget, v -> mSyncedPowerBudget = v))
+                .widget(new FakeSyncWidget.IntegerSyncer(this::getPowerLimitedParallel, v -> mSyncedParallelCap = v))
+                .widget(
+                        TextWidget
+                                .dynamicString(
+                                        () -> parallelHint(
+                                                mSyncedFullParallelEUt,
+                                                mSyncedPowerBudget,
+                                                mSyncedParallelCap))
+                                .setTextAlignment(Alignment.CenterLeft)
+                                .setEnabled(widget -> mMachine));
     }
 
     /**
@@ -382,6 +501,7 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
                 .addInfo(translateToLocalFormatted("mte.DR.tooltips3"))
                 .addInfo(translateToLocalFormatted("mte.DR.tooltips4"))
                 .addInfo(translateToLocalFormatted("mte.DR.tooltips5"))
+                .addInfo(translateToLocalFormatted("mte.DR.tooltips6"))
                 .addInfo(translateToLocalFormatted("mte.common.tooltips5"))
                 .addInfo(translateToLocalFormatted("mte.common.tooltips4"))
                 .addInfo("添加者：§4§nOL925 §r& §9瑶光")

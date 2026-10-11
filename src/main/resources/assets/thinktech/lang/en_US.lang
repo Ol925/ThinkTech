@@ -105,8 +105,11 @@ mte.DR.tooltips1=§eDrain every drop of liquid gold from deep within the crust, 
 mte.DR.tooltips2=§bLarge multiblock drilling rig, produces fluids from the void, provides 8 parallel recipes by default
 mte.DR.tooltips3=§bUse higher tier pipe casings to increase operation speed, §4§n15%% boost per tier
 mte.DR.tooltips4=§bPipe tier: §6Steel(T1) §f/ §6Titanium(T2) §f/ §6Tungstensteel(T3) §f/ §6PBI(T4) §f/ §6TT Hollow Casing(T5)
-mte.DR.tooltips5=§bInsert chips into the controller for extra parallels: §6T1(+8) §f/ §6T2(+16) §f/ §6T3(+24) §f/ §6T4(+32)
-mte.DR.tooltips6=§bSupports 4/4 lossless overclock
+mte.DR.tooltips5=§bInsert chips into the controller to multiply parallels: §6T1:16 §f/ §6T2:32 §f/ §6T3:64 §f/ §6T4:128
+mte.DR.tooltips6=§bEach chip tier also halves the recipe's energy cost (T1→50%% / T2→25%% / T3→12.5%% / T4→6.25%%), doubling the output per tier
+mte.DR.ui.parallel_ok=§bFull parallel: needs %s EU/t §a(available %s)
+mte.DR.ui.parallel_short=§cFull parallel: needs %s EU/t §7(available %s, parallel cap %s)
+mte.DR.ui.parallel_unknown=§7Select a recipe (insert circuit) to see the EU/t needed for full parallel
 
 mte.crucibleType=Crucible
 mte.steelCrucible=Steel Crucible
