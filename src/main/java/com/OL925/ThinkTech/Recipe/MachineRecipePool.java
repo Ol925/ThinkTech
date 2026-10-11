@@ -511,7 +511,7 @@ public class MachineRecipePool {
                 .fluidOutputs(Materials.Lead.getMolten(14000))
                 .eut(RECIPE_LuV)
                 .duration(20 * 16)
-                .circuit(11)
+                .circuit(13)
                 .specialValue(4)
                 .addTo(ThTRecipeMap.DrillingRig);
         //末影粘浆
