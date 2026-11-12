@@ -7,6 +7,7 @@ import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static net.minecraft.init.Blocks.stone_slab;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
+import com.OL925.ThinkTech.Tags;
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 
 import cpw.mods.fml.relauncher.Side;
@@ -255,13 +256,14 @@ public class ThT_Kiln extends MTESteamMultiBlockBase<ThT_Kiln> implements ISurvi
             .addInfo(translateToLocalFormatted("mte.Kiln.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.Kiln.tooltips5"))
             .addInfo("添加者：§4§nOL925")
+            .addInfo("§d§l§o" + Tags.MODNAME)
             .beginStructureBlock(6, 5, 5, false)
             .addController("正面中央")
             .addCasingInfoExactly("耐火砖",64,false)
             .addCasingInfoExactly("石台阶",8,false)
             .addCasingInfoMin("输入总线(蒸汽)",1,false)
             .addCasingInfoMin("输出总线(蒸汽)",1,false)
-            .toolTipFinisher("§d§l§oThinkTech");
+            .toolTipFinisher();
         return tt;
     }
 

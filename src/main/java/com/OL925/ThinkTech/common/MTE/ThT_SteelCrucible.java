@@ -6,6 +6,7 @@ import static gregtech.api.enums.Textures.BlockIcons.*;
 import static gregtech.api.util.GTStructureUtility.buildHatchAdder;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
+import com.OL925.ThinkTech.Tags;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
 import com.gtnewhorizon.structurelib.structure.ISurvivalBuildEnvironment;
@@ -136,6 +137,7 @@ public class ThT_SteelCrucible extends ThT_CrucibleBase<ThT_SteelCrucible>
             .addInfo(translateToLocalFormatted("mte.steelCrucible.tooltips5"))
             .addInfo(translateToLocalFormatted("mte.steelCrucible.tooltips6"))
             .addInfo("添加者：§4§nOL925")
+            .addInfo("§d§l§o" + Tags.MODNAME)
             .beginStructureBlock(4, 4, 3, false)
             .addController("正面底层右侧")
             .addCasingInfoExactly("脱氧钢机械方块", 40, false)
@@ -143,7 +145,7 @@ public class ThT_SteelCrucible extends ThT_CrucibleBase<ThT_SteelCrucible>
             .addInputHatch("任意脱氧钢机械方块")
             .addOutputBus("任意脱氧钢机械方块")
             .addOutputHatch("任意脱氧钢机械方块")
-            .toolTipFinisher("§d§l§oThinkTech");
+            .toolTipFinisher();
         return tt;
     }
 

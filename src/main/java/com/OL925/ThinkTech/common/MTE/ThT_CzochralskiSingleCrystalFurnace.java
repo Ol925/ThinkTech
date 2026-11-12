@@ -9,6 +9,7 @@ import static net.minecraft.init.Blocks.hopper;
 import static net.minecraft.init.Blocks.stone_slab;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
+import com.OL925.ThinkTech.Tags;
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.OL925.ThinkTech.common.init.ThTList;
 import cpw.mods.fml.relauncher.Side;
@@ -256,6 +257,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
             .addInfo(translateToLocalFormatted("mte.common.tooltips4"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .addInfo("添加者：§4§nOL925")
+            .addInfo("§d§l§o" + Tags.MODNAME)
             .beginStructureBlock(6, 8, 7, false)
             .addController("正面第二层中央")
             .addCasingInfoExactly("洁净不锈钢机械方块",57,false)
@@ -273,7 +275,7 @@ public class ThT_CzochralskiSingleCrystalFurnace extends MTEExtendedPowerMultiBl
             .addOutputHatch("任意洁净不锈钢机械方块")
             .addOutputBus("任意洁净不锈钢机械方块")
             .addEnergyHatch("任意洁净不锈钢机械方块")
-            .toolTipFinisher("§d§l§oThinkTech");
+            .toolTipFinisher();
 
         return tt;
     }

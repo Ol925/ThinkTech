@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech.common.MTE;
 
+import com.OL925.ThinkTech.Tags;
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
 import com.gtnewhorizon.structurelib.structure.IStructureDefinition;
@@ -500,6 +501,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             .addInfo(translateToLocalFormatted("mte.common.tooltips5"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips4"))
             .addInfo("添加者：§4§nOL925")
+            .addInfo("§d§l§o" + Tags.MODNAME)
             .beginStructureBlock(11, 13, 20, false)
             .addController("见结构预览")
             .addCasingInfoExactly("洁净不锈钢机械方块",41,false)
@@ -518,7 +520,7 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
             .addOutputBus("任意脱氧钢机械方块")
             .addOutputHatch("任意脱氧钢机械方块")
             .addEnergyHatch("任意脱氧钢机械方块")
-            .toolTipFinisher("§d§l§oThinkTech");
+            .toolTipFinisher();
 
         return tt;
     }

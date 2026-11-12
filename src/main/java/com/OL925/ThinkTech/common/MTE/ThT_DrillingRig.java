@@ -8,6 +8,7 @@ import static gregtech.api.util.GTStructureUtility.ofFrame;
 import static net.minecraft.util.StatCollector.translateToLocal;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
+import com.OL925.ThinkTech.Tags;
 import javax.annotation.Nonnull;
 
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
@@ -505,6 +506,7 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
                 .addInfo(translateToLocalFormatted("mte.common.tooltips5"))
                 .addInfo(translateToLocalFormatted("mte.common.tooltips4"))
                 .addInfo("添加者：§4§nOL925 §r& §9瑶光")
+                .addInfo("§d§l§o" + Tags.MODNAME)
                 .beginStructureBlock(9, 12, 7, false)
                 .addController("见结构预览")
                 .addCasingInfoExactly("脱氧钢机械方块", 84, false)
@@ -516,7 +518,7 @@ public class ThT_DrillingRig extends MTEExtendedPowerMultiBlockBase<ThT_Drilling
                 .addOutputBus("任意脱氧钢机械方块")
                 .addOutputHatch("任意脱氧钢机械方块")
                 .addEnergyHatch("任意脱氧钢机械方块")
-                .toolTipFinisher("§d§l§oThinkTech");
+                .toolTipFinisher();
 
         return tt;
     }

@@ -1,5 +1,6 @@
 package com.OL925.ThinkTech.common.MTE;
 
+import com.OL925.ThinkTech.Tags;
 import com.OL925.ThinkTech.Recipe.ThTRecipeMap;
 import com.OL925.ThinkTech.common.init.ThTBlockLoader;
 import com.gtnewhorizon.structurelib.alignment.constructable.ISurvivalConstructable;
@@ -301,6 +302,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
             .addInfo(translateToLocalFormatted("mte.NGES.tt5"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips5"))
             .addInfo("添加者：§4§nOL925")
+            .addInfo("§d§l§o" + Tags.MODNAME)
             .beginStructureBlock(7, 7, 7, false)
             .addController("见结构预览")
             .addCasingInfoExactly("塑料混凝土方块",40,false)
@@ -315,7 +317,7 @@ public class ThT_NobleGasEnrichmentSystem extends MTEExtendedPowerMultiBlockBase
             .addDynamoHatch("任意洁净不锈钢机械方块",1)
             //.addOutputBus("任意洁净不锈钢机械方块",1)
             .addOutputHatch("输出稀有气体,任意洁净不锈钢机械方块",1)
-            .toolTipFinisher("§d§l§oThinkTech");
+            .toolTipFinisher();
 
         return tt;
     }

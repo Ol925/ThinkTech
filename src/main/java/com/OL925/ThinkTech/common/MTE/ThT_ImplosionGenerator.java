@@ -14,6 +14,7 @@ import static gregtech.api.util.GTUtility.validMTEList;
 import static net.minecraft.init.Blocks.iron_bars;
 import static net.minecraft.util.StatCollector.translateToLocalFormatted;
 
+import com.OL925.ThinkTech.Tags;
 import javax.annotation.Nonnull;
 
 import com.OL925.ThinkTech.gui.ThT_ImplosionGeneratorGui;
@@ -284,6 +285,7 @@ import java.util.List;
             .addInfo(translateToLocalFormatted("mte.ImplosionGenerator.tooltips7"))
             .addInfo(translateToLocalFormatted("mte.common.tooltips1"))
             .addInfo("添加者：§4§nOL925")
+            .addInfo("§d§l§o" + Tags.MODNAME)
             .beginStructureBlock(7, 5, 8, false)
             .addController("正面底部中央")
             .addCasingInfoExactly("脱氧钢机械方块",66,false)
@@ -297,7 +299,7 @@ import java.util.List;
             .addInputHatch("任意脱氧钢机械方块")
             .addDynamoHatch("任意脱氧钢机械方块")
             .addMufflerHatch("任意脱氧钢机械方块")
-            .toolTipFinisher("§d§l§oThinkTech");
+            .toolTipFinisher();
 
         return tt;
     }
