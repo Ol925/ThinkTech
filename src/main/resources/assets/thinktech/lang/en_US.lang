@@ -98,7 +98,10 @@ mte.NGES.tt1=§eOh,they're everywhere,so why not just use them?
 mte.NGES.tt2=§bThe latest molecular screen technology filters and separates gases from the air with maximum efficiency
 mte.NGES.tt3=§bConvert it to active mode by inputting energy! TT's energy hatch is support!
 mte.NGES.tt4=§bAlso,you can use more advanced molecular screens to improve enrichment efficiency.
-mte.NGES.tt5=§bPlascrete Block can be replaced by Separation control core T1/T2/T3,so that it can provide more parallel recipes.
+mte.NGES.tt5=§bPlascrete Block can be replaced by Separation control core: §6T1(16 parallel) §f/ §6T2(32 parallel) §f/ §6T3(64 parallel)§b; each core tier also halves the recipe's energy cost (doubling output)
+mte.NGES.ui.parallel_ok=§bFull parallel: needs %s EU/t §a(available %s)
+mte.NGES.ui.parallel_short=§cFull parallel: needs %s EU/t §7(available %s, parallel cap %s)
+mte.NGES.ui.parallel_unknown=§7Select a recipe (insert chip) to see the EU/t needed for full parallel
 
 mte.DR=Drilling Rig
 mte.DR.tooltips1=§eDrain every drop of liquid gold from deep within the crust, be the iron man of the new era!
