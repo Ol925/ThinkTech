@@ -24,8 +24,8 @@ public class ThT_ImplosionGeneratorGui extends MTEMultiBlockBaseGui<ThT_Implosio
     @Override
     protected ListWidget<IWidget, ?> createTerminalTextWidget(PanelSyncManager syncManager, ModularPanel parent) {
         LongSyncValue displayGeneratingSyncer = new LongSyncValue(
-            ThT_ImplosionGenerator::getDisplayGenerating,
-            ThT_ImplosionGenerator::setDisplayGenerating);
+            multiblock::getDisplayGenerating,
+            multiblock::setDisplayGenerating);
         syncManager.syncValue("displayGenerating", displayGeneratingSyncer);
 
         return super.createTerminalTextWidget(syncManager, parent)

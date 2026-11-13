@@ -937,11 +937,11 @@ import gregtech.common.gui.modularui.multiblock.base.MTEMultiBlockBaseGui;
 // import com.gtnewhorizons.modularui.common.widget.SlotWidget;
 // import com.gtnewhorizons.modularui.common.widget.TextWidget;
 
-// 为静态字段添加 public getter/setter（供 GUI 类跨包访问）
-// 原：private static long displayGenerating;
+// 为实例字段添加 public getter/setter（供 GUI 类跨包访问）
+// 原：private long displayGenerating;
 // 新增：
-public static long getDisplayGenerating() { return displayGenerating; }
-public static void setDisplayGenerating(long val) { displayGenerating = val; }
+public long getDisplayGenerating() { return displayGenerating; }
+public void setDisplayGenerating(long val) { displayGenerating = val; }
 
 // 复写 getGui()
 @Nonnull
@@ -982,8 +982,8 @@ public class ThT_ImplosionGeneratorGui extends MTEMultiBlockBaseGui<ThT_Implosio
             PanelSyncManager syncManager, ModularPanel parent) {
 
         LongSyncValue displayGeneratingSyncer = new LongSyncValue(
-            ThT_ImplosionGenerator::getDisplayGenerating,
-            ThT_ImplosionGenerator::setDisplayGenerating);
+            multiblock::getDisplayGenerating,
+            multiblock::setDisplayGenerating);
         syncManager.syncValue("displayGenerating", displayGeneratingSyncer);
 
         return super.createTerminalTextWidget(syncManager, parent)
