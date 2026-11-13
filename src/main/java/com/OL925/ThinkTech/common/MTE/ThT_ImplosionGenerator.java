@@ -66,17 +66,17 @@ import java.util.List;
 
     // 变量声明部分
     private int mBlockTier = 0;
-    private HeatingCoilLevel mCoilLevel;
+    private HeatingCoilLevel mCoilLevel = HeatingCoilLevel.None;
     private static IStructureDefinition<ThT_ImplosionGenerator> STRUCTURE_DEFINITION = null;
     private static ITexture SOLID_STEEL_MACHINE_CASING = Textures.BlockIcons
         .getCasingTextureForId(GTUtility.getCasingTextureIndex(GregTechAPI.sBlockCasings2, 0));
-    private static long displayGenerating;
+    private long displayGenerating;
 
-    public static long getDisplayGenerating() {
+    public long getDisplayGenerating() {
         return displayGenerating;
     }
 
-    public static void setDisplayGenerating(long val) {
+    public void setDisplayGenerating(long val) {
         displayGenerating = val;
     }
 
@@ -407,6 +407,8 @@ import java.util.List;
 
     @Override
     public void checkMachine(IGregTechTileEntity aBaseMetaTileEntity, ItemStack aStack, List<StructureError> errors) {
+        mBlockTier = 0;
+        mCoilLevel = HeatingCoilLevel.None;
         if (!checkPiece(STRUCTURE_PIECE_MAIN, 3, 4, 0, errors)) return;
     }
 
