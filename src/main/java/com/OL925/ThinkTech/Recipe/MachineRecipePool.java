@@ -972,7 +972,7 @@ public class MachineRecipePool {
         // 熔融镍+铬 → 镍铬合金
         GTValues.RA.stdBuilder()
             .fluidInputs(Materials.Nickel.getMolten(576), Materials.Chrome.getMolten(144))
-            .fluidOutputs(Materials.Nichrome.getMolten(144))
+            .fluidOutputs(Materials.Nichrome.getMolten(720))
             .eut(30).duration(500).circuit(2).specialValue(4)
             .addTo(ThTRecipeMap.Crucible);
 
