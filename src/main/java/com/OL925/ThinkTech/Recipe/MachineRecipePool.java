@@ -955,7 +955,7 @@ public class MachineRecipePool {
 
         // 铂金属粉 → 熔融铂
         GTValues.RA.stdBuilder()
-            .itemInputs(Materials.Platinum.getDust(9))
+            .itemInputs(WerkstoffLoader.PTMetallicPowder.get(OrePrefixes.dust, 9))
             .fluidOutputs(Materials.Platinum.getMolten(144))
             .eut(30).duration(400).specialValue(3).circuit(1)
             .addTo(ThTRecipeMap.Crucible);
@@ -1095,36 +1095,42 @@ public class MachineRecipePool {
         // ---- specialValue(5) 新增 ----
 
         // PGM 熔化（6个配方，20秒）
+        // 铂粉 → 熔融铂
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Platinum.getDust(1))
             .fluidOutputs(Materials.Platinum.getMolten(144))
             .eut(30).duration(400).circuit(1).specialValue(5)
             .addTo(ThTRecipeMap.Crucible);
 
+        // 铑粉 → 熔融铑
         GTValues.RA.stdBuilder()
             .itemInputs(WerkstoffLoader.Rhodium.get(OrePrefixes.dust, 1))
             .fluidOutputs(WerkstoffLoader.Rhodium.getMolten(144))
             .eut(30).duration(400).circuit(1).specialValue(5)
             .addTo(ThTRecipeMap.Crucible);
 
+        // 钯粉 → 熔融钯
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Palladium.getDust(1))
             .fluidOutputs(Materials.Palladium.getMolten(144))
             .eut(30).duration(400).circuit(1).specialValue(5)
             .addTo(ThTRecipeMap.Crucible);
 
+        // 钌粉 → 熔融钌
         GTValues.RA.stdBuilder()
             .itemInputs(WerkstoffLoader.Ruthenium.get(OrePrefixes.dust, 1))
             .fluidOutputs(WerkstoffLoader.Ruthenium.getMolten(144))
             .eut(30).duration(400).circuit(1).specialValue(5)
             .addTo(ThTRecipeMap.Crucible);
 
+        // 锇粉 → 熔融锇
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Osmium.getDust(1))
             .fluidOutputs(Materials.Osmium.getMolten(144))
             .eut(30).duration(400).circuit(1).specialValue(5)
             .addTo(ThTRecipeMap.Crucible);
 
+        // 铱粉 → 熔融铱
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Iridium.getDust(1))
             .fluidOutputs(Materials.Iridium.getMolten(144))
