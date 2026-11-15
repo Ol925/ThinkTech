@@ -1091,10 +1091,10 @@ public ModularPanel buildUI(PosGuiData data, PanelSyncManager syncManager, UISet
 import com.OL925.ThinkTech.gui.ThT_ImplosionGeneratorGui;
 import gregtech.common.gui.modularui.multiblock.base.MTEMultiBlockBaseGui;
 
-// 原：private static long displayGenerating;
-// 新增 getter/setter（GUI 类要跨包访问这个静态字段）
-public static long getDisplayGenerating() { return displayGenerating; }
-public static void setDisplayGenerating(long val) { displayGenerating = val; }
+// 原：private long displayGenerating;
+// 新增 getter/setter（GUI 类要跨包访问这个实例字段）
+public long getDisplayGenerating() { return displayGenerating; }
+public void setDisplayGenerating(long val) { displayGenerating = val; }
 
 // 复写 getGui()，把 GUI 类接进来
 @Nonnull
@@ -1137,8 +1137,8 @@ public class ThT_ImplosionGeneratorGui extends MTEMultiBlockBaseGui<ThT_Implosio
     protected ListWidget<IWidget, ?> createTerminalTextWidget(PanelSyncManager syncManager, ModularPanel parent) {
         // 1. 注册同步值：把 MTE 的 displayGenerating 字段接成一根数据线
         LongSyncValue displayGeneratingSyncer = new LongSyncValue(
-            ThT_ImplosionGenerator::getDisplayGenerating,   // 服务端读
-            ThT_ImplosionGenerator::setDisplayGenerating);  // 客户端写回（这里其实只读也行）
+            multiblock::getDisplayGenerating,   // 服务端读
+            multiblock::setDisplayGenerating);  // 客户端写回（这里其实只读也行）
         syncManager.syncValue("displayGenerating", displayGeneratingSyncer);
 
         // 2. 调 super 保留标准文本（启动/运行/结构错误等），再追加自定义行
@@ -1159,7 +1159,7 @@ public class ThT_ImplosionGeneratorGui extends MTEMultiBlockBaseGui<ThT_Implosio
 **为什么这样写**——逐行解读：
 - `extends MTEMultiBlockBaseGui<ThT_ImplosionGenerator>`：泛型填你的 MTE 类型，这样 `this.multiblock` 就是强类型的，能直接调它的方法。
 - `numberFormat` 声明成 `private static final`：`MTEMultiBlockBase` 里也有个 `numberFormat`，但它是 `protected`，GUI 类在另一个包里**不能**通过 `multiblock.numberFormat` 访问（Java 保护访问规则）。所以自己声明一个。
-- `LongSyncValue(...::getDisplayGenerating, ...::setDisplayGenerating)`：方法引用。`getDisplayGenerating` 是 static，所以用 `类名::方法` 形式。
+- `LongSyncValue(...::getDisplayGenerating, ...::setDisplayGenerating)`：方法引用。`getDisplayGenerating` 是实例方法，所以用 `multiblock::方法` 形式。
 - `syncManager.syncValue("displayGenerating", ...)`：用唯一 key 注册。
 - `super.createTerminalTextWidget(...).child(...)`：先拿父类造好的标准文本列表，再 `.child()` 往后追加。这样标准文本（运行中、关机原因等）都还在。
 
