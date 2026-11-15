@@ -43,6 +43,9 @@
 -  V0.1.7到V0.1.9之间的版本：支持 **GTNH 2.8.0**
 -  V0.3.2: 支持 **GTNH 2.9.0**
 
+## 交流与反馈
+- **玩家交流 QQ 群**：1098912707
+
 ## 详细的内容在这里不多赘述，请：
 -  查阅[日志文档](https://github.com/Ol925/ThinkTech/blob/master/Log.md)
 -  查阅以往的 [Release](../../releases)
