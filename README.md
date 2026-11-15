@@ -41,8 +41,7 @@
 
 -  V0.1.6和历史版本：支持 **GTNH 2.7.X** 
 -  V0.1.7到V0.1.9之间的版本：支持 **GTNH 2.8.0**
--  V0.2.0：支持 **GTNH 2.9.0 Beta-1**
--  V0.3.0: 支持 **GTNH 2.9.0 RC-2**
+-  V0.3.2: 支持 **GTNH 2.9.0**
 
 ## 详细的内容在这里不多赘述，请：
 -  查阅[日志文档](https://github.com/Ol925/ThinkTech/blob/master/Log.md)
