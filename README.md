@@ -4,7 +4,7 @@
 
 ## Think Tech 俺寻思科技
 
-** GTNH 整合包特供 MOD**
+**GTNH 整合包特供 MOD**
 
 </div>
 
