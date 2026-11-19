@@ -25,24 +25,19 @@ import gregtech.api.metatileentity.implementations.*;
 import gregtech.api.recipe.RecipeMap;
 import gregtech.api.recipe.RecipeMaps;
 import gregtech.api.recipe.check.CheckRecipeResult;
-import gregtech.api.recipe.check.CheckRecipeResultRegistry;
-import gregtech.api.recipe.check.SimpleCheckRecipeResult;
 import gregtech.api.render.TextureFactory;
 import gregtech.api.structure.error.StructureError;
 import gregtech.api.structure.error.StructureErrorRegistry;
-import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTStructureUtility;
 import gregtech.api.util.GTUtility;
 import gregtech.api.util.MultiblockTooltipBuilder;
 import gregtech.common.gui.modularui.multiblock.base.MTEMultiBlockBaseGui;
 import gtPlusPlus.xmod.gregtech.api.metatileentity.implementations.nbthandlers.MTEHatchCatalysts;
-import gtPlusPlus.xmod.gregtech.common.tileentities.machines.multi.production.chemplant.MTEChemicalPlant;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.util.ForgeDirection;
+import org.apache.commons.lang3.ArrayUtils;
 import org.jetbrains.annotations.NotNull;
-
-import javax.annotation.Nonnull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -379,70 +374,22 @@ public class ThT_GeneralChemicalFactory extends MTEExtendedPowerMultiBlockBase<T
     protected ProcessingLogic createProcessingLogic() {
         return new ProcessingLogic() {
 
-            ItemStack catalyst;
-
-            //no need to catalysts and check the tier of recipes.
-            @NotNull
-            @Override
-            protected CheckRecipeResult validateRecipe(@NotNull GTRecipe recipe) {
-                RecipeMap<?> recipeMap = getCurrentRecipeMap();
-                if (recipeMap == RecipeMaps.chemicalPlantRecipes){
-                    ItemStack catalystInRecipe = null;
-                    for (ItemStack item : recipe.mInputs) {
-                        if (MTEChemicalPlant.isCatalyst(item)) {
-                            catalystInRecipe = item;
-                            break;
-                        }
-                    }
-                    if (catalystInRecipe != null) {
-                        catalyst = findCatalyst(getCatalystInputs().toArray(new ItemStack[0]), catalystInRecipe);
-                        if (catalyst == null) {
-                            return SimpleCheckRecipeResult.ofFailure("no_catalyst");
-                        }
-                    } else {
-                        // remove reference to the old catalyst if our new recipe doesn't use it
-                        catalyst = null;
-                    }
-                    return CheckRecipeResultRegistry.SUCCESSFUL;
-                }
-                return super.validateRecipe(recipe);
-            }
-
             @NotNull
             @Override
             public CheckRecipeResult process() {
                 setSpeedBonus(getSpeedBonus());
-                if (getCurrentRecipeMap() == RecipeMaps.chemicalPlantRecipes) {
-                    ItemStack[] baseInputs = (inputItems == null) ? new ItemStack[0] : inputItems;
-                    ArrayList<ItemStack> inputItemsList = new ArrayList<>(Arrays.asList(baseInputs));
-                    inputItemsList.addAll(getCatalystInputs());
-                    inputItems = inputItemsList.toArray(new ItemStack[0]);
-                }
                 return super.process();
             }
 
-            @NotNull
             @Override
-            protected CheckRecipeResult onRecipeStart(@Nonnull GTRecipe recipe) {
-                if (getCurrentRecipeMap() == RecipeMaps.chemicalPlantRecipes){
-                    if (!GTUtility.isStackValid(catalyst)){
-                        catalyst = null;
-                    }
+            protected ItemStack[] prepareCatalyst(ItemStack[] inputs) {
+                if (getCurrentRecipeMap() != RecipeMaps.chemicalPlantRecipes) {
+                    return inputs;
                 }
-                return super.onRecipeStart(recipe);
+                // GT5 matches zero-count catalyst ingredients without consuming them.
+                return ArrayUtils.addAll(inputs, getCatalystInputs().toArray(new ItemStack[0]));
             }
         }.setMaxParallelSupplier(this::getMaxParallelRecipes);
-    }
-
-    private ItemStack findCatalyst(ItemStack[] aItemInputs, ItemStack catalyst) {
-        if (aItemInputs != null) {
-            for (ItemStack item : aItemInputs) {
-                if (GTUtility.areStacksEqual(item, catalyst, true)) {
-                    return item;
-                }
-            }
-        }
-        return null;
     }
 
     public ArrayList<ItemStack> getCatalystInputs() {
