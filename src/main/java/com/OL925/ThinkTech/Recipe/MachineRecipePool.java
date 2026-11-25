@@ -1030,8 +1030,8 @@ public class MachineRecipePool {
         // 蓝钢（100秒）
         GTValues.RA.stdBuilder()
             .itemInputs(Materials.Copper.getDust(19), Materials.Gold.getDust(16),
-                Materials.Zinc.getDust(5), Materials.BlackSteel.getDust(80),
-                Materials.Steel.getDust(40))
+                Materials.Zinc.getDust(5), Materials.BlackSteel.getDust(64),
+                Materials.Steel.getDust(40), Materials.BlackSteel.getDust(16))
             .fluidOutputs(Materials.BlueSteel.getMolten(23040))
             .eut(30).duration(2000).circuit(16).specialValue(2)
             .addTo(ThTRecipeMap.Crucible);
