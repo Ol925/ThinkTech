@@ -251,7 +251,7 @@ public class ItemRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Casing_Firebricks.get(16),
                 ItemList.Hull_LV.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Steel, 8),
+                GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Steel, 4),
                 ItemList.Electric_Piston_LV.get(4),
                 GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.Steel, 4),
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Steel, 1))
@@ -275,7 +275,7 @@ public class ItemRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Casing_Firebricks.get(16),
                 ItemList.Hull_MV.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Invar, 8),
+                GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Invar, 4),
                 ItemList.Electric_Piston_MV.get(4),
                 GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.Invar, 4),
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Invar, 1))
@@ -288,7 +288,7 @@ public class ItemRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Casing_Firebricks.get(16),
                 ItemList.Hull_HV.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 8),
+                GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.StainlessSteel, 4),
                 ItemList.Electric_Piston_HV.get(4),
                 GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.StainlessSteel, 4),
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.StainlessSteel, 1))
@@ -301,7 +301,7 @@ public class ItemRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Casing_Firebricks.get(16),
                 ItemList.Hull_EV.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 8),
+                GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.Titanium, 4),
                 ItemList.Electric_Piston_EV.get(4),
                 GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.Titanium, 4),
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.Titanium, 1))
@@ -314,7 +314,7 @@ public class ItemRecipePool {
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Casing_Firebricks.get(16),
                 ItemList.Hull_IV.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 8),
+                GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.TungstenSteel, 4),
                 ItemList.Electric_Piston_IV.get(4),
                 GTOreDictUnificator.get(OrePrefixes.gearGt, Materials.TungstenSteel, 4),
                 GTOreDictUnificator.get(OrePrefixes.frameGt, Materials.TungstenSteel, 1))
